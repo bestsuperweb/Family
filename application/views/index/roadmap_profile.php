@@ -85,7 +85,7 @@
 	    		return $dates;
 	    	} 
 
-	    	print_r(get_dates(date('2017-01-19')));
+	    	// print_r(get_dates(date('2017-01-19')));
 	    	
 	    	?>
 	    	
