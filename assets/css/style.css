@@ -219,6 +219,9 @@
     background: rgba(84, 42, 68, 0.4);
     padding: 20px;    
 }
+.roadmap_profile .panel-default .panel-body{
+    background-color: #D9D9D9;
+}
 .roadmap-panel-group .panel-default .panel-body{
     color: white;
     font-size: 19px;

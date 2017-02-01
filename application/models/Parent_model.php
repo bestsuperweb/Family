@@ -44,11 +44,14 @@ class Parent_model extends CI_Model {
         {
                 switch ($step) {
                         case 1:
+                                $work_days1 = is_array( $this->input->post('fa_pa1_work_days')) ? implode(', ', $this->input->post('fa_pa1_work_days')) : '';
+                                $work_days2 = is_array( $this->input->post('fa_pa2_work_days')) ? implode(', ', $this->input->post('fa_pa2_work_days')) : '';
+
                                 $data1 = array(
                                         'job_description'   => $this->input->post('fa_pa1_job'), 
                                         'company_name'      => $this->input->post('fa_pa1_company'),
                                         'location_job'      => $this->input->post('fa_pa1_work_location'),
-                                        'work_days'         => implode(', ', $this->input->post('fa_pa1_work_days')),
+                                        'work_days'         => $work_days1,
                                         'travel_work'       => $this->input->post('fa_pa1_commute'),
                                         'sport_interest'    => $this->input->post('fa_pa1_interests'),
                                         'characteristics'   => $this->input->post('fa_pa1_character')
@@ -58,7 +61,7 @@ class Parent_model extends CI_Model {
                                         'job_description'   => $this->input->post('fa_pa2_job'), 
                                         'company_name'      => $this->input->post('fa_pa2_company'),
                                         'location_job'      => $this->input->post('fa_pa2_work_location'),
-                                        'work_days'         => implode(', ', $this->input->post('fa_pa2_work_days')),
+                                        'work_days'         => $work_days2,
                                         'travel_work'       => $this->input->post('fa_pa2_commute'),
                                         'sport_interest'    => $this->input->post('fa_pa2_interests'),
                                         'characteristics'   => $this->input->post('fa_pa2_character')
@@ -78,11 +81,14 @@ class Parent_model extends CI_Model {
                                 break;
                         
                         default:
+                                $work_days1 = is_array( $this->input->post('fa_pa1_work_days')) ? implode(', ', $this->input->post('fa_pa1_work_days')) : '';
+                                $work_days2 = is_array( $this->input->post('fa_pa2_work_days')) ? implode(', ', $this->input->post('fa_pa2_work_days')) : '';
+
                                 $data1 = array(
                                         'job_description'   => $this->input->post('fa_pa1_job'), 
                                         'company_name'      => $this->input->post('fa_pa1_company'),
                                         'location_job'      => $this->input->post('fa_pa1_work_location'),
-                                        'work_days'         => implode(', ', $this->input->post('fa_pa1_work_days')),
+                                        'work_days'         => $work_days1,
                                         'travel_work'       => $this->input->post('fa_pa1_commute'),
                                         'sport_interest'    => $this->input->post('fa_pa1_interests'),
                                         'characteristics'   => $this->input->post('fa_pa1_character')
@@ -92,7 +98,7 @@ class Parent_model extends CI_Model {
                                         'job_description'   => $this->input->post('fa_pa2_job'), 
                                         'company_name'      => $this->input->post('fa_pa2_company'),
                                         'location_job'      => $this->input->post('fa_pa2_work_location'),
-                                        'work_days'         => implode(', ', $this->input->post('fa_pa2_work_days')),
+                                        'work_days'         => $work_days2,
                                         'travel_work'       => $this->input->post('fa_pa2_commute'),
                                         'sport_interest'    => $this->input->post('fa_pa2_interests'),
                                         'characteristics'   => $this->input->post('fa_pa2_character')

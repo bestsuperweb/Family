@@ -50,6 +50,8 @@ class Family_model extends CI_Model {
                                 break;
 
                         case 2:
+                                $responsibilities = is_array($this->input->post('fa_aupair_responsibilities')) ? implode(', ', $this->input->post('fa_aupair_responsibilities')) : '';
+                                $household = is_array( $this->input->post('fa_aupair_household')) ? implode(', ', $this->input->post('fa_aupair_household')) : '';
                                 $data = array(
                                         'aupair_from'               => $this->input->post('fa_aupair_from'),
                                         'aupair_until'              => $this->input->post('fa_aupair_untill'),
@@ -60,8 +62,8 @@ class Family_model extends CI_Model {
                                         'aupair_drivers_license'    => $this->input->post('fa_aupair_drivers_license'),
                                         'aupair_skills'             => $this->input->post('fa_aupair_skills'),
                                         'aupair_experience'         => $this->input->post('fa_aupair_experience'),
-                                        'aupair_responsibilities'   => implode(', ', $this->input->post('fa_aupair_responsibilities')),
-                                        'aupair_household'          => implode(', ', $this->input->post('fa_aupair_household')),
+                                        'aupair_responsibilities'   => $responsibilities,
+                                        'aupair_household'          => $household,
                                         'aupair_household_nights'   => $this->input->post('fa_aupair_household_nights'),
                                         'aupair_household_hours'    => $this->input->post('fa_aupair_household_hours')
                                 );
