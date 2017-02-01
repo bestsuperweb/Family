@@ -1,5 +1,5 @@
 ###################
-What is CodeIgniter
+CodeIgniter Project - Family
 ###################
 
 CodeIgniter is an Application Development Framework - a toolkit - for people
