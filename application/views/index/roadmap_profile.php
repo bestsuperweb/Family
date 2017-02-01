@@ -1,13 +1,13 @@
 <!-- views/index/roadmap_roadmap.php  -->
 <?php
 		$li_class = array();
-		$li_class['first'] = 'roadmap-top-bar-first';
+		$li_class['first'] 	= 'roadmap-top-bar-first';
 		$li_class['second'] = 'roadmap-top-bar';
-		$li_class['third'] = 'roadmap-top-bar';
-		$li_class['forth'] = 'roadmap-top-bar';
-		$li_class['fifth'] = 'roadmap-top-bar';
-		$li_class['sixth'] = 'roadmap-top-bar';
-		$li_class['seventh'] = 'roadmap-top-bar';
+		$li_class['third'] 	= 'roadmap-top-bar';
+		$li_class['forth'] 	= 'roadmap-top-bar';
+		$li_class['fifth'] 	= 'roadmap-top-bar';
+		$li_class['sixth'] 	= 'roadmap-top-bar';
+		$li_class['seventh']= 'roadmap-top-bar';
 		$li_class['eighth'] = 'roadmap-top-bar';
 		switch ($tab) {
 			case 1:
