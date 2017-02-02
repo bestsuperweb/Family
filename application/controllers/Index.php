@@ -10,6 +10,7 @@ class Index extends CI_Controller {
         $this->load->model('family_model');
         $this->load->model('parent_model');
         $this->load->model('kid_model');
+        $this->load->model('schedule_model');
     }
 
     public function home()
@@ -34,6 +35,7 @@ class Index extends CI_Controller {
     public function roadmap_profile($tab = 1){
     	$data['title'] = "Stappenplan | Profiel";
     	$data['tab'] = $tab;
+        $data['schedules'] = $this->schedule_model->get_schedule(1, 1);
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);

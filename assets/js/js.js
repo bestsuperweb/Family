@@ -22,17 +22,23 @@
         format: 'yyyy-mm-dd',
         minView: 'month',
         autoclose: true
-    });
-    
+    });    
 
     $(".input-group.schedule-date").datetimepicker({
-    	todayBtn: 'linked',
-    	todayHighlight: true,
-    	format: 'yyyy-mm-dd - HH:ii P',
-    	autoclose: true,
-    	showMeridian: true,
-    	minuteStep: 15
+        todayBtn: 'linked',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        minView: 'month',
+        autoclose: true
     });
+
+    $(".schedule-time").datetimepicker({
+        startView: 'day',
+        format: 'hh:ii',
+        autoclose: true,
+        minuteStep: 15
+    });
+    
 
     $(document).ready(function(){
         if($(window).width() > 768){
@@ -47,6 +53,7 @@
         if( $('.alert').children().length == 0 ){
             $('.alert').hide();
         } 
+
     });
         
     $('.add-child').on('click', function(){

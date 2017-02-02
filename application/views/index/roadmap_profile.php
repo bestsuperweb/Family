@@ -70,27 +70,7 @@
 	    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">HBN maakt allereerst een profiel op naar aanleiding van het intake form en het interview dat wij met jullie als toekomstige Host familie bij jullie thuis hebben. Bij een tweede plaatsing, ontvangen wij graag een schriftelijke update van jullie gezin en recentere foto's van de kinderen. Op basis van het profiel kunnen wij een passende au pair proberen te vinden. Het profiel inclusief de foto’s van jullie en het weekschema met de uren dat jullie haar graag zouden willen inzetten, zal een goed beeld aan de toekomstige au pair van jullie als gastgezin en van de wekelijkse routine geven.<br>
 			<b>Kinderen met een handicap:</b> een au pair mag geen specialistische zorg uitoefenen. Dit betreft bijvoorbeeld het toedienen van medicijnen.<br><br></div>
 	    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><b>Rijbewijs:</b> Indien het een vereiste is dat jullie au pair een rijbewijs heeft dan is het goed het volgende in overweging te nemen (dit is ook in het intakegesprek ter sprake gekomen). Een au pair van buiten Europa mag officieel maar 185 dagen, na inschrijving bij de gemeente, in Nederland rijden met haar buitenlandse rijbewijs. Een internationaal rijbewijs heeft geen toegevoegde waarde. Wij vragen aan onze kandidaten of ze een geldig rijbewijs hebben of niet, maar als Host Familie is het belangrijk om in de matching fase hierover te spreken en een zeker gevoel te hebben over zijn/haar ervaring en kunde. Het valt niet onder de directe verantwoordelijkheid van HBN. De au pair verzekering die wordt afgesloten bevat geen autoverzekering. Als jullie je au pair willen laten autorijden is het van belang dat jullie haar/hem hier apart voor verzekeren.<br><br></div>	    	
-	    </div><br><br>
-	    <div class="row">
-	    	<?php
-	    	function get_dates($date){
-	    		$dates = array();
-	    		$dates['monday'] 	= date('Y-m-d', strtotime('monday this week', strtotime($date)));
-	    		$dates['tuesday'] 	= date('Y-m-d', strtotime('tuesday this week', strtotime($date)));
-	    		$dates['wednesday'] = date('Y-m-d', strtotime('wednesday this week', strtotime($date)));
-	    		$dates['thursday'] 	= date('Y-m-d', strtotime('thursday this week', strtotime($date)));
-	    		$dates['friday'] 	= date('Y-m-d', strtotime('friday this week', strtotime($date)));
-	    		$dates['saturday'] 	= date('Y-m-d', strtotime('saturday this week', strtotime($date)));
-	    		$dates['sunday'] 	= date('Y-m-d', strtotime('sunday this week', strtotime($date)));
-	    		return $dates;
-	    	} 
-
-	    	// print_r(get_dates(date('2017-01-19')));
-	    	
-	    	?>
-	    	
-
-	    </div>
+	    </div><br><br>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
@@ -133,197 +113,8 @@
 				</div> <!-- .timeline -->
 
 				<div class="events">
-					<ul>
-						<li class="events-group">
-							<div class="top-info"><span>Sun</span><h3>16</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="11:30" data-end="12:30" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-										<div class="event-content">Het tijdschema is een belangrijk en wettelijk onderdeel van het au pair programma. In Nederland zijn er strenge regels voor hoelang per dag en per week je een au pair überhaupt mag inzetten. Daarom hebben we een voorbeeld weekschema opgesteld waarin de familie specifieke uren op kan geven en waarin aangegeven wordt wie er bij de kinderen verblijft als de au pair er niet is. Ook moet er in dit weekschema staan wie er als back up fungeert aangezien je wettelijk niet afhankelijk mag zijn van je au pair.</div>
-									</a>									
-								</li>
-
-								<li class="single-event" data-start="15:00" data-end="16:30" data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Food Market</em>
-										<div class="event-content">The weekly time schedule is a kind of Google calendar for an average week of the family. The user has to be able to block hours by steps of 15 minutes from Monday until Saturday. There are a couple of conditions the calendar should be able to deal with:</div>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="17:00" data-end="18:15"  data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Mon</span><h3>17</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Food Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="14:00" data-end="15:15"  data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Tue</span><h3>18</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Food Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4">
-									<a href="#0">
-										<em class="event-name">Hair Cut</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Wed</span><h3>19</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4">
-									<a href="#0">
-										<em class="event-name">Hair Cut</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Clothes Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Thu</span><h3>20</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4">
-									<a href="#0">
-										<em class="event-name">Hair Cut</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Clothes Market</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Fri</span><h3>21</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Clothes Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
-									<a href="#0">
-										<em class="event-name">Abs Circuit</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="events-group">
-							<div class="top-info"><span>Sat</span><h3>22</h3></div>
-
-							<ul>
-								<li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Food Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="13:00" data-end="14:15"  data-content="event-rowing-workout" data-event="event-2">
-									<a href="#0">
-										<em class="event-name">Food Market</em>
-									</a>
-								</li>
-
-								<li class="single-event" data-start="16:45" data-end="17:45"  data-content="event-yoga-1" data-event="event-3">
-									<a href="#0">
-										<em class="event-name">Walk Ella</em>
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					
 				</div>
-
 				<div class="event-modal">
 					<header class="header">
 						<div class="content">
@@ -363,33 +154,49 @@
 			          <h4 class="modal-title">Add Schedule</h4>
 			        </div>
 			        <div class="modal-body">
-						  <div class="form-group">
+			        	  <div class="form-group">
+			        	  	<div class="input-group date schedule-date">
+			        	  	<input type="text" name="sd_date" class="form-control">
+			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			        	  	</div>			        	  	
+			        	  </div>
+			        	  <div class="form-group">
 						    <label>Start Time:</label>
-						    <div class="input-group date schedule-date">
-		    				<input type="text" class="form-control"  name="">
+						    <div class="input-group date schedule-time" >
+		    				<input type="text" class="form-control"  name="sd_start_time">
 		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		    				</div>
 						  </div>
 						  <div class="form-group">
 						    <label>End Time:</label>
-						    <div class="input-group date schedule-date">
-		    				<input type="text" class="form-control"  name="">
+						    <div class="input-group date schedule-time">
+		    				<input type="text" class="form-control"  name="sd_end_time">
 		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		    				</div>
 						  </div>
-						
+						  <div class="form-group">
+						  	  <label>Schedule Type:</label>
+							  <div class="form-control custom-select">
+	    						<select name="sd_type">
+								    <option>event-1</option>
+								    <option>event-2</option>
+								    <option>event-3</option>
+								    <option>event-4</option>
+							  	</select>
+	    					  </div>
+    					  </div>
 						  <div class="form-group">
 						    <label>Schedule Title:</label>
-						    <input type="text" class="form-control" name="">
+						    <input type="text" class="form-control" name="sd_title">
 						  </div>
 						  <div class="form-group">
 						    <label>Schedule Description:</label>
-						    <textarea class="form-control" rows="5"></textarea>
+						    <textarea class="form-control" rows="5" name="sd_content"></textarea>
 						  </div>
 						
 			        </div>
 			        <div class="modal-footer">			        
-			          <a href="#" class=""><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
+			          <a href="#" class="add-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
 			        </div>
 			      </div>
 			      

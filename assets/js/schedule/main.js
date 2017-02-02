@@ -40,8 +40,8 @@ jQuery(document).ready(function($){
 
 	SchedulePlan.prototype.scheduleReset = function() {
 		var mq = this.mq();
-		if( mq == 'desktop' && !this.element.hasClass('js-full') ) {
-			//in this case you are on a desktop version (first load or resize from mobile)
+		if( mq == 'desktop' ) {
+			//in this case you are on a desktop version (first load or resize from mobile) && !this.element.hasClass('js-full') 
 			this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
 			this.element.addClass('js-full');
 			this.placeEvents();
@@ -333,16 +333,16 @@ jQuery(document).ready(function($){
 		}
 	};
 
-	var schedules = $('.cd-schedule');
-	var objSchedulesPlan = [],
-		windowResize = false;
+	// var schedules = $('.cd-schedule');
+	// var objSchedulesPlan = [],
+		var windowResize = false;
 	
-	if( schedules.length > 0 ) {
-		schedules.each(function(){
-			//create SchedulePlan objects
-			objSchedulesPlan.push(new SchedulePlan($(this)));
-		});
-	}
+	// if( schedules.length > 0 ) {
+	// 	schedules.each(function(){
+	// 		//create SchedulePlan objects
+	// 		objSchedulesPlan.push(new SchedulePlan($(this)));
+	// 	});
+	// }
 
 	$(window).on('resize', function(){
 		if( !windowResize ) {
@@ -383,4 +383,48 @@ jQuery(document).ready(function($){
 			'transform': value
 		});
 	}
+// main call function for scheduler...
+	function load_schedule(user_type, user_id){
+		$.ajax({
+            url: "http://localhost/Family/index.php/schedule/get/"+user_type+"/"+user_id,
+            type: 'post',
+            success: function(result){
+                $(".events").html(result);
+                var schedules = $('.cd-schedule');
+                var objSchedulesPlan = [];           
+                if( schedules.length > 0 ) {
+                    schedules.each(function(){
+                        //create SchedulePlan objects
+                        objSchedulesPlan.push(new SchedulePlan($(this)));
+                    });
+                }
+            }
+        });
+	}
+
+	load_schedule('family', 1);
+	
+	$('a.add-schedule').on('click', function(){
+		var data = { 
+			sd_date: $('input[name=sd_date]').val(),
+			sd_start_time: $('input[name=sd_start_time]').val(),
+			sd_end_time: $('input[name=sd_end_time]').val(),
+			sd_title: $('input[name=sd_title]').val(),
+			sd_content: $('textarea[name=sd_content]').val(),
+			sd_type: $('select[name=sd_type]').val(),
+			sd_user_type: 'family',
+			sd_user_id: 1
+		};
+		$.ajax({
+            url: "http://localhost/Family/index.php/schedule/insert",
+            type: 'post',
+            data: data,
+            success: function(result){
+            	$('#addModal').modal("hide");
+                if(result == 'success'){
+                	load_schedule('family', 1);
+                }
+            }
+        });
+	});
 });

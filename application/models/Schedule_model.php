@@ -15,10 +15,11 @@ class Schedule_model extends CI_Model {
                                 'end_time'      => $this->input->post('sd_end_time'),
                                 'title'         => $this->input->post('sd_title'),
                                 'content'       => $this->input->post('sd_content'),
+                                'schedule_type' => $this->input->post('sd_type'),
                                 'user_type'     => $this->input->post('sd_user_type'),
                                 'user_id'       => $this->input->post('sd_user_id')
                         );
-                $query = $this->db->query("SELECT * FROM schedules WHERE user_type = $data['user_type'] AND user_id = $data['user_id'] AND schedule_date = $data['schedule_date'] AND start_time >= $data['start_time'] AND end_time <= $data['end_time']");
+                $query = $this->db->query("SELECT * FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = ".$data['schedule_date']." AND start_time >= '".$data['start_time']."' AND end_time <= '".$data['end_time']."'");
 
                 if($query->num_rows() < 1){
                         $this->db->insert('schedules', $data);
@@ -36,16 +37,17 @@ class Schedule_model extends CI_Model {
                                 'end_time'      => $this->input->post('sd_end_time'),
                                 'title'         => $this->input->post('sd_title'),
                                 'content'       => $this->input->post('sd_content'),
+                                'schdule_type'  => $this->input->post('sd_type'),
                                 'user_type'     => $this->input->post('sd_user_type'),
                                 'user_id'       => $this->input->post('sd_user_id')
                         );
                 $this->db->update('schedules', $data, array('id' => $this->input->post('schedule_id')));
         }
 
-        public function get_schedule($family_id)
+        public function get_schedule($user_type, $user_id)
         {
-                // $query = $this->db->get_where('schedules', array('user_id' => $family_id));
-                return $query->row_array();
+                $query = $this->db->get_where('schedules', array('user_type' => $user_type, 'user_id' => $user_id));
+                return $query->result_array();
         }
 
         public function delete_schedule()
