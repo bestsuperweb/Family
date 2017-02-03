@@ -29,7 +29,7 @@ class Schedule_model extends CI_Model {
                 
         }
 
-        public function update_schedule()
+        public function update_schedule($id)
         {
                 $data = array(
                                 'schedule_date' => $this->input->post('sd_date'),
@@ -37,11 +37,9 @@ class Schedule_model extends CI_Model {
                                 'end_time'      => $this->input->post('sd_end_time'),
                                 'title'         => $this->input->post('sd_title'),
                                 'content'       => $this->input->post('sd_content'),
-                                'schdule_type'  => $this->input->post('sd_type'),
-                                'user_type'     => $this->input->post('sd_user_type'),
-                                'user_id'       => $this->input->post('sd_user_id')
+                                'schedule_type' => $this->input->post('sd_type')
                         );
-                $this->db->update('schedules', $data, array('id' => $this->input->post('schedule_id')));
+                $result = $this->db->update('schedules', $data, array('id' => $id));
         }
 
         public function get_schedule($user_type, $user_id)
@@ -50,9 +48,9 @@ class Schedule_model extends CI_Model {
                 return $query->result_array();
         }
 
-        public function delete_schedule()
+        public function delete_schedule($id)
         {
-                $this->db->delete('families', $this, array('id' => $this->input->post('family_id')));
+                $this->db->delete('schedules', array('id' => $id));
         }
 
 }

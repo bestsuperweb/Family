@@ -29,6 +29,7 @@
         todayHighlight: true,
         format: 'yyyy-mm-dd',
         minView: 'month',
+        daysOfWeekDisabled: [0],
         autoclose: true
     });
 
@@ -52,9 +53,11 @@
 
         if( $('.alert').children().length == 0 ){
             $('.alert').hide();
-        } 
-
+        }
     });
+
+    $("input[name=sd_start_time]").val(' ');
+
         
     $('.add-child').on('click', function(){
         number_kids = $('input[name=fa_kids]').val();
@@ -75,6 +78,7 @@
         });
     });
 
+    
     (function($) {
 
 	  'use strict';

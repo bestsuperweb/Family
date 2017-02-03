@@ -156,21 +156,21 @@
 			        <div class="modal-body">
 			        	  <div class="form-group">
 			        	  	<div class="input-group date schedule-date">
-			        	  	<input type="text" name="sd_date" class="form-control">
+			        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
 			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			        	  	</div>			        	  	
 			        	  </div>
 			        	  <div class="form-group">
 						    <label>Start Time:</label>
 						    <div class="input-group date schedule-time" >
-		    				<input type="text" class="form-control"  name="sd_start_time">
+		    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
 		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		    				</div>
 						  </div>
 						  <div class="form-group">
 						    <label>End Time:</label>
 						    <div class="input-group date schedule-time">
-		    				<input type="text" class="form-control"  name="sd_end_time">
+		    				<input type="text" class="form-control"  name="sd_end_time" autocomplete='off'>
 		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		    				</div>
 						  </div>
@@ -187,22 +187,84 @@
     					  </div>
 						  <div class="form-group">
 						    <label>Schedule Title:</label>
-						    <input type="text" class="form-control" name="sd_title">
+						    <input type="text" class="form-control" name="sd_title" autocomplete='off'>
 						  </div>
 						  <div class="form-group">
 						    <label>Schedule Description:</label>
-						    <textarea class="form-control" rows="5" name="sd_content"></textarea>
+						    <textarea class="form-control" rows="5" name="sd_content" autocomplete='off'></textarea>
 						  </div>
 						
 			        </div>
 			        <div class="modal-footer">			        
-			          <a href="#" class="add-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
+			          <a href="#1" class="add-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
 			        </div>
 			      </div>
 			      
 			    </div>
 			  </div>
 			  <!-- addModal end -->
+
+			  <!-- editModal start -->
+			  <div class="modal fade" id="editModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Edit Schedule</h4>
+			        </div>
+			        <div class="modal-body">
+			        <input type="hidden" name="sd_id">
+			        	  <div class="form-group">
+			        	  	<div class="input-group date schedule-date">
+			        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
+			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			        	  	</div>			        	  	
+			        	  </div>
+			        	  <div class="form-group">
+						    <label>Start Time:</label>
+						    <div class="input-group date schedule-time" >
+		    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
+		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		    				</div>
+						  </div>
+						  <div class="form-group">
+						    <label>End Time:</label>
+						    <div class="input-group date schedule-time">
+		    				<input type="text" class="form-control"  name="sd_end_time" autocomplete='off'>
+		    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		    				</div>
+						  </div>
+						  <div class="form-group">
+						  	  <label>Schedule Type:</label>
+							  <div class="form-control custom-select">
+	    						<select name="sd_type">
+								    <option>event-1</option>
+								    <option>event-2</option>
+								    <option>event-3</option>
+								    <option>event-4</option>
+							  	</select>
+	    					  </div>
+    					  </div>
+						  <div class="form-group">
+						    <label>Schedule Title:</label>
+						    <input type="text" class="form-control" name="sd_title" autocomplete='off'>
+						  </div>
+						  <div class="form-group">
+						    <label>Schedule Description:</label>
+						    <textarea class="form-control" rows="5" name="sd_content" autocomplete='off'></textarea>
+						  </div>
+						
+			        </div>
+			        <div class="modal-footer">			        
+			          <a href="#1" class="edit-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			  <!-- editModal end -->
 
 		    </div>
 		  </div>

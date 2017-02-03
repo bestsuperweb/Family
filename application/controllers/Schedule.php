@@ -19,11 +19,11 @@ class Schedule extends CI_Controller {
         }
     }
 
-    public function update(){
-        if($this->schedule_model->update_schedule()){
-            echo 'success';
+    public function update($id){
+        if($this->schedule_model->update_schedule($id)){
+            echo 'failure';
         }else{
-            echo "failure";
+            echo "success";
         }
     }
 
@@ -37,11 +37,11 @@ class Schedule extends CI_Controller {
         $this->load->view('templates/schedule', $data);
     }
 
-    public function delete(){
-        if($this->schedule_model->delete_schedule()){
-            echo 'success';
+    public function delete($id){
+        if($this->schedule_model->delete_schedule($id)){
+            echo 'failure';
         }else{
-            echo "failure";
+            echo "success";
         }
     }
 }

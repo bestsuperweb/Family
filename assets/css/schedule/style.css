@@ -10,8 +10,24 @@ Main Components
 a.add-btn:hover{
   opacity: 0.8;
 }
+.sd-menu{
+    opacity: 0;
+    position:relative;
+}
+
+.sd-menu a{
+  display: inline-flex !important;
+  color: #fff;
+  background-color: rgba(10,10,10,.5);
+  width: 49%;
+}
+.sd-menu a:hover{
+  color: #000;
+  background-color: rgba(255,255,255,.5);
+}
 .cd-schedule a{
   text-decoration: none;
+  overflow: hidden;
 }
 .cd-schedule ol, .cd-schedule ul {
   list-style: none;
@@ -186,7 +202,8 @@ a.add-btn:hover{
     width: 100%;
   }
   .cd-schedule .events .events-group {
-    width: 14.28%;
+    /*width: 14.28%;*/
+    width: 16.65%;
     float: left;
     border: 1px solid #EAEAEA;
     /* reset style */

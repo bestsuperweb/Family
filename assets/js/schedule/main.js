@@ -40,9 +40,10 @@ jQuery(document).ready(function($){
 
 	SchedulePlan.prototype.scheduleReset = function() {
 		var mq = this.mq();
-		if( mq == 'desktop' ) {
+		if( mq == 'desktop') {
 			//in this case you are on a desktop version (first load or resize from mobile) && !this.element.hasClass('js-full') 
-			this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
+			// this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
+			this.eventSlotHeight = 50;
 			this.element.addClass('js-full');
 			this.placeEvents();
 			this.element.hasClass('modal-is-open') && this.checkEventModal();
@@ -67,10 +68,10 @@ jQuery(document).ready(function($){
 		this.singleEvents.each(function(){
 			//create the .event-date element for each event
 			var durationLabel = '<span class="event-date">'+$(this).data('start')+' - '+$(this).data('end')+'</span>';
-			$(this).children('a').prepend($(durationLabel));
+			$(this).children('a.single-event-modal').prepend($(durationLabel));
 
 			//detect click on the event and open the modal
-			$(this).on('click', 'a', function(event){
+			$(this).on('click', 'a.single-event-modal', function(event){
 				event.preventDefault();
 				if( !self.animating ) self.openModal($(this));
 			});
@@ -406,12 +407,12 @@ jQuery(document).ready(function($){
 	
 	$('a.add-schedule').on('click', function(){
 		var data = { 
-			sd_date: $('input[name=sd_date]').val(),
-			sd_start_time: $('input[name=sd_start_time]').val(),
-			sd_end_time: $('input[name=sd_end_time]').val(),
-			sd_title: $('input[name=sd_title]').val(),
-			sd_content: $('textarea[name=sd_content]').val(),
-			sd_type: $('select[name=sd_type]').val(),
+			sd_date: $('#addModal input[name=sd_date]').val(),
+			sd_start_time: $('#addModal input[name=sd_start_time]').val(),
+			sd_end_time: $('#addModal input[name=sd_end_time]').val(),
+			sd_title: $('#addModal input[name=sd_title]').val(),
+			sd_content: $('#addModal textarea[name=sd_content]').val(),
+			sd_type: $('#addModal select[name=sd_type]').val(),
 			sd_user_type: 'family',
 			sd_user_id: 1
 		};
@@ -427,4 +428,73 @@ jQuery(document).ready(function($){
             }
         });
 	});
+
+	$('a.edit-schedule').on('click', function(){
+		var data = { 
+			sd_date: $('#editModal input[name=sd_date]').val(),
+			sd_start_time: $('#editModal input[name=sd_start_time]').val(),
+			sd_end_time: $('#editModal input[name=sd_end_time]').val(),
+			sd_title: $('#editModal input[name=sd_title]').val(),
+			sd_content: $('#editModal textarea[name=sd_content]').val(),
+			sd_type: $('#editModal select[name=sd_type]').val()
+		};
+		$.ajax({
+            url: "http://localhost/Family/index.php/schedule/update/"+ $('input[name=sd_id]').val(),
+            type: 'post',
+            data: data,
+            success: function(result){
+            	$('#editModal').modal("hide");
+                if(result == 'success'){
+                	load_schedule('family', 1);
+                }
+            }
+        });
+	});
+	
+
+	$(function() {
+	      $(document).on('mouseenter', '.single-event', function(event) {
+	      		// alert($(this).children('.sd-menu').height());
+	            $(this).children('.sd-menu').animate({opacity: 1, top: '-=' + ($(this).children('.sd-menu').innerHeight() - 3) + 'px'}, 500);
+	      });
+
+	      $(document).on('mouseleave', '.single-event', function(event) {
+	      		// alert($(this).children('.sd-menu').position().top);
+	            $(this).children('.sd-menu').animate({opacity: 0, top: '+=' + ($(this).children('.sd-menu').innerHeight() - 3) + 'px'}, 500);
+	      });
+
+	      $(document).on('click', '.sd-menu a.sd-delete', function(event) {
+	      		var id = $(this).attr('data-id');
+	      		$.ajax({
+		            url: "http://localhost/Family/index.php/schedule/delete/"+id,
+		            type: 'post',
+		            success: function(result){
+		            	if(result == 'success'){
+		                	load_schedule('family', 1);
+		                }
+		            }
+		        });
+	      });
+
+	      $(document).on('click', '.sd-menu a.sd-edit', function(event) {
+	      		var li = $(this).parent().parent();
+	      		var id = $(this).attr('data-id');
+	      		var start_time = li.attr('data-start');
+	      		var end_time = li.attr('data-end');
+	      		var date = li.attr('data-date');
+	      		var type = li.attr('data-event');
+	      		var title = li.children('.single-event-modal').children('.event-name').html();
+	      		var content = li.children('.single-event-modal').children('.event-content').html();
+	      		$('#editModal input[name=sd_id]').val(id);
+	      		$('#editModal input[name=sd_date]').val(date);
+	      		$('#editModal input[name=sd_start_time]').val(start_time);
+	      		$('#editModal input[name=sd_end_time]').val(end_time);
+	      		$('#editModal select[name=sd_type]').val(type);
+				$('#editModal input[name=sd_title]').val(title);
+				$('#editModal textarea[name=sd_content]').val(content);
+				$('#editModal').modal('show');				      			      		
+
+	      });
+	});
+	
 });
