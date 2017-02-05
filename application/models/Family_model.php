@@ -22,6 +22,7 @@ class Family_model extends CI_Model {
                 if($query->num_rows() < 1){
                         $this->db->insert('families', $data);
                         $insert_id = $this->db->insert_id();
+
                         return  $insert_id;
                 }
                 
@@ -81,8 +82,9 @@ class Family_model extends CI_Model {
                                 break;
                         case 4:
                                 $data = array(
-                                        'place' => $this->input->post('fa_place'),
-                                        'pets'  => $this->input->post('fa_pets')
+                                        'place'    => $this->input->post('fa_place'),
+                                        'pets'     => $this->input->post('fa_pets'),
+                                        'overview' => $this->input->post('fa_overview')
                                         );
                                 break;
                         
@@ -105,18 +107,23 @@ class Family_model extends CI_Model {
                                 break;
                 }
                 
-                $this->db->update('families', $data, array('id' => $this->input->post('family_id')));
+                $result = $this->db->update('families', $data, array('id' => $this->input->post('family_id')));
+
+                return $result;
         }
 
         public function get_family($family_id)
         {
                 $query = $this->db->get_where('families', array('id' => $family_id));
+
                 return $query->row_array();
         }
 
-        public function delete_family()
+        public function delete_family($family_id)
         {
-                $this->db->delete('families', $this, array('id' => $this->input->post('family_id')));
+                $result = $this->db->delete('families', array('id' => $family_id));
+
+                return $result;
         }
 
 }

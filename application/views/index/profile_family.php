@@ -58,7 +58,7 @@
           		<div class="row">
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
           			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <a href="<?php echo base_url('index.php/index/edit_profile/1?family_id='.$family['id']); ?>">
+                <a href="<?php echo base_url('index.php/index/edit_profile/1'); ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
           		</div>          		
           		<div class="row profile-row">
@@ -111,11 +111,10 @@
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <h2><b><i>Hi, we are family of <?php echo $parents[0]['lastname']; ?></i></b></h2></div>
           			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <a href="<?php echo base_url('index.php/index/edit_profile/1?family_id='.$family['id']); ?>">
+                <a href="<?php echo base_url('index.php/index/edit_profile/1'); ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
           		</div>          		
-          		<p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt mattis pretium. Suspendisse vitae nibh ullamcorper, convallis ipsum et, tincidunt ligula. Suspen- disse ut pulvinar elit. Nam at vulputate purus, scelerisque pharetra lectus. Curabitur tincidunt, risus nec condimen- tum tincidunt, turpis orci vulputate elit, ultricies pharetra metus nisl et est. Vestibulum ac velit eu mi sollicitudin fermentum. Ut sed sem dolor. Praesent sed velit ut dolor molestie gravida. Aliquam erat volutpat. Duis et nibh risus.
-				Donec efficitur molestie odio vel volutpat. In hac habitasse platea dictumst. Cras egestas vestibulum tincidunt. Fusce eget arcu nec nisi dictum ornare ac a odio. Proin biben- dum lectus arcu, in maximus quam feugiat ut. Sed pre- tium enim sit amet tristique scelerisque. Nulla massa felis, maximus sed libero sed, mollis base_urlndit massa. Praesent volutpat, dui in vulputate lacinia, massa felis sodales justo, nec facilisis orci dolor auctor elit. o</p>
+          		<p class="profile-description"><?php echo $family['overview']; ?></p>
           	</div>         	
           </div>
           <div class="row">
@@ -129,7 +128,7 @@
           <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
   			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <a href="<?php echo base_url('index.php/index/edit_profile/2?family_id='.$family['id']); ?>">
+        <a href="<?php echo base_url('index.php/index/edit_profile_family/2'); ?>">
         <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
   		  </div>
   		  <div class="row">
@@ -307,7 +306,7 @@
           <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b><i>Family of <?php echo $parents[0]['lastname']; ?></i></b></h1></div>
   			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <a href="<?php echo base_url('index.php/index/edit_profile/3?family_id='.$family['id']); ?>">
+        <a href="<?php echo base_url('index.php/index/edit_profile/3'); ?>">
         <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
   		  </div>
   		  <div class="row">

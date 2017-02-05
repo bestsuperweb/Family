@@ -31,6 +31,7 @@
 		.nav-pills.nav-wizard > li a {
 		  border-radius: 0;
 		  background-color: #eee;
+		  font-size: 20px;
 		}
 		.nav-pills.nav-wizard > li:not(:last-child) a:after {
 		  position: absolute;
@@ -67,13 +68,13 @@
 		  color: #fff;
 		}
 		.nav-pills.nav-wizard > li.active:not(:last-child) a:after {
-		  border-color: transparent transparent transparent #428bca;
+		  border-color: transparent transparent transparent #542a44;
 		}
 		.nav-pills.nav-wizard > li.active:not(:first-child) a:before {
-		  border-color: #428bca #428bca #428bca transparent;
+		  border-color: #542a44 #542a44 #542a44 transparent;
 		}
 		.nav-pills.nav-wizard > li.active a {
-		  background-color: #428bca;
+		  background-color: #542a44;;
 		}
 	</style>
     <h1><i><b>Matches</b></i></h1>

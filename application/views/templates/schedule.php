@@ -2,7 +2,6 @@
 	<?php
 	
 	$dates = get_dates(date('Y-m-d'));
-
 	foreach ($dates['day'] as $key => $day) { ?>
 		<li class="events-group">
 			<div class="top-info"><span><?php echo $key; ?></span><h3><?php echo $day; ?></h3></div>

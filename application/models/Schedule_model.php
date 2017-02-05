@@ -19,8 +19,7 @@ class Schedule_model extends CI_Model {
                                 'user_type'     => $this->input->post('sd_user_type'),
                                 'user_id'       => $this->input->post('sd_user_id')
                         );
-                $query = $this->db->query("SELECT * FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = ".$data['schedule_date']." AND start_time >= '".$data['start_time']."' AND end_time <= '".$data['end_time']."'");
-
+                $query = $this->db->query("SELECT * FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' AND NOT(( start_time >= '".$data['start_time']."' AND start_time >= '".$data['end_time']."') OR ( end_time <= '".$data['start_time']."' AND end_time <= '".$data['end_time']."')) ");
                 if($query->num_rows() < 1){
                         $this->db->insert('schedules', $data);
                         $insert_id = $this->db->insert_id();
@@ -40,6 +39,7 @@ class Schedule_model extends CI_Model {
                                 'schedule_type' => $this->input->post('sd_type')
                         );
                 $result = $this->db->update('schedules', $data, array('id' => $id));
+                return $result;
         }
 
         public function get_schedule($user_type, $user_id)
@@ -50,7 +50,20 @@ class Schedule_model extends CI_Model {
 
         public function delete_schedule($id)
         {
-                $this->db->delete('schedules', array('id' => $id));
+                $result = $this->db->delete('schedules', array('id' => $id));
+                return $result;
+        }
+
+        function is_valid($data){
+                $monday = date('Y-m-d', strtotime('monday this week', strtotime($data['schedule_date'])));
+                $saturday = date('Y-m-d', strtotime('saturday this week', strtotime($data['schedule_date'])));
+                        
+                $condition1 = $this->db->query("SELECT ( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND ( schedule_date BETWEEN '".$monday."' AND '".$saturday."')");
+                if ($condition1 <= 30) {
+                        return true;
+                }else{
+                        return false;
+                }
         }
 
 }

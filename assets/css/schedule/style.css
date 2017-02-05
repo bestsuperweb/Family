@@ -402,7 +402,7 @@ a.add-btn:hover{
   z-index: 2;
   line-height: 1.4;
   height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .cd-schedule .event-modal .event-info > div {

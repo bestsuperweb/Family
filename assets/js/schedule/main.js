@@ -404,6 +404,27 @@ jQuery(document).ready(function($){
 	}
 
 	load_schedule('family', 1);
+
+	// --------- scheduler alert temp
+
+	function schedule_alert(str, flag){
+		if(flag){
+			$('.roadmap_profile #accordion .alert-success span').html(str);
+        	$('.roadmap_profile #accordion .alert-success').fadeIn(1000);
+        	$('html, body').animate({
+		      scrollTop: ($('.roadmap_profile #accordion .alert-success').offset().top - 50)
+		    }, 800);
+		    $('.roadmap_profile #accordion .alert-success').fadeOut(3000);        	
+		}else{
+			$('.roadmap_profile #accordion .alert-danger span').html(str);
+        	$('.roadmap_profile #accordion .alert-danger').fadeIn(1000);
+        	$('html, body').animate({
+		      scrollTop: ($('.roadmap_profile #accordion .alert-danger').offset().top - 50)
+		    }, 800);
+		    $('.roadmap_profile #accordion .alert-danger').fadeOut(3000);        	
+		}
+	}
+	// ----------
 	
 	$('a.add-schedule').on('click', function(){
 		var data = { 
@@ -423,7 +444,10 @@ jQuery(document).ready(function($){
             success: function(result){
             	$('#addModal').modal("hide");
                 if(result == 'success'){
+                	schedule_alert('A schedule was successfully inserted.', 1);
                 	load_schedule('family', 1);
+                }else{
+                	schedule_alert('Fail to insert a schedule. Review your inputs and try again.', 0);
                 }
             }
         });
@@ -445,7 +469,10 @@ jQuery(document).ready(function($){
             success: function(result){
             	$('#editModal').modal("hide");
                 if(result == 'success'){
+                	schedule_alert('A schedule was successfully updated.', 1);
                 	load_schedule('family', 1);
+                }else{
+                	schedule_alert('Fail to update a schedule. Review your inputs and try again.', 0);
                 }
             }
         });
@@ -470,7 +497,10 @@ jQuery(document).ready(function($){
 		            type: 'post',
 		            success: function(result){
 		            	if(result == 'success'){
+		            		schedule_alert('A schedule was successfully deleted.', 1);
 		                	load_schedule('family', 1);
+		                }else{
+		                	schedule_alert('Something went wrong. Try again.', 0);
 		                }
 		            }
 		        });

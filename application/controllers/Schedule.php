@@ -21,9 +21,9 @@ class Schedule extends CI_Controller {
 
     public function update($id){
         if($this->schedule_model->update_schedule($id)){
-            echo 'failure';
+            echo 'success';
         }else{
-            echo "success";
+            echo "failure";
         }
     }
 
@@ -39,9 +39,9 @@ class Schedule extends CI_Controller {
 
     public function delete($id){
         if($this->schedule_model->delete_schedule($id)){
-            echo 'failure';
+            echo 'success';
         }else{
-            echo "success";
+            echo "failure";
         }
     }
 }

@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php
-  if( isset($page)){
+  if( isset($register)){
 ?>
     <div class="register-wrapper">
 <?php 

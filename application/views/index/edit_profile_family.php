@@ -52,7 +52,6 @@
       <?php echo validation_errors(); ?>
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="basicinfo">
         <?php echo form_open('index/save_profile/1'); ?>
-        <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
           <div class="row">
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<img src="<?php echo base_url('assets/img/family.png'); ?>" class="img-responsive">
@@ -120,7 +119,7 @@
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <h2><b><i>Hi, we are family of <?php echo $parents[0]['lastname']; ?></i></b></h2></div>          			
           		</div>          		
-          		<textarea name="fa_" class="form-control" rows="8" value="<?php echo 'This is not defined!!!'; ?>"></textarea>
+          		<textarea name="fa_overview" class="form-control" rows="8" ><?php echo $family['overview']; ?></textarea>
           	</div>         	
           </div>
           <div class="row">
@@ -615,6 +614,8 @@
             </select>
           </div>
   		  </div>
+
+         
   		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Possible tasks regarding the household:</div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">

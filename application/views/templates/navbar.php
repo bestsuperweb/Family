@@ -1,6 +1,6 @@
 <!-- navbar -->
 <?php
-	if ( !isset($page)) {
+	if ( !isset($register)) {
 ?>
     <nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -16,13 +16,13 @@
 		    <ul class="nav navbar-nav navbar-right">
 		      <li><a href="#" class="navbar-user"><img src="<?php echo base_url('assets/img/users.png'); ?>" class="navbar-img"> Familie De Jong</a></li>
 		      <li><a href="<?php echo base_url('index.php/families/create'); ?>"><img src="<?php echo base_url('assets/img/settings-3-icon.png'); ?>" class="navbar-img"></a></li>
-		      <li><a href="#"><img src="<?php echo base_url('assets/img/inside-logout-icon.png'); ?>" class="navbar-img"></a></li>
+		      <li><a href="<?php echo base_url('index.php/aupairs/create'); ?>"><img src="<?php echo base_url('assets/img/inside-logout-icon.png'); ?>" class="navbar-img"></a></li>
 		    </ul>
 		</div>
 	  </div>
 	</nav>
 <?php
-	} else {
+	} else if ( $register == 'family' ) {
 		$li_class = array();
 		$li_class['first'] = 'register-li-first';
 		$li_class['second'] = 'register-li';
@@ -73,5 +73,22 @@
 		</div>
 	  </div>		
 	</nav>
-<? } ?>
+
+<?php } else if ( $register == 'aupair' ) {?>
+
+<nav class="navbar navbar-register navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo_white.png'); ?>" class="logo-img"></a>
+	    </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        </div>
+    </div>
+</nav>
+<?php } ?>
 <!-- navbar end -->

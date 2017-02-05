@@ -10,11 +10,13 @@ class Families extends CI_Controller {
         $this->load->model('family_model');
         $this->load->model('parent_model');
         $this->load->model('kid_model');
+        $this->load->library('session');
     }
 
     public function create( $page = 1 ){
     	
-    	$data['title'] = 'Register';
+    	$data['title'] = 'Family | Register';
+    	$data['register'] = 'family';
 
     	switch ($page) {
     		case 1:
@@ -110,7 +112,13 @@ class Families extends CI_Controller {
 	    		{
 
 	    			$this->family_model->update_family(3);
-		        	redirect('index/profile?family_id='.$this->input->post('family_id'));
+	    			$userdata = array( 
+					   'user_type'  => 'family', 
+					   'user_id'    => $data['family_id']
+					);  
+
+					$this->session->set_userdata($userdata);
+		        	redirect('index/profile');
 
 	    		}else{
 
@@ -123,36 +131,12 @@ class Families extends CI_Controller {
     			break;
 
     		default:
-    			$this->form_validation->set_rules('fa_pa1_firstname', 'First name of parent1', 'trim|required');
-    			$this->form_validation->set_rules('fa_pa1_lastname', 'Last name of parent1', 'trim|required');
-    			$this->form_validation->set_rules('fa_pa2_firstname', 'First name of parent2', 'trim|required');
-    			$this->form_validation->set_rules('fa_pa2_lastname', 'Last name of parent2', 'trim|required');
-    			$this->form_validation->set_rules('fa_pa1_email', 'Email of Parent1', 'trim|required|valid_email|is_unique[parents.email]');
-    			$this->form_validation->set_rules('fa_pa2_email', 'Email of Parent2', 'trim|required|valid_email|is_unique[parents.email]');
-
-    			if ($this->form_validation->run() === TRUE)
-	    		{
-
-	    			$data['family_id'] = $this->family_model->insert_family();
-		        	$this->parent_model->insert_parent($data['family_id']);
-		        	$page += 1;
-		        	$data['page'] = $page;	        			        
-		        	$this->load->view('templates/header', $data);
-	    			$this->load->view('templates/navbar', $data);
-	    			$this->load->view('families/create', $data);
-
-	    		}else{
-
-	    			$data['page'] = $page;
-			    	$this->load->view('templates/header', $data);
-		    		$this->load->view('templates/navbar', $data);
-		    		$this->load->view('families/create', $data);
-
-	    		}
+    			
     			break;
     	}
 
     	$this->load->view('templates/footer');
+
     }	
 
 }
