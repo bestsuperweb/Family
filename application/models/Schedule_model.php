@@ -21,9 +21,11 @@ class Schedule_model extends CI_Model {
                         );
                 $query = $this->db->query("SELECT * FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' AND NOT(( start_time >= '".$data['start_time']."' AND start_time >= '".$data['end_time']."') OR ( end_time <= '".$data['start_time']."' AND end_time <= '".$data['end_time']."')) ");
                 if($query->num_rows() < 1){
-                        $this->db->insert('schedules', $data);
-                        $insert_id = $this->db->insert_id();
-                        return  $insert_id;
+                        if($this->is_valid($data)){
+                                $this->db->insert('schedules', $data);
+                                $insert_id = $this->db->insert_id();
+                                return  $insert_id;
+                        }                        
                 }
                 
         }
@@ -58,11 +60,16 @@ class Schedule_model extends CI_Model {
                 $monday = date('Y-m-d', strtotime('monday this week', strtotime($data['schedule_date'])));
                 $saturday = date('Y-m-d', strtotime('saturday this week', strtotime($data['schedule_date'])));
                         
-                $condition1 = $this->db->query("SELECT ( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND ( schedule_date BETWEEN '".$monday."' AND '".$saturday."')");
-                if ($condition1 <= 30) {
+                $query1 = $this->db->query("SELECT CAST(( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 AS DECIMAL(4,2)) AS `result` FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND ( schedule_date BETWEEN '".$monday."' AND '".$saturday."')");
+
+                $condition1 = $query1->row_array();
+
+                $query2 = $this->db->query("SELECT CAST(( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 AS DECIMAL(4,2)) AS `result` FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' ");
+
+                $condition2 = $query2->row_array();
+
+                if (( $condition1['result'] <= 30.00) and ($condition2['result'] <= 8.00)) {
                         return true;
-                }else{
-                        return false;
                 }
         }
 

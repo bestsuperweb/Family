@@ -17,13 +17,15 @@ class Index extends CI_Controller {
         $this->load->model('aupair_model');
 
         
-        $userdata = array( 
-                       'user_type'  => 'aupair', 
-                       'user_id'    => 2
-                    );  
-        if($this->session->userdata('user_type') == 'family'){
+        // $userdata = array( 
+        //                'user_type'  => 'family', 
+        //                'user_id'    => 1
+        //             );  
+        if($this->session->userdata('user_type')){
             $this->session->set_userdata($userdata);
-        }     
+        }else{
+            redirect('aupairs/create');
+        } 
         
     }
 
@@ -232,7 +234,7 @@ class Index extends CI_Controller {
     	$data['title'] = "Matches";
         $data['user_type'] = $this->session->userdata('user_type');
         $data['user_id']   = $this->session->userdata('user_id');
-        
+
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);

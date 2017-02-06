@@ -386,8 +386,9 @@ jQuery(document).ready(function($){
 	}
 // main call function for scheduler...
 	function load_schedule(user_type, user_id){
+		var date = $('#select_schedule_date').val();
 		$.ajax({
-            url: "http://localhost/Family/index.php/schedule/get/"+user_type+"/"+user_id,
+            url: "http://localhost/Family/index.php/schedule/get/"+user_type+"/"+user_id+"/"+date,
             type: 'post',
             success: function(result){
                 $(".events").html(result);
@@ -403,7 +404,15 @@ jQuery(document).ready(function($){
         });
 	}
 
-	load_schedule('family', 1);
+	function day_format(date){
+		var day = date.getFullYear() + '-' + (date.getMonth()+1) + '-' +date.getDate();
+		return day;
+	}
+	if (window.user_type && window.user_id) {
+		$('#select_schedule_date').val(day_format(new Date()));
+		load_schedule(window.user_type, window.user_id);			
+	}
+	
 
 	// --------- scheduler alert temp
 
@@ -434,8 +443,8 @@ jQuery(document).ready(function($){
 			sd_title: $('#addModal input[name=sd_title]').val(),
 			sd_content: $('#addModal textarea[name=sd_content]').val(),
 			sd_type: $('#addModal select[name=sd_type]').val(),
-			sd_user_type: 'family',
-			sd_user_id: 1
+			sd_user_type: window.user_type,
+			sd_user_id: window.user_id
 		};
 		$.ajax({
             url: "http://localhost/Family/index.php/schedule/insert",
@@ -445,7 +454,7 @@ jQuery(document).ready(function($){
             	$('#addModal').modal("hide");
                 if(result == 'success'){
                 	schedule_alert('A schedule was successfully inserted.', 1);
-                	load_schedule('family', 1);
+                	load_schedule(window.user_type, window.user_id);
                 }else{
                 	schedule_alert('Fail to insert a schedule. Review your inputs and try again.', 0);
                 }
@@ -470,7 +479,7 @@ jQuery(document).ready(function($){
             	$('#editModal').modal("hide");
                 if(result == 'success'){
                 	schedule_alert('A schedule was successfully updated.', 1);
-                	load_schedule('family', 1);
+                	load_schedule(window.user_type, window.user_id);
                 }else{
                 	schedule_alert('Fail to update a schedule. Review your inputs and try again.', 0);
                 }
@@ -498,7 +507,7 @@ jQuery(document).ready(function($){
 		            success: function(result){
 		            	if(result == 'success'){
 		            		schedule_alert('A schedule was successfully deleted.', 1);
-		                	load_schedule('family', 1);
+		                	load_schedule(window.user_type, window.user_id);
 		                }else{
 		                	schedule_alert('Something went wrong. Try again.', 0);
 		                }
@@ -524,6 +533,11 @@ jQuery(document).ready(function($){
 				$('#editModal textarea[name=sd_content]').val(content);
 				$('#editModal').modal('show');				      			      		
 
+	      });
+
+	      $(document).on('change', '#select_schedule_date', function(event){
+	      	var date = $(this).val();
+	      	load_schedule(window.user_type, window.user_id, date);
 	      });
 	});
 	

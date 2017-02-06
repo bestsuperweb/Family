@@ -11,6 +11,7 @@
  }
 .alert{
     display: none;
+    margin-top: 5px;
 }
  #page-content-wrapper h1, h2, h3, h4, h5{
     color: #542a44;
@@ -324,7 +325,7 @@
     background-color: #d82e26;
 }
 
-/* profile start*/
+/* roadmap_profile start*/
 .roadmap-top-bar-first a{
     background: url('../img/profile-top-bar-1.png');
     background-size: 100% 100%;
@@ -374,6 +375,7 @@
     margin-top: -50px;
     font-size: 20px;
 }
+
 /*----responsive start---*/
 
 @media screen and (max-width: 768px) {

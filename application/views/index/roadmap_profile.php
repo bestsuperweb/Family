@@ -89,6 +89,14 @@
 			  Daarbij is het voor de nieuwe au pair belangrijk alvast te weten wat het weekschema en haar taken zullen zijn. Op deze manier weet ze wat ze kan verwachten en is ze daar goed op voorbereid. Natuurlijk kan dit ook nog wel veranderen. Het is vooral belangrijk dat jullie toekomstige au pair hier zo specifiek mogelijk over wordt geïnformeerd en dat er het hele jaar een goede consensus over bestaat. Daarbij is het belangrijk dat jullie HBN het gehele jaar informeren over structurele verandering in dit schema. Indien gedurende het jaar structurele veranderingen worden aangebracht in het weekschema dient deze opnieuw gedateerd en gesigneerd te worden door host- familie en au pair.<br><br>
 			  <b>TO DO:</b> Graag Weekly timeschedule template invullen/aanpassen. Dit weekschema moet voor de VISA aanvraag gedateerd en ondertekend worden door jullie als Host Familie en door jullie au pair.<br><br>
 			  Hierin kan de familie een duidelijk overzicht van de dag/weekindeling voor de au pair geven. Het is belangrijk om te laten zien wie er met de kinderen is op elk uur van de dag wanneer de au pair niet wordt ingezet en wie er als back up fungeert als de au pair wel wordt ingezet. Er mag geen afhankelijkheid zijn van de au pair. Het is ook belangrijk te laten zien wat haar taken zijn. Het totaal aantal uren mag maximaal uitkomen op 30 (wordt automatisch berekend). Het maximum aantal uur per dag mag uitkomen op 8. De au pair mag maximaal 5 dagen per week ingezet worden. De huishoudelijke werkzaamheden worden apart aangegeven maar zijn onderdeel van het totaal aantal uren (niet meer dan 30%). De uren moeten specifiek worden opgeschreven (bijv. 08:00-09:00 = 1 uur en 14:30-19:45 = 5,25 uur). Babysit uren in de avond zijn onderdeel van de 30 maximum uren per week en 8 uur per dag.<br><br>
+			  <div class="profile-edit row">
+			  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
+			  		<div class="input-group date">
+					<input type="text" class="form-control" id = "select_schedule_date">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					</div>	
+			  	</div>			  	
+			  </div>
 		      <div class="alert alert-success">
 		       <strong>Success!</strong> <span></span>
 			  </div>

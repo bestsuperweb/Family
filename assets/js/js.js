@@ -39,7 +39,7 @@
         autoclose: true,
         minuteStep: 15
     });
-    
+    $('.schedule-time').datetimepicker('setHoursDisabled', [0,1,2,3,4,5,6,7,8,19,20,21,22,23]);
 
     $(document).ready(function(){
         if($(window).width() > 768){
