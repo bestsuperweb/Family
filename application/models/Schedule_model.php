@@ -64,10 +64,18 @@ class Schedule_model extends CI_Model {
 
                 $condition1 = $query1->row_array();
 
-                $query2 = $this->db->query("SELECT CAST(( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 AS DECIMAL(4,2)) AS `result` FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' ");
+                $query = $this->db->query("SELECT * FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' ");                
+
+                if($query->row_array() == NULL){
+                        $query2 = $this->db->query("SELECT CAST((TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 AS DECIMAL(4,2)) AS `result` ");
+                        
+                }else{
+                       $query2 = $this->db->query("SELECT CAST(( SUM( TIME_TO_SEC(end_time) - TIME_TO_SEC(start_time) ) + TIME_TO_SEC('".$data['end_time']."') - TIME_TO_SEC('".$data['start_time']."'))/3600 AS DECIMAL(4,2)) AS `result` FROM schedules WHERE user_type = '".$data['user_type']."' AND user_id = ".$data['user_id']." AND schedule_date = '".$data['schedule_date']."' "); 
+                }
+                
 
                 $condition2 = $query2->row_array();
-
+                
                 if (( $condition1['result'] <= 30.00) and ($condition2['result'] <= 8.00)) {
                         return true;
                 }

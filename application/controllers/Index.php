@@ -21,11 +21,10 @@ class Index extends CI_Controller {
         //                'user_type'  => 'family', 
         //                'user_id'    => 1
         //             );  
-        if($this->session->userdata('user_type')){
-            $this->session->set_userdata($userdata);
-        }else{
+        if(!$this->session->userdata('user_type')){
+            // $this->session->set_userdata($userdata);
             redirect('aupairs/create');
-        } 
+        }
         
     }
 

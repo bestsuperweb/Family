@@ -388,7 +388,7 @@ jQuery(document).ready(function($){
 	function load_schedule(user_type, user_id){
 		var date = $('#select_schedule_date').val();
 		$.ajax({
-            url: "http://localhost/Family/index.php/schedule/get/"+user_type+"/"+user_id+"/"+date,
+            url: window.base_url+"index.php/schedule/get/"+user_type+"/"+user_id+"/"+date,
             type: 'post',
             success: function(result){
                 $(".events").html(result);
@@ -447,7 +447,7 @@ jQuery(document).ready(function($){
 			sd_user_id: window.user_id
 		};
 		$.ajax({
-            url: "http://localhost/Family/index.php/schedule/insert",
+            url: window.base_url+"index.php/schedule/insert",
             type: 'post',
             data: data,
             success: function(result){
@@ -472,7 +472,7 @@ jQuery(document).ready(function($){
 			sd_type: $('#editModal select[name=sd_type]').val()
 		};
 		$.ajax({
-            url: "http://localhost/Family/index.php/schedule/update/"+ $('input[name=sd_id]').val(),
+            url: window.base_url+"index.php/schedule/update/"+ $('input[name=sd_id]').val(),
             type: 'post',
             data: data,
             success: function(result){
@@ -502,7 +502,7 @@ jQuery(document).ready(function($){
 	      $(document).on('click', '.sd-menu a.sd-delete', function(event) {
 	      		var id = $(this).attr('data-id');
 	      		$.ajax({
-		            url: "http://localhost/Family/index.php/schedule/delete/"+id,
+		            url: window.base_url+"index.php/schedule/delete/"+id,
 		            type: 'post',
 		            success: function(result){
 		            	if(result == 'success'){

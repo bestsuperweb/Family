@@ -19,6 +19,7 @@
   <script type="text/javascript">
     window.user_type = '<?php echo $this->session->userdata('user_type'); ?>';
     window.user_id = <?php echo $this->session->userdata('user_id'); ?>;
+    window.base_url = '<?php echo base_url(); ?>';
   </script>
   <?php } ?>
 </head>
