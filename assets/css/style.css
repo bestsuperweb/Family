@@ -219,11 +219,11 @@
 }
 
 .panel-default .panel-body{
-    background: rgba(84, 42, 68, 0.4);
+    background-color: #D9D9D9;
     padding: 20px;    
 }
-.roadmap_profile .panel-default .panel-body{
-    background-color: #D9D9D9;
+.roadmap-panel-group .panel-default .panel-body{
+    background-color: rgba(84, 42, 68, 0.4);
 }
 .roadmap-panel-group .panel-default .panel-body{
     color: white;
@@ -314,6 +314,7 @@
     background-repeat: no-repeat;
     margin-top: 25px;
     text-align: left;
+    width: 240px;
 }
 .next-button:hover{
     color: white;
@@ -518,8 +519,79 @@
     color: #542a44;
     line-height: 30px;
 }
+/*Document*/
+.add-doc{
+    background-color: #542a44;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 25px;
+    line-height: 50px;
+}
+.add-doc:hover{
+    text-decoration: none;
+    opacity: 0.8;
+    color: #fff;
+}
+.add-doc:focus{
+    text-decoration: none;
+    color: #fff;
+}
+.doc-search .btn-default{
+    height: 50px;
+    font-size: 20px;
+    border-radius: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.doc-search input{
+    height: 50px;
+    border-radius: 3px;
+}
+.profile-caption{
+    margin-top: -5px;
+}
+.profile-document{
+    margin-top: 20px;
+}
+.profile-document .panel-heading a{
+    color: #fff;
+}
+.profile-document-heading div{
+    padding: 10px 10px;
+    border-radius: 3px !important;
+    background-color: #542a44;
+    color: #fff;
+    margin-bottom: 10px;
+    border-right: 2px solid #fff;
+    background-image: url('../img/updown_arrow.png');
+    background-position: 95% center;
+    background-repeat: no-repeat;
+    background-size: 5% 60%;
+}
+
+.profile-document-heading div.last{
+    border-right: none;
+}
+.profile-document .doc-approved{
+    background-color: #5eaa86;
+}
+.profile-document .doc-review{
+    background-color: #f7931e;
+}
+.next-button.delete-button, .next-button.review-button{
+    background-color: #f7931e;
+}
+.next-button.approved-button, .next-button.review-button{
+    background-image: url('../img/check.png');
+    background-position: 5% center;
+    background-size: 13% 80%;
+    background-repeat: no-repeat;
+    text-indent: 35px;    
+}
+/*end*/
 /* edit profile */
-.family-edit .row{
+.profile-edit .row{
     margin-top: 10px;
 }
 /* end */

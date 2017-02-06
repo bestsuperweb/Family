@@ -1,7 +1,7 @@
 
 <!-- views/index/profile.php  -->
 <div id="page-content-wrapper">
-    <div class="container-fluid family-create ">
+    <div class="container-fluid profile-create ">
     <div class="alert alert-danger">
         <?php echo validation_errors(); ?>
     </div>

@@ -28,7 +28,7 @@ class Family_model extends CI_Model {
                 
         }
 
-        public function update_family($step = 1)
+        public function update_family($step = 1, $family_id)
         {
                 switch ($step) {
                         case 1:
@@ -107,7 +107,7 @@ class Family_model extends CI_Model {
                                 break;
                 }
                 
-                $result = $this->db->update('families', $data, array('id' => $this->input->post('family_id')));
+                $result = $this->db->update('families', $data, array('id' => $family_id));
 
                 return $result;
         }

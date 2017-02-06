@@ -8,7 +8,7 @@
         }    
     });
     
-    $(".family-create .input-group.date").datetimepicker({
+    $(".profile-create .input-group.date").datetimepicker({
     	todayBtn: 'linked',
     	todayHighlight: true,
     	format: 'yyyy-mm-dd',
@@ -16,7 +16,7 @@
     	autoclose: true
     });
 
-    $(".family-edit .input-group.date").datetimepicker({
+    $(".profile-edit .input-group.date").datetimepicker({
         todayBtn: 'linked',
         todayHighlight: true,
         format: 'yyyy-mm-dd',

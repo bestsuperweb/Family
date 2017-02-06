@@ -21,7 +21,7 @@ class Aupair_model extends CI_Model {
                             'height'  					=> $this->input->post('ap_height'),
                             'weight'        			=> $this->input->post('ap_weight'),
                             'start_date'         		=> $this->input->post('ap_start_date'),
-                            'period_of_day' 			=> $this->input->post('ap_period_of_stay'),
+                            'period_of_stay' 			=> $this->input->post('ap_period_of_stay'),
                             'contribution_flight'   	=> $this->input->post('ap_contribution_flight'),
                             'children_under_2'  		=> $this->input->post('ap_children_under_2'),
                             'max_amount_children'   	=> $this->input->post('ap_max_amount_children'),
@@ -52,7 +52,7 @@ class Aupair_model extends CI_Model {
 
         }
 
-        public function update_aupair($step = 1){
+        public function update_aupair($step = 1, $aupair_id){
 
         	switch ($step) {
         		case 1:
@@ -73,15 +73,20 @@ class Aupair_model extends CI_Model {
                             'mental_condition'			=> $this->input->post('ap_mental_condition'),
                             'physical_condition'		=> $this->input->post('ap_physical_condition'),
                             'condition_family'			=> $this->input->post('ap_condition_family'),
-                            'allergies'					=> $this->input->post('ap_allergies'),
+                            'allergies'					=> $this->input->post('ap_alergies'),
                             'diet'						=> $this->input->post('ap_diet'),
                             'smoker'   					=> $this->input->post('ap_smoker'),
                             'medicine'					=> $this->input->post('ap_medicine'),
                             'tattoos'					=> $this->input->post('ap_tattoos'),
-                            'piercings'					=> $this->input->post('ap_piercings')
+                            'piercings'					=> $this->input->post('ap_piercings'),
+                            'overview'                  => $this->input->post('ap_overview')
                         );
         			break;
         		case 2:
+                    $experience_babies = is_array($this->input->post('ap_experience_babies')) ? implode(', ', $this->input->post('ap_experience_babies')) : '';
+                    $experience_toddlers = is_array($this->input->post('ap_experience_toddlers')) ? implode(', ', $this->input->post('ap_experience_toddlers')) : '';
+                    $experience_kids = is_array($this->input->post('ap_experience_kids')) ? implode(', ', $this->input->post('ap_experience_kids')) : '';
+                    $experience_household =is_array($this->input->post('ap_experience_household')) ? implode(', ', $this->input->post('ap_experience_household')) : '';
         			$data = array(
                             'english_level'             => $this->input->post('ap_english_level'),
                             'other_languages'           => $this->input->post('ap_other_languages'),
@@ -96,16 +101,16 @@ class Aupair_model extends CI_Model {
                             'former_jobs'               => $this->input->post('ap_former_jobs'),
                             'kids_age'                  => $this->input->post('ap_kids_age'),
                             'kids_time'                 => $this->input->post('ap_kids_time'),
-                            'experience_babies'         => $this->input->post('ap_experience_babies'),
-                            'experience_toddlers'       => $this->input->post('ap_experience_toddlers'),
-                            'experience_kids'           => $this->input->post('ap_experience_kids'),
+                            'experience_babies'         => $experience_babies,
+                            'experience_toddlers'       => $experience_toddlers,
+                            'experience_kids'           => $experience_kids,
                             'kids_sametime'             => $this->input->post('ap_kids_sametime'),
                             'experience_disability'     => $this->input->post('ap_experience_disability'),
                             'not_willing'               => $this->input->post('ap_not_willing'),
                             'most_liked'                => $this->input->post('ap_most_liked'),
                             'most_challenging'          => $this->input->post('ap_most_challenging'),
                             'favourite_activities'      => $this->input->post('ap_favourite_activities'),
-                            'experience_household'      => $this->input->post('ap_experience_household'),
+                            'experience_household'      => $experience_household,
                             'personnel'                 => $this->input->post('ap_personnel'),
                             'extra_info'                => $this->input->post('ap_extra_info')
                         );
@@ -116,7 +121,7 @@ class Aupair_model extends CI_Model {
         			break;
         	}
 
-        	$result = $this->db->update('aupairs', $data, array('id' => $this->input->post('user_id')));
+        	$result = $this->db->update('aupairs', $data, array('id' => $aupair_id));
 
             return $result;
 

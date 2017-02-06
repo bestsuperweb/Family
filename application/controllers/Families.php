@@ -57,9 +57,9 @@ class Families extends CI_Controller {
     			if ($this->form_validation->run() === TRUE)
 	    		{
 
-	    			$this->family_model->update_family(1);
-		        	$this->parent_model->update_parent(1);
-		        	$this->kid_model->insert_kid();
+	    			$this->family_model->update_family(1, $data['family_id']);
+		        	$this->parent_model->update_parent(1, $data['family_id']);
+		        	$this->kid_model->insert_kid($data['family_id']);
 		        	$page += 1;
 		        	$data['page'] = $page;	        			        
 		        	$this->load->view('templates/header', $data);
@@ -85,9 +85,8 @@ class Families extends CI_Controller {
     			if ($this->form_validation->run() === TRUE)
 	    		{
 
-	    			$this->family_model->update_family(2);
-	    			$data['family_id'] = $this->input->post('family_id');
-		        	$page += 1;
+	    			$this->family_model->update_family(2, $data['family_id']);
+	    			$page += 1;
 		        	$data['page'] = $page;	        			        
 		        	$this->load->view('templates/header', $data);
 	    			$this->load->view('templates/navbar', $data);
@@ -111,7 +110,7 @@ class Families extends CI_Controller {
     			if ($this->form_validation->run() === TRUE)
 	    		{
 
-	    			$this->family_model->update_family(3);
+	    			$this->family_model->update_family(3, $data['family_id']);
 	    			$userdata = array( 
 					   'user_type'  => 'family', 
 					   'user_id'    => $data['family_id']

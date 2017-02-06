@@ -25,7 +25,7 @@
 		}
 ?>
 <div id="page-content-wrapper">
-    <div class="container-fluid family-edit">
+    <div class="container-fluid profile-edit">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
           <a href="#basicinfo" data-toggle="tab" aria-controls="basicinfo">
@@ -132,7 +132,6 @@
 
         <div role="tabpanel" class="tab-pane <?php echo $li_class['second']; ?>" id="host">
         <?php echo form_open('index/save_profile/2'); ?>
-        <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
         <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>  			
   		  </div>
@@ -496,14 +495,13 @@
           </div>
   		  </div>
   		  <div class="row">          	
-          		<input type="submit" name="" class="btn next-button" value="SAVE PROFILE">          		
+          		<input type="submit" name="" class="btn next-button" value="SAVE PROFILE" >          		
         </div>
         </form>
         </div>
 <!-- Third panel -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['third']; ?>" id="preferences">
         <?php echo form_open('index/save_profile/3'); ?>
-        <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
         <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b><i>Family of <?php echo $parents[0]['lastname']; ?></i></b></h1></div>  			
   		  </div>
@@ -640,14 +638,129 @@
         </div>
         </form>
         </div>
-
+<!-- start document tab -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="document">
-          <p>
-            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater
-            eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-          </p>
-        </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-7 col-lg-9">
+            <h1 class="profile-caption"><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">
+              <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                  <a href="#" class="add-doc">&plus;</a>
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                  <div class="input-group doc-search">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+            </div>            
+          </div>
 
+          
+          <div class="panel-group profile-document" id="accordion">
+            <div class="profile-document-heading">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">DOCUMENT</div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOADED BY</div>    
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOAD DATE</div>  
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">APPROVAL DATE</div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading doc-approved">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">AGREEMENT HBN</div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">SYSTEM</div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>                    
+                  </a>          
+              </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="#" class="btn next-button approved-button">APPEOVED</a>
+                  <a href="#" class="btn next-button">DOWNLOAD</a>
+                  <a href="#" class="btn next-button">NEW VERSION</a>
+                  <a href="#" class="btn next-button delete-button">DELETE</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">PASSPORT</div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">26-12-2016</div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">06-01-2017</div>
+                  </a>          
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading doc-review">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">VISA PROCEDURE DOC</div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-12-2016</div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">-</div>
+                  </a> 
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="#" class="btn next-button review-button">REVIEW</a>
+                  <a href="#" class="btn next-button">DOWNLOAD</a>
+                  <a href="#" class="btn next-button">NEW VERSION</a>
+                  <a href="#" class="btn next-button delete-button">DELETE</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">LOREM IPSUM DOCUMENT</div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">17-11-2016</div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>
+                  </a>          
+              </div>
+              <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">LOREM IPSUM DOCUMENT</div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">HBN</div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-11-2016</div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-11-2016</div>
+                  </a>          
+              </div>
+              <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+<!-- end document tab -->
    
     </div>
     </div>

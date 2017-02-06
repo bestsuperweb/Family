@@ -16,8 +16,8 @@
             <a href="<?php echo base_url('index.php/index/roadmap/'); ?>">Stappenplan</a>                                    
         </li>
         <li>
-            <a data-toggle="collapse" href="#collapse-submenu" class="active">Profile</a>
-            <div class="panel-collapse collapse" id="collapse-submenu">
+            <a href="<?php echo base_url('index.php/index/profile/1'); ?>" class="active">Profile</a>
+            <div class="panel-collapse collapse <?php if($title == 'Profile'){echo 'in';} ?>" id="collapse-submenu">
                 <ul>
                     <li><a href="<?php echo base_url('index.php/index/profile/1'); ?>">Basic Information</a></li>
                     <li><a href="<?php echo base_url('index.php/index/profile/2'); ?>">About Host</a></li>
@@ -36,12 +36,12 @@
             <a href="<?php echo base_url('index.php/index/roadmap/'); ?>">Journey</a>                                    
         </li>
         <li>
-            <a data-toggle="collapse" href="#collapse-submenu" class="active">Profiel</a>
-            <div class="panel-collapse collapse" id="collapse-submenu">
+            <a href="<?php echo base_url('index.php/index/profile/1'); ?>" class="active">Profile</a>
+            <div class="panel-collapse collapse <?php if($title == 'Profile'){echo 'in';} ?>" id="collapse-submenu">
                 <ul>
                     <li><a href="<?php echo base_url('index.php/index/profile/1'); ?>">General</a></li>
                     <li><a href="<?php echo base_url('index.php/index/profile/2'); ?>">Experience</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/4'); ?>">Documenten</a></li>                     
+                    <li><a href="<?php echo base_url('index.php/index/profile/3'); ?>">Documenten</a></li>                     
                 </ul>
             </div>                     
         </li>

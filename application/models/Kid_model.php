@@ -36,9 +36,9 @@ class Kid_model extends CI_Model {
                 
         }
 
-        public function update_kid($tab = 1)
+        public function update_kid($tab = 1, $family_id)
         {
-                $query = $this->db->get_where('kids', array('family_id' => $this->input->post('family_id')));
+                $query = $this->db->get_where('kids', array('family_id' => $family_id));
                 $kids = $query->result_array();
                 foreach ($kids as $k => $value) {
                         $key = $k + 1;

@@ -40,7 +40,7 @@ class Parent_model extends CI_Model {
 
         }
 
-        public function update_parent($step = 1)
+        public function update_parent($step = 1, $family_id)
         {
                 switch ($step) {
                         case 1:
@@ -107,8 +107,8 @@ class Parent_model extends CI_Model {
                 }
                 
 
-                $this->db->update('parents', $data1, array('family_id' => $this->input->post('family_id'), 'gender' => 1));
-                $this->db->update('parents', $data2, array('family_id' => $this->input->post('family_id'), 'gender' => 0));
+                $this->db->update('parents', $data1, array('family_id' => $family_id, 'gender' => 1));
+                $this->db->update('parents', $data2, array('family_id' => $family_id, 'gender' => 0));
         }
 
         public function get_parent($family_id)
@@ -117,7 +117,7 @@ class Parent_model extends CI_Model {
                 return $query->result_array();
         }
 
-        public function delete_parent()
+        public function delete_parent($family_id)
         {
                 
 

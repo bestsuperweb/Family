@@ -13,6 +13,7 @@ class Aupairs extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper('custom_helper');
         $this->load->model('aupair_model');
+        $this->load->library('session');
 	}
 
 	function create(){
@@ -24,9 +25,14 @@ class Aupairs extends CI_Controller
 		if ($this->form_validation->run() === TRUE)
 		{
 
-			$data['family_id'] = $this->aupair_model->insert_aupair();
-        	if( $this->aupair_model->insert_parent($data['family_id']) ){
+			$result = $this->aupair_model->insert_aupair();
+        	if( $result ){
+        		$userdata = array( 
+					   'user_type'  => 'aupair', 
+					   'user_id'    => $result
+					);  
 
+				$this->session->set_userdata($userdata);
         		redirect('index/profile');
         	}
 

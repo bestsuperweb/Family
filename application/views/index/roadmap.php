@@ -1,7 +1,7 @@
 <!-- views/index/roadmap.php  -->   
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div id="page-content-wrapper" >
         <div class="container-fluid">
             <h1><i><b>Stappenplan</b></i></h1>
 
