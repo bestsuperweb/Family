@@ -17,13 +17,13 @@ class Index extends CI_Controller {
         $this->load->model('aupair_model');
 
         
-        // $userdata = array( 
-        //                'user_type'  => 'family', 
-        //                'user_id'    => 1
-        //             );  
+        $userdata = array( 
+                       'user_type'  => 'family', 
+                       'user_id'    => 1
+                    );  
         if(!$this->session->userdata('user_type')){
-            // $this->session->set_userdata($userdata);
-            redirect('aupairs/create');
+            $this->session->set_userdata($userdata);
+            // redirect('aupairs/create');
         }
         
     }

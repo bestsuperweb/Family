@@ -3,9 +3,8 @@
 * 
 */
 class Session_controller extends CI_Controller
-{
-	
-	function __construct(argument)
+{	
+	function __construct()
 	{
 		parent::__construct();
         $this->load->helper('url_helper');
@@ -14,7 +13,12 @@ class Session_controller extends CI_Controller
 	}
 
 	function log_in(){
+		$this->load->view('session/login');
 
+	}
+
+	function forget_password(){
+		$this->load->view('session/forget_password');
 	}
 
 	function log_out(){

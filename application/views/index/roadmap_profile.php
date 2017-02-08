@@ -94,7 +94,8 @@
 			  		<div class="input-group date">
 					<input type="text" class="form-control" id = "select_schedule_date">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					</div>	
+					</div>
+					<span id="posX"></span><span id="posY"></span>	
 			  	</div>			  	
 			  </div>
 		      <div class="alert alert-success">

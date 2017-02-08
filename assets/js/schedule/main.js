@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
 			$(this).children('a.single-event-modal').prepend($(durationLabel));
 
 			//detect click on the event and open the modal
-			$(this).on('click', 'a.single-event-modal', function(event){
+			$(this).on('dblclick', 'a.single-event-modal', function(event){
 				event.preventDefault();
 				if( !self.animating ) self.openModal($(this));
 			});
@@ -392,6 +392,15 @@ jQuery(document).ready(function($){
             type: 'post',
             success: function(result){
                 $(".events").html(result);
+                $('.single-event').draggable({
+                	drag: function(){
+				            var offset = $(this).offset();
+				            var xPos = offset.left;
+				            var yPos = offset.top;
+				            $('#posX').text('x: ' + xPos);
+				            $('#posY').text('y: ' + yPos);
+				        }
+                });
                 var schedules = $('.cd-schedule');
                 var objSchedulesPlan = [];           
                 if( schedules.length > 0 ) {
@@ -413,7 +422,6 @@ jQuery(document).ready(function($){
 		load_schedule(window.user_type, window.user_id);			
 	}
 	
-
 	// --------- scheduler alert temp
 
 	function schedule_alert(str, flag){
@@ -539,6 +547,9 @@ jQuery(document).ready(function($){
 	      	var date = $(this).val();
 	      	load_schedule(window.user_type, window.user_id, date);
 	      });
+
+
 	});
-	
+
 });
+

@@ -1,0 +1,68 @@
+/*stylesheet for login and forget password*/
+
+body{
+	background-image: url('../../img/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-weight: normal;
+	background-attachment: fixed;
+	background-position: center center;
+}
+a{
+	text-decoration: none;
+	color: #542a44;
+}
+a:hover, a:active{
+	color: #542a44;	
+}
+.login{
+	width: 300px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 5px 0 #542a44;
+	padding: 20px;
+	margin: 30vh auto;
+}
+
+.logo{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	padding: 40px 10px;
+	margin-top: -140px;
+	background: #fff;
+	margin-bottom: 50px;
+	box-shadow: 0 0 5px 0 #542a44;
+}
+
+.login-btn{
+	width: 100%;
+	background-color: #542a44;
+	color: #fff;
+	font-size: 18px;
+}
+
+.login-btn:hover, .login-btn:active{
+	color: #fff;
+	opacity: 0.8;
+}
+.mask{
+	background-color: #542a44;
+	opacity: 0.4;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+.signup-link{
+	float: right;
+}
+.dropdown-menu{
+	box-shadow: 0 0 5px 0 #542a44;
+	background: #fff;
+}
+.dropdown-menu li a{
+	color: #542a44;	
+}
