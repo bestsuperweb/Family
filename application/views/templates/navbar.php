@@ -14,9 +14,10 @@
 	    </div>
         <div class="collapse navbar-collapse" id="myNavbar">
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="#" class="navbar-user"><img src="<?php echo base_url('assets/img/users.png'); ?>" class="navbar-img"> Familie De Jong</a></li>
-		      <li><a href="<?php echo base_url('index.php/families/create'); ?>"><img src="<?php echo base_url('assets/img/settings-3-icon.png'); ?>" class="navbar-img"></a></li>
-		      <li><a href="<?php echo base_url('index.php/aupairs/create'); ?>"><img src="<?php echo base_url('assets/img/inside-logout-icon.png'); ?>" class="navbar-img"></a></li>
+		      <li><a href="#" class="navbar-user"><img src="<?php echo base_url('assets/img/users.png'); ?>" class="navbar-img">  
+		      <?= ucfirst($user_type) ?></a></li>
+		      <li><a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/settings-3-icon.png'); ?>" class="navbar-img"></a></li>
+		      <li><a href="<?php echo base_url('session_controller/log_out'); ?>"><img src="<?php echo base_url('assets/img/inside-logout-icon.png'); ?>" class="navbar-img"></a></li>
 		    </ul>
 		</div>
 	  </div>

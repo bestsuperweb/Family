@@ -8,32 +8,25 @@ class Index extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->helper('custom_helper');
-        $this->load->helper('html');
-        $this->load->library('session');
         $this->load->model('family_model');
         $this->load->model('parent_model');
         $this->load->model('kid_model');
         $this->load->model('schedule_model');
         $this->load->model('aupair_model');
+        $this->load->model('document_model');
 
-        
-        $userdata = array( 
-                       'user_type'  => 'family', 
-                       'user_id'    => 1
-                    );  
-        if(!$this->session->userdata('user_type')){
-            $this->session->set_userdata($userdata);
-            // redirect('aupairs/create');
+        if(!$this->aauth->is_loggedin()){
+            redirect('session_controller/log_in');
         }
-        
+
     }
 
     public function home()
     {
     	$data['title'] = "Home";
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
-
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
+       
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);
@@ -43,8 +36,8 @@ class Index extends CI_Controller {
 
     public function roadmap(){
     	$data['title'] = "Stappenplan";
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
 
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
@@ -56,8 +49,8 @@ class Index extends CI_Controller {
     public function roadmap_profile($tab = 1){
     	$data['title'] = "Stappenplan | Profiel";
     	$data['tab'] = $tab;
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
 
         $this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
@@ -70,8 +63,8 @@ class Index extends CI_Controller {
     	$data['title']     = "Profile";
     	$data['tab']       = $tab;
 
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
 
         if ($data['user_id']) {
 
@@ -80,10 +73,12 @@ class Index extends CI_Controller {
                     $data['family']    = $this->family_model->get_family($data['user_id']);
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
                     break;
                 
                 default:
@@ -108,18 +103,20 @@ class Index extends CI_Controller {
         $data['title']      = "Edit Profile";
         $data['tab']        = $tab;
 
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
         
         switch ($data['user_type']) {
             case 'family':
                 $data['family']    = $this->family_model->get_family($data['user_id']);
                 $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                 $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
                 break;
 
             case 'aupair':
                 $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
                 break;
             
             default:
@@ -137,8 +134,8 @@ class Index extends CI_Controller {
 
     public function save_profile($tab){
 
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
 
         if ( $data['user_type'] == 'family' ){
 
@@ -231,8 +228,8 @@ class Index extends CI_Controller {
 
     public function matches(){
     	$data['title'] = "Matches";
-        $data['user_type'] = $this->session->userdata('user_type');
-        $data['user_id']   = $this->session->userdata('user_id');
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
 
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);

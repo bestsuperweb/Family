@@ -1,3 +1,7 @@
+
+
+$(document).ready(function()
+{
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");  
@@ -41,20 +45,19 @@
     });
     $('.schedule-time').datetimepicker('setHoursDisabled', [0,1,2,3,4,5,6,7,8,19,20,21,22,23]);
 
-    $(document).ready(function(){
-        if($(window).width() > 768){
-            $(".multiple-select").multiselect({
-                numberDisplayed: 3
-            });                
-        }else{
-            $(".multiple-select").multiselect();
-        }
-        $('button.multiselect').removeClass('btn btn-default').addClass('form-control');   
+     if($(window).width() > 768){
+        $(".multiple-select").multiselect({
+            numberDisplayed: 3
+        });                
+    }else{
+        $(".multiple-select").multiselect();
+    }
+    $('button.multiselect').removeClass('btn btn-default').addClass('form-control');   
 
-        if( $('.alert').children().length == 0 ){
-            $('.alert').hide();
-        }
-    });
+    if( $('.alert').children().length == 0 ){
+        $('.alert').hide();
+    }
+
 
     $("input[name=sd_start_time]").val(' ');
 
@@ -78,8 +81,72 @@
         });
     });
 
+    $("a.next-button.delete-button").on('click', function(){
+        var document_id = $(this).attr('data-id');
+        $.ajax({
+            url: window.base_url+"document/delete/"+document_id,
+            type: 'post',
+            success: function(result){
+                if(result == 'success'){
+                    location.reload();
+                }else{
+                    alert('Failed to delete document...');
+                }
+            }
+        });
+    });
+
+    $(".family-last").on('click', function(){
+        alert('ghost');
+    });
+
     
-    
+     
+        var options = { 
+            beforeSend: function() 
+            {
+                $(".upload-progress").show();
+                //clear everything
+                $("progress-status").html("0%");
+                $("progress-status").width("0%");
+            },
+            uploadProgress: function(event, position, total, percentComplete) 
+            {
+                $(".progress-status").html(percentComplete + "%");
+                $(".progress-status").css("width", percentComplete + "%");     
+            },
+            success: function() 
+            {
+                $(".progress-status").html("100% complete");
+                $(".progress-status").css("width", "100%");
+         
+            },
+            complete: function(response) 
+            {
+                if(response.responseText == 'success'){
+                    $('.upload-success').fadeIn(1000).fadeOut(3000);
+                    $(".progress-status").html("100% complete");
+                    $(".progress-status").css("width", "100%");
+                    location.reload();
+                }else{
+                    $('.upload-error').fadeIn(1000).fadeOut(3000);
+                    $(".upload-progress").hide();
+                }
+                
+            },
+            error: function()
+            {
+                $('.upload-error').fadeIn(1000).fadeOut(3000);
+         
+            }
+         
+        }; 
+     
+         $(".uploadForm").ajaxForm(options);
+     
+});
+
+      
     (function($) {
 
 	  'use strict';

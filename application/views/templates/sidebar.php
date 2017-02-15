@@ -2,51 +2,50 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <a href="<?php echo base_url(); ?>">
-                <img src="<?php echo base_url('assets/img/logo_white.png'); ?>" class = "logo-img" >
+            <a href="<?= base_url(); ?>">
+                <img src="<?= base_url('assets/img/logo_white.png'); ?>" class = "logo-img" >
             </a>
         </li>
         <li>
-            <a href="<?php echo base_url(); ?>">Home</a>                   
+            <a href="<?= base_url(); ?>">Home</a>                   
         </li>
-
-<?php if($user_type == 'family') { ?>       
+<?php if($this->aauth->is_member(4)) { ?>       
 
         <li>
-            <a href="<?php echo base_url('index.php/index/roadmap/'); ?>">Stappenplan</a>                                    
+            <a href="<?= base_url('index/roadmap/'); ?>">Stappenplan</a>                                    
         </li>
         <li>
-            <a href="<?php echo base_url('index.php/index/profile/1'); ?>" class="active">Profile</a>
+            <a href="<?= base_url('index/profile/1'); ?>" class="active">Profile</a>
             <div class="panel-collapse collapse <?php if($title == 'Profile'){echo 'in';} ?>" id="collapse-submenu">
                 <ul>
-                    <li><a href="<?php echo base_url('index.php/index/profile/1'); ?>">Basic Information</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/2'); ?>">About Host</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/3'); ?>">About au-pair</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/4'); ?>">Documents</a></li>                     
+                    <li><a href="<?= base_url('index/profile/1'); ?>">Basic Information</a></li>
+                    <li><a href="<?= base_url('index/profile/2'); ?>">About Host</a></li>
+                    <li><a href="<?= base_url('index/profile/3'); ?>">About au-pair</a></li>
+                    <li><a href="<?= base_url('index/profile/4'); ?>">Documents</a></li>                     
                 </ul>
             </div>                     
         </li>
         <li>
-            <a href="<?php echo base_url('index.php/index/matches/'); ?>">Matches</a>
+            <a href="<?= base_url('index/matches/'); ?>">Matches</a>
         </li>                
             
-<?php }else if($user_type == 'aupair') { ?>
+<?php }else if($this->aauth->is_member(5)) { ?>
         
         <li>
-            <a href="<?php echo base_url('index.php/index/roadmap/'); ?>">Journey</a>                                    
+            <a href="<?= base_url('index/roadmap/'); ?>">Journey</a>                                    
         </li>
         <li>
-            <a href="<?php echo base_url('index.php/index/profile/1'); ?>" class="active">Profile</a>
+            <a href="<?= base_url('index/profile/1'); ?>" class="active">Profile</a>
             <div class="panel-collapse collapse <?php if($title == 'Profile'){echo 'in';} ?>" id="collapse-submenu">
                 <ul>
-                    <li><a href="<?php echo base_url('index.php/index/profile/1'); ?>">General</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/2'); ?>">Experience</a></li>
-                    <li><a href="<?php echo base_url('index.php/index/profile/3'); ?>">Documenten</a></li>                     
+                    <li><a href="<?= base_url('index/profile/1'); ?>">General</a></li>
+                    <li><a href="<?= base_url('index/profile/2'); ?>">Experience</a></li>
+                    <li><a href="<?= base_url('index/profile/3'); ?>">Documenten</a></li>                     
                 </ul>
             </div>                     
         </li>
         <li>
-            <a href="<?php echo base_url('index.php/index/matches/'); ?>">Matches</a>
+            <a href="<?= base_url('index/matches/'); ?>">Matches</a>
         </li>
 
 <?php } ?>

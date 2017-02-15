@@ -15,23 +15,37 @@
   </head>
 <body>
 <div class="login">
-      <div class="logo"><img src="<?php echo base_url('assets/img/login_logo.png'); ?>" class="img-responsive"></div>     
+      <div class="logo"><img src="<?php echo base_url('assets/img/login_logo.png'); ?>" class="img-responsive"></div>
+      <?php foreach ($this->aauth->get_errors_array() as $error){ ?>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <?php echo $error; ?>
+        </div>
+      <?php } ?>
+      <?php foreach ($this->aauth->get_infos_array() as $info){ ?>
+        <div class="alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <?= $info; ?>
+        </div>
+      <?php } ?>  
       <div class="form-group">
         <label> Request a new password</label>    
       </div>
+      <form method="POST">
       <div class="form-group">
-        <input type="email" name="email" class="form-control" placeholder="Email address">
+        <input type="email" name="email" class="form-control" placeholder="Email address" required>
       </div>
       <div class="form-group">
         <input type="submit" name="" value="SEND PASSWORD LINK" class="btn login-btn">    
       </div>
+      </form>
       <div class="form-group">
-        <a href="<?php echo base_url('index.php/session_controller/log_in'); ?>">Back to login</a>
+        <a href="<?php echo base_url('/session_controller/log_in'); ?>">Back to login</a>
         <span class="signup-link dropdown">
           <a href="#" data-toggle="dropdown">Sign up</a>
           <ul class="dropdown-menu">
-            <li><a href="<?php echo base_url('index.php/families/create'); ?>">as family</a></li>
-            <li><a href="<?php echo base_url('index.php/aupairs/create'); ?>">as au-pair</a></li>
+            <li><a href="<?php echo base_url('/families/create/1'); ?>">as family</a></li>
+            <li><a href="<?php echo base_url('/aupairs/create'); ?>">as au-pair</a></li>
             <li><a href="#">as admin</a></li>
           </ul>
         </span>

@@ -13,8 +13,8 @@ class Families extends CI_Controller {
         $this->load->library('session');
     }
 
-    public function create( $page = 1 ){
-    	
+    public function create( $page )
+    {
     	$data['title'] = 'Family | Register';
     	$data['register'] = 'family';
 
@@ -26,17 +26,21 @@ class Families extends CI_Controller {
     			$this->form_validation->set_rules('fa_pa2_last_name', 'Last name of parent2', 'trim|required');
     			$this->form_validation->set_rules('fa_pa1_email', 'Email of Parent1', 'trim|required|valid_email|is_unique[parents.email]');
     			$this->form_validation->set_rules('fa_pa2_email', 'Email of Parent2', 'trim|required|valid_email|is_unique[parents.email]');
-
+    			$this->form_validation->set_rules('fa_email', 'Contact email', 'trim|required|valid_email|is_unique[families.contact_email]');
     			if ($this->form_validation->run() === TRUE)
 	    		{
-
-	    			$data['family_id'] = $this->family_model->insert_family();
-		        	$this->parent_model->insert_parent($data['family_id']);
+	    			$family_id = $this->family_model->insert_family();
+		        	$this->parent_model->insert_parent($family_id);
 		        	$page += 1;
-		        	$data['page'] = $page;	        			        
-		        	$this->load->view('templates/header', $data);
-	    			$this->load->view('templates/navbar', $data);
-	    			$this->load->view('families/create', $data);
+		        	$data['page'] = $page;	
+	    			$userdata = array( 
+						   'user_type'  => 'family',
+						   'email'		=> $this->input->post('fa_email'),
+						   'user_id'    => $family_id
+						);  
+
+					$this->session->set_userdata($userdata);
+	    			redirect('families/create/2');
 
 	    		}else{
 
@@ -44,6 +48,7 @@ class Families extends CI_Controller {
 			    	$this->load->view('templates/header', $data);
 		    		$this->load->view('templates/navbar', $data);
 		    		$this->load->view('families/create', $data);
+		    		$this->load->view('templates/footer');
 
 	    		}
     			break;
@@ -52,45 +57,38 @@ class Families extends CI_Controller {
     			$this->form_validation->set_rules('fa_kids', 'Number of childs', 'trim|required');
     			$this->form_validation->set_rules('fa_k1_name', 'Name of child', 'trim|required');
 
-    			$data['family_id'] = $this->input->post('family_id');
-		        	
+    				
     			if ($this->form_validation->run() === TRUE)
 	    		{
 
-	    			$this->family_model->update_family(1, $data['family_id']);
-		        	$this->parent_model->update_parent(1, $data['family_id']);
-		        	$this->kid_model->insert_kid($data['family_id']);
+	    			$this->family_model->update_family(1, $this->session->userdata('user_id'));
+		        	$this->parent_model->update_parent(1, $this->session->userdata('user_id'));
+		        	$this->kid_model->insert_kid($this->session->userdata('user_id'));
 		        	$page += 1;
-		        	$data['page'] = $page;	        			        
-		        	$this->load->view('templates/header', $data);
-	    			$this->load->view('templates/navbar', $data);
-	    			$this->load->view('families/create', $data);
+		        	$data['page'] = $page;    
+		      		redirect('families/create/3');
 
 	    		}else{
 
 	    			$data['page'] = $page;
 			    	$this->load->view('templates/header', $data);
 		    		$this->load->view('templates/navbar', $data);
-		    		echo 'This is Ghost2';
 		    		$this->load->view('families/create', $data);
+		    		$this->load->view('templates/footer');
 
 	    		}
     			break;
 
     		case 3:
-    			$this->form_validation->set_rules('family_id', 'Family ID', 'trim|required');
+    			$this->form_validation->set_rules('fa_aupair_from', 'Family Date from', 'trim|required');
 
-    			$data['family_id'] = $this->input->post('family_id');
-		        	
+    				
     			if ($this->form_validation->run() === TRUE)
 	    		{
-
-	    			$this->family_model->update_family(2, $data['family_id']);
+	    			$this->family_model->update_family(2, $this->session->userdata('user_id'));
 	    			$page += 1;
 		        	$data['page'] = $page;	        			        
-		        	$this->load->view('templates/header', $data);
-	    			$this->load->view('templates/navbar', $data);
-	    			$this->load->view('families/create', $data);
+		      		redirect('families/create/4');
 
 	    		}else{
 
@@ -98,26 +96,23 @@ class Families extends CI_Controller {
 			    	$this->load->view('templates/header', $data);
 		    		$this->load->view('templates/navbar', $data);
 		    		$this->load->view('families/create', $data);
+		    		$this->load->view('templates/footer');
 
 	    		}
     			break;
 
     		case 4:
-    			$this->form_validation->set_rules('family_id', 'Family ID', 'trim|required');
+    			$this->form_validation->set_rules('fa_pocketmoney_insurance', 'Family Pocket Insurance', 'trim|required');
 
-    			$data['family_id'] = $this->input->post('family_id');
-		        	
+    			     	
     			if ($this->form_validation->run() === TRUE)
 	    		{
 
-	    			$this->family_model->update_family(3, $data['family_id']);
-	    			$userdata = array( 
-					   'user_type'  => 'family', 
-					   'user_id'    => $data['family_id']
-					);  
-
-					$this->session->set_userdata($userdata);
-		        	redirect('index/profile');
+	    			if($this->family_model->update_family(3, $this->session->userdata('user_id'))){
+	    				
+						redirect(base_url('session_controller/sign_up'), 'refresh');						
+	    			}
+	    			
 
 	    		}else{
 
@@ -125,17 +120,23 @@ class Families extends CI_Controller {
 			    	$this->load->view('templates/header', $data);
 		    		$this->load->view('templates/navbar', $data);
 		    		$this->load->view('families/create', $data);
+		    		$this->load->view('templates/footer');      	
 
 	    		}
     			break;
+    	}    	
 
-    		default:
-    			
-    			break;
-    	}
+    }
 
-    	$this->load->view('templates/footer');
+    function delete($id){
+    	
+		$this->family_model->delete_family($id);
+    	$this->parent_model->delete_parent($id);
+    	$this->kid_model->delete_kid($id);
+		$array_items = array('user_type', 'user_id', 'email');
+		$this->session->unset_userdata($array_items);    	
 
+    	redirect('session_controller/log_in');		
     }	
 
 }

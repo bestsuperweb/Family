@@ -9,6 +9,10 @@ class Schedule extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('schedule_model');
+
+        if(!$this->aauth->is_loggedin()){
+            redirect('session_controller/log_in');
+        }
     }
 
     public function insert(){

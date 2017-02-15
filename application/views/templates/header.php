@@ -15,11 +15,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <?php if($this->session->userdata('user_type') and $this->session->userdata('user_id')){?>
+  <?php if($this->aauth->is_loggedin()){?>
   <script type="text/javascript">
-    window.user_type = '<?php echo $this->session->userdata('user_type'); ?>';
-    window.user_id = <?php echo $this->session->userdata('user_id'); ?>;
-    window.base_url = '<?php echo base_url(); ?>';
+    window.user_type = '<?= $user_type ?>';
+    window.user_id = <?= $user_id ?>;
+    window.base_url = '<?= base_url(); ?>';
   </script>
   <?php } ?>
 </head>

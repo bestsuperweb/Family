@@ -7,7 +7,7 @@ class Kid_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function insert_kid()
+        public function insert_kid($family_id)
         {
                 for ($i=1; $i <= $this->input->post('fa_kids'); $i++) { 
                         $data = array(
@@ -22,7 +22,7 @@ class Kid_model extends CI_Model {
                                 'thursday' => $this->input->post('fa_k'.$i.'_thursday'),
                                 'friday'   => $this->input->post('fa_k'.$i.'_friday'),
                                 'commute'  => $this->input->post('fa_k'.$i.'_commute'),
-                                'family_id'=> $this->input->post('family_id')
+                                'family_id'=> $family_id
                         );
                         $query = $this->db->get_where('kids', array('name' => $this->input->post('fa_k'.$i.'_name'), 
                                                                         'family_id' => $this->input->post('family_id')));
@@ -92,11 +92,10 @@ class Kid_model extends CI_Model {
                 return $query->result_array();
         }
 
-        public function delete_kid()
-        {
-                
+        public function delete_kid($family_id)
+        {                
 
-                $this->db->delete('kids', $data, array('id' => $this->input->post('family_id')));
+                $this->db->delete('kids', array('family_id' => $family_id));
         }
 
 }

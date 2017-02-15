@@ -275,7 +275,7 @@
             <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">
               <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                  <a href="#" class="add-doc">&plus;</a>
+                  <a href="#" class="add-doc" data-toggle="modal" data-target="#addDocModal">&plus;</a>
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                   <div class="input-group doc-search">
@@ -298,97 +298,77 @@
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOAD DATE</div>  
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">APPROVAL DATE</div>
             </div>
+            <?php if($documents != null) {?>
+            <?php foreach ($documents as $key => $document) { ?>
             <div class="panel panel-default">
-              <div class="panel-heading doc-approved">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">AGREEMENT HBN</div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">SYSTEM</div>    
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>                    
+              <div class="panel-heading doc-<?= $document['status'] ?>">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$key ?>">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= ucfirst($document['title']) ?></div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= $document['uploader'] ?></div>    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= $document['upload_date'] ?></div>  
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= $document['approved_date'] ?></div>                    
                   </a>          
               </div>
-              <div id="collapse1" class="panel-collapse collapse">
+              <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <a href="#" class="btn next-button approved-button">APPEOVED</a>
-                  <a href="#" class="btn next-button">DOWNLOAD</a>
+                  <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
-                  <a href="#" class="btn next-button delete-button">DELETE</a>
+                  <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
                 </div>
               </div>
             </div>
 
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">PASSPORT</div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">26-12-2016</div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">06-01-2017</div>
-                  </a>          
-              </div>
-              <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-              </div>
-            </div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading doc-review">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">VISA PROCEDURE DOC</div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-12-2016</div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">-</div>
-                  </a> 
-              </div>
-              <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <a href="#" class="btn next-button review-button">REVIEW</a>
-                  <a href="#" class="btn next-button">DOWNLOAD</a>
-                  <a href="#" class="btn next-button">NEW VERSION</a>
-                  <a href="#" class="btn next-button delete-button">DELETE</a>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">LOREM IPSUM DOCUMENT</div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">MARIA GONZALEZ</div>    
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">17-11-2016</div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-01-2017</div>
-                  </a>          
-              </div>
-              <div id="collapse4" class="panel-collapse collapse">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-              </div>
-            </div>
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">LOREM IPSUM DOCUMENT</div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">HBN</div>    
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-11-2016</div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">12-11-2016</div>
-                  </a>          
-              </div>
-              <div id="collapse5" class="panel-collapse collapse">
-                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-              </div>
-            </div>
+           <?php 
+              } 
+             }else{
+           ?>
+           <div> No document... </div>
+           <?php } ?>
 
           </div>
         </div>
 <!-- end docuemtn tab -->
     </div>
     </div>
+</div>
+
+
+<div id="addDocModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Document</h4>
+      </div>
+      <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">      
+        <div class="modal-body">
+          <div class="alert alert-success upload-success">
+            <strong>Success!</strong> The document was successfully uploaded.
+          </div>
+          <div class="alert alert-danger upload-error">
+            <strong>Opp!</strong> There are some errors to upload the document.
+          </div>
+          <div class="form-group">
+            <label>Docuemnt Title:</label>
+            <input type="text" name="doc_title" class="form-control" autocomplete='off'>                              
+          </div>
+          <div class="form-group">
+          <label>Docuemnt File:</label>
+            <input type="file" name="doc_file" autocomplete='off'>
+          </div>
+          <div class="progress upload-progress">
+            <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn">Add document</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
 </div>

@@ -539,6 +539,9 @@
     text-decoration: none;
     color: #fff;
 }
+.upload-progress{
+    display: none;
+}
 .doc-search .btn-default{
     height: 50px;
     font-size: 20px;

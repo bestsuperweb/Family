@@ -155,7 +155,7 @@
 
     <h1><i><b>2. Over het gastgezin</b></i></h1>
     <?php echo form_open('families/create/2'); ?>
-    <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
+     
     	<div class="row">
     		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
     			<div class="row">
@@ -498,7 +498,7 @@
 <?php }else if( $page == 3 ) { ?>
     <h1><i><b>3. Over de au-pair</b></i></h1>
     <?php echo form_open('families/create/3'); ?>
-    <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
+     
     
     	<div class="row">
     		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -643,7 +643,7 @@
 <?php }else if( $page == 4 ) { ?>
     <h1><i><b>4. Kosten</b></i></h1>
     <?php echo form_open('families/create/4'); ?>
-    <input type="hidden" name="family_id" value="<?php echo $family_id; ?>">
+     
     
     <div class="row">
     	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

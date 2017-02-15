@@ -29,11 +29,12 @@ class Aupairs extends CI_Controller
         	if( $result ){
         		$userdata = array( 
 					   'user_type'  => 'aupair', 
-					   'user_id'    => $result
+					   'user_id'    => $result,
+					   'email'		=> $this->input->post('ap_email')
 					);  
 
 				$this->session->set_userdata($userdata);
-        		redirect('index/profile');
+        		redirect('session_controller/sign_up');
         	}
 
 		}else{
@@ -42,6 +43,16 @@ class Aupairs extends CI_Controller
     		$this->load->view('aupairs/create', $data);
 		}
 		$this->load->view('templates/footer');
+	}
+
+	function delete($id){
+		
+    	$this->aupair_model->delete_aupair($id);
+		$array_items = array('user_type', 'user_id', 'email');
+		$this->session->unset_userdata($array_items);    	
+
+    	redirect('session_controller/log_in');
+    	
 	}
 	
 }

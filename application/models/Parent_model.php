@@ -118,10 +118,10 @@ class Parent_model extends CI_Model {
         }
 
         public function delete_parent($family_id)
-        {
-                
+        {                
 
-                $this->db->delete('parents', $data, array('id' => $_POST['id']));
+                $result = $this->db->delete('parents', array('family_id' => $family_id));
+                return $result;
         }
 
 }
