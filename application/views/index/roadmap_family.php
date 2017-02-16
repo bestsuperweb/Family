@@ -12,7 +12,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 			        <img src="<?php echo base_url('assets/img/check-green.png'); ?>" class="collapse-img"> 1. Profiel</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -33,7 +33,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 			        <img src="<?php echo base_url('assets/img/check-green.png'); ?>" class="collapse-img"> 2. Inkomenstoetsing</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -51,7 +51,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
 			        <img src="<?php echo base_url('assets/img/check-green.png'); ?>" class="collapse-img"> 3. Matching</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -90,7 +90,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
 			        <img src="<?php echo base_url('assets/img/settings-red.png'); ?>" class="collapse-img"> 5. Voorbereiding</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -108,7 +108,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
 			        <img src="<?php echo base_url(); ?>assets/img/settings-red.png" class="collapse-img"> 6. Aankomst</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -126,7 +126,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
 			        <img src="<?php echo base_url('assets/img/settings-red.png'); ?>" class="collapse-img"> 7. Tijdens verblijf</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>
@@ -144,7 +144,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
 			        <img src="<?php echo base_url('assets/img/settings-red.png'); ?>" class="collapse-img"> 8. Vertrek</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 			        </span>
 			      </h4>
 			    </div>

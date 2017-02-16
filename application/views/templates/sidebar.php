@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url(); ?>">Home</a>                   
+            <a href="<?= base_url('index/home'); ?>">Home</a>                   
         </li>
 <?php if($this->aauth->is_member(4)) { ?>       
 
@@ -48,6 +48,15 @@
             <a href="<?= base_url('index/matches/'); ?>">Matches</a>
         </li>
 
+<?php }else if($this->aauth->is_member(6)) { ?>
+
+        <li>
+            <a href="<?= base_url('index/families/'); ?>">Families</a>                                    
+        </li>
+        <li>
+            <a href="<?= base_url('index/aupairs/'); ?>">Aupairs</a>                                    
+        </li>
+        
 <?php } ?>
 
     </ul>

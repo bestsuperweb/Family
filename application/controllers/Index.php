@@ -26,6 +26,24 @@ class Index extends CI_Controller {
     	$data['title'] = "Home";
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
+
+        switch ($data['user_type']) {
+                case 'family':
+                    $data['family']    = $this->family_model->get_family($data['user_id']);
+                    $data['parents']   = $this->parent_model->get_parent($data['user_id']);
+                    $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    break;
+
+                case 'aupair':
+                    $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
        
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
@@ -39,10 +57,28 @@ class Index extends CI_Controller {
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
 
+        switch ($data['user_type']) {
+                case 'family':
+                    $data['family']    = $this->family_model->get_family($data['user_id']);
+                    $data['parents']   = $this->parent_model->get_parent($data['user_id']);
+                    $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    break;
+
+                case 'aupair':
+                    $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);
-        $this->load->view('index/roadmap', $data);
+        $this->load->view('index/roadmap_'.$data['user_type'], $data);
         $this->load->view('templates/footer');
     }
 
@@ -52,10 +88,28 @@ class Index extends CI_Controller {
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
 
+        switch ($data['user_type']) {
+                case 'family':
+                    $data['family']    = $this->family_model->get_family($data['user_id']);
+                    $data['parents']   = $this->parent_model->get_parent($data['user_id']);
+                    $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    break;
+
+                case 'aupair':
+                    $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+
         $this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);
-        $this->load->view('index/roadmap_profile', $data);
+        $this->load->view('index/roadmap_profile_'.$data['user_type'], $data);
         $this->load->view('templates/footer');	
     }
 
@@ -231,11 +285,37 @@ class Index extends CI_Controller {
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
 
+        switch ($data['user_type']) {
+                case 'family':
+                    $data['family']    = $this->family_model->get_family($data['user_id']);
+                    $data['parents']   = $this->parent_model->get_parent($data['user_id']);
+                    $data['kids']      = $this->kid_model->get_kid($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    break;
+
+                case 'aupair':
+                    $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+
     	$this->load->view('templates/header', $data);
     	$this->load->view('templates/sidebar', $data);
     	$this->load->view('templates/navbar', $data);
         $this->load->view('index/matches', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function families(){
+        
+    }
+
+    public function aupairs(){
+        
     }
 
 }

@@ -375,6 +375,66 @@
     margin-top: -50px;
     font-size: 20px;
 }
+.custom-standalone-panel{
+    background: #542a44;
+    padding: 20px;
+    padding-right: 50%;
+    color: #fff;
+    font-size: 18px;
+}
+.above-drop-file{
+    padding: 25px;
+    font-size: 16px;
+    background-color: #eee;
+    height: 206px;
+}
+.skype-panel{
+    background: #00aff0;
+    font-size: 18px;
+    color: #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    margin: 0;
+}
+.skype-panel .row{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.skype-panel label{
+    margin-top: 8px;
+}
+.skype-img{
+    width: 50px;
+    float: right;
+    margin-top: -20px;
+    margin-right: -20px;
+}
+.match-panel{
+    background: #542a44;
+    font-size: 18px;
+    padding: 20px;
+    padding-right: 0;
+    margin: 0;
+}
+.match-panel h1, .match-panel p, .match-panel .row{
+    color: #fff !important;    
+}
+.visa-panel{
+    width: 70%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+.visa-status{
+    width: 30px;
+    float: right;
+    margin-top: -40px;
+    margin-right: 10px;
+}
 
 /*----responsive start---*/
 
