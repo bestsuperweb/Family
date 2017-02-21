@@ -23,7 +23,7 @@ INSERT INTO `aauth_groups` VALUES ('2', 'Public', 'Public Access Group');
 INSERT INTO `aauth_groups` VALUES ('3', 'Default', 'Default Access Group');
 INSERT INTO `aauth_groups` VALUES ('4', 'family', 'Family Access Group');
 INSERT INTO `aauth_groups` VALUES ('5', 'aupair', 'Aupair Access Group');
-INSERT INTO `aauth_groups` VALUES ('6', 'agency', 'Agency Access Group');
+INSERT INTO `aauth_groups` VALUES ('6', 'HBN', 'Agency Access Group');
 
 -- ----------------------------
 -- Table structure for `aauth_perms`
