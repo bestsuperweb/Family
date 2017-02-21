@@ -399,10 +399,9 @@
 					<div class="form-control custom-select">
 						<select name="">
 						    <option>Loondienst</option>
-						    <option>Loondienst</option>
-						    <option>Loondienst</option>
-						    <option>Loondienst</option>
-						    <option>Loondienst</option>
+						    <option>Zelfstandig ondernemer</option>
+						    <option>DGA</option>
+						    <option>Eigen vermogen</option>						    
 					  	</select>
 					</div>
 				</div>
@@ -432,7 +431,7 @@
 								<b>Werkgeversverklaring:</b><br><br>
 								Dit formulier dient door de werkgever volledig ingevuld te worden en ondertekend + evt. bedrijfsstempel; Werkgeversverklaring mag niet ouder dan 3 maanden zijn op het moment van de aanvraag;<br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -442,7 +441,7 @@
 								<b>Kopie het arbeidscontract (min 12 mnd.):</b><br><br>								
 								Let op: Ook met handtekening van werknemer (mag per mail/gescand)<br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/2') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -452,7 +451,7 @@
 								<b>Kopieën van loonstroken van de laatste 3 maanden.</b><br><br>
 								Let op: De laatste 3 loonstroken op het moment van de aanvraag, zelfde persoon als het contract/werkgeversverklaring (mag per mail/gescand)<br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/3') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -474,7 +473,46 @@
 		    </div>
 		    <div id="collapse2" class="panel-collapse collapse">
 		      <div class="panel-body">
-		      	
+		      	<p>Wanneer er sprake is van een eenmanszaak die minimaal 1,5 jaar bestaat<br><br>
+					<b>Bijlage verklaring omtrent inkomen zelfstandig ondernemer:</b> ingevuld door een onafhankelijk persoon, een erkende administrateur (bijvoorbeeld een registeraccountant, een accountant, administratieconsulent, een federatie belastingadviseur of een college Belastingadviseur) of een administrateur met een beconnummer van de Belastingdienst. Graag volledig ingevuld en ondertekend<br><br>
+					Uittreksel KVK: Een recent uittreksel van de inschrijving bij de Kamer van Koophandel van de onderneming/het bedrijf. <b>(origineel of digitaal gewaarmerkt)</b> Let op: het bedrijf moet langer dan 1 1⁄2 jaar bestaan, het uittreksel mag niet ouder zijn dan 6 maanden, <b>de persoon</b> in kwestie moet als aandeelhouder staan aangegeven.<br><br>
+					De Belasting aanslagen of aangifte van de afgelopen 3 jaar (inclusief lopende jaar)</p><br>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="above-drop-file">
+								<b>Verklaring inkomen zelfstandig ondernemer</b><br><br>
+								<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Zelfstandig ondernemer-1') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD</a><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/4') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="above-drop-file">
+								<b>Uittreksel KVK</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/5') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="above-drop-file">
+								<b>Belasting aanslagen of aangifte van de afgelopen 3 jaar</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/6') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+					</div>
+					<a href="#" class="btn next-button">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -491,9 +529,63 @@
 		    </div>
 		    <div id="collapse3" class="panel-collapse collapse">
 		      <div class="panel-body">
-		      	<div class="row">
-		      		
-		      	</div>
+		      	<p>Wanneer er sprake is van een BV dan heeft HBN de volgende bewijsstukken nodig<br><br>
+					Uittreksel KVK bij 1 persoon en bij meerdere personen een oprichtingsakte <b>(origineel of digitaal gewaarmerkt)</b> Let op: het uittreksel mag niet ouder zijn dan 6 maanden, <b>de persoon in kwestie moet als aandeelhouder staan aangegeven.</b><br><br>
+					<b>Werkgeversverklaring:</b> zelf invullen en ondertekenen; Werkgeversverklaring mag niet ouder dan 3 maanden zijn op het moment van de aanvraag<br><br>
+					Kopie van het arbeidscontract: Als DGA ben je verplicht dit te hebben. Indien dit niet gemaakt is kun je als je enige aandeelhouder bent dit alsnog opstellen.<br><br>
+					Drie recente loonstroken (kunnen ook bankafschriften zijn)<br><br>
+					Bewijs dat de loonbelasting door de vennoot is overgemaakt over de laatste 3 loonstroken (of in 1X per 3 maanden mag ook) Let op: dit is bijvoorbeeld aan te tonen door screenshots te maken van de bankafschriften waarop de overschrijving naar de belastingdienst staat.</p><br>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+							<div class="above-drop-file">
+								<b>Uittreksel KVK</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/7') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+							<div class="above-drop-file">
+								<b>Werkgeversverklaring</b><br><br>
+								<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'DGA-2') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD</a><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/8') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="above-drop-file">
+								<b>Kopie van het arbeidscontract</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/9') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="above-drop-file">
+								<b>Drie recente loonstroken</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/10') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="above-drop-file">
+								<b>Bewijs dat de loonbelasting is betaald</b><br><br>
+							</div>
+							<form action = "<?= base_url('document/upload_document/11') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+						</div>					
+					</div>
+					<a href="#" class="btn next-button">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -516,7 +608,7 @@
 							<div class="above-drop-file">
 								<b>De laatste voorlopige of definitieve aanslag van de Belastingdienst waaruit het inkomen uit Box 2 en 3 blijkt.</b><br><br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/12') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -525,7 +617,7 @@
 							<div class="above-drop-file">
 								<b>De laatste aangifte van het inkomen aan de Belastingdienst waaruit het inkomen uit Box 2 en 3 blijkt.</b><br><br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/13') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -534,7 +626,7 @@
 							<div class="above-drop-file">
 								<b>Bescheiden waaruit de omvang en samenstelling van het eigen vermogen blijkt op het moment van indiening van de aanvraag (vermogens bankrekeningsaldo, aandelen portfolio, kadastraal uittreksel van woningen in bezit of anders)</b><br><br>
 							</div>
-							<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/14') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 						</div>
@@ -673,29 +765,31 @@
 				<div class="row match-panel">
 					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
 						<h1>Match aanmaken</h1><br>
+						<form action="<?= base_url('families/generate_document/1') ?>" method="POST" >
+						<input type="hidden" name="fa_id" value="<?= $user_id ?>">
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">Match aanmaken met:</div>
 							<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
 								<div class="form-control custom-select">
-		    						<select name="">
-									    <option>aupair-1</option>
-									    <option>aupair-2</option>
-									    <option>aupair-3</option>
-									    <option>aupair-4</option>
+		    						<select name="ap_id">
+									    <?php foreach ($aupairs as $key => $aupair) { ?>
+			    							<option value = "<?= $aupair['id'] ?>" ><?= $aupair['full_name'] ?></option>
+			    						<?php } ?>
 								  	</select>
 		    					</div>
 							</div>
 						</div><br><br>
 						<p>Nadat jullie hieronder op ‘Match aanmaken’ hebben <br>gedrukt wordt de agreement automatisch gegenereerd.<br><br>
 						Jullie ontvangen deze per e-mail. Hiernaast kunnen <br>jullie vervolgens de getekende agreement oploaden.</p><br>
-						<a href="" class="btn next-button">MATCH AANMAKEN</a><br><br>
+						<input type="submit" class="btn next-button match-button" value="MATCH AANMAKEN" ><br><br>
+						</form>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
 						<div class="above-drop-file">
 							<b>Upload hier de agreement, voorzien van jullie handtekening. Vervolgens zullen HBN en de au-pair de agreement goedkeuren.<br><br>
 							Naast de agreement volgen in de stappen hieronder nog enkele documenten.</b><br>
 						</div>
-						<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+						<form action = "<?= base_url('document/upload_document/15') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message">
 		      				<span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>
@@ -723,15 +817,236 @@
 		      			<p>Het gastgezin en de au pair moeten een awareness declaration ondertekenen. Hiermee geven beiden aan de regels van het au pair programma te kennen.<br>
 						Het eerder opgestelde weekschema zal door au pair en gastgezin goedgekeurd moeten worden.</p><br>
 						<div class="above-drop-file">
-							<a href="#" class="btn next-button">DOWNLOADEN</a><br><br>
+							<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Awareness declaration') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOADEN</a><br><br>
 							<b>Upload hieronder de awareness declaration, voorzien van jullie handtekening.</b><br>
 						</div>
-						<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+						<form action = "<?= base_url('document/upload_document/16') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message">
 		      				<span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>
 		      		</div>
-		      		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"></div>
+		      		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		      			<div class="profile-edit row">
+						  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
+						  		<div class="input-group date">
+								<input type="text" class="form-control" id = "select_schedule_date">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								</div>
+								<span id="posX"></span><span id="posY"></span>	
+						  	</div>			  	
+						  </div>
+					      <div class="alert alert-success">
+					       <strong>Success!</strong> <span></span>
+						  </div>
+						  <div class="alert alert-danger">
+					       <strong>Sorry!</strong> <span></span>
+						  </div>
+					      <div class="cd-schedule loading">
+							<div class="timeline">
+								<ul>
+									<li><span>06:00</span></li>
+									<li><span>06:30</span></li>
+									<li><span>07:00</span></li>
+									<li><span>07:30</span></li>
+									<li><span>08:00</span></li>
+									<li><span>08:30</span></li>
+									<li><span>09:00</span></li>
+									<li><span>09:30</span></li>
+									<li><span>10:00</span></li>
+									<li><span>10:30</span></li>
+									<li><span>11:00</span></li>
+									<li><span>11:30</span></li>
+									<li><span>12:00</span></li>
+									<li><span>12:30</span></li>
+									<li><span>13:00</span></li>
+									<li><span>13:30</span></li>
+									<li><span>14:00</span></li>
+									<li><span>14:30</span></li>
+									<li><span>15:00</span></li>
+									<li><span>15:30</span></li>
+									<li><span>16:00</span></li>
+									<li><span>16:30</span></li>
+									<li><span>17:00</span></li>
+									<li><span>17:30</span></li>
+									<li><span>18:00</span></li>
+									<li><span>18:30</span></li>
+									<li><span>19:00</span></li>
+									<li><span>19:30</span></li>
+									<li><span>20:00</span></li>
+									<li><span>20:30</span></li>
+									<li><span>21:00</span></li>
+									<li><span>21:30</span></li>
+									<li><span>22:00</span></li>
+									<li><span>22:30</span></li>
+									<li><span>23:00</span></li>
+									<li><span>23:30</span></li>
+									<li><span>24:00</span></li>
+								</ul>
+							</div> <!-- .timeline -->
+
+							<div class="events">
+								
+							</div>
+							<div class="event-modal">
+								<header class="header">
+									<div class="content">
+										<span class="event-date"></span>
+										<h3 class="event-name"></h3>
+									</div>
+
+									<div class="header-bg"></div>
+								</header>
+
+								<div class="body">
+									<div class="event-info"></div>
+									<div class="body-bg"></div>
+								</div>
+
+								<a href="#0" class="close">Close</a>
+							</div>
+
+							<div class="cover-layer"></div>
+						
+					    </div>
+
+					    <div class="row">
+					    	<div class="col-xs-9 col-sm-10 col-md-11 col-lg-11"></div>
+					    	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+						    	<a href="#" class="add-btn" data-toggle="modal" data-target="#addModal">
+						    		<img src="<?php echo base_url('assets/img/add-btn.png'); ?>">
+						    	</a>
+						    </div>
+					    </div>
+
+					      <!-- addModal start -->
+						  <div class="modal fade" id="addModal" role="dialog">
+						    <div class="modal-dialog">
+						    
+						      <!-- Modal content-->
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">Add Schedule</h4>
+						        </div>
+						        <div class="modal-body">
+						        	  <div class="form-group">
+						        	  	<div class="input-group date schedule-date">
+						        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
+						        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+						        	  	</div>			        	  	
+						        	  </div>
+						        	  <div class="form-group">
+									    <label>Start Time:</label>
+									    <div class="input-group date schedule-time" >
+					    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
+					    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+					    				</div>
+									  </div>
+									  <div class="form-group">
+									    <label>End Time:</label>
+									    <div class="input-group date schedule-time">
+					    				<input type="text" class="form-control"  name="sd_end_time" autocomplete='off'>
+					    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+					    				</div>
+									  </div>
+									  <div class="form-group">
+									  	  <label>Schedule Type:</label>
+										  <div class="form-control custom-select">
+				    						<select name="sd_type">
+											    <option>event-1</option>
+											    <option>event-2</option>
+											    <option>event-3</option>
+											    <option>event-4</option>
+										  	</select>
+				    					  </div>
+			    					  </div>
+									  <div class="form-group">
+									    <label>Schedule Title:</label>
+									    <input type="text" class="form-control" name="sd_title" autocomplete='off'>
+									  </div>
+									  <div class="form-group">
+									    <label>Schedule Description:</label>
+									    <textarea class="form-control" rows="5" name="sd_content" autocomplete='off'></textarea>
+									  </div>
+									
+						        </div>
+						        <div class="modal-footer">			        
+						          <a href="#1" class="add-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
+						        </div>
+						      </div>
+						      
+						    </div>
+						  </div>
+						  <!-- addModal end -->
+
+						  <!-- editModal start -->
+						  <div class="modal fade" id="editModal" role="dialog">
+						    <div class="modal-dialog">
+						    
+						      <!-- Modal content-->
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">Edit Schedule</h4>
+						        </div>
+						        <div class="modal-body">
+						        <input type="hidden" name="sd_id">
+						        	  <div class="form-group">
+						        	  	<div class="input-group date schedule-date">
+						        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
+						        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+						        	  	</div>			        	  	
+						        	  </div>
+						        	  <div class="form-group">
+									    <label>Start Time:</label>
+									    <div class="input-group date schedule-time" >
+					    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
+					    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+					    				</div>
+									  </div>
+									  <div class="form-group">
+									    <label>End Time:</label>
+									    <div class="input-group date schedule-time">
+					    				<input type="text" class="form-control"  name="sd_end_time" autocomplete='off'>
+					    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+					    				</div>
+									  </div>
+									  <div class="form-group">
+									  	  <label>Schedule Type:</label>
+										  <div class="form-control custom-select">
+				    						<select name="sd_type">
+											    <option>event-1</option>
+											    <option>event-2</option>
+											    <option>event-3</option>
+											    <option>event-4</option>
+										  	</select>
+				    					  </div>
+			    					  </div>
+									  <div class="form-group">
+									    <label>Schedule Title:</label>
+									    <input type="text" class="form-control" name="sd_title" autocomplete='off'>
+									  </div>
+									  <div class="form-group">
+									    <label>Schedule Description:</label>
+									    <textarea class="form-control" rows="5" name="sd_content" autocomplete='off'></textarea>
+									  </div>
+									
+						        </div>
+						        <div class="modal-footer">			        
+						          <a href="#1" class="edit-schedule" ><img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a>
+						        </div>
+						      </div>
+						      
+						    </div>
+						  </div>
+						  <!-- editModal end -->
+		      		</div>
 		      	</div>
 		      	<a href="#" class="btn next-button">INDIENEN</a>
 		      </div>

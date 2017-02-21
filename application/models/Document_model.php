@@ -59,6 +59,19 @@ class Document_model extends CI_Model {
 
         }
 
+        public function upgrade_document($document_id, $file_name, $uploader, $user_id){
+            $data = array(
+                            'name'          => $file_name,
+                            'uploader'      => $uploader,
+                            'upload_date'   => date("Y-m-d"),
+                            'user_id'       => $user_id
+                        );
+            
+            $result = $this->db->update('documents', $data, array('id' => $document_id));
+
+            return $result;
+        }
+
         public function get_document($user_id){
             $query = $this->db->get_where('documents', array('user_id' => $user_id));
             return $query->result_array();

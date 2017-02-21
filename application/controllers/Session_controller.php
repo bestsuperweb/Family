@@ -174,6 +174,22 @@ class Session_controller extends CI_Controller
 		redirect('session_controller/log_in');
 	}
 
+	private function _gen_pdf($html, $name, $paper='A4')
+    {
+        $this->load->library('mpdf60/mpdf');        
+        $mpdf=new mPDF('utf-8',$paper);
+        $mpdf->SetHTMLHeader($html[0]);
+        if ($html[2] ) {
+            $mpdf->SetHTMLFooter($html[2]);
+            $mpdf->AddPage('', '', '', '', '', 10, 10, 50, 50, 10, 0); 
+        }else{
+            $mpdf->AddPage('', '', '', '', '', 10, 10, 50, 10, 10, 0); 
+        }                
+        $mpdf->WriteHTML($html[1]);
+        $filename= "files/$name";                   
+        $mpdf->Output($filename, 'F');
+    }
+
 	private function get_family_content($id){
 		$family = $this->family_model->get_family($id);
 		$parents = $this->parent_model->get_parent($id);

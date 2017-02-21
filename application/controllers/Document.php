@@ -107,5 +107,94 @@ class Document extends CI_Controller {
         }
         return $uploader;
     }
+
+    function upload_document($kind){
+        switch ($kind) {
+            case 1:
+                $file_title = 'Loondienst-1';
+                break;
+            case 2:
+                $file_title = 'Loondienst-2';
+                break;
+            case 3:
+                $file_title = 'Loondienst-3';
+                break;
+            case 4:
+                $file_title = 'Zelfstandig ondernemer-1';
+                break;
+            case 5:
+                $file_title = 'Zelfstandig ondernemer-2';
+                break;
+            case 6:
+                $file_title = 'Zelfstandig ondernemer-3';
+                break;
+            case 7:
+                $file_title = 'DGA-1';
+                break;
+            case 8:
+                $file_title = 'DGA-2';
+                break;
+            case 9:
+                $file_title = 'DGA-3';
+                break;
+            case 10:
+                $file_title = 'DGA-4';
+                break;
+            case 11:
+                $file_title = 'DGA-5';
+                break;
+            case 12:
+                $file_title = 'Eigen vermogen-1';
+                break;
+            case 13:
+                $file_title = 'Eigen vermogen-2';
+                break;
+            case 14:
+                $file_title = 'Eigen vermogen-3';
+                break;
+            case 15:
+                $file_title = 'Agreement';
+                break;
+            case 16:
+                $file_title = 'Awareness declaration';
+                break;
+                       
+            default:
+                # code...
+                break;
+        }        
+        $documents = $this->document_model->get_document($this->aauth->get_user()->id);
+        $document_id = '';
+        $document_name = '';
+        foreach ($documents as $key => $document) {
+            if ($document['title'] == $file_title) {
+                $document_name = $document['name'];
+                $document_id   = $document['id'];
+                unlink('files/'.$document['name']);
+            }
+        }        
+        $file_name = md5($_FILES["file"]['name'].$this->aauth->get_user()->id.$kind).$_FILES["file"]['name'];
+        $uploader = $this->get_uploader();
+        
+        if (upload($this->aauth->get_user()->id, $kind))
+        {      
+            if ($document_id != '') {
+                if($this->document_model->upgrade_document($document_id, $file_name, $uploader, $this->aauth->get_user()->id)){
+                    echo 'sucess';
+                }else{
+                    echo 'failure';                            
+                }
+            }else{
+                if($this->document_model->insert_document($file_name, $file_title, $uploader, $this->aauth->get_user()->id)){
+                    echo 'sucess';
+                }else{
+                    echo 'failure';                            
+                } 
+            }                            
+
+        }else{
+            echo 'failure';                            
+        } 
+    }
     
 }

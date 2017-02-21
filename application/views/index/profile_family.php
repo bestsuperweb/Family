@@ -433,9 +433,225 @@
       <?php if($this->aauth->is_member(6)){ ?>
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
         <div class="row">
-          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1></div>
+          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
+            <b>KLANT STATUS</b><br>
+            <select >
+              <option>01 - Intake</option>
+              <option>02 - Profile + confirmation</option>
+              <option>03 - Matches</option>
+              <option>04 - Request docs IND</option>
+              <option>05 - At IND</option>
+              <option>06 - Approval / Embassy visit</option>
+              <option>07 - Prepare welcome</option>
+              <option>08 - Placed</option>
+              <option>09 -  Evaluation 1 done</option>
+              <option>10 - Evaluation 2 done</option>
+              <option>11 - Mail / Call replace done</option>
+              <option>12 - On hold</option>
+              <option>13 - Cancelled</option>
+              <option>14 - Closed</option>
+            </select>
+          </div>
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
           <a href="#" class="btn next-button">PROFIEL AU_PAIR</a></div>
+        </div>
+        <div class="row">
+          
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>CASE MANAGER</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email HBN</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $this->aauth->get_user()->email ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['mobile_number'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['mobile_number'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Eigenaar</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?> <?= $parents[0]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Type</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="custom-select">
+                  <select>
+                    <option>1st placement</option>
+                    <option>2nd placement</option>
+                    <option>3rd placement</option>
+                    <option>4 No further replacement</option>
+                    <option>5 Cancelled</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Naam</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['firstname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Meisjesnaam moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Beschrijving</b></div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                easy going gezin, wel druk, vader reist veel, moeder zware baan, 2 jongetjes Willem 6 jaar en Zeeger 4 jaar en nu 3de kindje op komst februari 2015kids 7, 5 en 1 jr: willen graag goed engels, warm gezellig, geen tuttebel. Marina is een topper maar wel een beetje een tuttebel, past niet zo bij suzan. moet wel lekker jongens type zijn!
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>STATUS/TO DO</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Startdatum (Residence Permit)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>       
+
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['email'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['email'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (straat)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['street'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (postcode)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['postal_code'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (plaats)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['place'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>FACTUUR INFO/KORTING</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Bankrekening nr</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 1 verstuurd 60%</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 2 verstuurd</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 3 verstuurd</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Leges afgeschreven</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h3><i>CHECKLIST ALGEMEEN</i></h3>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Inkomen van Host</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Dienstverband</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Arbeidsovereenkomst (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Werkgeversverklaring (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>KVK uittreksel of oprichtingsakte (DGA, ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Zelfstandig Ondernemer Verklaring IND (ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Loonstroken 3x (laatste 3 mnd) (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>            
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>UWV verklaring + handtek. + stempel (LD)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Betaalde belasting bewijs (screenshots) (DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Belastingaangiftes (ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Laatste voorlopige/def. aanslag /aangifte (EV)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs/bescheiden omvang eigen vermogen (EV)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h3><i>NOTITIES</i></h3>
+            <div class="row">
+              <form class="notity-form">
+                <textarea class="form-control">
+                  
+                </textarea>
+                <!-- <input type="file" name=""> -->
+                <input type="button" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="button" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <?php } ?>

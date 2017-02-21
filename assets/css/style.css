@@ -582,6 +582,21 @@
     color: #542a44;
     line-height: 30px;
 }
+#report .row{
+    margin-bottom: 10px;
+}
+.notity-form{
+    background: #eee;
+    padding: 10px;
+    box-shadow: 0 0 2px gray;
+}
+.notity-form *{
+    margin: 10px;
+}
+.notity-form textarea{
+    width: 98%;
+}
+
 /*Document*/
 .add-doc{
     background-color: #542a44;

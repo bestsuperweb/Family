@@ -266,7 +266,7 @@ class Index extends CI_Controller {
                         } 
                         break;
                     case 5:
-                        if (upload())
+                        if (upload($data['user_id']))
                         {
                             if($this->family_model->update_family(6, $data['user_id'])){
                                 echo 'sucess';
