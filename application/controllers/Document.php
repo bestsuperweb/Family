@@ -47,7 +47,7 @@ class Document extends CI_Controller {
             {
                 $data = $this->upload->data();
                 $uploader = $this->get_uploader();
-                $file_id = $this->document_model->insert_document($data['file_name'], $_POST['doc_title'], $uploader, $this->aauth->get_user()->id);
+                $file_id = $this->document_model->insert_document($data['file_name'], $_POST['doc_title'], $uploader, $_POST['user_id']);
                 if($file_id)
                 {
                     $status = "success";
@@ -66,8 +66,8 @@ class Document extends CI_Controller {
         
     }
 
-    public function update($id){
-        if($this->document_model->update_document($id)){
+    public function update($id, $step = 1){
+        if($this->document_model->update_document($id, $step)){
             echo 'success';
         }else{
             echo "failure";
@@ -101,6 +101,9 @@ class Document extends CI_Controller {
         if($this->aauth->is_member(5)){
             $aupair = $this->aupair_model->get_aupair($this->aauth->get_user()->name);
             $uploader = $aupair['full_name'];
+        }
+        if($this->aauth->is_member(6)){
+            $uploader = 'HBN-'.$this->aauth->get_user()->name;
         }
         return $uploader;
     }

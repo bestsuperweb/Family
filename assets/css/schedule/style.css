@@ -14,6 +14,9 @@ a.add-btn:hover{
     opacity: 0;
     position:relative;
 }
+.cd-schedule .events .single-event {
+  display: inline-block;
+}
 
 .sd-menu a{
   display: inline-flex !important;
@@ -231,7 +234,7 @@ a.add-btn:hover{
     margin-bottom: 0;
   }
   .cd-schedule .events .events-group > ul {
-    height: 950px;
+    height: 1800px;
     /* reset style */
     display: block;
     overflow: visible;

@@ -23,8 +23,8 @@ class Schedule extends CI_Controller {
         }
     }
 
-    public function update($id){
-        if($this->schedule_model->update_schedule($id)){
+    public function update($id, $mod = 1 ){
+        if($this->schedule_model->update_schedule($id, $mod)){
             echo 'success';
         }else{
             echo "failure";

@@ -51,7 +51,7 @@
       <div class="tab-content profile-tab-content">
       <?php echo validation_errors(); ?>
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="basicinfo">
-        <?php echo form_open('index/save_profile/1'); ?>
+        <?php echo form_open('index/save_profile/1/'.$param); ?>
           <div class="row">
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<img src="<?php echo base_url('assets/img/family.png'); ?>" class="img-responsive">
@@ -131,7 +131,7 @@
         </div>
 
         <div role="tabpanel" class="tab-pane <?php echo $li_class['second']; ?>" id="host">
-        <?php echo form_open('index/save_profile/2'); ?>
+        <?php echo form_open('index/save_profile/2/'.$param); ?>
         <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>  			
   		  </div>
@@ -282,7 +282,7 @@
 		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Age child <?php echo ($key + 1); ?></div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-          <input type="number" name="fa_k<?php echo ($key + 1); ?>_age" class="form-control" value="<?php echo $kid['age']; ?>" >
+          <input type="number" name="fa_k<?php echo ($key + 1); ?>_age" class="form-control" value="<?php if($kid['age'] != ''){ echo $kid['age']; }else{ echo generate_age($kid['birthday']); } ?>" >
           </div>
   		  </div>
   		  <div class="row">
@@ -501,7 +501,7 @@
         </div>
 <!-- Third panel -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['third']; ?>" id="preferences">
-        <?php echo form_open('index/save_profile/3'); ?>
+        <?php echo form_open('index/save_profile/3/'.$param); ?>
         <div class="row">
   			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b><i>Family of <?php echo $parents[0]['lastname']; ?></i></b></h1></div>  			
   		  </div>
@@ -687,6 +687,9 @@
                   <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
+                  <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
+                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">APPROVE</a>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -717,6 +720,7 @@
         <h4 class="modal-title">Add Document</h4>
       </div>
       <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">      
+        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">    
         <div class="modal-body">
           <div class="alert alert-success upload-success">
             <strong>Success!</strong> The document was successfully uploaded.

@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" 
   href="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.3/css/bootstrap-datetimepicker.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- Custom CSS -->
   <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/schedule/style.css'); ?>">

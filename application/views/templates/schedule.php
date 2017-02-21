@@ -15,7 +15,8 @@
 					 data-start="<?php echo substr($schedule['start_time'],0, 5); ?>" 
 					 data-end="<?php echo substr($schedule['end_time'],0, 5); ?>" 
 					 data-event="<?php echo $schedule['schedule_type']; ?>" 
-					 data-date ="<?php echo $schedule['schedule_date']; ?>">
+					 data-date ="<?php echo $schedule['schedule_date']; ?>"
+					 data-id="<?= $schedule['id'] ?>">
 					<a href="#0" class="single-event-modal">
 						<em class="event-name"><?php echo $schedule['title']; ?></em>
 						<div class="event-content"><?php echo $schedule['content']; ?></div>						

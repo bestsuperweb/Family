@@ -1,9 +1,11 @@
 <!-- views/index/profile.php  -->
 <?php
 		$li_class = array();
-		$li_class['first'] = '';
+		$li_class['first']  = '';
 		$li_class['second'] = '';
-		$li_class['third'] = '';
+		$li_class['third']  = '';
+    $li_class['forth']  = '';
+    $li_class['fifth']  = '';
 		switch ($tab) {
 			case 1:
 				$li_class['first'] = 'active';
@@ -13,7 +15,13 @@
 				break;
 			case 3:
 				$li_class['third'] = 'active';
-				break;					
+				break;
+      case 4:
+        $li_class['forth'] = 'active';
+        break;					
+      case 5:
+        $li_class['fifth'] = 'active';
+        break;
 			default:
 				$li_class['first'] = 'active';
 				break;
@@ -32,11 +40,25 @@
             <span class="text">Experience</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
+        <li role="presentation" class="<?php echo $li_class['forth']; ?>">
+          <a href="#interview" role="tab" data-toggle="tab" aria-controls="interview">
+            <span class="text">Interview & Tests</span>
+          </a>
+        </li>
+       <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
           <a href="#document" role="tab" data-toggle="tab" aria-controls="document">
             <span class="text">Document</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
+        <li role="presentation" class="<?php echo $li_class['fifth']; ?>">
+          <a href="#report" role="tab" data-toggle="tab" aria-controls="report">
+            <span class="text">Report</span>
+          </a>
+        </li>
+       <?php } ?>
       </ul>
       <div class="tab-content profile-tab-content">
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="general">
@@ -45,7 +67,7 @@
               <div class="row">
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b><?php echo $aupair['full_name']; ?></b></h1></div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <a href="<?php echo base_url('index.php/index/edit_profile/1'); ?>">
+                <a href="<?php echo base_url('index/edit_profile/1/').$param; ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
               </div>
               <div class="row">
@@ -148,7 +170,7 @@
               <div class="row">
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Hi, I'm <?php echo $aupair['full_name']; ?></b></h1></div>
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <a href="<?php echo base_url('index.php/index/edit_profile/1'); ?>">
+                <a href="<?php echo base_url('index/edit_profile/1/').$param; ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>                                
               </div>
               <div class="row"><p class="profile-description"><?php echo $aupair['overview']; ?></p></div>
@@ -160,7 +182,7 @@
           <div class="row">
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b><?php echo $aupair['full_name']; ?></b></h1></div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <a href="<?php echo base_url('index.php/index/edit_profile/2'); ?>">
+            <a href="<?php echo base_url('index/edit_profile/2/').$param; ?>">
             <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
           </div>
           <div class="row">
@@ -315,6 +337,9 @@
                   <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
+                  <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
+                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">APPROVE</a>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -329,6 +354,133 @@
           </div>
         </div>
 <!-- end docuemtn tab -->
+
+      <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="interview">         
+        <h1 class="profile-caption"><b><?php echo $aupair['full_name']; ?></b></h1>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <h2><b><i>Interview Reports</i></b></h2><br>
+            <img src="<?= base_url('assets/img/users.png') ?>" ><span class="sub-caption"> Luis Fabiano</span><br><br>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt mattis pretium. Suspendisse vitae nibh ullamcorper, convallis ipsum et, tincidunt ligula. Suspendisse ut pulvinar elit. Nam at vulputate purus, scelerisque pharetra lectus. Curabitur tincidunt, risus nec condimentum tincidunt, turpis orci vulputate elit, ultricies pharetra metus nisl et est. Vestibulum ac velit eu mi sollicitudin fermentum. Ut sed sem dolor. Praesent sed velit ut dolor molestie gravida. Aliquam erat volutpat. Duis et nibh risus.<br><br>
+              Donec efficitur molestie odio vel volutpat. In hac habitasse platea dictumst. Cras egestas vestibulum tinci- dunt. Fusce eget arcu nec nisi dictum ornare ac a odio. Proin bibendum lectus arcu, in maximus quam feu- giat ut. Sed pretium enim sit amet tristique scelerisque. Nulla massa felis, maximus sed libero sed, mollis blandit massa. Praesent volutpat, dui in vulputate lacinia, massa felis sodales justo, nec facilisis orci dolor auctor elit.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <h2><b><i>Video</i></b></h2>
+              <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 test-result" >
+            <h2><b><i>Test results</i></b></h2>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+                <div class="row" style="text-align: center;">
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>1</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>2</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>3</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>4</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>5</i></h3></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENTHUSIASTIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>OUTGOING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PROACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENERGETIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CARING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>FLEXIBLE/ADAPTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SPORTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ORGANISED</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>RESPONSIBLE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SMART</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>INDEPENDENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>EMOTIONAL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>MODEST</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>HONEST/OPEN</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>QUIET</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SELF RELIANT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PARTYGIRL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CREATIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PATIENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+          </div>          
+        </div>
+      </div>
+<!-- end interview tab -->
+      <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">         
+        <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><i><b><?php echo $aupair['full_name']; ?></b></i></h1></div>
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+          <a href="#" class="btn next-button">PROFIEL FAMILIE</a></div>
+        </div>
+      </div>
+<!-- end report tab -->
     </div>
     </div>
 </div>
@@ -343,7 +495,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Add Document</h4>
       </div>
-      <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">      
+      <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">          
         <div class="modal-body">
           <div class="alert alert-success upload-success">
             <strong>Success!</strong> The document was successfully uploaded.

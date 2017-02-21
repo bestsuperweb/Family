@@ -10,8 +10,8 @@ class Session_controller extends CI_Controller
 		$this->load->helper('form');
     	$this->load->library('form_validation');
         $this->load->helper('url_helper');
+        $this->load->helper('custom_helper');
         $this->load->library('session');
-        $this->load->library('mpdf60/mpdf');
         $this->load->model('family_model');
         $this->load->model('parent_model');
         $this->load->model('kid_model');
@@ -327,14 +327,5 @@ class Session_controller extends CI_Controller
 
 		return array($header, $html);
 	}
-
-	private function _gen_pdf($html, $name, $paper='A4')
-    {
-        $mpdf=new mPDF('utf-8',$paper);
-        $mpdf->SetHTMLHeader($html[0]);
-    	$mpdf->AddPage('', '', '', '', '', 10, 10, 50, 10, 10, 0); 
-        $mpdf->WriteHTML($html[1]);
-        $filename= "files/$name";					
-        $mpdf->Output($filename, 'F');
-    } 
+	 
 }

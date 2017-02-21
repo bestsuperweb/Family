@@ -393,14 +393,102 @@ jQuery(document).ready(function($){
             success: function(result){
                 $(".events").html(result);
                 $('.single-event').draggable({
-                	drag: function(){
-				            var offset = $(this).offset();
-				            var xPos = offset.left;
-				            var yPos = offset.top;
-				            $('#posX').text('x: ' + xPos);
-				            $('#posY').text('y: ' + yPos);
-				        }
+                	containment: ".events", 
+                	scroll: false,
+				    stop: function(){
+
+				    		var offset = $(this).offset();
+				            var offset1 = $(this).parent().offset();
+				            var offset2 = $('.events').offset();
+				           	
+				           	var date_index = Math.floor((offset.left - offset2.left)/$(this).width());
+				           	if ($('#select_schedule_date').val().substr(7,1) == '-') {
+				           		var date = $('#select_schedule_date').val().substr(0,8) + $('.top-info h3').eq(date_index).html();
+				           	}else{
+				           		var date = $('#select_schedule_date').val().substr(0,7) + $('.top-info h3').eq(date_index).html();
+				           	}
+
+				           	var start_time_index = Math.floor((offset.top - offset1.top)/$('.timeline ul li').height());
+				           	var start_time = $('.timeline ul li span').eq(start_time_index).html();
+				           	var start_mod = (offset.top - $('.timeline ul li').eq(start_time_index).offset().top)/$('.timeline ul li').height();
+
+				           	var end_time_index = Math.floor((offset.top + $(this).height() - offset1.top)/$('.timeline ul li').height());
+				           	var end_time = $('.timeline ul li span').eq(end_time_index).html();
+				           	var end_mod = (offset.top - $('.timeline ul li').eq(end_time_index).offset().top)/$('.timeline ul li').height();
+
+				           	start_time = precise_time(start_time, start_mod);
+				           	end_time = precise_time(end_time, end_mod);
+
+				           	var data = { 
+								sd_date: date,
+								sd_start_time: start_time,
+								sd_end_time: end_time
+							};
+							$.ajax({
+					            url: window.base_url+"schedule/update/"+ $(this).attr('data-id') + '/2',
+					            type: 'post',
+					            data: data,
+					            success: function(result){
+					            	if(result == 'success'){
+					                	// schedule_alert('A schedule was successfully updated.', 1);
+					                	load_schedule(window.user_type, window.user_id);
+					                }else{
+					                	schedule_alert('Fail to update a schedule. Review your inputs and try again.', 0);
+					                }
+					            }
+					        });
+				    }
                 });
+
+            	$( ".single-event" ).resizable({
+            		containment: "parent",
+            		handles: "n, s",
+            		stop: function(){
+
+            			var offset = $(this).offset();
+				            var offset1 = $(this).parent().offset();
+				            var offset2 = $('.events').offset();
+				           	
+				           	var date_index = Math.floor((offset.left - offset2.left)/$(this).width());
+				           	if ($('#select_schedule_date').val().substr(7,1) == '-') {
+				           		var date = $('#select_schedule_date').val().substr(0,8) + $('.top-info h3').eq(date_index).html();
+				           	}else{
+				           		var date = $('#select_schedule_date').val().substr(0,7) + $('.top-info h3').eq(date_index).html();
+				           	}
+
+				           	var start_time_index = Math.floor((offset.top - offset1.top)/$('.timeline ul li').height());
+				           	var start_time = $('.timeline ul li span').eq(start_time_index).html();
+				           	var start_mod = (offset.top - $('.timeline ul li').eq(start_time_index).offset().top)/$('.timeline ul li').height();
+
+				           	var end_time_index = Math.floor((offset.top + $(this).height() - offset1.top)/$('.timeline ul li').height());
+				           	var end_time = $('.timeline ul li span').eq(end_time_index).html();
+				           	var end_mod = (offset.top - $('.timeline ul li').eq(end_time_index).offset().top)/$('.timeline ul li').height();
+
+				           	start_time = precise_time(start_time, start_mod);
+				           	end_time = precise_time(end_time, end_mod);
+
+				           	var data = { 
+								sd_date: date,
+								sd_start_time: start_time,
+								sd_end_time: end_time
+							};
+							$.ajax({
+					            url: window.base_url+"schedule/update/"+ $(this).attr('data-id') + '/2',
+					            type: 'post',
+					            data: data,
+					            success: function(result){
+					            	if(result == 'success'){
+					                	// schedule_alert('A schedule was successfully updated.', 1);
+					                	load_schedule(window.user_type, window.user_id);
+					                }else{
+					                	schedule_alert('Fail to update a schedule. Review your inputs and try again.', 0);
+					                }
+					            }
+					        });
+
+            		}
+            	});
+
                 var schedules = $('.cd-schedule');
                 var objSchedulesPlan = [];           
                 if( schedules.length > 0 ) {
@@ -411,6 +499,22 @@ jQuery(document).ready(function($){
                 }
             }
         });
+
+
+	}
+
+	function precise_time(time, mod){
+		if ( (parseFloat(mod) >= 0.4) && (parseFloat(mod) <= 0.7) ) {
+
+       		if(time.substr(3,2) == '00'){
+       			time = time.replace("00", "15");
+       		}
+
+       		if(time.substr(3,2) == '30'){
+       			time = time.replace("30", "45");
+       		}
+       	}
+       	return time;
 	}
 
 	function day_format(date){

@@ -96,12 +96,26 @@ $(document).ready(function()
         });
     });
 
+    $("a.next-button.approve-button").on('click', function(){
+        var document_id = $(this).attr('data-id');
+        $.ajax({
+            url: window.base_url+"document/update/"+document_id+'/2',
+            type: 'post',
+            success: function(result){
+                if(result == 'success'){
+                    location.reload();
+                }else{
+                    alert('Failed to delete document...');
+                }
+            }
+        });
+    });
+
     $(".family-last").on('click', function(){
         alert('ghost');
     });
 
     
-     
         var options = { 
             beforeSend: function() 
             {

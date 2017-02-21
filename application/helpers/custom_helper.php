@@ -45,3 +45,32 @@
 		return $age;
 	}
 
+    function _gen_pdf($html, $name, $paper='A4')
+    {
+        $this->load->library('mpdf60/mpdf');        
+        $mpdf=new mPDF('utf-8',$paper);
+        $mpdf->SetHTMLHeader($html[0]);
+        $mpdf->AddPage('', '', '', '', '', 10, 10, 50, 10, 10, 0); 
+        $mpdf->WriteHTML($html[1]);
+        $filename= "files/$name";                   
+        $mpdf->Output($filename, 'F');
+    }
+
+    function upload() {
+        if (!empty($_FILES)) {
+
+            $tempFile = $_FILES["file"]['tmp_name'];
+            $fileName = $_FILES["file"]['name'];
+            $targetPath = 'files/photos/';
+            $targetFile = $targetPath . $fileName ;
+            if(move_uploaded_file($tempFile, $targetFile)){
+                return true;
+            }else{
+                return false;
+            }
+
+        }else{
+            return false;
+        }
+    }
+

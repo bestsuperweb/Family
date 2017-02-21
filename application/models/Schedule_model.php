@@ -30,9 +30,11 @@ class Schedule_model extends CI_Model {
                 
         }
 
-        public function update_schedule($id)
+        public function update_schedule($id, $mod)
         {
-                $data = array(
+                switch ($mod) {
+                    case 1:
+                        $data = array(
                                 'schedule_date' => $this->input->post('sd_date'),
                                 'start_time'    => $this->input->post('sd_start_time'),
                                 'end_time'      => $this->input->post('sd_end_time'),
@@ -40,6 +42,27 @@ class Schedule_model extends CI_Model {
                                 'content'       => $this->input->post('sd_content'),
                                 'schedule_type' => $this->input->post('sd_type')
                         );
+                        break;
+                    case 2:
+                        $data = array(
+                                'schedule_date' => $this->input->post('sd_date'),
+                                'start_time'    => $this->input->post('sd_start_time'),
+                                'end_time'      => $this->input->post('sd_end_time')
+                        );
+                        break;
+                    
+                    default:
+                        $data = array(
+                                'schedule_date' => $this->input->post('sd_date'),
+                                'start_time'    => $this->input->post('sd_start_time'),
+                                'end_time'      => $this->input->post('sd_end_time'),
+                                'title'         => $this->input->post('sd_title'),
+                                'content'       => $this->input->post('sd_content'),
+                                'schedule_type' => $this->input->post('sd_type')
+                        );
+                        break;
+                }
+                
                 $result = $this->db->update('schedules', $data, array('id' => $id));
                 return $result;
         }

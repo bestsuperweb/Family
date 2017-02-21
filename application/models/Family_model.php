@@ -15,7 +15,8 @@ class Family_model extends CI_Model {
                                 'postal_code'   => $this->input->post('fa_zipcode'),
                                 'house_number'  => $this->input->post('fa_housenumber'),
                                 'street'        => $this->input->post('fa_street'),
-                                'place'         => $this->input->post('fa_place')
+                                'place'         => $this->input->post('fa_place'),
+                                'status'        => '1. intake'
                         );
                 $query = $this->db->get_where('families', array('contact_email' => $this->input->post('fa_email')));
 
@@ -87,6 +88,16 @@ class Family_model extends CI_Model {
                                         'overview' => $this->input->post('fa_overview')
                                         );
                                 break;
+                        case 5:
+                                $data = array(
+                                        'overview'    => $this->input->post('fa_overview')
+                                        );
+                                break;
+                        case 6:
+                                $data = array(
+                                        'photo'    => $_FILES["file"]['name']
+                                        );
+                                break;
                         
                         default:
                                 $data = array(
@@ -117,6 +128,11 @@ class Family_model extends CI_Model {
                 $query = $this->db->get_where('families', array('id' => $family_id));
 
                 return $query->row_array();
+        }
+
+        public function get_all_families(){
+                $query = $this->db->get('families');
+                return $query->result_array();
         }
 
         public function delete_family($family_id)

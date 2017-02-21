@@ -28,26 +28,23 @@ class Document_model extends CI_Model {
 
         }
 
-        public function update_document($step = 1, $document_id){
+        public function update_document($document_id, $step = 1){
 
         	switch ($step) {
         		case 1:
         			$data = array(
                             'name'          => $this->input->post('doc_name'),
                             'uploader'      => $this->input->post('doc_uploader'),
-                            'upload_date'   => $this->input->post('doc_upload_date'),
-                            'approved_date' => $this->input->post('doc_approved_date'),
-                            'status'        =>  'normal'
+                            'upload_date'   => date("Y-m-d"),
+                            'approved_date' => ' ',
+                            'status'        =>  'reivew'
                         );
         			break;
         		case 2:
                    
         			$data = array(
-                            'name'          => $this->input->post('doc_name'),
-                            'uploader'      => $this->input->post('doc_uploader'),
-                            'upload_date'   => $this->input->post('doc_upload_date'),
-                            'approved_date' => $this->input->post('doc_approved_date'),
-                            'status'        =>  'normal'
+                            'approved_date' => date("Y-m-d"),
+                            'status'        => 'approved'
                         );
         			break;
         		

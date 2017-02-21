@@ -94,6 +94,7 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['aupairs'] = $this->aupair_model->get_all_aupairs();
                     break;
 
                 case 'aupair':
@@ -113,13 +114,19 @@ class Index extends CI_Controller {
         $this->load->view('templates/footer');	
     }
 
-    public function profile($tab = 1){
+    public function profile($tab = 1, $user_data=0){
     	$data['title']     = "Profile";
     	$data['tab']       = $tab;
 
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
-
+        $data['param']     = '';
+        if($data['user_type'] == 'HBN'){
+            $user = unserialize(urldecode($user_data));
+            $data['user_type'] = $user[0];
+            $data['user_id']   = $user[1];
+            $data['param']     = $user_data;
+        }
         if ($data['user_id']) {
 
             switch ($data['user_type']) {
@@ -127,12 +134,12 @@ class Index extends CI_Controller {
                     $data['family']    = $this->family_model->get_family($data['user_id']);
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
                     break;
                 
                 default:
@@ -147,30 +154,35 @@ class Index extends CI_Controller {
             $this->load->view('templates/footer');
 
         }else{
-
-            redirect('families/create');
-
+            redirect('index/home');
         }   	
     }
 
-    public function edit_profile($tab = 1){
+    public function edit_profile($tab = 1, $user_data=0){
         $data['title']      = "Edit Profile";
         $data['tab']        = $tab;
-
+        
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
-        
+        $data['param']     = '';
+
+        if($data['user_type'] == 'HBN'){
+            $user = unserialize(urldecode($user_data));            
+            $data['user_type'] = $user[0];
+            $data['user_id']   = $user[1];
+            $data['param']     = $user_data;
+        }
         switch ($data['user_type']) {
             case 'family':
                 $data['family']    = $this->family_model->get_family($data['user_id']);
                 $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                 $data['kids']      = $this->kid_model->get_kid($data['user_id']);
-                $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));                    
                 break;
 
             case 'aupair':
                 $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
                 break;
             
             default:
@@ -186,10 +198,18 @@ class Index extends CI_Controller {
         
     }
 
-    public function save_profile($tab){
+    public function save_profile($tab, $user_data=0){
 
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
+        $data['param']     = '';
+
+        if($data['user_type'] == 'HBN'){
+            $user = unserialize(urldecode($user_data));            
+            $data['user_type'] = $user[0];
+            $data['user_id']   = $user[1];
+            $data['param']     = $user_data;
+        }
 
         if ( $data['user_type'] == 'family' ){
 
@@ -204,43 +224,61 @@ class Index extends CI_Controller {
                             $this->family_model->update_family(4, $data['user_id']);
                             $this->parent_model->update_parent(2, $data['user_id']);
                             $this->kid_model->update_kid(2, $data['user_id']);
-                            redirect('index/profile/1');
+                            redirect('index/profile/1/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/1');
+                            redirect('index/edit_profile/1/'.$data['param']);
                         }         
                         break;
 
                     case 2:
+                        $this->form_validation->set_rules('fa_kids', 'Number of childs', 'trim|required');
+                        $this->form_validation->set_rules('fa_k1_name', 'Name of child', 'trim|required');
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->family_model->update_family(1, $data['user_id']);
                             $this->parent_model->update_parent(1, $data['user_id']);
                             $this->kid_model->update_kid(1);
-                            redirect('index/profile/2');
+                            redirect('index/profile/2/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/2');
+                            redirect('index/edit_profile/2/'.$data['param']);
                         } 
                         break;
 
                     case 3:
+                        $this->form_validation->set_rules('fa_aupair_from', 'Family Date from', 'trim|required');
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->family_model->update_family(2, $data['user_id']);
-                            redirect('index/profile/3');
+                            redirect('index/profile/3/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/3');
+                            redirect('index/edit_profile/3/'.$data['param']);
                         } 
                         break;
 
                     case 4:
+                        $this->form_validation->set_rules('fa_overview', 'Text Box', 'trim|required');
                         if ($this->form_validation->run() === TRUE)
                         {
-                            redirect('index/profile/4');
+                            $this->family_model->update_family(5, $data['user_id']);
+                            redirect('index/profile/1/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/4');
+                            redirect('index/roadmap_profile/1/'.$data['param']);
                         } 
                         break;
-                    
+                    case 5:
+                        if (upload())
+                        {
+                            if($this->family_model->update_family(6, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+
                     default:
                         
                         break;
@@ -254,9 +292,9 @@ class Index extends CI_Controller {
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->aupair_model->update_aupair(1, $data['user_id']);
-                            redirect('index/profile/1');
+                            redirect('index/profile/1/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/1');
+                            redirect('index/edit_profile/1/'.$data['param']);
                         }         
                         break;
 
@@ -265,9 +303,9 @@ class Index extends CI_Controller {
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->aupair_model->update_aupair(2, $data['user_id']);
-                            redirect('index/profile/2');
+                            redirect('index/profile/2/'.$data['param']);
                         }else{
-                            redirect('index/edit_profile/2');
+                            redirect('index/edit_profile/2/'.$data['param']);
                         } 
                         break;         
                     
@@ -290,12 +328,12 @@ class Index extends CI_Controller {
                     $data['family']    = $this->family_model->get_family($data['user_id']);
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
                     break;
                 
                 default:
@@ -311,11 +349,37 @@ class Index extends CI_Controller {
     }
 
     public function families(){
-        
+        $data['title'] = "Families";
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
+        $data['families'] = $this->family_model->get_all_families();
+        foreach ($data['families'] as $key => $family) {
+            $parents = $this->parent_model->get_parent($family['id']);
+            $family_name =$parents[0]['lastname'];
+            $data['families'][$key]['name'] = $family_name;
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('index/families', $data);
+        $this->load->view('templates/footer');        
     }
 
     public function aupairs(){
-        
+        $data['title'] = "Aupairs";
+        $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
+        $data['user_id']   = $this->aauth->get_user()->name;
+        $data['aupairs'] = $this->aupair_model->get_all_aupairs();
+        foreach ($data['aupairs'] as $key => $aupair) {
+            $user_id = $this->aauth->get_user_id($aupair['email']);
+            $documents = $this->document_model->get_document($user_id);
+            $data['aupairs'][$key]['document_name'] = $documents[0]['name'];
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('index/aupairs', $data);
+        $this->load->view('templates/footer');
     }
 
 }

@@ -109,6 +109,12 @@
 		      <div class="cd-schedule loading">
 				<div class="timeline">
 					<ul>
+						<li><span>06:00</span></li>
+						<li><span>06:30</span></li>
+						<li><span>07:00</span></li>
+						<li><span>07:30</span></li>
+						<li><span>08:00</span></li>
+						<li><span>08:30</span></li>
 						<li><span>09:00</span></li>
 						<li><span>09:30</span></li>
 						<li><span>10:00</span></li>
@@ -128,6 +134,18 @@
 						<li><span>17:00</span></li>
 						<li><span>17:30</span></li>
 						<li><span>18:00</span></li>
+						<li><span>18:30</span></li>
+						<li><span>19:00</span></li>
+						<li><span>19:30</span></li>
+						<li><span>20:00</span></li>
+						<li><span>20:30</span></li>
+						<li><span>21:00</span></li>
+						<li><span>21:30</span></li>
+						<li><span>22:00</span></li>
+						<li><span>22:30</span></li>
+						<li><span>23:00</span></li>
+						<li><span>23:30</span></li>
+						<li><span>24:00</span></li>
 					</ul>
 				</div> <!-- .timeline -->
 
@@ -301,6 +319,7 @@
 		    <div id="collapse2" class="panel-collapse collapse">
 		      <div class="panel-body">
 		      	<div class="row">
+		      	<form action="<?= base_url('index/save_profile/4') ?>" method="POST">
 		      		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 		      			<p>TO DO: Een korte "Dear au pair letter" schrijven, <b>zie opzet;</b> dit is niet verplicht maar kan een leuk persoonlijk gevoel geven richting de au pair.</p>
 						Dear Au Pair,<br>
@@ -310,14 +329,15 @@
 						- Waarom willen jullie een au pair;<br>
 						- Wat verwachten jullie van jullie (toekomstige) au pair; - Iets leuks over Nederland, plek waar jullie wonen etc</b><br>
 
-						<div><a class="btn next-button">INDIENEN</a></div>
+						<div><input type="submit" class="btn next-button" value="INDIENEN" ></div>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-		      			<textarea class="form-control" rows="10">
+		      			<textarea class="form-control" rows="10" name="fa_overview">
 		      				
 		      			</textarea>
 		      		</div>
 		      	</div>
+		      	</form>
 		      </div>
 		    </div>
 		  </div>
@@ -343,10 +363,9 @@
 						<div><a class="btn next-button">INDIENEN</a></div>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-		      			<form action = "<?= base_url() ?>" class="dropzone dz-clickable" >
+		      			<form action = "<?= base_url('index/save_profile/5') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>
-		      			<!-- <input type="file" multiple="multiple" class="dz-hidden-input" > -->
 		      		</div>
 		      	</div>
 		      </div>
@@ -558,6 +577,8 @@
 					In het eventuele 2de Skypegesprek is het natuurlijk goed en leuk om te zien hoe zij/hij op de kinderen reageert en hoe de kinderen op haar/hem reageren (als ze niet te jong zijn, hier niet te veel van verwachten). Ook is het dan goed om de verwachtingen wederzijds te peilen door het weekschema en andere verwachtingen door te nemen aangezien hier goede consensus over moet bestaan.<br><br>
 					Aangezien de au pair een jaar bij jullie zal verblijven en in huis woont is het belangrijk dat er een goede klik is en dat de verwachtingen grotendeels op een lijn liggen. HBN kan hier veel voorwerk in verrichten maar alleen jullie als familie kunnen hierover beslissen.<br>
 					Het is wel goed te beseffen dat het uiteindelijke slagen van het au pair programma investering van beide partijen vergt.</p><br>
+					<form action="<?= base_url('families/send_skype/') ?>" method="POST" >
+					<input type="hidden" name="sk_fa_id" value="<?= $family['id'] ?>">
 					<img src="<?= base_url('assets/img/skype.png') ?>" class='skype-img' />						
 					<div class="row skype-panel">
 						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -567,11 +588,10 @@
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 									<div class="form-control custom-select">
-			    						<select name="">
-										    <option>aupair-1</option>
-										    <option>aupair-2</option>
-										    <option>aupair-3</option>
-										    <option>aupair-4</option>
+			    						<select name="sk_ap_id">
+			    						<?php foreach ($aupairs as $key => $aupair) { ?>
+			    							<option value = "<?= $aupair['id'] ?>" ><?= $aupair['full_name'] ?></option>
+			    						<?php } ?>
 									  	</select>
 			    					</div>
 								</div>
@@ -582,7 +602,7 @@
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 									<div class="input-group date schedule-date">
-					        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
+					        	  	<input type="text" name="sk_start_date" class="form-control" autocomplete='off'>
 					        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					        	  	</div>
 					        	</div>
@@ -593,7 +613,7 @@
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 									<div class="input-group date schedule-time" >
-				    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
+				    				<input type="text" class="form-control"  name="sk_start_time" autocomplete='off'>
 				    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				    				</div>
 								</div>
@@ -604,7 +624,7 @@
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 									<div class="input-group date schedule-date">
-					        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
+					        	  	<input type="text" name="sk_end_date" class="form-control" autocomplete='off'>
 					        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					        	  	</div>
 								</div>
@@ -615,7 +635,7 @@
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 									<div class="input-group date schedule-time" >
-				    				<input type="text" class="form-control"  name="sd_start_time" autocomplete='off'>
+				    				<input type="text" class="form-control"  name="sk_start_time" autocomplete='off'>
 				    				<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 				    				</div>
 								</div>
@@ -623,12 +643,13 @@
 						</div>	
 						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 							<label>Personal Message:</label>
-							<textarea class="form-control" rows="10">
+							<textarea class="form-control" rows="10" name="sk_content">
 								
 							</textarea>
 						</div>						
 					</div>
-					<a href="" class="btn next-button">VERSTUREN</a>
+					<input type="submit" class="btn next-button" value="VERSTUREN" >
+					</form>
 		    	</div>
 		  	</div>
 		  </div>

@@ -80,7 +80,7 @@
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img"> 1. Weekly timeschedule IND</a>
 		        <span class="collapse-right">
-		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
@@ -129,7 +129,7 @@
 					</ul>
 				</div> <!-- .timeline -->
 
-				<div class="events">
+				<div class="events" id=>
 					
 				</div>
 				<div class="event-modal">
@@ -292,7 +292,7 @@
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 2. Dear au-pair letter</a>
 		        <span class="collapse-right">
-		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
@@ -310,7 +310,7 @@
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
 		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 3. Fotos familie</a>
 		        <span class="collapse-right">
-		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE JONG
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>

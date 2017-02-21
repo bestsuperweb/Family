@@ -40,7 +40,8 @@ class Aupair_model extends CI_Model {
                             'disclaimer_service_fee'	=> $this->input->post('ap_disclaimer_service_fee'),
                             'place'  					=> $this->input->post('ap_place'),
                             'ap_date'        			=> $this->input->post('ap_date'),
-                            'dislaimer_terms_conditions'=> $this->input->post('ap_dislaimer_terms_conditions')
+                            'dislaimer_terms_conditions'=> $this->input->post('ap_dislaimer_terms_conditions'),
+                            'status'                    => '1. intake'
                         );
                 $query = $this->db->get_where('aupairs', array('email' => $this->input->post('ap_email')));
 
@@ -131,6 +132,11 @@ class Aupair_model extends CI_Model {
             $query = $this->db->get_where('aupairs', array('id' => $aupair_id));
 
             return $query->row_array();
+        }
+
+        public function get_all_aupairs(){
+            $query = $this->db->get('aupairs');
+            return $query->result_array();
         }
 
         public function delete_aupair($aupair_id){

@@ -137,6 +137,24 @@ class Families extends CI_Controller {
 		$this->session->unset_userdata($array_items);    	
 
     	redirect('session_controller/log_in');		
+    }
+
+    function send_skype(){
+    	$this->load->model('aupair_model');
+    	$this->load->library('email');
+    	$parents = $this->parent_model->get_parent($this->input->post('sk_fa_id'));
+    	$aupair = $this->aupair_model->get_aupair($this->input->post('sk_ap_id'));
+    	$message = "Dear $aupair[full_name],<br> The ".$parents[0]['lastname']." family would love to plan a Skype call with you. They've includd the following message:<br> \"".$this->input->post('sk_content')."\" <br> The family suggests teh following dates and times:".$this->input->post('sk_start_date')." ".$this->input->post('sk_start_time')." ~ ".$this->input->post('sk_end_date')." ".$this->input->post('sk_end_time')."<br> Please let the family know the date and time you prefer by replying to this email.<br> Kind regards,<br> HBN The Netherlands";
+
+		
+		$this->email->from('hbn@example.com');
+		$this->email->reply_to($parents[0]['email']);
+		$this->email->to($aupair['email']);
+		$this->email->subject('Dear '.$aupair['full_name']);
+		$this->email->message($message);
+		if($this->email->send()){
+			redirect(base_url('index/roadmap_profile/3'));
+		}
     }	
 
 }
