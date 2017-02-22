@@ -205,8 +205,8 @@ a.add-btn:hover{
     width: 100%;
   }
   .cd-schedule .events .events-group {
-    /*width: 14.28%;*/
-    width: 16.65%;
+    width: 14.28%;
+    /*width: 16.65%;*/
     float: left;
     border: 1px solid #EAEAEA;
     /* reset style */
