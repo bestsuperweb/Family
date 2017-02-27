@@ -82,18 +82,22 @@ $(document).ready(function()
     });
 
     $("a.next-button.delete-button").on('click', function(){
-        var document_id = $(this).attr('data-id');
-        $.ajax({
-            url: window.base_url+"document/delete/"+document_id,
-            type: 'post',
-            success: function(result){
-                if(result == 'success'){
-                    location.reload();
-                }else{
-                    alert('Failed to delete document...');
+        var r = confirm("Are you sure to delete?");
+        if (r == true) {
+            var document_id = $(this).attr('data-id');
+            $.ajax({
+                url: window.base_url+"document/delete/"+document_id,
+                type: 'post',
+                success: function(result){
+                    if(result == 'success'){
+                        location.reload();
+                    }else{
+                        alert('Failed to delete document...');
+                    }
                 }
-            }
-        });
+            });
+        }
+        
     });
 
     $("a.next-button.approve-button").on('click', function(){

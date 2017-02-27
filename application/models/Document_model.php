@@ -59,12 +59,22 @@ class Document_model extends CI_Model {
 
         }
 
+        public function new_version($document_id, $file_name){
+            $data = array(
+                'name'   => $file_name,
+                'status' => 'review'
+                );
+            $result = $this->db->update('documents', $data, array('id' => $document_id));
+            return $result;
+        }
+
         public function upgrade_document($document_id, $file_name, $uploader, $user_id){
             $data = array(
                             'name'          => $file_name,
                             'uploader'      => $uploader,
                             'upload_date'   => date("Y-m-d"),
-                            'user_id'       => $user_id
+                            'user_id'       => $user_id,
+                            'status'        => 'review'
                         );
             
             $result = $this->db->update('documents', $data, array('id' => $document_id));
@@ -75,6 +85,11 @@ class Document_model extends CI_Model {
         public function get_document($user_id){
             $query = $this->db->get_where('documents', array('user_id' => $user_id));
             return $query->result_array();
+        }
+
+        public function get_document_by_id($document_id){
+            $query = $this->db->get_where('documents', array('id' => $document_id));
+            return $query->row_array();
         }
 
         public function delete_document($document_id){

@@ -411,7 +411,7 @@
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
                   <a href="<?= base_url('files/'.$document['name']) ?>"  target="_blank" class="btn next-button">DOWNLOAD</a>
-                  <a href="#" class="btn next-button">NEW VERSION</a>
+                  <a href="#" class="btn next-button" data-toggle="modal" data-target="#newVersionDocModal<?= $document['id']?>">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
                   <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
                     <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">APPROVE</a>
@@ -420,6 +420,42 @@
               </div>
             </div>
 
+            <div id="newVersionDocModal<?= $document['id']?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Version Document</h4>
+                  </div>
+                  <form class="uploadForm" action="<?= base_url('document/update/'.$document['id'].'/3') ?>" method="post" enctype="multipart/form-data">  
+                    <div class="modal-body">
+                      <div class="alert alert-success upload-success">
+                        <strong>Success!</strong> The document was successfully uploaded.
+                      </div>
+                      <div class="alert alert-danger upload-error">
+                        <strong>Opp!</strong> There are some errors to upload the document.
+                      </div>
+                      <div class="form-group">
+                        <label>Docuemnt File:</label>
+                        <input type="file" name="doc_file" autocomplete='off'>
+                      </div>
+                      <div class="progress upload-progress">
+                        <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn">Add document</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+            
            <?php 
               } 
              }else{
@@ -700,3 +736,4 @@
 
   </div>
 </div>
+

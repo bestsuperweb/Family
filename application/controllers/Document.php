@@ -67,11 +67,41 @@ class Document extends CI_Controller {
     }
 
     public function update($id, $step = 1){
-        if($this->document_model->update_document($id, $step)){
-            echo 'success';
+        if ($step == 3) {
+            $config['upload_path'] = 'files/';
+            $config['allowed_types'] = 'gif|jpg|png|doc|txt|pdf';
+            $config['max_size'] = 1024 * 8;
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $document = $this->document_model->get_document_by_id($id);
+
+            if (!$this->upload->do_upload('doc_file'))
+            {
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            }
+            else
+            {
+                $data = $this->upload->data();
+                if($this->document_model->new_version($id, $data['file_name']))
+                {
+                    unlink('files/'.$document['name']);
+                    echo "success";
+                }
+                else
+                {
+                    unlink($data['full_path']);
+                    $status = "error";
+                }
+            }
         }else{
-            echo "failure";
-        }
+            if($this->document_model->update_document($id, $step)){
+                echo 'success';
+            }else{
+                echo "failure";
+            }
+        }        
     }
 
     public function get($user_id){
