@@ -1,15 +1,15 @@
 <ul>
 	<?php
 	
-	$dates = get_dates($date);
+	$dates = get_dates();
 
-	foreach ($dates['day'] as $key => $day) { ?>
+	foreach ($dates as $key => $day) { ?>
 		<li class="events-group">
-			<div class="top-info"><span><?php echo $key; ?></span><h3><?php echo $day; ?></h3></div>
+			<div class="top-info"><!-- <span><?php echo $key; ?></span> --><h3><?php echo $day; ?></h3></div>
 
 			<ul>
 			<?php foreach ($schedules as $k => $schedule) { 
-				if($schedule['schedule_date'] == $dates['date'][$key]) {
+				if($schedule['schedule_date'] == $day) {
 				?>
 				<li  class="single-event"
 					 data-start="<?php echo substr($schedule['start_time'],0, 5); ?>" 

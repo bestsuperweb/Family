@@ -130,8 +130,8 @@ class Family_model extends CI_Model {
                 return $query->row_array();
         }
 
-        public function get_all_families(){
-                $query = $this->db->get('families');
+        public function get_all_families($sort = 'id', $sort_direction = 'asc'){
+                $query = $this->db->order_by("$sort $sort_direction")->get('families');
                 return $query->result_array();
         }
 

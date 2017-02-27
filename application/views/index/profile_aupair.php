@@ -31,30 +31,30 @@
     <div class="container-fluid">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
-          <a href="#general" data-toggle="tab" aria-controls="general">
+          <a href="<?= base_url('index/profile/1/'.$param)?>" >
             <span class="text">General</span>
           </a>
         </li>
         <li role="presentation" class="next <?php echo $li_class['second']; ?>">
-          <a href="#experience" role="tab" data-toggle="tab" aria-controls="experience">
+          <a href="<?= base_url('index/profile/2/'.$param)?>" >
             <span class="text">Experience</span>
           </a>
         </li>
         <?php if($this->aauth->is_member(6)){ ?>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
-          <a href="#interview" role="tab" data-toggle="tab" aria-controls="interview">
+          <a href="<?= base_url('index/profile/4/'.$param)?>" >
             <span class="text">Interview & Tests</span>
           </a>
         </li>
        <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
-          <a href="#document" role="tab" data-toggle="tab" aria-controls="document">
+          <a href="<?= base_url('index/profile/3/'.$param)?>" >
             <span class="text">Document</span>
           </a>
         </li>
         <?php if($this->aauth->is_member(6)){ ?>
         <li role="presentation" class="<?php echo $li_class['fifth']; ?>">
-          <a href="#report" role="tab" data-toggle="tab" aria-controls="report">
+          <a href="<?= base_url('index/profile/5/'.$param)?>" >
             <span class="text">Report</span>
           </a>
         </li>
@@ -175,6 +175,9 @@
               </div>
               <div class="row"><p class="profile-description"><?php echo $aupair['overview']; ?></p></div>
             </div>
+          </div>
+          <div>
+            <a href="<?= base_url('index/profile/2/').$param ?>" class="btn next-button"> Experience </a>
           </div>
         </div>
 
@@ -334,7 +337,7 @@
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
-                  <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>" target="_blank" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
                   <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
@@ -805,7 +808,7 @@
         <h4 class="modal-title">Add Document</h4>
       </div>
       <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">          
+        <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">          
         <div class="modal-body">
           <div class="alert alert-success upload-success">
             <strong>Success!</strong> The document was successfully uploaded.

@@ -139,6 +139,7 @@ a.add-btn:hover{
 .cd-schedule .events .top-info {
   width: 100%;
   padding: 0 5%;
+  text-align: center;
 }
 
 .cd-schedule .events .top-info > span {

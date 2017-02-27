@@ -134,8 +134,8 @@ class Aupair_model extends CI_Model {
             return $query->row_array();
         }
 
-        public function get_all_aupairs(){
-            $query = $this->db->get('aupairs');
+        public function get_all_aupairs($search = '', $sort = 'id', $sort_direction = 'asc'){
+            $query = $this->db->like('full_name', $search)->order_by("$sort $sort_direction")->get('aupairs');
             return $query->result_array();
         }
 

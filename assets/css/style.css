@@ -562,6 +562,15 @@
 .profile-tab-content{
     margin-top: 80px;
 }
+.profile-tab-content .row .col-xs-12.col-sm-12.col-md-6.col-lg-5, 
+.profile-tab-content .row .col-xs-12.col-sm-5.col-md-5.col-lg-5,
+.profile-tab-content .row .col-xs-6.col-sm-6.col-md-6.col-lg-6,
+.profile-tab-content .row .col-xs-12.col-sm-4.col-md-4.col-lg-4{
+    font-weight: bold;
+}
+.profile-tab-content .row{
+    margin-bottom: 15px;
+}
 .profile-tab-content h4.kid-name{
     padding-top: 20%;
 }
@@ -638,6 +647,12 @@
 .profile-document .panel-heading a{
     color: #fff;
 }
+.profile-document-heading input{
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
 .profile-document-heading div{
     padding: 10px 10px;
     border-radius: 3px !important;
@@ -663,6 +678,9 @@
 }
 .next-button.delete-button, .next-button.review-button{
     background-color: #f7931e;
+}
+.next-button.delete-button:hover{
+    background-color: red;
 }
 .next-button.approved-button, .next-button.review-button{
     background-image: url('../img/check.png');

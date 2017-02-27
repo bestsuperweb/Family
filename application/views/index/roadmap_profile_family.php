@@ -91,7 +91,7 @@
 			  Daarbij is het voor de nieuwe au pair belangrijk alvast te weten wat het weekschema en haar taken zullen zijn. Op deze manier weet ze wat ze kan verwachten en is ze daar goed op voorbereid. Natuurlijk kan dit ook nog wel veranderen. Het is vooral belangrijk dat jullie toekomstige au pair hier zo specifiek mogelijk over wordt geïnformeerd en dat er het hele jaar een goede consensus over bestaat. Daarbij is het belangrijk dat jullie HBN het gehele jaar informeren over structurele verandering in dit schema. Indien gedurende het jaar structurele veranderingen worden aangebracht in het weekschema dient deze opnieuw gedateerd en gesigneerd te worden door host- familie en au pair.<br><br>
 			  <b>TO DO:</b> Graag Weekly timeschedule template invullen/aanpassen. Dit weekschema moet voor de VISA aanvraag gedateerd en ondertekend worden door jullie als Host Familie en door jullie au pair.<br><br>
 			  Hierin kan de familie een duidelijk overzicht van de dag/weekindeling voor de au pair geven. Het is belangrijk om te laten zien wie er met de kinderen is op elk uur van de dag wanneer de au pair niet wordt ingezet en wie er als back up fungeert als de au pair wel wordt ingezet. Er mag geen afhankelijkheid zijn van de au pair. Het is ook belangrijk te laten zien wat haar taken zijn. Het totaal aantal uren mag maximaal uitkomen op 30 (wordt automatisch berekend). Het maximum aantal uur per dag mag uitkomen op 8. De au pair mag maximaal 5 dagen per week ingezet worden. De huishoudelijke werkzaamheden worden apart aangegeven maar zijn onderdeel van het totaal aantal uren (niet meer dan 30%). De uren moeten specifiek worden opgeschreven (bijv. 08:00-09:00 = 1 uur en 14:30-19:45 = 5,25 uur). Babysit uren in de avond zijn onderdeel van de 30 maximum uren per week en 8 uur per dag.<br><br>
-			  <div class="profile-edit row" >
+			  <!-- <div class="profile-edit row" >
 			  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
 			  		<div class="input-group date">
 					<input type="text" class="form-control" id = "select_schedule_date">
@@ -99,7 +99,7 @@
 					</div>
 					<span id="posX"></span><span id="posY"></span>	
 			  	</div>			  	
-			  </div>
+			  </div> -->
 		      <div class="alert alert-success">
 		       <strong>Success!</strong> <span></span>
 			  </div>
@@ -192,10 +192,18 @@
 			        </div>
 			        <div class="modal-body">
 			        	  <div class="form-group">
-			        	  	<div class="input-group date schedule-date">
-			        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
-			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-			        	  	</div>			        	  	
+			        	  	<label>Select Dates:</label>
+			        	  	<div class="form-control custom-select">
+	    						<select name="sd_date">
+								    <option>Mon</option>
+								    <option>Tue</option>
+								    <option>Wed</option>
+								    <option>Thu</option>
+								    <option>Fri</option>
+								    <option>Sat</option>
+								    <option>Sun</option>
+							  	</select>
+	    					</div>			        	  	
 			        	  </div>
 			        	  <div class="form-group">
 						    <label>Start Time:</label>
@@ -254,10 +262,18 @@
 			        <div class="modal-body">
 			        <input type="hidden" name="sd_id">
 			        	  <div class="form-group">
-			        	  	<div class="input-group date schedule-date">
-			        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
-			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-			        	  	</div>			        	  	
+			        	  	<label>Select Dates:</label>
+			        	  	<div class="form-control custom-select">
+	    						<select name="sd_date">
+								    <option>Mon</option>
+								    <option>Tue</option>
+								    <option>Wed</option>
+								    <option>Thu</option>
+								    <option>Fri</option>
+								    <option>Sat</option>
+								    <option>Sun</option>
+							  	</select>
+	    					</div>			        	  	
 			        	  </div>
 			        	  <div class="form-group">
 						    <label>Start Time:</label>
@@ -332,9 +348,7 @@
 						<div><input type="submit" class="btn next-button" value="INDIENEN" ></div>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-		      			<textarea class="form-control" rows="10" name="fa_overview">
-		      				
-		      			</textarea>
+		      			<textarea class="form-control" rows="10" name="fa_overview"></textarea>
 		      		</div>
 		      	</div>
 		      	</form>
@@ -398,10 +412,9 @@
 					Keuze main income:
 					<div class="form-control custom-select">
 						<select name="">
-						    <option>Loondienst</option>
-						    <option>Zelfstandig ondernemer</option>
-						    <option>DGA</option>
-						    <option>Eigen vermogen</option>						    
+						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse1" >Loondienst</option>
+						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse2" >Zelfstandig ondernemer</option>
+						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse3" >DGA</option>				    
 					  	</select>
 					</div>
 				</div>
@@ -487,7 +500,7 @@
 										echo base_url('files/'.$document['name']);
 									}
 								}
-								?>" class="btn next-button">DOWNLOAD</a><br>
+								?>" target="_blank" class="btn next-button">DOWNLOAD</a><br>
 							</div>
 							<form action = "<?= base_url('document/upload_document/4') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
@@ -553,7 +566,7 @@
 										echo base_url('files/'.$document['name']);
 									}
 								}
-								?>" class="btn next-button">DOWNLOAD</a><br>
+								?>" target="_blank" class="btn next-button">DOWNLOAD</a><br>
 							</div>
 							<form action = "<?= base_url('document/upload_document/8') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
@@ -593,14 +606,14 @@
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+		        <a >
 		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Eigen vermogen </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse4" class="panel-collapse collapse">
+		    <div  class="">
 		      <div class="panel-body">
 		      	<p>Wanneer er voldoende eigen vermogen is; Het fictief vermogen van 4% gedeeld door 12 maanden moet boven de norm uitkomen. Hiervoor zijn de volgende bewijsstukken nodig.</p><br>
 					<div class="row">
@@ -647,9 +660,11 @@
 <!-- start tab3 -->
 	<h1><i><b>3. Matching</b></i></h1>
 	    <div class="row">
-	    	<p>Nu het familie profiel is opgemaakt en we meer inzicht hebben in jullie levensstijl, persoonlijkheid en de wensen t.a.v van de nieuwe au pair, gaat HBN op zoek naar de juiste match voor jullie. Huisje Boompje Nanny vindt de ‘klik’ tussen au pair en host-familie erg belangrijk en besteedt daarom veel tijd en aandacht aan deze fase. HBN probeert de au pairs zo veel mogelijk persoonlijk te leren kennen. Vervolgens zullen wij jullie alleen de kandidaten toesturen van wie wij denken dat zij goed bij jullie passen. In eerste instantie zullen dat ongeveer 1 a 2 passende kandidaten zijn, maar het kunnen ook meerdere kandidaten zijn. Het is altijd goed om te skypen want een profiel op papier zegt niet altijd alles.</p><br><br>
-	    	<b>Wanneer jullie gematcht zijn aan één of meerdere au-pairs ontvangen jullie een e-mail. Vervolgens kunnen jullie via ‘Matches’ pagina in het menu de profielen van de au-pairs bekijken.</b>		    	
-	    </div><br><br>	    
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<p>Nu het familie profiel is opgemaakt en we meer inzicht hebben in jullie levensstijl, persoonlijkheid en de wensen t.a.v van de nieuwe au pair, gaat HBN op zoek naar de juiste match voor jullie. Huisje Boompje Nanny vindt de ‘klik’ tussen au pair en host-familie erg belangrijk en besteedt daarom veel tijd en aandacht aan deze fase. HBN probeert de au pairs zo veel mogelijk persoonlijk te leren kennen. Vervolgens zullen wij jullie alleen de kandidaten toesturen van wie wij denken dat zij goed bij jullie passen. In eerste instantie zullen dat ongeveer 1 a 2 passende kandidaten zijn, maar het kunnen ook meerdere kandidaten zijn. Het is altijd goed om te skypen want een profiel op papier zegt niet altijd alles.</p>
+	    	<b>Wanneer jullie gematcht zijn aan één of meerdere au-pairs ontvangen jullie een e-mail. Vervolgens kunnen jullie via ‘Matches’ pagina in het menu de profielen van de au-pairs bekijken.</b>
+	    	</div>	    			    	
+	    </div><br>
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
@@ -735,9 +750,7 @@
 						</div>	
 						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 							<label>Personal Message:</label>
-							<textarea class="form-control" rows="10" name="sk_content">
-								
-							</textarea>
+							<textarea class="form-control" rows="10" name="sk_content"></textarea>
 						</div>						
 					</div>
 					<input type="submit" class="btn next-button" value="VERSTUREN" >
@@ -823,7 +836,7 @@
 										echo base_url('files/'.$document['name']);
 									}
 								}
-								?>" class="btn next-button">DOWNLOADEN</a><br><br>
+								?>"  target="_blank" class="btn next-button">DOWNLOADEN</a><br><br>
 							<b>Upload hieronder de awareness declaration, voorzien van jullie handtekening.</b><br>
 						</div>
 						<form action = "<?= base_url('document/upload_document/16') ?>" class="dropzone dz-clickable" >
@@ -832,15 +845,7 @@
 		      			</form>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-		      			<div class="profile-edit row">
-						  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
-						  		<div class="input-group date">
-								<input type="text" class="form-control" id = "select_schedule_date">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								</div>
-								<span id="posX"></span><span id="posY"></span>	
-						  	</div>			  	
-						  </div>
+		      			
 					      <div class="alert alert-success">
 					       <strong>Success!</strong> <span></span>
 						  </div>
@@ -936,10 +941,18 @@
 						        </div>
 						        <div class="modal-body">
 						        	  <div class="form-group">
-						        	  	<div class="input-group date schedule-date">
-						        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
-						        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-						        	  	</div>			        	  	
+						        	  	<label>Select Dates:</label>
+						        	  	<div class="form-control custom-select">
+				    						<select name="sd_date">
+											    <option>Mon</option>
+											    <option>Tue</option>
+											    <option>Wed</option>
+											    <option>Thu</option>
+											    <option>Fri</option>
+											    <option>Sat</option>
+											    <option>Sun</option>
+										  	</select>
+				    					</div>			        	  	
 						        	  </div>
 						        	  <div class="form-group">
 									    <label>Start Time:</label>
@@ -998,10 +1011,18 @@
 						        <div class="modal-body">
 						        <input type="hidden" name="sd_id">
 						        	  <div class="form-group">
-						        	  	<div class="input-group date schedule-date">
-						        	  	<input type="text" name="sd_date" class="form-control" autocomplete='off'>
-						        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-						        	  	</div>			        	  	
+						        	  	<label>Select Dates:</label>
+						        	  	<div class="form-control custom-select">
+				    						<select name="sd_date">
+											    <option>Mon</option>
+											    <option>Tue</option>
+											    <option>Wed</option>
+											    <option>Thu</option>
+											    <option>Fri</option>
+											    <option>Sat</option>
+											    <option>Sun</option>
+										  	</select>
+				    					</div>			        	  	
 						        	  </div>
 						        	  <div class="form-group">
 									    <label>Start Time:</label>
@@ -1080,7 +1101,7 @@
 				        <span class="collapse-right"><img src="<?php echo base_url('assets/img/users-white.png');?>" > HBN</span>
 				      </h4>
 				    </div>
-				    <div id="collapse1" class="panel-collapse collapse">
+				    <div>
 				     	<div class="panel-body">
 				     		<div class="visa-panel">
 				     			<h3>Aanvraag verzonden</h3>

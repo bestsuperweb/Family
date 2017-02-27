@@ -349,15 +349,56 @@ class Index extends CI_Controller {
     }
 
     public function families(){
+        $data['search'] = isset($_POST['search_key']) ? $_POST['search_key'] : '';
+        $data['sort'] = isset($_POST['sort']) ? $_POST['sort'] : 'id';
+        $data['sort_direction'] = isset($_POST['sort_direction']) ? $_POST['sort_direction'] : 'asc';
+
+
+
         $data['title'] = "Families";
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
-        $data['families'] = $this->family_model->get_all_families();
+        if ($data['sort'] != 'name') {
+            $data['families'] = $this->family_model->get_all_families($data['sort'], $data['sort_direction']);
+        }else{
+            $data['families'] = $this->family_model->get_all_families();
+        }        
         foreach ($data['families'] as $key => $family) {
-            $parents = $this->parent_model->get_parent($family['id']);
-            $family_name =$parents[0]['lastname'];
-            $data['families'][$key]['name'] = $family_name;
+
+            if ($data['search'] == '') {
+
+                $parents = $this->parent_model->get_parent($family['id']);
+                $family_name =$parents[0]['lastname'];
+                $data['families'][$key]['name'] = $family_name;
+
+            }else{
+
+                $parents = $this->parent_model->get_parent($family['id']);
+
+                if ( strpos(strtolower($parents[0]['lastname']), strtolower($data['search'])) === false ) {
+
+                    echo strpos(strtolower($parents[0]['lastname']), strtolower($data['search']));
+                    unset($data['families'][$key]);
+
+                }else{
+
+                    $family_name =$parents[0]['lastname'];
+                    $data['families'][$key]['name'] = $family_name;
+
+                }                
+            }            
         }
+        if ($data['sort'] == 'name') {
+            if ($data['sort_direction'] == 'asc') {
+                $data['families'] = $this->array_orderby($data['families'], 'name', SORT_ASC);            
+            }else{
+                $data['families'] = $this->array_orderby($data['families'], 'name', SORT_DESC);
+            }            
+        }
+
+        $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
+
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/navbar', $data);
@@ -366,20 +407,41 @@ class Index extends CI_Controller {
     }
 
     public function aupairs(){
+        $data['search'] = isset($_POST['search_key']) ? $_POST['search_key'] : '';
+        $data['sort'] = isset($_POST['sort']) ? $_POST['sort'] : 'id';
+        $data['sort_direction'] = isset($_POST['sort_direction']) ? $_POST['sort_direction'] : 'asc';
         $data['title'] = "Aupairs";
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
-        $data['aupairs'] = $this->aupair_model->get_all_aupairs();
-        foreach ($data['aupairs'] as $key => $aupair) {
-            $user_id = $this->aauth->get_user_id($aupair['email']);
-            $documents = $this->document_model->get_document($user_id);
-            $data['aupairs'][$key]['document_name'] = $documents[0]['name'];
-        }
+        $data['aupairs'] = $this->aupair_model->get_all_aupairs($data['search'], $data['sort'], $data['sort_direction']);
+        $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
+        // foreach ($data['aupairs'] as $key => $aupair) {
+        //     $user_id = $this->aauth->get_user_id($aupair['email']);
+        //     $documents = $this->document_model->get_document($user_id);
+        //     $data['aupairs'][$key]['document_name'] = $documents[0]['name'];
+        // }
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/navbar', $data);
         $this->load->view('index/aupairs', $data);
         $this->load->view('templates/footer');
+    }
+
+    private function array_orderby()
+    {
+        $args = func_get_args();
+        $data = array_shift($args);
+        foreach ($args as $n => $field) {
+            if (is_string($field)) {
+                $tmp = array();
+                foreach ($data as $key => $row)
+                    $tmp[$key] = $row[$field];
+                $args[$n] = $tmp;
+                }
+        }
+        $args[] = &$data;
+        call_user_func_array('array_multisort', $args);
+        return array_pop($args);
     }
 
 }

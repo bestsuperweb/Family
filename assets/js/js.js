@@ -43,7 +43,7 @@ $(document).ready(function()
         autoclose: true,
         minuteStep: 15
     });
-    $('.schedule-time').datetimepicker('setHoursDisabled', [0,1,2,3,4,5,6,7,8,19,20,21,22,23]);
+    $('.schedule-time').datetimepicker('setHoursDisabled', [0,1,2,3,4,5]);
 
      if($(window).width() > 768){
         $(".multiple-select").multiselect({
@@ -114,6 +114,11 @@ $(document).ready(function()
     $(".family-last").on('click', function(){
         alert('ghost');
     });
+
+    $('input[name="search_key"][type="text"]').on('keyup', function(){
+        $('input[name="search_key"][type="hidden"]').val($('input[name="search_key"][type="text"]').val());
+    });
+    
 
     
         var options = { 

@@ -119,7 +119,7 @@
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                 <h2><b><i>Hi, we are family of <?php echo $parents[0]['lastname']; ?></i></b></h2></div>          			
           		</div>          		
-          		<textarea name="fa_overview" class="form-control" rows="8" ><?php echo $family['overview']; ?></textarea>
+          		<textarea name="fa_overview" class="form-control" rows="8" ><?=$family['overview'] ?></textarea>
           	</div>         	
           </div>
           <div class="row">

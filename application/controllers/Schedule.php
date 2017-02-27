@@ -31,14 +31,13 @@ class Schedule extends CI_Controller {
         }
     }
 
-    public function get($user_type, $user_id, $date){
+    public function get($user_type, $user_id){
         if($schedules = $this->schedule_model->get_schedule($user_type, $user_id)){
             $data['schedules'] = $schedules;                        
         }else{
             $schedules = array();
             $data['schedules'] = $schedules;
         }
-        $data['date'] = $date;
         $this->load->view('templates/schedule', $data);
     }
 

@@ -31,28 +31,28 @@
     <div class="container-fluid">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
-          <a href="#basicinfo" data-toggle="tab" aria-controls="basicinfo">
+          <a href="<?= base_url('index/profile/1/'.$param)?>" >
             <span class="text">Basic info</span>
           </a>
         </li>
         <li role="presentation" class="next <?php echo $li_class['second']; ?>">
-          <a href="#host" role="tab" data-toggle="tab" aria-controls="host">
+          <a href="<?= base_url('index/profile/2/'.$param)?>" >
             <span class="text">About the host</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
-          <a href="#preferences" role="tab" data-toggle="tab" aria-controls="preferences">
+          <a href="<?= base_url('index/profile/3/'.$param)?>" >
             <span class="text">Preferences</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
-          <a href="#document" role="tab" data-toggle="tab" aria-controls="document">
+          <a href="<?= base_url('index/profile/4/'.$param)?>" r>
             <span class="text">Document</span>
           </a>
         </li>
        <?php if($this->aauth->is_member(6)){ ?>
         <li role="presentation" class="<?php echo $li_class['fifth']; ?>">
-          <a href="#report" role="tab" data-toggle="tab" aria-controls="report">
+          <a href="<?= base_url('index/profile/5/'.$param)?>" >
             <span class="text">Report</span>
           </a>
         </li>
@@ -129,7 +129,7 @@
           </div>
           <div class="row">
           	<div class="col-lg-4 col-lg-offset-4">
-          		<input type="submit" name="" class="btn next-button" value="ABOUT THE HOST">
+          		<a href="<?= base_url('index/profile/2/'.$param)?>" class="btn next-button" >ABOUT THE HOST</a>
           	</div>          		
           </div>
         </div>
@@ -307,8 +307,8 @@
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Main reason for welcoming an au-pair?</div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><?php echo $family['reason']; ?></div>
   		  </div>
-  		  <div class="row">          	
-          		<input type="submit" name="" class="btn next-button" value="PREFERENCES">          		
+    		  <div class="row">
+            <a href="<?= base_url('index/profile/3/'.$param)?>" class="btn next-button">PREFERENCES</a> 
           </div>
         </div>
 <!-- start preference tab -->
@@ -410,7 +410,7 @@
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
-                  <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>"  target="_blank" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
                   <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
@@ -671,7 +671,7 @@
         <h4 class="modal-title">Add Document</h4>
       </div>
       <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">  
-        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">    
+        <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($family['contact_email']) ?>">    
         <div class="modal-body">
           <div class="alert alert-success upload-success">
             <strong>Success!</strong> The document was successfully uploaded.

@@ -386,9 +386,8 @@ jQuery(document).ready(function($){
 	}
 // main call function for scheduler...
 	function load_schedule(user_type, user_id){
-		var date = $('#select_schedule_date').val();
 		$.ajax({
-            url: window.base_url+"schedule/get/"+user_type+"/"+user_id+"/"+date,
+            url: window.base_url+"schedule/get/"+user_type+"/"+user_id,
             type: 'post',
             success: function(result){
                 $(".events").html(result);
@@ -402,11 +401,7 @@ jQuery(document).ready(function($){
 				            var offset2 = $('.events').offset();
 				           	
 				           	var date_index = Math.floor((offset.left - offset2.left)/$(this).width());
-				           	if ($('#select_schedule_date').val().substr(7,1) == '-') {
-				           		var date = $('#select_schedule_date').val().substr(0,8) + $('.top-info h3').eq(date_index).html();
-				           	}else{
-				           		var date = $('#select_schedule_date').val().substr(0,7) + $('.top-info h3').eq(date_index).html();
-				           	}
+				           	var date = $('.top-info h3').eq(date_index).html();				           	
 
 				           	var start_time_index = Math.floor((offset.top - offset1.top)/$('.timeline ul li').height());
 				           	var start_time = $('.timeline ul li span').eq(start_time_index).html();
@@ -450,12 +445,8 @@ jQuery(document).ready(function($){
 				            var offset2 = $('.events').offset();
 				           	
 				           	var date_index = Math.floor((offset.left - offset2.left)/$(this).width());
-				           	if ($('#select_schedule_date').val().substr(7,1) == '-') {
-				           		var date = $('#select_schedule_date').val().substr(0,8) + $('.top-info h3').eq(date_index).html();
-				           	}else{
-				           		var date = $('#select_schedule_date').val().substr(0,7) + $('.top-info h3').eq(date_index).html();
-				           	}
-
+				           	var date = $('.top-info h3').eq(date_index).html();
+				           	
 				           	var start_time_index = Math.floor((offset.top - offset1.top)/$('.timeline ul li').height());
 				           	var start_time = $('.timeline ul li span').eq(start_time_index).html();
 				           	var start_mod = (offset.top - $('.timeline ul li').eq(start_time_index).offset().top)/$('.timeline ul li').height();
@@ -549,7 +540,7 @@ jQuery(document).ready(function($){
 	
 	$('a.add-schedule').on('click', function(){
 		var data = { 
-			sd_date: $('#addModal input[name=sd_date]').val(),
+			sd_date: $('#addModal select[name=sd_date]').val(),
 			sd_start_time: $('#addModal input[name=sd_start_time]').val(),
 			sd_end_time: $('#addModal input[name=sd_end_time]').val(),
 			sd_title: $('#addModal input[name=sd_title]').val(),
@@ -576,7 +567,7 @@ jQuery(document).ready(function($){
 
 	$('a.edit-schedule').on('click', function(){
 		var data = { 
-			sd_date: $('#editModal input[name=sd_date]').val(),
+			sd_date: $('#editModal select[name=sd_date]').val(),
 			sd_start_time: $('#editModal input[name=sd_start_time]').val(),
 			sd_end_time: $('#editModal input[name=sd_end_time]').val(),
 			sd_title: $('#editModal input[name=sd_title]').val(),
@@ -637,7 +628,7 @@ jQuery(document).ready(function($){
 	      		var title = li.children('.single-event-modal').children('.event-name').html();
 	      		var content = li.children('.single-event-modal').children('.event-content').html();
 	      		$('#editModal input[name=sd_id]').val(id);
-	      		$('#editModal input[name=sd_date]').val(date);
+	      		$('#editModal select[name=sd_date]').val(date);
 	      		$('#editModal input[name=sd_start_time]').val(start_time);
 	      		$('#editModal input[name=sd_end_time]').val(end_time);
 	      		$('#editModal select[name=sd_type]').val(type);
