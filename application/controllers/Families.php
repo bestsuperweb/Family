@@ -216,71 +216,80 @@ class Families extends CI_Controller {
     	$footer = '<div style="text-align: center; font-size: 12px; padding: 20px 0;">Huisje Boompje Nanny Au pair services, Leidsevaartweg 1 2106 NA The Netherlands<br> phone:+31 23 3020311 e-mail: <a href="#">support@hbnaupairservices.com</a><br> ABN AMRO 403737311 Chamber of Commerce 52888991</div>';
 
     	$html = "<div style='text-align:center;'><h3>AGREEMENT BETWEEN AU PAIR AND HOST</h3></div>";
-    	$html .= "This agreement relating to an Au Pair placement is concluded between:<br>
+    	$html .= "This agreement relating to an Au Pair placement is concluded between:<br><br>
 					- (Mr) or (Mrs) ".$parents[0]['lastname']." <br>
-					- Place of residence<br>
-					Hereinafter referred to ".$parents[0]['lastname']." as “the Host” and <br>
-					Hereinafter referred to ".$aupair['full_name']." as “the Au Pair”<br>
+					- Place of residence<br><br>
+					Hereinafter referred to ".$parents[0]['lastname']." as “the Host” and <br><br>
+					".$aupair['full_name']."<br><br> Hereinafter referred to as “the Au Pair”<br><br>
 					- Born on ".$aupair['date_of_birth']."<br>
 					- In..................................................................................................................... <br>
 					- Nationality ".$aupair['nationality']."<br>
-					- Place of residence ".$aupair['address']."<br>
+					- Place of residence ".$aupair['address']."<br><br>
 					<h3>I. GENERAL CONDITIONS:</h3>
-					The Au Pair, ".$aupair['full_name'].", will be received by the Host, Family . ".$parents[0]['lastname'].", for a period of 12 months under the conditions laid down hereafter. During this period, the Au Pair will be given the opportunity to improve her education and to increase her general cultural development. After the contract period the Au Pair returns to her country of origin.<br>
+					The Au Pair, ".$aupair['full_name'].", will be received by the Host, Family . ".$parents[0]['lastname'].", for a period of 12 months under the conditions laid down hereafter. During this period, the Au Pair will be given the opportunity to improve her education and to increase her general cultural development. After the contract period the Au Pair returns to her country of origin.<br><br>
 					The agreement takes effect from: ".$family['aupair_from']."<br>
 					<h3>II. DUTIES OF THE HOST:</h3>
-					II. 1. The Host undertakes to receive the Au Pair into the family and let her share in the daily family life. In this condition the Host makes the following declaration of which the Au Pair takes note that:<br>
+					II. 1. The Host undertakes to receive the Au Pair into the family and let her share in the daily family life. In this condition the Host makes the following declaration of which the Au Pair takes note that:<br><br>
 					• The family consists of ".(count($kids)+2)." persons, including:<br>
-					2 adults, ".$parents[0]['firstname']." and ".$parents[1]['firstname'].", and ".count($boys)." sons of ... years old and ... years old and ".count($girls)." daughters of ... years old and ... years old.<br>
-					• The family lives at the following address:<br>
-					in a house/flat (delete whichever does not apply) at<br>
-					The house consists of ".$family['number_bedrooms']." rooms and ".$family['number_bathrooms']." bathrooms situated nearby a town where an educational institute is located at which appropriate language courses are available.<br>
-					• Occupation of Host father: ".$parents[0]['job_description']."<br>
-					• Occupation of Host mother: ".$parents[1]['job_description']." <br>
-					• The Host is aware that the Au Pair can only be asked to do light household tasks according to the conditions and weekly time schedule approved by HBN and signed by Host and Au Pair.<br>
-					The language normally spoken in the household is: Dutch.<br>
-					II.2. The Host shall provide board and lodging for the Au Pair and shall place at her disposal a separate bedroom and bathroom under the conditions stated in the general terms and conditions of HBN.<br>
-					II.3. ln addition, the Host shall pay the Au Pair pocket money amounting to € 340,00 per month at the end of each month for a maximum of 30 hours of childcare and light housework per week with a maximum of 8 hours per day, a maximum of 5 days a week and a maximum of 3 babysit evenings. The Au Pair will also receive € 10,00 phone allowance per month for personal calls. The Au Pair will need to pay for any calls that are made outside of this allowance. The Host will also provide a computer/laptop, a mobile phone and a bike for personal use during the contract period. If the Host will be away for a certain period or does not need the Au Pair to perform her tasks, the Host will continue to pay the Au Pair her monthly pocket money at all time and will provide the Au Pair of the daily sustenance.<br>
-					II.4. The Au Pair's hours of duty shall be organized in such a way that the Au Pair is able to follow a language course and is able to improve the general cultural development and knowledge. The Host agrees to pay for a Dutch Course (or another course in agreement with the Hosts) to a maximum of € 300 Euro per annum provided that the Au Pair finishes the course and stays at least 6 months.<br>
-					II.5. The weekly time schedule has been set up by the Host, according to the Dutch regulation that applies to the Au Pair program.<br>
-					The schedule is signed and approved by both Host and Au Pair and will be adhered to by both parties during the whole Au Pair program.<br>
-					II.6. The Au Pair will have at least two free days per week and will have full opportunity to take part in religious worship. The Au Pair shall have at least one full weekend off per month; from Friday evening 20:00 pm until Sunday evening 24:00 pm.<br>
-					II.7. The Au Pair is entitled to 2 weeks of paid leave per 12 months, or a pro- rata portion for a shorter period of stay. The Au Pair should discuss any agreements with regard to paid leave well in advance with the Host, preferably but not obliged to be taken in the Host’s holiday.<br>
+					2 adults, ".$parents[0]['firstname']." and ".$parents[1]['firstname'].", and ".count($boys)." son(s) of ";
+		foreach ($boys as $key => $boy) {
+			$html .= $boy['age']." years old and ";
+		}
+		$html .= count($girls)." dauter(s) of ";
+		foreach ($girls as $key => $girl) {
+			if ($key == (count($girls) - 1)) {
+				$html .= $girl['age']." years old.";
+			}else{
+				$html .= $girl['age']." years old and";
+			}			
+		}		
+		$html .="<br><br>• The family lives at the following address: ".$family['house_number']." ".$family['street']." ".$family['place'].".<br>
+					The house consists of ".$family['number_bedrooms']." rooms and ".$family['number_bathrooms']." bathrooms situated nearby a town where an educational institute is located at which appropriate language courses are available.<br><br>
+					• Occupation of Host father: <br>".$parents[0]['job_description']."<br><br>
+					• Occupation of Host mother: <br>".$parents[1]['job_description']." <br><br>
+					• The Host is aware that the Au Pair can only be asked to do light household tasks according to the conditions and weekly time schedule approved by HBN and signed by Host and Au Pair.<br><br>
+					The language normally spoken in the household is: Dutch.<br><br>
+					II.2. The Host shall provide board and lodging for the Au Pair and shall place at her disposal a separate bedroom and bathroom under the conditions stated in the general terms and conditions of HBN.<br><br>
+					II.3. ln addition, the Host shall pay the Au Pair pocket money amounting to € 340,00 per month at the end of each month for a maximum of 30 hours of childcare and light housework per week with a maximum of 8 hours per day, a maximum of 5 days a week and a maximum of 3 babysit evenings. The Au Pair will also receive € 10,00 phone allowance per month for personal calls. The Au Pair will need to pay for any calls that are made outside of this allowance. The Host will also provide a computer/laptop, a mobile phone and a bike for personal use during the contract period. If the Host will be away for a certain period or does not need the Au Pair to perform her tasks, the Host will continue to pay the Au Pair her monthly pocket money at all time and will provide the Au Pair of the daily sustenance.<br><br>
+					II.4. The Au Pair's hours of duty shall be organized in such a way that the Au Pair is able to follow a language course and is able to improve the general cultural development and knowledge. The Host agrees to pay for a Dutch Course (or another course in agreement with the Hosts) to a maximum of € 300 Euro per annum provided that the Au Pair finishes the course and stays at least 6 months.<br><br>
+					II.5. The weekly time schedule has been set up by the Host, according to the Dutch regulation that applies to the Au Pair program.<br><br>
+					The schedule is signed and approved by both Host and Au Pair and will be adhered to by both parties during the whole Au Pair program.<br><br>
+					II.6. The Au Pair will have at least two free days per week and will have full opportunity to take part in religious worship. The Au Pair shall have at least one full weekend off per month; from Friday evening 20:00 pm until Sunday evening 24:00 pm.<br><br>
+					II.7. The Au Pair is entitled to 2 weeks of paid leave per 12 months, or a pro- rata portion for a shorter period of stay. The Au Pair should discuss any agreements with regard to paid leave well in advance with the Host, preferably but not obliged to be taken in the Host’s holiday.<br><br>
 					II.8.The Host has agreed to take out an insurance that covers general medical costs, personal liability and
-					repatriation, This includes urgent unforeseen medical treatment, general practitioner visits, pharmacy and hospital care. The insurance needs to be taken out at the day of departure from the country of origin. In addition, the Host is responsible for paying all urgent unforeseen medical costs not covered by the insurance with the exception of medical costs for treatment of pre-existing conditions, precautionary care, self inflicted sickness and pregnancy or abortion. In the event of the Au Pair's falling ill, the Host shall continue to provide board and lodging and shall give the appropriate care until necessary arrangements have been made.<br>
-					II.9.The Host is not dependent on the Au Pair and has at all times -where applicable - an alternative available for those activities expected of the Au Pair.<br>
-					II.10. The Host has agreed to pay €72,60 for the Au Pair to do a first aid training focused on children.<br>
-					II.11.The Host has agreed to pay €42,- euro in cash for every HBN reunions/outings the Au Pair would like to join (through the year +/- 3 times).<br>
+					repatriation, This includes urgent unforeseen medical treatment, general practitioner visits, pharmacy and hospital care. The insurance needs to be taken out at the day of departure from the country of origin. In addition, the Host is responsible for paying all urgent unforeseen medical costs not covered by the insurance with the exception of medical costs for treatment of pre-existing conditions, precautionary care, self inflicted sickness and pregnancy or abortion. In the event of the Au Pair's falling ill, the Host shall continue to provide board and lodging and shall give the appropriate care until necessary arrangements have been made.<br><br>
+					II.9.The Host is not dependent on the Au Pair and has at all times -where applicable - an alternative available for those activities expected of the Au Pair.<br><br>
+					II.10. The Host has agreed to pay €72,60 for the Au Pair to do a first aid training focused on children.<br><br>
+					II.11.The Host has agreed to pay €42,- euro in cash for every HBN reunions/outings the Au Pair would like to join (through the year +/- 3 times).<br><br>
 					II.12. Travel costs:<br>
 					The Host and Au Pair have agreed that they will share go and return costs.<br>
 					<h3>III. DUTIES OF THE AU PAIR:</h3>
-					III.1. The Au Pair undertakes to participate for a maximum of 30 hours a week in day to day family duties by doing the following services: taking care of the children and doing light housework.<br>
-					III.2. The Au Pair agrees to comply with any formality necessary on her part to enable the Host to fulfill her obligations concerning the aforementioned insurance under II.10.<br>
+					III.1. The Au Pair undertakes to participate for a maximum of 30 hours a week in day to day family duties by doing the following services: taking care of the children and doing light housework.<br><br>
+					III.2. The Au Pair agrees to comply with any formality necessary on her part to enable the Host to fulfill her obligations concerning the aforementioned insurance under II.10.<br><br>
 					III.3. The Au Pair will not perform duties outside the Host community. During the Au Pair's period of residence with the Host, she will always act in accordance with the house rules of the family and these house rules will (where possible) apply to all members of the family without distinguishing between the Au Pair and Host. The house rules will be made known to the Au Pair upon arrival in the Netherlands.<br>
 					<h3>IV. TERMINATION:</h3>
-					IV.1. The agreement terminates ipso jure at the end date mentioned under article I of this	agreement.<br>
+					IV.1. The agreement terminates ipso jure at the end date mentioned under article I of this	agreement.<br><br>
 					IV.2. Either party may terminate the agreement with a four weeks notice period. In such event both parties should make sure to inform HBN as soon as possible and latest within 1 week after they have agreed to end the agreement.<br>
 					a) In the event of serious misconduct (e.g. mental or physical abuse, mental or physical disorder, stealing, and compulsive lying) by one of the parties, the other party may terminate the agreement with immediate effect.<br>
 					b) Either party may also terminate the agreement with immediate effect if serious circumstances make such instant termination necessary.<br>
-					c) If Au Pair or Host has not adhered to the Au Pair program or in case of serious misconduct or circumstances, the party who has not adhered to the Au Pair program or has caused the serious misconduct, is responsible for the payment of the Au Pair's return travel to her country of origin and rebook/change costs of the flight.<br>
+					c) If Au Pair or Host has not adhered to the Au Pair program or in case of serious misconduct or circumstances, the party who has not adhered to the Au Pair program or has caused the serious misconduct, is responsible for the payment of the Au Pair's return travel to her country of origin and rebook/change costs of the flight.<br><br>
 					IV. 3. lf the Au Pair chooses to terminate the agreement:<br>
 					a) a four weeks notice period must be adhered to;<br>
 					b) HBN should be notified in writing immediately in this situation;<br>
-					c) lf replacement of the Au Pair is not possible within these four weeks, the Au Pair will be responsible for the payment of her own returnticket to her country of origin.<br>
+					c) lf replacement of the Au Pair is not possible within these four weeks, the Au Pair will be responsible for the payment of her own returnticket to her country of origin.<br><br>
 					IV. 4. The Host can request for a replacement of the Au Pair if:<br>
 					a) au pair does not adhere to the Au Pair program and/or if there are problems between the Au Pair and family and/or there is simply no \"match\" between them.<br>
 					b) If such situation occurs, the Host should immediately inform HBN.<br>
-					c) If HBN is not able to replace the Au Pair within four weeks after notification, the Host is responsible for the payment of the Au Pair's return travel to her country of origin.<br>
-					IV.5. After the contract period, at the end of the Au Pair program, the Host is responsible for the departure of the Au Pair to the country of origin and needs to inform HBN of the exact date of departure. Next to this the Au Pair needs to provide HBN with proof of arrival in her country of origin within four days after arrival.<br>
+					c) If HBN is not able to replace the Au Pair within four weeks after notification, the Host is responsible for the payment of the Au Pair's return travel to her country of origin.<br><br>
+					IV.5. After the contract period, at the end of the Au Pair program, the Host is responsible for the departure of the Au Pair to the country of origin and needs to inform HBN of the exact date of departure. Next to this the Au Pair needs to provide HBN with proof of arrival in her country of origin within four days after arrival.<br><br>
 					IV.6. In case of structural changes during the Au Pair program, the Host and Au Pair are obliged to inform HBN immediately. Considered to be a structural change are(amongst others) ; changes in the weekly time schedule, changes in the family composition/status (divorce/birth/movement), changes in the income position, changes in the residence status of the Au Pair.<br>
 					<h3>V. MISCELLANAOUS PROVISIONS</h3>
 					The parties also agree on the following:<br>
-					To have read, understood and agreed upon the HBN general terms and conditions, complementary conditions and household tasks conditions.
-					This agreement has been drawn up in 3 copies, one to be retained by the Au Pair, and one to be retained by the Host, and one for HBN.<br>
-					Date: ".date("Y-m-d")."<br>
-					Name: ".$parents[0]['firstname']." ".$parents[0]['lastname']."<br>
-					Signatures of Host: <br>
-					Signature of Au Pair:<br>";
+					To have read, understood and agreed upon the HBN general terms and conditions, complementary conditions and household tasks conditions.<br><br>
+					This agreement has been drawn up in 3 copies, one to be retained by the Au Pair, and one to be retained by the Host, and one for HBN.<br><br>
+					Date: ".date("Y-m-d")."<br><br>
+					Name: ".$parents[0]['firstname']." ".$parents[0]['lastname']."<br><br><br>
+					Signatures of Host:<br><br><br>                         Signature of Au Pair:";
 
 			return array($header, $html, $footer);
 
