@@ -440,7 +440,7 @@ jQuery(document).ready(function($){
             		handles: "n, s",
             		stop: function(){
 
-            			var offset = $(this).offset();
+            				var offset = $(this).offset();
 				            var offset1 = $(this).parent().offset();
 				            var offset2 = $('.events').offset();
 				           	
@@ -589,8 +589,8 @@ jQuery(document).ready(function($){
             }
         });
 	});
-	
 
+	
 	$(function() {
 	      $(document).on('mouseenter', '.single-event', function(event) {
 	      		// alert($(this).children('.sd-menu').height());
@@ -636,6 +636,66 @@ jQuery(document).ready(function($){
 				$('#editModal textarea[name=sd_content]').val(content);
 				$('#editModal').modal('show');				      			      		
 
+	      });
+
+	      $(document).on('click', '.sd-menu a.sd-copy', function(event) {
+	      		var li = $(this).parent().parent();
+	      		var id = $(this).attr('data-id');
+	      		var start_time = li.attr('data-start');
+	      		var end_time = li.attr('data-end');
+	      		var date = li.attr('data-date');
+	      		var type = li.attr('data-event');
+	      		var title = li.children('.single-event-modal').children('.event-name').html();
+	      		var content = li.children('.single-event-modal').children('.event-content').html();
+
+	      		switch(date){
+	      			case 'Mon':
+	      				date = 'Tue';
+	      				break;
+	      			case 'Tue':
+	      				date = 'Wed';
+	      				break;
+	      			case 'Wed':
+	      				date = 'Thu';
+	      				break;
+	      			case 'Thu':
+	      				date = 'Fri';
+	      				break;
+	      			case 'Fri':
+	      				date = 'Sat';
+	      				break;
+	      			case 'Sat':
+	      				date = 'Sun';
+	      				break;
+	      			case 'Sun':
+	      				date = 'Sat';
+	      				break;
+	      		}
+
+	      		var data = { 
+					sd_date: date,
+					sd_start_time: start_time,
+					sd_end_time: end_time,
+					sd_title: title,
+					sd_content: content,
+					sd_type: type,
+					sd_user_type: window.user_type,
+					sd_user_id: window.user_id
+				};
+
+	      		$.ajax({
+		            url: window.base_url+"schedule/insert/",
+		            type: 'post',
+            		data: data,
+		            success: function(result){
+		            	if(result == 'success'){
+		                	schedule_alert('A schedule was successfully inserted.', 1);
+		                	load_schedule(window.user_type, window.user_id);
+		                }else{
+		                	schedule_alert('Fail to insert a schedule. Review your inputs and try again.', 0);
+		                }
+		            }
+		        });
 	      });
 
 	      $(document).on('change', '#select_schedule_date', function(event){

@@ -40,13 +40,11 @@
             <span class="text">Experience</span>
           </a>
         </li>
-        <?php if($this->aauth->is_member(6)){ ?>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
           <a href="<?= base_url('index/profile/4/'.$param)?>" >
             <span class="text">Interview & Tests</span>
           </a>
         </li>
-       <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
           <a href="<?= base_url('index/profile/3/'.$param)?>" >
             <span class="text">Document</span>

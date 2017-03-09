@@ -31,7 +31,6 @@
 		.nav-pills.nav-wizard > li a {
 		  border-radius: 0;
 		  background-color: #eee;
-		  font-size: 20px;
 		}
 		.nav-pills.nav-wizard > li:not(:last-child) a:after {
 		  position: absolute;

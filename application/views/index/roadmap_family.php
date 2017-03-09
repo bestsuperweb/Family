@@ -22,7 +22,7 @@
 			      	Alle informatie is aangeleverd en gecheckt door HBN<br>
 			      	<img src="<?php echo base_url('assets/img/check-green.png'); ?>" class="collapse-img"> 
 			      	Alle documenten zijn aangeleverd en verwerkt door HBN<br>
-			      	<a class="btn next-button" href="<?php echo base_url('index.php/index/roadmap_profile/'); ?>">NAAR STAP 1</a>
+			      	<a class="btn next-button" href="<?php echo base_url('index/roadmap_profile/'); ?>">NAAR STAP 1</a>
 			      </div>
 			    </div>
 			  </div>

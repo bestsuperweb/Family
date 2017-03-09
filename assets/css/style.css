@@ -332,10 +332,15 @@
     background-size: 100% 100%;
     background-position: center center;
     color: white;
-    padding: 22px 0 !important;
-    width: 200px;
+    padding: 10% 0 !important;
+    width: 9vw;
     text-align: center;
-    margin: 10px -7px;
+    margin: 5px -0.3vw;
+    font-size: 1vw;
+}
+.roadmap-top-bar-first-active a span, .roadmap-top-bar-first a span{
+    font-size: 1.3vw;
+    vertical-align: bottom;
 }
 .roadmap-top-bar-first-active a, .roadmap-top-bar-first a:hover{
     background-image: url('../img/profile-top-bar-1-active.png');
@@ -343,20 +348,26 @@
     background-size: 100% 100%;
     background-position: center center;
     color: white;
-    padding: 22px 0 !important;
-    width: 200px;
+    padding: 10% 0 !important;
+    width: 9vw;
     text-align: center;
-    margin: 10px -7px;
+    margin: 5px -0.3vw;
+    font-size: 1vw;
 }
 .roadmap-top-bar a{
     background: url('../img/profile-top-bar.png');
     background-size: 100% 100%;
     background-position: center center;
     color: white;
-    padding: 22px 0 !important;
-    width: 200px;
+    padding: 10% 0 !important;
+    width: 9vw;
     text-align: center;
-    margin: 10px -7px;
+    margin: 5px -0.3vw;
+    font-size: 1vw;
+}
+.roadmap-top-bar-active a span, .roadmap-top-bar a span{
+    font-size: 1.3vw;
+    vertical-align: bottom;
 }
 .roadmap-top-bar-active a, .roadmap-top-bar a:hover{
     background-image: url('../img/profile-top-bar-active.png');
@@ -364,10 +375,11 @@
     background-size: 100% 100%;
     background-position: center center;
     color: white;
-    padding: 22px 0 !important;
-    width: 200px;
+    padding: 10% 0 !important;
+    width: 9vw;
     text-align: center;
-    margin: 10px -7px;
+    margin: 5px -0.3vw;
+    font-size: 1vw;
 }
 
 .roadmap-top-nav{
@@ -436,7 +448,40 @@
     margin-top: -40px;
     margin-right: 10px;
 }
+.main-color-div{
+    background: #542a44;
+    color: #fff;
+    padding: 30px;
+    font-size: 20px;
+}
 
+.main-color-div .above-drop-file, .main-color-div .dropzone{
+    color: #000;
+}
+.main-color-div h1{
+    color: #fff !important;
+}
+.ticketinfo .next-button{
+    width: 200px;
+    margin: 10px;
+}
+.ticketinfo .next-button.family-button{
+    background-color: #B3B3B3;
+}
+.next-button.ticketinfo-button{
+    background-image: url('../img/ticketinfo.png');
+    background-size: 15%;
+    width: 250px;
+    font-size: 25px;
+    display: block;
+}
+.next-button.tubercolose-button{
+    background-image: url('../img/tubercolose.png');
+}
+.next-button.IND-button{
+    background-image: url('../img/IND.png');
+    background-size: 15%;
+}
 /*----responsive start---*/
 
 @media screen and (max-width: 768px) {

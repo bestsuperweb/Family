@@ -22,7 +22,7 @@ a.add-btn:hover{
   display: inline-flex !important;
   color: #fff;
   background-color: rgba(10,10,10,.5);
-  width: 49%;
+  width: 30%;
 }
 .sd-menu a:hover{
   color: #000;
