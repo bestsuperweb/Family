@@ -394,8 +394,8 @@ jQuery(document).ready(function($){
                 $('.single-event').draggable({
                 	containment: ".events", 
                 	scroll: false,
+                	start: function(){ $('div.events').off('mousemove'); $('.selection-box').hide(); },
 				    stop: function(){
-
 				    		var offset = $(this).offset();
 				            var offset1 = $(this).parent().offset();
 				            var offset2 = $('.events').offset();
@@ -432,12 +432,15 @@ jQuery(document).ready(function($){
 					                }
 					            }
 					        });
+
+					        // $('div.events').on('mousemove').on('mousedown');
 				    }
                 });
 
             	$( ".single-event" ).resizable({
             		containment: "parent",
             		handles: "n, s",
+            		start: function(){ $('div.events').off('mousemove'); $('.selection-box').hide(); },
             		stop: function(){
 
             				var offset = $(this).offset();
@@ -476,6 +479,8 @@ jQuery(document).ready(function($){
 					                }
 					            }
 					        });
+
+					        // $('div.events').on('mousemove').on('mousedown');
 
             		}
             	});
@@ -590,7 +595,99 @@ jQuery(document).ready(function($){
         });
 	});
 
-	
+	$(function() {
+	    var $container = $('div.events');
+	    var $selection = $('<div>').addClass('selection-box');
+	    
+	    $container.on('mousedown', function(e) {
+	    	e.preventDefault();
+	    	$selection.show();
+	        var date, start_time, start_mod, end_time, end_mod,
+	        	click_y = e.pageY - $container.offset().top,
+			    click_x = e.pageX - $container.offset().left,
+			    min_x 	= 100000000000000, 
+			    min_y 	= 100000000000000;
+
+		    $('.events-group').each(function(){
+		    	if (Math.abs($(this).offset().left - e.pageX) <= min_x) {
+		    		click_x = $(this).offset().left - $container.offset().left;
+		    		min_x = Math.abs($(this).offset().left - e.pageX);
+		    		date = $(this).children('.top-info').children('h3').html();
+		    	}
+		    });
+
+		    $('.timeline ul li').each(function(){
+		    	if (Math.abs($(this).offset().top - e.pageY) <= min_y) {
+		    		start_time = $(this).children('span').html();
+		    		start_mod = (e.pageY - $(this).offset().top)/$(this).height();
+		    		min_y = Math.abs($(this).offset().top - e.pageY);
+		    		start_time = precise_time(start_time, start_mod);
+		    	}
+		    });
+
+	        $selection.css({	   	
+				'top':    click_y,
+				'left':   click_x,
+				'width':  $('.cd-schedule .events .single-event').width(),
+				'height': 0,
+				'cursor': 'cell',
+				'background': 'transparent' 
+	        });
+	        $selection.appendTo($container);
+	        
+	        $container.on('mousemove', function(e) {            
+	          var move_x = e.pageX - $container.offset().left,
+	              move_y = e.pageY - $container.offset().top,
+	              width  = $('.cd-schedule .events .single-event').width(),
+	              height = Math.abs(move_y - click_y),
+	              new_x, new_y;
+	          
+	          new_x = (move_x < click_x) ? (click_x - width) : click_x;
+	          new_y = (move_y < click_y) ? (click_y - height) : click_y;
+	          
+	          $selection.css({
+				'width': width,
+				'height': height,
+				'top': new_y,
+				'left': new_x
+	          });
+	          
+	        }).on('mouseup', function(e) {
+
+	        	min_y = 100000000000000;
+
+	        	if($selection.height() > 0){
+	        		$('.timeline ul li').each(function(){
+				    	if (Math.abs($(this).offset().top - e.pageY) <= min_y) {
+				    		end_time = $(this).children('span').html();
+				    		end_mod = (e.pageY - $(this).offset().top)/$(this).height();
+				    		min_y = Math.abs($(this).offset().top - e.pageY);
+				    		end_time = precise_time(end_time, end_mod);
+				    	}
+				    });
+
+		            $selection.css({
+			        	'background-color': 'rgba(0, 0, 0, .3)',
+			          	'cursor': 'initial'
+			        });
+
+			        $('#addModal select[name=sd_date]').val(date);
+		      		$('#addModal input[name=sd_start_time]').val(start_time);
+		      		$('#addModal input[name=sd_end_time]').val(end_time);
+					$('#addModal input[name=sd_title]').val('');
+					$('#addModal textarea[name=sd_content]').val('');
+					$('#addModal').modal('show');
+	        	}else{
+	        		$selection.remove();
+	        	}
+
+		        $container.off('mousemove');
+	            
+	        });
+	    });
+	});
+
+
 	$(function() {
 	      $(document).on('mouseenter', '.single-event', function(event) {
 	      		// alert($(this).children('.sd-menu').height());

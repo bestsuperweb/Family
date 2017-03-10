@@ -4,6 +4,12 @@
 Main Components 
 
 -------------------------------- */
+.selection-box {
+    position:    absolute;
+    background: transparent;
+    border:     1px dotted #000;
+  }
+
 .cd-schedule .event-content{
   display: none;
 }
@@ -130,6 +136,7 @@ a.add-btn:hover{
 .cd-schedule .events {
   position: relative;
   z-index: 1;
+  cursor: cell;
 }
 
 .cd-schedule .events .events-group {
