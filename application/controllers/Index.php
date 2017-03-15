@@ -94,12 +94,14 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
-                    $data['aupairs'] = $this->aupair_model->get_all_aupairs();
+                    $data['aupairs']   = $this->aupair_model->get_all_aupairs();
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['family']    = $this->family_model->get_family($data['aupair']['family_name']);
+                    $data['family_documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));               
                     break;
                 
                 default:
@@ -307,7 +309,30 @@ class Index extends CI_Controller {
                         }else{
                             redirect('index/edit_profile/2/'.$data['param']);
                         } 
-                        break;         
+                        break;
+                    case 3:
+                        $this->form_validation->set_rules('ap_overview', 'Overview', 'trim|required');
+                        if ($this->form_validation->run() === TRUE)
+                        {
+                            $this->aupair_model->update_aupair(4, $data['user_id']);
+                            redirect('index/profile/1/'.$data['param']);
+                        }else{
+                            redirect('index/roadmap_profile/1/'.$data['param']);
+                        } 
+                        break;  
+                    case 4:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->aupair_model->update_aupair(5, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;    
                     
                     default:
                         

@@ -188,6 +188,78 @@ class Document extends CI_Controller {
             case 16:
                 $file_title = 'Awareness declaration';
                 break;
+            case 17:
+                $file_title = 'Family insurance';
+                break;
+            case 18:
+                $file_title = 'Family routine setup';
+                break;
+            case 19:
+                $file_title = 'Important info';
+                break;
+            case 20:
+                $file_title = 'BRP';
+                break;
+            case 21:
+                $file_title = 'Faily flight ticket';
+                break;
+            case 22:
+                $file_title = 'Evidence of return';
+                break;
+            case 23:
+                $file_title = 'Signed agreement';
+                break;
+            case 24:
+                $file_title = 'Personality Test';
+                break;
+            case 25:
+                $file_title = 'Passport';
+                break;
+            case 26:
+                $file_title = 'Important Details';
+                break;
+            case 27:
+                $file_title = 'Criminal Clearance';
+                break;
+            case 28:
+                $file_title = 'NMNP Declaration';
+                break;
+            case 29:
+                $file_title = 'Health Form';
+                break;
+            case 30:
+                $file_title = 'TBC test';
+                break;
+            case 31:
+                $file_title = 'Unabridged birth certificate';
+                break;
+            case 32:
+                $file_title = 'Legalisation';
+                break;
+            case 33:
+                $file_title = 'Apostille';
+                break;
+            case 34:
+                $file_title = 'Translation Birth documentation';
+                break;
+            case 35:
+                $file_title = 'Agreement with Family';
+                break;
+            case 36:
+                $file_title = 'Weekly time schedule';
+                break;
+            case 37:
+                $file_title = 'Visa';
+                break;
+            case 38:
+                $file_title = 'Registration city hall';
+                break;
+            case 39:
+                $file_title = 'BRP extract';
+                break;
+            case 40:
+                $file_title = 'Residence Permit';
+                break;
                        
             default:
                 # code...

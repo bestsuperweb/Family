@@ -98,6 +98,11 @@ class Family_model extends CI_Model {
                                         'photo'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                         );
                                 break;
+                        case 7:
+                                $data = array(
+                                        'aupair_name'    => $this->input->post('ap_id')
+                                        );
+                                break;
                         
                         default:
                                 $data = array(

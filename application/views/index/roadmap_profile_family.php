@@ -54,21 +54,21 @@
 	    </div>
         <div class="collapse navbar-collapse" id="mytopbar">
 		    <ul class="nav navbar-nav">
-		      <li class="<?php echo $li_class['first'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/1');?>">
+		      <li class="<?php echo $li_class['first'];?>"><a href="<?= base_url('index/roadmap_profile/1') ?>">
 		      <span>&#10112;</span> Profiel</a></li>
-		      <li class="<?php echo $li_class['second'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/2');?>">
+		      <li class="<?php echo $li_class['second'];?>"><a href="<?= base_url('index/roadmap_profile/2') ?>">
 		      <span>&#10113;</span> Toetsing</a></li>
-		      <li class="<?php echo $li_class['third'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/3');?>">
+		      <li class="<?php echo $li_class['third'];?>"><a href="<?= base_url('index/roadmap_profile/3') ?>">
 		      <span>&#10114;</span> Matching</a></li>
-		      <li class="<?php echo $li_class['forth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/4');?>">
+		      <li class="<?php echo $li_class['forth'];?>"><a href="<?= base_url('index/roadmap_profile/4') ?>">
 		      <span>&#10115;</span> Visa</a></li>
-		      <li class="<?php echo $li_class['fifth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/5');?>">
+		      <li class="<?php echo $li_class['fifth'];?>"><a href="<?= base_url('index/roadmap_profile/5') ?>">
 		      <span>&#10116;</span> Voorbereiding</a></li>
-		      <li class="<?php echo $li_class['sixth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/6');?>">
+		      <li class="<?php echo $li_class['sixth'];?>"><a href="<?= base_url('index/roadmap_profile/6') ?>">
 		      <span>&#10117;</span> Aankomst</a></li>
-		      <li class="<?php echo $li_class['seventh'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/7');?>">
+		      <li class="<?php echo $li_class['seventh'];?>"><a href="<?= base_url('index/roadmap_profile/7') ?>">
 		      <span>&#10118;</span> Verblijf</a></li>
-		      <li class="<?php echo $li_class['eighth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/8');?>">
+		      <li class="<?php echo $li_class['eighth'];?>"><a href="<?= base_url('index/roadmap_profile/8') ?>">
 		      <span>&#10119;</span> Vertrek</a></li>
 			</ul>
 		</div>
@@ -396,7 +396,7 @@
         </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 2">
+        	<a href="<?= base_url('index/roadmap_profile/2') ?>" class="btn next-button" >NAAR STAP 2</a>
         </div>
     </div>
 <!-- end tab1 -->
@@ -660,7 +660,7 @@
         </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 3">
+        	<a href="<?= base_url('index/roadmap_profile/3') ?>" class="btn next-button" >NAAR STAP 3</a>
         </div>
     </div>
 <!-- end tab2 -->
@@ -1085,7 +1085,7 @@
         </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 4">
+        	<a href="<?= base_url('index/roadmap_profile/4') ?>" class="btn next-button" >NAAR STAP 4</a>
         </div>
     </div>
 <!-- end tab3 -->
@@ -1135,7 +1135,7 @@
 	    </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 5">
+        	<a href="<?= base_url('index/roadmap_profile/5') ?>" class="btn next-button" >NAAR STAP 5</a>
         </div>
     </div>
 <!-- end tab4 -->
@@ -1239,11 +1239,17 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Au-Pair verzekering</h1>
-		     				<a href="#" class="btn next-button">DOWNLOAD INFO</a><br><br>
+		     				<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Family insurance') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD INFO</a><br><br>
 		     				<div class="above-drop-file">
 								<b>Upload hieronder het aanvraagformulier voor de au-pair verzkeering voorzien van een handtekening.</b>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/17') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1279,7 +1285,13 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Familie briefing</h1>
-		     				<a href="#" class="btn next-button">DOWNLOAD INFO</a><br><br>
+		     				<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Initial Registeration') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD INFO</a><br><br>
 		     						     				
 		     			</div>
 		     		</div>
@@ -1320,9 +1332,15 @@
 		     				<h1>Family routine setup</h1>
 		     				
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a><br><br>
+								<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Family routine setup') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD DOC</a><br><br>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/18') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1361,9 +1379,15 @@
 		     				<h1>Important info doc</h1>
 		     				
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a><br><br>
+								<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Important info') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD DOC</a><br><br>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/19') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1436,7 +1460,7 @@
         </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 6">
+        	<a href="<?= base_url('index/roadmap_profile/6') ?>" class="btn next-button" >NAAR STAP 6</a>
         </div>
     </div>
 <!-- end tab 5 -->
@@ -1535,7 +1559,7 @@
 		     				<div class="above-drop-file">
 								Upload hieronder het uittreksel BRP dat jullie van de gemeente hebben gekregen.<br><br>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/20') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1543,7 +1567,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="#" class="btn next-button">VERSTUREN</a> <!-- submit BSN number -->
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1590,7 +1614,7 @@
         </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button" value="NAAR STAP 7">
+        	<a href="<?= base_url('index/roadmap_profile/7') ?>" class="btn next-button" >NAAR STAP 7</a>
         </div>
     </div>
 <!-- end tab 6 -->
@@ -1641,7 +1665,7 @@
 	    </div>
 
         <div class="row">
-        	<input type="submit" name="" class="btn next-button delete-button" value="NAAR VERTREK">
+        	<a href="<?= base_url('index/roadmap_profile/8') ?>" class="btn next-button" >NAAR VERTREK</a>        	
         </div>
     </div>
 <!-- end tab 7 -->
@@ -1689,7 +1713,7 @@
 		     				<div class="above-drop-file">
 								Upload het terugticket<br><br>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/21') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1729,7 +1753,7 @@
 		     				<div class="above-drop-file">
 								Upload het bewljs van terugkeer.
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/22') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				

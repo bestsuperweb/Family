@@ -40,7 +40,6 @@
                 <ul>
                     <li><a href="<?= base_url('index/profile/1'); ?>">General</a></li>
                     <li><a href="<?= base_url('index/profile/2'); ?>">Experience</a></li>
-                    <li><a href="<?= base_url('index/profile/4'); ?>">Interview & Tests</a></li>
                     <li><a href="<?= base_url('index/profile/3'); ?>">Documenten</a></li>                     
                 </ul>
             </div>                     
@@ -62,4 +61,4 @@
 
     </ul>
 </div>
-<!-- /#sidebar-wrapper -->
+<!-- /#sidebar-wrapper

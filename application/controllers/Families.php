@@ -11,6 +11,7 @@ class Families extends CI_Controller {
         $this->load->model('family_model');
         $this->load->model('parent_model');
         $this->load->model('kid_model');
+        $this->load->model('aupair_model');
         $this->load->model('document_model');
         $this->load->library('session');
     }
@@ -167,6 +168,8 @@ class Families extends CI_Controller {
     		case 1:
     			$html = $this->get_agreement($this->input->post('fa_id'), $this->input->post('ap_id'));
     			$name = md5('agree'.$this->input->post('fa_id').$this->input->post('ap_id'));
+    			$this->family_model->update_family(7, $this->input->post('fa_id'));
+    			$this->aupair_model->update_aupair(3, $this->input->post('ap_id'));
     			break;
     		
     		default:

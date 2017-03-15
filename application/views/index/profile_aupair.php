@@ -40,11 +40,13 @@
             <span class="text">Experience</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
           <a href="<?= base_url('index/profile/4/'.$param)?>" >
             <span class="text">Interview & Tests</span>
           </a>
         </li>
+        <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
           <a href="<?= base_url('index/profile/3/'.$param)?>" >
             <span class="text">Document</span>
@@ -163,7 +165,13 @@
 
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <div class="row">
-                <img src="<?php echo base_url('assets/img/aupair.jpg'); ?>" class="img-responsive">
+                <img src="<?php 
+                  if($aupair['photo']){
+                    echo base_url('files/photos/'.$aupair['photo']); 
+                  }else{
+                    echo base_url('assets/img/aupair.jpg'); 
+                  }
+                ?>" class="img-responsive">
               </div>
               <div class="row">
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Hi, I'm <?php echo $aupair['full_name']; ?></b></h1></div>

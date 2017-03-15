@@ -45,7 +45,7 @@
 		return $age;
 	}
 
-    function upload($id, $kind = '') {
+  function upload($id, $kind = '') {
         if (!empty($_FILES)) {
 
             $tempFile = $_FILES["file"]['tmp_name'];

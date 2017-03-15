@@ -58,23 +58,23 @@
 	    </div>
         <div class="collapse navbar-collapse" id="mytopbar">
 		    <ul class="nav navbar-nav">
-		      <li class="<?php echo $li_class['first'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/1');?>">
+		      <li class="<?php echo $li_class['first'];?>"><a href="<? echo base_url('index/roadmap_profile/1');?>">
 		      <span>&#10112;</span> Application</a></li>
-		      <li class="<?php echo $li_class['second'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/2');?>">
+		      <li class="<?php echo $li_class['second'];?>"><a href="<? echo base_url('index/roadmap_profile/2');?>">
 		      <span>&#10113;</span> Interview</a></li>
-		      <li class="<?php echo $li_class['third'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/3');?>">
+		      <li class="<?php echo $li_class['third'];?>"><a href="<? echo base_url('index/roadmap_profile/3');?>">
 		      <span>&#10114;</span> Documents</a></li>
-		      <li class="<?php echo $li_class['forth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/4');?>">
+		      <li class="<?php echo $li_class['forth'];?>"><a href="<? echo base_url('index/roadmap_profile/4');?>">
 		      <span>&#10115;</span> Matching</a></li>
-		      <li class="<?php echo $li_class['fifth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/5');?>">
+		      <li class="<?php echo $li_class['fifth'];?>"><a href="<? echo base_url('index/roadmap_profile/5');?>">
 		      <span>&#10116;</span> Visa</a></li>
-		      <li class="<?php echo $li_class['sixth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/6');?>">
+		      <li class="<?php echo $li_class['sixth'];?>"><a href="<? echo base_url('index/roadmap_profile/6');?>">
 		      <span>&#10117;</span> Preparing</a></li>
-		      <li class="<?php echo $li_class['seventh'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/7');?>">
+		      <li class="<?php echo $li_class['seventh'];?>"><a href="<? echo base_url('index/roadmap_profile/7');?>">
 		      <span>&#10118;</span> Arrival</a></li>
-		      <li class="<?php echo $li_class['eighth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/8');?>">
+		      <li class="<?php echo $li_class['eighth'];?>"><a href="<? echo base_url('index/roadmap_profile/8');?>">
 		      <span>&#10119;</span> Stay</a></li>
-		      <li class="<?php echo $li_class['ninth'];?>"><a href="<? echo base_url('index.php/index/roadmap_profile/9');?>">
+		      <li class="<?php echo $li_class['ninth'];?>"><a href="<? echo base_url('index/roadmap_profile/9');?>">
 		      <span>&#10120;</span> Return</a></li>
 			</ul>
 		</div>
@@ -150,9 +150,15 @@
 		      		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		      			<h1>Agreement</h1>
 		      			<div class="above-drop-file">
-							<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+							<a href="<?php 
+								foreach ($documents as $key => $document) {
+									if ($document['title'] == 'Signed agreement') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 						</div>
-						<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+						<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>
 		      		</div>		      		
@@ -197,6 +203,7 @@
 		    </div>
 		    <div id="collapse4" class="panel-collapse collapse">
 		      <div class="panel-body">
+		      <form action="<?= base_url('index/save_profile/3') ?>" method="POST">
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 		      			<p>
@@ -204,14 +211,15 @@
 		      			</p>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-		      			<textarea class="form-control" rows="8"></textarea>
+		      			<textarea name="ap_overview" class="form-control" rows="8"></textarea>
 		      		</div>		      		
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">SUBMIT</a>
+		      			<input type="submit" class="btn next-button" value="SUBMIT" >
 		      		</div>
 		      	</div>
+		      </form>
 		      </div>
 		    </div>
 		  </div>
@@ -236,7 +244,7 @@
 		      			</p>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-		      			<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+		      			<form action = "<?= base_url('index/save_profile/4') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>
 		      		</div>		      		
@@ -323,7 +331,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Test results</h1>
-		     				<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+		     				<form action = "<?= base_url('document/upload_document/24') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>	     				
 		     			</div>
@@ -412,7 +420,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Passport pages</h1>
-		     				<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+		     				<form action = "<?= base_url('document/upload_document/25') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -448,9 +456,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Important details</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php
+									foreach ($documents as $key => $document) {
+										if ($document['title'] == 'Important Details') {
+											echo base_url('files/'.$document['name']);
+										}
+									}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/26') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -485,7 +499,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Criminal clearance</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/27') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -521,9 +535,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Antecedents doc</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php
+									foreach ($documents as $key => $document) {
+										if ($document['title'] == 'NMNP Declaration') {
+											echo base_url('files/'.$document['name']);
+										}
+									}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/28') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -561,9 +581,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Health forms</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php
+									foreach ($documents as $key => $document) {
+										if ($document['title'] == 'Health Form') {
+											echo base_url('files/'.$document['name']);
+										}
+									}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/29') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -600,7 +626,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>TBC test</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/30') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -635,7 +661,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Birth certificate</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/31') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -670,7 +696,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Legalisation</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/32') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -706,7 +732,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Apostille</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/33') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -741,7 +767,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Translation</h1>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/34') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -848,9 +874,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Family agreement</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php 
+								foreach ($family_documents as $key => $document) {
+									if ($document['title'] == 'Agreement with Family') {
+										echo base_url('files/'.$document['name']);
+									}
+								}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/35') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -894,9 +926,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Weekly timeschedule</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php
+									foreach ($documents as $key => $document) {
+										if ($document['title'] == 'Weekly time schedule') {
+											echo base_url('files/'.$document['name']);
+										}
+									}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/36') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -932,9 +970,15 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Awareness doc</h1>
 		     				<div class="above-drop-file">
-								<a href="#" class="btn next-button">DOWNLOAD DOC</a>
+								<a href="<?php
+									foreach ($documents as $key => $document) {
+										if ($document['title'] == 'Awareness declaration') {
+											echo base_url('files/'.$document['name']);
+										}
+									}
+								?>" class="btn next-button">DOWNLOAD DOC</a>
 							</div>
-							<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+							<form action = "<?= base_url('document/upload_document/16') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>
 		     				
@@ -1138,7 +1182,7 @@
 	     			</div>
 	     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 	     				<h1>Picture of visa</h1>
-	     				<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+	     				<form action = "<?= base_url('document/upload_document/37') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 		      			</form>	     				
 	     			</div>
@@ -1206,7 +1250,7 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  2. Basic healthcare insurance </a>
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Basic healthcare insurance </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1238,7 +1282,7 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  3. Ticket information </a>
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Ticket information </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1273,7 +1317,7 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  4 Au-pair manual </a>
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4 Au-pair manual </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1305,7 +1349,7 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  5. Packing tips </a>
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Packing tips </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1338,12 +1382,610 @@
 <!-- end tab6 -->
 	<?php }elseif($tab == 7){?>
 <!-- start tab7 -->
+	<h1><i><b>7. Arrival</b></i></h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<p>
+				Welcome in the Netherlands! We hope you had a good flight and had a nice welcome by your Host Family.<br><br> There are some important legal obligations to fulfill immediately when you arrive.
+				</p>
+	    	</div>	    			    	
+	    </div><br><br>	    
+        <div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Welcome package  </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		     	<div class="panel-body">
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<p>
+		     					We have send you a welcome's package; Some welcome presents like; a keyring for your new house, bike seatcover and some Dutch sweetness. For your host kids we have a cute HBN childrens apron for you to use when baking /cooking! I hope you like it :-)!.
+		     				</p><br><br>
+		     				<a href="#" class="btn next-button">PROCEED</a>
+		     			</div>		     			
+		     		</div>
+		    	</div>
+		  	</div>
+		  </div>
+
+		   <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Registration city hall </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse2" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		     				<p>
+		     					You need to register at city hall together with one of the Hosts. You need to bring your passport and your unabridged legalised birth certificate. In most cities and villages you need to make an appointment upfront. Please discuss with your host when to go together.<br><br>
+								Within 5 days you will receive a letter from the city hall with you BS number notifying you are registered at the Host Family's address.
+		     				</p>
+		     			</div>
+		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+		     				<h1>Proof of registration</h1>
+		     				<form action = "<?= base_url('document/upload_document/38') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>		     				
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. BRP Extract  </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse3" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+	     				<p>
+	     					After you received the letter from the city hall that notifies you that you are registered on the Host Family's address, you need to visit the city hall with your host again. Yes sorry again;-).<br><br>
+							You need to ask for a BRP (extract from city hall registration) proving that both you and the whole family are registered on the address. We need a copy of this extract. This extract is really important for us to have in final as this is part of the legal duties and we can get fined for it if we do not have it documented.
+	     				</p>
+	     			</div>
+	     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+	     				<h1>BRP Extract</h1>
+	     				<form action = "<?= base_url('document/upload_document/39') ?>" class="dropzone dz-clickable" >
+		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+		      			</form>		     				
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Welcome training </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse4" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+	     				<p>
+	     					Every month we organize a welcome training for all the girls that have arrived in this month. We do this to interexchange experiences, give you more guidance and advice for your Au pair year. We discuss all the things that are explained in the manual, we discuss the importance of communication and explain you techniques and much more.
+	     				</p><br>
+	     				<a href="#" class="btn next-button">DOWNLOAD</a><br>
+	     				<p>
+	     					Joining this meeting is compulsory, your host family needs to give you the opportunity to join.
+	     				</p>
+	     			</div>
+	     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+	     				<h1>Welcome training</h1>
+	     				<a href="#" class="btn next-button">CONFIRM PRESENCE</a>   				
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. First Aid training </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse5" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<p class="text-danger">[ TBD ]</p>
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">PROCEED</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+        </div>
+
+        <div class="row">
+        	<a href="<?= base_url('index/roadmap_profile/8') ?>" class="btn next-button">STEP 8</a>
+        </div>
 <!-- end tab7 -->
 	<?php }elseif($tab == 8){?>
 <!-- start tab8 -->
+	<h1><i><b>8. Stay</b></i></h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<p>
+				During your stay in the Netherlands HBN (your agent and NL) will always be there to assist you with doubts, problems or issues. Please come to us in time, do not wait until it is too late. Many issues, we as your agents have come across due to our long and broad experience. So we can always help you or give you advice. We keep information confidential.<br><br>
+				We have the care and information duty towards the Dutch government so we need you to inform us of any structural changes, stated below or any other issues that concern your wellbeing and stay as an au pair with your host family.<br><br>
+				Legal rules and obligation to inform HBN during your stay:<br><br>
+				• You are not allowed to perform other paid activities during your stay as an Au Pair in the Netherlands<br>
+				• Legal rules according to the weekly time schedule always need to be respected.<br>
+				• Max. 30 hours per week, Max. 8 hours per day, max 5 days per week, max 3 nights (babysitting) per week, 1 weekend off per totally month (FRI evening  20.00-SUN night 24.00)<br>
+				• You are not allowed to stay longer than 1 year as an Au Pair in the Netherlands.<br>
+				• After this year you are illegal in the country and you may not perform any  activities as Au Pair.<br>
+				• You are obliged to always carry your identification card (residence permit) in and  outside the Netherlands.<br>
+				• Always inform HBN of your well-being during your stay. If there are serious  problems/issues, if you feel abused or not respected you are legally obliged to  inform us immediately. This is for your own good!<br>
+				• Always inform HBN immediately if plans during your Au Pair year change<br>
+				• Always inform HBN as soon as you know the exact date of your departure from  the Netherlands!<br>
+				• Always inform HBN if structural changes in the weekly schedule have been made!<br>
+				• Always inform HBN immediately as soon as you have other plans than going back  to your country of origin like study/partnership visa or going to another country than your own. Next to informing you need to provide HBN the evidence (e.g. new visa application, ticket to another country, and stamp in your passport).<br>
+				• If you have a drivers license please note you can not drive more than 185 days after arrival in the Netherlands. You will also need to be insured for this.<br>
+				• Any changes now or in the near future need to instantly inform HBN: there any changes in the family situation, such as;<br><br>
+				Marital state of the hosts (marriage/divorce) <br>
+				Job change of one of the hosts<br>
+				Change of home address<br>
+				Family expansion<br><br>
+				<b>Evaluations</b><br>
+				We will send you several evaluations during this year to see how you are doing and to remind you of the duty to inform us of changes. You are obliged to answer these and if you do not answer you will receive another reminder, and another and so on. You will receive an evaluation after 1 month, 4 months, 7 months, 9 months (prepare departure) and 11 months (goodbye).
+				</p>
+	    	</div>	    			    	
+	    </div><br><br>	    
+        <div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Evaluation </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		     	<div class="panel-body">
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<b>[ FORM ]</b>
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		    	</div>
+		  	</div>
+		  </div>
+
+		   <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Evaluation</a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse2" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<b>[ FORM ]</b>
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Evaluation </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse3" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<b>[ FORM ]</b>
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Evaluation </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse4" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<b>[ FORM ]</b>
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Evaluation </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse5" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<b>[ FORM ]</b>
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+        </div>
+
+        <div class="row">
+        	<a href="<?= base_url('index/roadmap_profile/9') ?>" class="btn next-button">STEP 9</a>
+        </div>
 <!-- end tab8 -->
 	<?php }elseif($tab == 9){?>
 <!-- start tab9 -->
+	<h1><i><b>9. Return</b></i></h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<p>
+				As the au pair program is going towards the end, we need to inform you on the following instructions.<br><br>
+				These instructions must be strictly followed up both by au pair and host family before ending the au pair program and after au pair's return to the country of origin:
+				</p>
+	    	</div>	    			    	
+	    </div><br><br>	    
+        <div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Return ticket </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		     	<div class="panel-body">
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		     				<p>
+		     					It might be clear already, but if not you need to upload the changed return or the return ticket asap. Upload return ticket<br><br>
+								<b>Other Plans:</b>
+								If au pair decides to stay in the Netherlands to study or with a partner visa or leaves to another country than country of origin, you need to inform HBN immediately about it. On the date you APPLY for the new request and unsubscribe of the family residence you are no longer participating in the au pair program and this date HBN needs to communicate to the IND. Next to this we need to have proof of the new visa application and/or ticket to another country) need to be send to us immediately.<br><br>
+								<b>NOTE:</b>
+								-IF HBN is not informed in time (latest the day of departure/request other visa) about the date of departure/new request date, we will risk a fine of the IND which is then according to our general conditions forwarded to the host family due to lack of information.<br><br>
+								-The residence permit of au pair is valid for exactly 1 year, which means that au pair cannot stay longer than 365 days in the Netherlands. After 365 days the residence permit is no longer valid! If au pair under any circumstances stays in the Netherlands after the expiration date of her permit, she/he will be considered illegal in the country.<br><br>
+								- If au pair chooses to leave Schengen area after her residence permit is expired and come back to the Netherlands as a tourist (this possibility is only applicable to a number of countries!), you should be aware that performing any activity as au pair with a tourist visum by the host family is illegal, against the Dutch law and therefore punishable.
+
+		     				</p>
+		     			</div>
+		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+		     				<h1>Return ticket</h1>
+		     				<div class="input-group date schedule-date">
+			        	  	<input type="text" name="sk_start_date" class="form-control" autocomplete='off'>
+			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			        	  	</div><br>
+		     				<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		    	</div>
+		  	</div>
+		  </div>
+
+		   <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Deregister at city hall </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse2" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		     				<p>
+		     					Deregister from the city hall not more than 1 week before your return date. Do not do it earlier because unsubscribing at the family's residence means your residence permit will be invalid/withdrawn!<br><br>
+								This can be done with a deregister form (to be collected at the city hall). You can fill it out and sign the form. Add a copy of your passport ID, bring it to the city hall and send HBN the proof.
+		     				</p>
+		     			</div>
+		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+		     				<h1>Proof of deregistration</h1>
+		     				<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>	     				
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Close basic health insurance </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse3" class="panel-collapse collapse">
+		      <div class="panel-body">
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<p>
+	     					If you have taken out one, we cannot do this for you, but ask help of your hosts.<br><br>
+	     					Your au pair insurance ends by it self; we have taken care of this.
+	     				</p><br><br>
+	     				<a href="#" class="btn next-button">PROCEED</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Close bank account </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse4" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<p>
+	     					Close your bank account
+	     				</p><br><br>
+	     				<a href="#" class="btn next-button">PROCEED</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Return residence card </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse5" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<p>
+	     					Send back your residence card to the IND. Before you leave, a day before departure, please take a picture of your residence card in advance than cut the residence card in 2 and send this back to the IND.<br><br>
+							IND Bureau Documenten<br>
+							Postbus 7025<br>
+							8007 HA Zwolle
+	     				</p>
+	     			</div>
+	     		</div>
+	     		<div class="row">
+	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	     				<a href="#" class="btn next-button">PROCEED</a>
+	     			</div>		     			
+	     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  6. Deregister at city hall </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse6" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		     				<p>
+		     					Congratulations! You have almost finished your au pair program successfully! You will receive your HBN certificate by post in the coming month :-)<br><br>
+								We will send you an end evaluation just to know how you experienced this whole year and also to know if you have tips for the next au pair or the Host Family for their future au pair experience.
+		     				</p>
+		     			</div>
+		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+		     				<h1>HBN Certificate</h1>
+		     				<a href="#" class="btn next-button">DOWNLOAD</a>     				
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">PROCEED</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  7. Leave your room tidy </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse7" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<p>
+		     					When you arrived your room was nice, tidy and clean. Please make sure you leave your room tidy and clean before you leave, just the way you entered it. If there are things broken or stained, please notify your host, discuss how to fix it. Also please check the baggage allowance for your flight back and make sure you do not leave things with the family (there are always other Au Pairs to whom you can give clothes to, there's even a Facebook page for this.
+		     				</p><br><br>
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  8. Safe arrival </a>
+		        <span class="collapse-right">
+		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
+		        </span>
+		      </h4>
+		    </div>
+		    <div id="collapse8" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		     				<p>
+		     					When you are back in your country of origin (or outside the Schengen area) please send us an update that you arrived (home) safely. If you receive a stamp in your passport, please send us the scan of the page of your passport where the stamp is visible. In case you don't receive a stamp at the customs, send us the copy of your boarding pass.<br><br>
+								We wish you all the best in the future and please let us knowif we can help you with anything. It was a pleasure accompanying you during your Au Pair Program, and if you would have any tips regarding our guidance in the Program, please let us know so we can improve for the next Au Pairs!
+		     				</p>
+		     			</div>
+		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
+		     				<h1>Proof of return</h1>
+		     				<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
+			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
+			      			</form>	     				
+		     			</div>
+		     		</div>
+		     		<div class="row">
+		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     			</div>		     			
+		     		</div>
+		      </div>
+		    </div>
+		  </div>
+
+        </div>
 <!-- end tab9 -->
 	<?php }?>
     </div>

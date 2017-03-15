@@ -116,6 +116,20 @@ class Aupair_model extends CI_Model {
                             'extra_info'                => $this->input->post('ap_extra_info')
                         );
         			break;
+                case 3:
+                    $data = array(
+                            'family_name'    => $this->input->post('fa_id')
+                            );
+                    break;
+                case 4:
+                    $data = array(
+                            'overview'    => $this->input->post('ap_overview')
+                            );
+                    break;
+                case 5:
+                    $data = array(
+                            'photo'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
         		
         		default:
         			# code...
