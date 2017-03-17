@@ -14,9 +14,10 @@ class Notity_model extends CI_Model {
                             'content'       => $content,                            
                             'attachment'    => $attachment,
                             'created_date'  => date("Y-m-d"),
-                            'user_id'       => $user_id    
+                            'user_id'       => $user_id,
+                            'hbn_id'        => $this->aauth->get_user()->id 
                         );
-                $query = $this->db->get_where('notities', array('title' => $title, 'user_id' => $user_id));
+                $query = $this->db->get_where('notities', array('title' => $title, 'user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
 
                 if($query->num_rows() < 1){
                         $this->db->insert('notities', $data);
@@ -52,7 +53,7 @@ class Notity_model extends CI_Model {
         }
 
         public function get_notity($user_id){
-            $query = $this->db->get_where('notities', array('user_id' => $user_id));
+            $query = $this->db->get_where('notities', array('user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
             return $query->result_array();
         }
 

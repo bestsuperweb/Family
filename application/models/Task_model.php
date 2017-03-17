@@ -7,15 +7,17 @@ class Task_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function insert_task( $title, $deadline, $user_id){
+        public function insert_task( $title, $deadline, $user_id, $user_name){
 
         	$data = array(
                             'title'         => $title,
                             'deadline'      => $deadline, 
                             'created_date'  => date("Y-m-d"),
-                            'user_id'       => $user_id    
+                            'user_id'       => $user_id,
+                            'user_name'     => $user_name,
+                            'hbn_id'        => $this->aauth->get_user()->id    
                         );
-                $query = $this->db->get_where('tasks', array('title' => $title, 'user_id' => $user_id));
+                $query = $this->db->get_where('tasks', array('title' => $title, 'user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
 
                 if($query->num_rows() < 1){
                         $this->db->insert('tasks', $data);
@@ -25,12 +27,12 @@ class Task_model extends CI_Model {
 
         }
 
-        public function update_task($task_id, $step = 1){
+        public function update_task($step = 1, $task_id){
 
         	switch ($step) {
         		case 1:
         			$data = array(
-                            
+                            'status' => 'complete'
                         );
         			break;
         		case 2:
@@ -51,7 +53,12 @@ class Task_model extends CI_Model {
         }
 
         public function get_task($user_id){
-            $query = $this->db->get_where('tasks', array('user_id' => $user_id));
+            $query = $this->db->get_where('tasks', array('user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
+            return $query->result_array();
+        }
+
+        public function get_tasks_by_hbn($hbn_id){
+            $query = $this->db->get_where('tasks', array('hbn_id' => $hbn_id));
             return $query->result_array();
         }
 

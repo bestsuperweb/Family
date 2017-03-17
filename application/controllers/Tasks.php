@@ -16,11 +16,19 @@ class Tasks extends CI_Controller {
     }
 
     public function insert(){
-        if ($this->task_model->insert_task($_POST['task_title'], $_POST['task_deadline'], $_POST['user_id'])) {
+        if ($this->task_model->insert_task($_POST['task_title'], $_POST['task_deadline'], $_POST['user_id'], $_POST['user_name'])) {
             echo "success";
         }else{
             echo "failure";
         }               
+    }
+
+    public function update($step, $task_id){
+        if($this->task_model->update_task($step, $task_id)){
+            echo 'success';
+        }else{
+            echo 'failure';
+        }
     }
 
     public function get($user_id){

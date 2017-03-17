@@ -144,12 +144,28 @@ $(document).ready(function()
                     if(result == 'success'){
                         location.reload();
                     }else{
-                        alert('Failed to delete notity...');
+                        alert('Failed to delete task...');
                     }
                 }
             });
         }
     });
+
+    $('a.complete-task').on('click', function(){
+        var task_id = $(this).attr('data-id');
+        $.ajax({
+            url: window.base_url+"tasks/update/1/"+task_id,
+            type: 'post',
+            success: function(result){
+                if(result == 'success'){
+                    location.reload();
+                }else{
+                    alert('Server error...');
+                }
+            }
+        });
+    });
+
 
     $(".family-last").on('click', function(){
         alert('ghost');

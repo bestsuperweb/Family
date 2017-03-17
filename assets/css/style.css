@@ -676,6 +676,10 @@
     width: 100%;
 }
 
+.task-table tr{
+
+}
+
 /*Document*/
 .add-doc{
     background-color: #542a44;

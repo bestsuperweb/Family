@@ -9,9 +9,9 @@
 
   <!-- Custom JS -->
   <script type="text/javascript" src="<?= base_url('assets/js/schedule/modernizr.js'); ?>"></script>
-  <script type="text/javascript" src="<?= base_url('assets/js/schedule/main.js'); ?>"></script>  
-  <script type="text/javascript" src="<?= base_url('assets/js/dropzone/dropzone.js');?>"></script>  
   <script type="text/javascript" src="<?= base_url('assets/js/js.js');?>"></script> 
-
+  <script type="text/javascript" src="<?= base_url('assets/js/dropzone/dropzone.js');?>"></script>  
+  <script type="text/javascript" src="<?= base_url('assets/js/schedule/main.js'); ?>"></script>  
+  
 </body>
 </html>

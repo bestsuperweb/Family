@@ -28,7 +28,12 @@ class Index extends CI_Controller {
     	$data['title'] = "Home";
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
-
+        // if($data['user_type'] == 'HBN'){
+        //     $user = unserialize(urldecode($user_data));
+        //     $data['user_type'] = $user[0];
+        //     $data['user_id']   = $user[1];
+        //     $data['param']     = $user_data;
+        // }
         switch ($data['user_type']) {
                 case 'family':
                     $data['family']    = $this->family_model->get_family($data['user_id']);
@@ -40,6 +45,9 @@ class Index extends CI_Controller {
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    break;
+                case 'HBN':
+                    $data['tasks']    = $this->task_model->get_tasks_by_hbn($this->aauth->get_user()->id);
                     break;
                 
                 default:

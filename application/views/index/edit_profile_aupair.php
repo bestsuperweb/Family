@@ -1082,8 +1082,8 @@
                   <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
                   </div>
                 </div>
-                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
-                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Annuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opslaan">
               </form>
               <br>
               <?php
@@ -1096,10 +1096,10 @@
                     <div>
                       <h5><?= $notity['title'] ?></h5>
                       <p><?= $notity['content'] ?></p>
-                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-gray-text"> Au-pair - </span>
                       <span class="notity-user"><?= $aupair['full_name'] ?></span>
                       <span class="notity-gray-text">
-                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
+                       &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
                       </span>
                       <?php if($notity['attachment']){ ?>
                         <br>
@@ -1107,11 +1107,11 @@
                         <a href="<?= base_url('files/'.$notity['attachment']) ?>" target="_blank" ><?= $notity['attachment'] ?></a></span>
                       <?php } ?>
                       <br><br>
-                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                      <span class="notity-gray-text"> - <?= $this->aauth->get_user()->name ?> - </span>
                     </div>
                     <div>
                       <a href="#" class="delete-noitity" data-id="<?= $notity['id'] ?>">
-                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                        <span class="notity-gray-text glyphicon glyphicon-trash"></span>
                       </a>
                     </div>
                   </div>
@@ -1129,7 +1129,8 @@
                 <strong>Opp!</strong> There are some errors to save the notity.
               </div>
               <form action="<?= base_url('tasks/insert') ?>" class="notity-form uploadForm" method="POST">
-                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">                  
+                <input type="hidden" name="user_name" value="<?= $aupair['full_name'] ?>">                  
                 <input type="text" name="task_title" class="form-control" placeholder="Task title" required>
                 <div class="input-group schedule-date date">
                   <input type="text" class="form-control" name="task_deadline" placeholder="Task Deadline">
@@ -1139,8 +1140,8 @@
                   <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
                   </div>
                 </div>
-                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
-                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Annuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opslaan">
               </form>
               <br>
               <?php
@@ -1151,7 +1152,15 @@
                       <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
                     </div>
                     <div>
-                      <h5><?= $task['title'] ?></h5>
+                      <h5><?= $task['title'] ?>
+                          <?php
+                              if ($task['status'] == 'complete') {
+                          ?>
+                                  <span class="text-success glyphicon glyphicon-ok-sign"></span>
+                          <?php
+                              } 
+                          ?>
+                      </h5>
                       <h5><i class="glyphicon glyphicon-calendar"></i> 
                         <?php 
                           if($task['deadline'] != '0000-00-00'){
@@ -1161,17 +1170,22 @@
                             } 
                         ?>
                       </h5>
-                      <span class="notity-gray-text"> Gastgezin - </span>
-                      <span class="notity-user"><?= $aupair['full_name'] ?></span>
+                      <span class="notity-gray-text"> Au-pair - </span>
+                      <span class="notity-user"><?= $task['user_name'] ?></span>
                       <span class="notity-gray-text">
-                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
+                       &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
                       </span>
                       <br><br>
-                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                      <span class="notity-gray-text"> - <?= $this->aauth->get_user()->name ?> - </span>
                     </div>
                     <div>
+                      <?php if ($task['status'] != 'complete') {  ?>
+                            <a href="#" class="complete-task" data-id="<?= $task['id'] ?>">
+                              <span class="notity-gray-text glyphicon glyphicon-ok"></span>
+                            </a>&nbsp;|&nbsp;
+                      <?php } ?>
                       <a href="#" class="delete-task" data-id="<?= $task['id'] ?>">
-                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                        <span class="notity-gray-text glyphicon glyphicon-trash"></span>
                       </a>
                     </div>
                   </div>
@@ -1199,7 +1213,7 @@
         <h4 class="modal-title">Add Document</h4>
       </div>
       <form class="uploadForm" action="<?= base_url('document/insert') ?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">          
+        <input type="hidden" name="user_id" value="<?= $documents[0]['user_id'] ?>">      
         <div class="modal-body">
           <div class="alert alert-success upload-success">
             <strong>Success!</strong> The document was successfully uploaded.

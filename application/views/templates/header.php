@@ -20,10 +20,14 @@
   <?php if($this->aauth->is_loggedin()){?>
   <script type="text/javascript">
     window.user_type = '<?= $user_type ?>';
-    window.user_id = <?= $user_id ?>;
-    window.base_url = '<?= base_url(); ?>';
+    window.base_url  = '<?= base_url(); ?>';        
   </script>
-  <?php } ?>
+    <?php if($user_type != 'HBN'){ ?>
+      <script type="text/javascript">
+        window.user_id   = <?= $user_id ?>;
+      </script>
+    <?php }
+    }?>
 </head>
 <body>
 <?php

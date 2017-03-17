@@ -15,7 +15,7 @@ CREATE TABLE `documents` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHA
 
 CREATE TABLE `agencies` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-CREATE TABLE `notities` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `content` TEXT NOT NULL , `attachment` VARCHAR(255) NULL , `user_id` INT(255) NOT NULL , `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `notities` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `content` TEXT NOT NULL , `attachment` VARCHAR(255) NULL , `user_id` INT(255) NOT NULL , `hbn_id` INT(255) NOT NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-CREATE TABLE `tasks` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `deadline` DATE NULL , `user_id` INT(255) NOT NULL , `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `tasks` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `deadline` DATE NULL , `user_id` INT(255) NOT NULL , `user_name` VARCHAR(255) NOT NULL, `hbn_id` INT(255) NOT NULL, `status` VARCHAR(25) NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
