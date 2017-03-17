@@ -16,7 +16,7 @@ class Family_model extends CI_Model {
                                 'house_number'  => $this->input->post('fa_housenumber'),
                                 'street'        => $this->input->post('fa_street'),
                                 'place'         => $this->input->post('fa_place'),
-                                'status'        => '1. intake'
+                                'status'        => '01 - Intake'
                         );
                 $query = $this->db->get_where('families', array('contact_email' => $this->input->post('fa_email')));
 

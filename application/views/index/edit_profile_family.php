@@ -1,10 +1,11 @@
 <!-- views/index/profile.php  -->
 <?php
 		$li_class = array();
-		$li_class['first'] = '';
+		$li_class['first']  = '';
 		$li_class['second'] = '';
-		$li_class['third'] = '';
-		$li_class['forth'] = '';
+		$li_class['third']  = '';
+		$li_class['forth']  = '';
+    $li_class['fifth']  = '';
 		switch ($tab) {
 			case 1:
 				$li_class['first'] = 'active';
@@ -18,7 +19,10 @@
 			case 4:
 				$li_class['forth'] = 'active';
 				break;
-					
+			case 5:
+        $li_class['fifth'] = 'active';
+        break;
+
 			default:
 				$li_class['first'] = 'active';
 				break;
@@ -28,25 +32,32 @@
     <div class="container-fluid profile-edit">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
-          <a href="#basicinfo" data-toggle="tab" aria-controls="basicinfo">
+          <a href="<?= base_url('index/edit_profile/1/'.$param)?>" data-toggle="tab" aria-controls="basicinfo">
             <span class="text">Basic info</span>
           </a>
         </li>
         <li role="presentation" class="next <?php echo $li_class['second']; ?>">
-          <a href="#host" role="tab" data-toggle="tab" aria-controls="host">
+          <a href="<?= base_url('index/edit_profile/2/'.$param)?>" role="tab" data-toggle="tab" aria-controls="host">
             <span class="text">About the host</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
-          <a href="#preferences" role="tab" data-toggle="tab" aria-controls="preferences">
+          <a href="<?= base_url('index/edit_profile/3/'.$param)?>" role="tab" data-toggle="tab" aria-controls="preferences">
             <span class="text">Preferences</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
-          <a href="#document" role="tab" data-toggle="tab" aria-controls="document">
+          <a href="<?= base_url('index/edit_profile/4/'.$param)?>" role="tab" data-toggle="tab" aria-controls="document">
             <span class="text">Document</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
+        <li role="presentation" class="<?php echo $li_class['fifth']; ?>">
+          <a href="<?= base_url('index/edit_profile/5/'.$param)?>" >
+            <span class="text">Report</span>
+          </a>
+        </li>
+       <?php } ?>
       </ul>
       <div class="tab-content profile-tab-content">
       <?php echo validation_errors(); ?>
@@ -704,7 +715,339 @@
           </div>
         </div>
 <!-- end document tab -->
-   
+
+<!-- start report tab -->
+      <?php if($this->aauth->is_member(6)){ ?>
+      <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
+        <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
+            <b>KLANT STATUS</b><br>
+            <select >
+              <option>01 - Intake</option>
+              <option>02 - Profile + confirmation</option>
+              <option>03 - Matches</option>
+              <option>04 - Request docs IND</option>
+              <option>05 - At IND</option>
+              <option>06 - Approval / Embassy visit</option>
+              <option>07 - Prepare welcome</option>
+              <option>08 - Placed</option>
+              <option>09 -  Evaluation 1 done</option>
+              <option>10 - Evaluation 2 done</option>
+              <option>11 - Mail / Call replace done</option>
+              <option>12 - On hold</option>
+              <option>13 - Cancelled</option>
+              <option>14 - Closed</option>
+            </select>
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+          <a href="#" class="btn next-button">PROFIEL AU_PAIR</a></div>
+        </div>
+        <div class="row">
+          
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>CASE MANAGER</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email HBN</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $this->aauth->get_user()->email ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['mobile_number'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['mobile_number'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Eigenaar</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?> <?= $parents[0]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Type</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="custom-select">
+                  <select>
+                    <option>1st placement</option>
+                    <option>2nd placement</option>
+                    <option>3rd placement</option>
+                    <option>4 No further replacement</option>
+                    <option>5 Cancelled</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Naam</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['firstname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Meisjesnaam moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['lastname'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Beschrijving</b></div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                easy going gezin, wel druk, vader reist veel, moeder zware baan, 2 jongetjes Willem 6 jaar en Zeeger 4 jaar en nu 3de kindje op komst februari 2015kids 7, 5 en 1 jr: willen graag goed engels, warm gezellig, geen tuttebel. Marina is een topper maar wel een beetje een tuttebel, past niet zo bij suzan. moet wel lekker jongens type zijn!
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>STATUS/TO DO</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Startdatum (Residence Permit)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>       
+
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) vader</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['email'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) moeder</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['email'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (straat)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['street'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (postcode)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['postal_code'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (plaats)</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['place'] ?></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>FACTUUR INFO/KORTING</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Bankrekening nr</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 1 verstuurd 60%</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 2 verstuurd</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuur 3 verstuurd</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Leges afgeschreven</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h3><i>CHECKLIST ALGEMEEN</i></h3>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Inkomen van Host</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Dienstverband</b></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Jennifer</div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Arbeidsovereenkomst (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Werkgeversverklaring (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>KVK uittreksel of oprichtingsakte (DGA, ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Zelfstandig Ondernemer Verklaring IND (ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Loonstroken 3x (laatste 3 mnd) (LD, DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>            
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>UWV verklaring + handtek. + stempel (LD)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Betaalde belasting bewijs (screenshots) (DGA)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Belastingaangiftes (ZO)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Laatste voorlopige/def. aanslag /aangifte (EV)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs/bescheiden omvang eigen vermogen (EV)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>NOTITIES</i></h3>            
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('notities/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($family['contact_email']) ?>">
+                <input type="text" name="notity_title" class="form-control" placeholder="Notity title" required>
+                <textarea name="notity_content" class="form-control" placeholder="Notity content" rows="5" required></textarea>
+                <input type="file" name="notity_file" >
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($notities as $key => $notity) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $notity['title'] ?></h5>
+                      <p><?= $notity['content'] ?></p>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $parents[0]['lastname'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
+                      </span>
+                      <?php if($notity['attachment']){ ?>
+                        <br>
+                        <span class="notity-gray-text"><span class="glyphicon glyphicon-paperclip"></span>
+                        <a href="<?= base_url('files/'.$notity['attachment']) ?>" target="_blank" ><?= $notity['attachment'] ?></a></span>
+                      <?php } ?>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-noitity" data-id="<?= $notity['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>TASKS</i></h3>
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('tasks/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($family['contact_email']) ?>">
+                <input type="text" name="task_title" class="form-control" placeholder="Task title" required>
+                <div class="input-group schedule-date date">
+                  <input type="text" class="form-control" name="task_deadline" placeholder="Task Deadline">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($tasks as $key => $task) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $task['title'] ?></h5>
+                      <h5><i class="glyphicon glyphicon-calendar"></i> 
+                        <?php 
+                          if($task['deadline'] != '0000-00-00'){
+                            echo $task['deadline'];
+                            }else{
+                              echo "&#8734;";
+                            } 
+                        ?>
+                      </h5>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $parents[0]['lastname'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
+                      </span>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-task" data-id="<?= $task['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+      </div>
+
+      </div>
+      <?php } ?>
+<!-- end report tab -->
+
     </div>
     </div>
 </div>

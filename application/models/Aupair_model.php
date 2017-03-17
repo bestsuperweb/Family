@@ -41,7 +41,7 @@ class Aupair_model extends CI_Model {
                             'place'  					=> $this->input->post('ap_place'),
                             'ap_date'        			=> $this->input->post('ap_date'),
                             'dislaimer_terms_conditions'=> $this->input->post('ap_dislaimer_terms_conditions'),
-                            'status'                    => '1. intake'
+                            'status'                    => '01 - Intake'
                         );
                 $query = $this->db->get_where('aupairs', array('email' => $this->input->post('ap_email')));
 

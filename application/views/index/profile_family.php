@@ -674,21 +674,125 @@
             </div>
           </div>
         </div>
+        
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h3><i>NOTITIES</i></h3>
-            <div class="row">
-              <form class="notity-form">
-                <textarea class="form-control">
-                  
-                </textarea>
-                <!-- <input type="file" name=""> -->
-                <input type="button" name="" class="btn btn-warning btn-sm" value="Anuleren">
-                <input type="button" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              <h3><i>NOTITIES</i></h3>            
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('notities/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($family['contact_email']) ?>">
+                <input type="text" name="notity_title" class="form-control" placeholder="Notity title" required>
+                <textarea name="notity_content" class="form-control" placeholder="Notity content" rows="5" required></textarea>
+                <input type="file" name="notity_file" >
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
               </form>
-            </div>
-          </div>
+              <br>
+              <?php
+                foreach ($notities as $key => $notity) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $notity['title'] ?></h5>
+                      <p><?= $notity['content'] ?></p>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $parents[0]['lastname'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
+                      </span>
+                      <?php if($notity['attachment']){ ?>
+                        <br>
+                        <span class="notity-gray-text"><span class="glyphicon glyphicon-paperclip"></span>
+                        <a href="<?= base_url('files/'.$notity['attachment']) ?>" target="_blank" ><?= $notity['attachment'] ?></a></span>
+                      <?php } ?>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-noitity" data-id="<?= $notity['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>TASKS</i></h3>
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('tasks/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($family['contact_email']) ?>">
+                <input type="text" name="task_title" class="form-control" placeholder="Task title" required>
+                <div class="input-group schedule-date date">
+                  <input type="text" class="form-control" name="task_deadline" placeholder="Task Deadline">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($tasks as $key => $task) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $task['title'] ?></h5>
+                      <h5><i class="glyphicon glyphicon-calendar"></i> 
+                        <?php 
+                          if($task['deadline'] != '0000-00-00'){
+                            echo $task['deadline'];
+                            }else{
+                              echo "&#8734;";
+                            } 
+                        ?>
+                      </h5>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $parents[0]['lastname'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
+                      </span>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-task" data-id="<?= $task['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+      </div>
+
       </div>
       <?php } ?>
 <!-- end report tab -->

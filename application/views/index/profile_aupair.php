@@ -484,24 +484,10 @@
 <!-- end interview tab -->
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">         
         <div class="row">
-          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-            <h1><i><b><?php echo $aupair['full_name']; ?></b></i></h1>
+          <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
+            <h1><i><b><?php echo $aupair['full_name']; ?></b></i> </h1>
             <b>AU-PAIR STATUS</b><br>
-            <select >
-              <option>01 - Intake / Profiel</option>
-              <option>02 - Matching</option>
-              <option>03 - Matching Proposed</option>
-              <option>04 - Matched - Prepare Docs</option>
-              <option>05 - At IND</option>
-              <option>06 - Embassy / prepare arrival</option>
-              <option>07 - Placed / In NL</option>
-              <option>08 - Evaluation 1 send</option>
-              <option>09 - Evaluation 2 send</option>
-              <option>10 - Start Prepare leave procedure</option>
-              <option>11 - Left (afgemeld IND)</option>
-              <option>12 - On hold / later</option>
-              <option>13 - REMATCH procedure</option>
-            </select>
+            <b class="text-primary"><?= $aupair['status'] ?></b>
             <br>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-Nummber</div>
@@ -521,7 +507,7 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Au-Pair Eigenaar</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">SUPPORT TEAM HBN</div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Date of birth</div>
@@ -535,6 +521,11 @@
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Month startdate</div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['start_date'] ?></div>
             </div>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="<?php echo base_url('index/edit_profile/5/').$param; ?>">
+                <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'>
+            </a>
           </div>
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <a href="#" class="btn next-button">PROFIEL FAMILIE</a>
@@ -566,7 +557,7 @@
             </div>
             <div class="row">
               <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Contribution Visa/Ticket</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">€ 400</div>
             </div>
             <div class="row">
               <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Interviewform</b></div>
@@ -781,21 +772,123 @@
           </div>
         </div>
 
-        <h3><i>NOTITIES</i></h3>            
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <form class="notity-form">
-                <textarea class="form-control">
-                  
-                </textarea>
-                <!-- <input type="file" name=""> -->
-                <input type="button" name="" class="btn btn-warning btn-sm" value="Anuleren">
-                <input type="button" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              <h3><i>NOTITIES</i></h3>            
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('notities/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">
+                <input type="text" name="notity_title" class="form-control" placeholder="Notity title" required>
+                <textarea name="notity_content" class="form-control" placeholder="Notity content" rows="5" required></textarea>
+                <input type="file" name="notity_file" >
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
               </form>
-            </div>
-          </div>
+              <br>
+              <?php
+                foreach ($notities as $key => $notity) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $notity['title'] ?></h5>
+                      <p><?= $notity['content'] ?></p>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $aupair['full_name'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
+                      </span>
+                      <?php if($notity['attachment']){ ?>
+                        <br>
+                        <span class="notity-gray-text"><span class="glyphicon glyphicon-paperclip"></span>
+                        <a href="<?= base_url('files/'.$notity['attachment']) ?>" target="_blank" ><?= $notity['attachment'] ?></a></span>
+                      <?php } ?>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-noitity" data-id="<?= $notity['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>TASKS</i></h3>
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('tasks/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">
+                <input type="text" name="task_title" class="form-control" placeholder="Task title" required>
+                <div class="input-group schedule-date date">
+                  <input type="text" class="form-control" name="task_deadline" placeholder="Task Deadline">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($tasks as $key => $task) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $task['title'] ?></h5>
+                      <h5><i class="glyphicon glyphicon-calendar"></i> 
+                        <?php 
+                          if($task['deadline'] != '0000-00-00'){
+                            echo $task['deadline'];
+                            }else{
+                              echo "&#8734;";
+                            } 
+                        ?>
+                      </h5>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $aupair['full_name'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
+                      </span>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-task" data-id="<?= $task['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+      </div>
 
       </div>
 <!-- end report tab -->

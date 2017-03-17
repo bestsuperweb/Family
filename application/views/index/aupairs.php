@@ -73,7 +73,7 @@
                     	<img src="<?= base_url('assets/img/user-femal1.png');?>" width=25 > &nbsp;&nbsp;<?= strtoupper($aupair['full_name']) ?>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    	<img src="<?= base_url('assets/img/users-white.png') ?>" width=25> &nbsp;&nbsp;<?= strtoupper($aupair['family_name']) ?></div>    
+                    	<img src="<?= base_url('assets/img/users-white.png') ?>" width=25> &nbsp;&nbsp;<?= strtoupper($aupair['aupair_family']) ?></div>    
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= strtoupper($aupair['status']) ?></div>  
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">&nbsp;</div>                    
                   </a>          

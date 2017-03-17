@@ -1,9 +1,11 @@
 <!-- views/index/profile.php  -->
 <?php
 		$li_class = array();
-		$li_class['first'] = '';
+		$li_class['first']  = '';
 		$li_class['second'] = '';
-		$li_class['third'] = '';
+		$li_class['third']  = '';
+    $li_class['forth']  = '';
+    $li_class['fifth']  = '';
 		switch ($tab) {
 			case 1:
 				$li_class['first'] = 'active';
@@ -13,7 +15,13 @@
 				break;
 			case 3:
 				$li_class['third'] = 'active';
-				break;					
+				break;
+      case 4:
+        $li_class['forth'] = 'active';
+        break;          
+      case 5:
+        $li_class['fifth'] = 'active';
+        break;			
 			default:
 				$li_class['first'] = 'active';
 				break;
@@ -23,20 +31,34 @@
     <div class="container-fluid profile-edit">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
-          <a href="#general" data-toggle="tab" aria-controls="general">
+          <a href="<?= base_url('index/edit_profile/1/'.$param)?>">
             <span class="text">General</span>
           </a>
         </li>
         <li role="presentation" class="next <?php echo $li_class['second']; ?>">
-          <a href="#experience" role="tab" data-toggle="tab" aria-controls="experience">
+          <a href="<?= base_url('index/edit_profile/2/'.$param)?>">
             <span class="text">Experience</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
+        <li role="presentation" class="<?php echo $li_class['forth']; ?>">
+          <a href="<?= base_url('index/edit_profile/4/'.$param)?>" >
+            <span class="text">Interview & Tests</span>
+          </a>
+        </li>
+        <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
-          <a href="#document" role="tab" data-toggle="tab" aria-controls="document">
+          <a href="<?= base_url('index/edit_profile/3/'.$param)?>">
             <span class="text">Document</span>
           </a>
         </li>
+        <?php if($this->aauth->is_member(6)){ ?>
+        <li role="presentation" class="<?php echo $li_class['fifth']; ?>">
+          <a href="<?= base_url('index/edit_profile/5/'.$param)?>" >
+            <span class="text">Report</span>
+          </a>
+        </li>
+       <?php } ?>
       </ul>
       <div class="tab-content profile-tab-content">
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="general">
@@ -571,7 +593,7 @@
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
-                  <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button">DOWNLOAD</a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>" class="btn next-button" target="_blank" >DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
                   <?php if(($this->aauth->is_member(6))&&($document['status'] != 'approved')) { ?>
@@ -591,7 +613,577 @@
           </div>
         </div>
 <!-- end document tab -->
-   
+      <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="interview">         
+        <h1 class="profile-caption"><b><?php echo $aupair['full_name']; ?></b></h1>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <h2><b><i>Interview Reports</i></b></h2><br>
+            <img src="<?= base_url('assets/img/users.png') ?>" ><span class="sub-caption"> Luis Fabiano</span><br><br>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt mattis pretium. Suspendisse vitae nibh ullamcorper, convallis ipsum et, tincidunt ligula. Suspendisse ut pulvinar elit. Nam at vulputate purus, scelerisque pharetra lectus. Curabitur tincidunt, risus nec condimentum tincidunt, turpis orci vulputate elit, ultricies pharetra metus nisl et est. Vestibulum ac velit eu mi sollicitudin fermentum. Ut sed sem dolor. Praesent sed velit ut dolor molestie gravida. Aliquam erat volutpat. Duis et nibh risus.<br><br>
+              Donec efficitur molestie odio vel volutpat. In hac habitasse platea dictumst. Cras egestas vestibulum tinci- dunt. Fusce eget arcu nec nisi dictum ornare ac a odio. Proin bibendum lectus arcu, in maximus quam feu- giat ut. Sed pretium enim sit amet tristique scelerisque. Nulla massa felis, maximus sed libero sed, mollis blandit massa. Praesent volutpat, dui in vulputate lacinia, massa felis sodales justo, nec facilisis orci dolor auctor elit.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <h2><b><i>Video</i></b></h2>
+              <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 test-result" >
+            <h2><b><i>Test results</i></b></h2>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+                <div class="row" style="text-align: center;">
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>1</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>2</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>3</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>4</i></h3></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><h3><i>5</i></h3></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENTHUSIASTIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>OUTGOING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PROACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENERGETIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CARING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>FLEXIBLE/ADAPTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SPORTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ORGANISED</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>RESPONSIBLE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SMART</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>INDEPENDENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>EMOTIONAL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>MODEST</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>HONEST/OPEN</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>QUIET</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SELF RELIANT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PARTYGIRL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CREATIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PATIENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
+            </div>
+          </div>          
+        </div>
+      </div>
+<!-- end interview tab -->
+      <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">         
+        <div class="row">
+          <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
+            <h1><i><b><?php echo $aupair['full_name']; ?></b></i></h1>
+            <b>AU-PAIR STATUS</b><br>
+            <div class="form-control custom-select" >
+              <select name="ap_status" value="<?= $aupair['status'] ?>">
+                <option>01 - Intake</option>
+                <option>02 - Matching</option>
+                <option>03 - Matching Proposed</option>
+                <option>04 - Matched - Prepare Docs</option>
+                <option>05 - At IND</option>
+                <option>06 - Embassy / prepare arrival</option>
+                <option>07 - Placed / In NL</option>
+                <option>08 - Evaluation 1 send</option>
+                <option>09 - Evaluation 2 send</option>
+                <option>10 - Start Prepare leave procedure</option>
+                <option>11 - Left (afgemeld IND)</option>
+                <option>12 - On hold / later</option>
+                <option>13 - REMATCH procedure</option>
+              </select>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-Nummber</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="number" name="ap_number" value="<?= $aupair['id'] ?>" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Email HBN</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="email" name="ap_email" value="<?= $aupair['email'] ?>" class="form-control" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Skypename</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="ap_skype" value="<?= $aupair['skype'] ?>" class="form-control" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Mobiel nr. moeder</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="number" name="ap_phone" value="<?= $aupair['phone'] ?>" class="form-control" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Au-Pair Eigenaar</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="ap_eigenaar" value="SUPPORT TEAM HBN" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Date of birth</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="input-group date">
+                <input type="text" class="form-control" name="ap_date_of_birth" value="<?= $aupair['date_of_birth'] ?>">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Country of origin</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-control custom-select" >
+                  <select name="ap_nationality" value="<?= $aupair['nationality'] ?>">
+                    <option>Dutch</option>
+                    <option>Greek</option>
+                    <option>Turkish</option>
+                    <option>Spanish</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Month startdate</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="input-group date">
+                  <input type="text" class="form-control" name="ap_start_date" value="<?= $aupair['start_date'] ?>">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <!-- <input type="submit" name="" class="btn" value="Save"> -->
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <a href="#" class="btn next-button">PROFIEL FAMILIE</a>
+          </div>
+        </div>
+
+        <h3><i>INFORMATION BACKOFFICE</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Summary</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Dear family letter</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Photo's received?</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Reference forms</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Pre-match</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Contribution Visa/Ticket</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Interviewform</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>HBN Agreement</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Copy passport</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Important details</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Health Check form (incl. TBC/HIV/HEP test)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Police Clearance</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Birt certificate</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Booream test</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Antecedents</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3><i>AFTER MATCH</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bij familie</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Timschedule/Agreement getekend door FAM - AP</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verzekering aangevraagd</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Ticket arrangements via</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Copy ticket received</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Startdatum (Residence Permit)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Eind datum Residence Permit</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verblijfsvergunning</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Aanvraag IND verstuurd</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>V-nummer</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Ingangsdatum bevestigd</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Leges afgeschreven</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Pre-arrival mail - manual e.d.</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Welkomstpakket</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3><i>IN NL</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Welkomst mail</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verblijfspas opgehaald +kopie</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs ingeschreven gemeente</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>TBC test gedaan</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Mobile phone NL</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Brief pas IND ontvangen</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3><i>NL - Administratieplicht 4.28.2</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 1 (na 1 mnd) verstuurd + evt. reminder</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 2 (na 4 mnd) verstuurd + evt. reminder</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 1 terugkoppeling + actie HBN</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 2 terugkoppeling + actie HBN</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3><i>Prepare leave-informatieplicht</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Prepare leave mail (3 mnd < leave)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Goodbye mail + end evauluation (1 mn < leave)</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Retourticket ontvangen</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Terugticket datum</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Certificate gestuurd</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Terugkoppeling prepare leave + terugkoppeling HBN</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Afwijkende plannen vertrek</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3><i>Prepare leave-informatieplicht</i></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Afmelding IND verzonden</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="row">
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs stempel ontvangen</b></div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>NOTITIES</i></h3>            
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('notities/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">
+                <input type="text" name="notity_title" class="form-control" placeholder="Notity title" required>
+                <textarea name="notity_content" class="form-control" placeholder="Notity content" rows="5" required></textarea>
+                <input type="file" name="notity_file" >
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($notities as $key => $notity) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $notity['title'] ?></h5>
+                      <p><?= $notity['content'] ?></p>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $aupair['full_name'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $notity['created_date'] ?>
+                      </span>
+                      <?php if($notity['attachment']){ ?>
+                        <br>
+                        <span class="notity-gray-text"><span class="glyphicon glyphicon-paperclip"></span>
+                        <a href="<?= base_url('files/'.$notity['attachment']) ?>" target="_blank" ><?= $notity['attachment'] ?></a></span>
+                      <?php } ?>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-noitity" data-id="<?= $notity['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h3><i>TASKS</i></h3>
+              <div class="alert alert-success upload-success">
+                <strong>Success!</strong> The notity was successfully saved.
+              </div>
+              <div class="alert alert-danger upload-error">
+                <strong>Opp!</strong> There are some errors to save the notity.
+              </div>
+              <form action="<?= base_url('tasks/insert') ?>" class="notity-form uploadForm" method="POST">
+                <input type="hidden" name="user_id" value="<?= $this->aauth->get_user_id($aupair['email']) ?>">
+                <input type="text" name="task_title" class="form-control" placeholder="Task title" required>
+                <div class="input-group schedule-date date">
+                  <input type="text" class="form-control" name="task_deadline" placeholder="Task Deadline">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                <div class="progress upload-progress">
+                  <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                  </div>
+                </div>
+                <input type="reset" name="" class="btn btn-warning btn-sm" value="Anuleren">
+                <input type="submit" name="" class="btn btn-primary btn-sm" value="Opsalan">
+              </form>
+              <br>
+              <?php
+                foreach ($tasks as $key => $task) {
+                  ?>
+                  <div class="notity">
+                    <div style="width: 5%; padding-right: 10px;">
+                      <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
+                    </div>
+                    <div>
+                      <h5><?= $task['title'] ?></h5>
+                      <h5><i class="glyphicon glyphicon-calendar"></i> 
+                        <?php 
+                          if($task['deadline'] != '0000-00-00'){
+                            echo $task['deadline'];
+                            }else{
+                              echo "&#8734;";
+                            } 
+                        ?>
+                      </h5>
+                      <span class="notity-gray-text"> Gastgezin - </span>
+                      <span class="notity-user"><?= $aupair['full_name'] ?></span>
+                      <span class="notity-gray-text">
+                       &#183; Aantekening to... &#183; <span class=" glyphicon glyphicon-time"></span> <?= $task['created_date'] ?>
+                      </span>
+                      <br><br>
+                      <span class="notity-gray-text"> - SUPPORT TEAM HBN - </span>
+                    </div>
+                    <div>
+                      <a href="#" class="delete-task" data-id="<?= $task['id'] ?>">
+                        <span class="notity-gray-text glyphicon glyphicon-erase"></span>
+                      </a>
+                    </div>
+                  </div>
+                  <?php
+                }
+              ?>              
+        </div>
+
+      </div>
+
+      </div>
+<!-- end report tab -->
     </div>
     </div>
 </div>

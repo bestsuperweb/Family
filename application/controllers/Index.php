@@ -14,6 +14,8 @@ class Index extends CI_Controller {
         $this->load->model('schedule_model');
         $this->load->model('aupair_model');
         $this->load->model('document_model');
+        $this->load->model('notity_model');
+        $this->load->model('task_model');
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -137,11 +139,15 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
+                    $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email']));  
+                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));            
                     break;
                 
                 default:
@@ -179,12 +185,16 @@ class Index extends CI_Controller {
                 $data['family']    = $this->family_model->get_family($data['user_id']);
                 $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                 $data['kids']      = $this->kid_model->get_kid($data['user_id']);
-                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));                    
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
+                $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['family']['contact_email'])); 
+                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));                 
                 break;
 
             case 'aupair':
                 $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
+                $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
+                $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email'])); 
+                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));                              
                 break;
             
             default:
@@ -421,6 +431,11 @@ class Index extends CI_Controller {
             }            
         }
 
+        foreach ($data['families'] as $key => $family) {
+            $family_aupair = $this->aupair_model->get_aupair($family['aupair_name']);
+            $data['families'][$key]['family_aupair'] = $family_aupair['full_name'];
+        }
+
         $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
 
 
@@ -445,6 +460,10 @@ class Index extends CI_Controller {
         //     $documents = $this->document_model->get_document($user_id);
         //     $data['aupairs'][$key]['document_name'] = $documents[0]['name'];
         // }
+        foreach ($data['aupairs'] as $key => $aupair) {
+            $aupair_family = $this->parent_model->get_parent($aupair['family_name']);
+            $data['aupairs'][$key]['aupair_family'] = $aupair_family[0]['lastname'];
+        }
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/navbar', $data);

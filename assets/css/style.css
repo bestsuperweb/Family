@@ -644,11 +644,36 @@
     padding: 10px;
     box-shadow: 0 0 2px gray;
 }
-.notity-form *{
+.notity-form>*{
     margin: 10px;
 }
+.notity-form input[type=text],
 .notity-form textarea{
     width: 98%;
+}
+.notity-form input[type=file]{
+    font-size: 12px;
+}
+.notity{
+    padding: 20px 10px;
+    box-shadow: 0 1px 2px gray;
+    color: #000;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 10px;
+}
+.notity-gray-text{
+    color: gray;
+}
+.notity-user{
+    color: blue;
+    text-transform: uppercase;
+}
+.notity>div{
+    display: table-cell;
+}
+.notity-form div.date input{
+    width: 100%;
 }
 
 /*Document*/

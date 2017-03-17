@@ -14,3 +14,8 @@ CREATE TABLE `aupairs` ( `id` INT(255) NOT NULL AUTO_INCREMENT ,`full_name` VARC
 CREATE TABLE `documents` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `title` VARCHAR(255) NOT NULL , `uploader` VARCHAR(255) NOT NULL , `upload_date` DATE NOT NULL , `approved_date` DATE NOT NULL , `status` VARCHAR(10) NOT NULL , `user_id` INT(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 CREATE TABLE `agencies` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `notities` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `content` TEXT NOT NULL , `attachment` VARCHAR(255) NULL , `user_id` INT(255) NOT NULL , `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `tasks` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `deadline` DATE NULL , `user_id` INT(255) NOT NULL , `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
