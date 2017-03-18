@@ -114,7 +114,7 @@
 			  <div class="alert alert-danger">
 		       <strong>Sorry!</strong> <span></span>
 			  </div>
-		      <div class="cd-schedule loading">
+		      <div class="cd-schedule loading" id="timeschedule-div">
 				<div class="timeline">
 					<ul>
 						<li><span>06:00</span></li>
@@ -157,7 +157,7 @@
 					</ul>
 				</div> <!-- .timeline -->
 
-				<div class="events">
+				<div class="events" >
 					
 				</div>
 				<div class="event-modal">
@@ -183,7 +183,9 @@
 		    </div>
 
 		    <div class="row">
-		    	<div class="col-xs-9 col-sm-10 col-md-11 col-lg-11"><input type="submit" name="" class="btn next-button" value="INDIENEN"></div>
+		    	<div class="col-xs-9 col-sm-10 col-md-11 col-lg-11">
+		    		<a href="#" class="btn next-button submit-schedule" data-id="<?= $family['id'] ?>" >INDIENEN</a>
+	    		</div>
 		    	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#" class="add-btn" data-toggle="modal" data-target="#addModal">
 		    	<img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a></div>
 		    </div>

@@ -62,8 +62,9 @@
                 <input type="submit" value="STATUS" >
               </form>
             </div>  
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last" style="background-image: none; height: 50px;">&nbsp;</div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last" style="background-image: none;">&nbsp;</div>
         </div>
+        <div class="clear-fix"></div>
         <?php if($aupairs != null) { ?>
 	        <?php foreach ($aupairs as $key => $aupair) { ?>
 	        <div class="panel panel-default">

@@ -1014,7 +1014,7 @@
                       <img src="<?= base_url('assets/img/login_logo.jpg') ?>" width="100%">
                     </div>
                     <div>
-                      <h5><?= $task['title'] ?>
+                      <h5><?= $task['hbn_task'] ?>
                           <?php
                               if ($task['status'] == 'complete') {
                           ?>

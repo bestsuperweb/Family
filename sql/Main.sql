@@ -17,5 +17,7 @@ CREATE TABLE `agencies` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `name` VARCHAR
 
 CREATE TABLE `notities` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `content` TEXT NOT NULL , `attachment` VARCHAR(255) NULL , `user_id` INT(255) NOT NULL , `hbn_id` INT(255) NOT NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-CREATE TABLE `tasks` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `deadline` DATE NULL , `user_id` INT(255) NOT NULL , `user_name` VARCHAR(255) NOT NULL, `hbn_id` INT(255) NOT NULL, `status` VARCHAR(25) NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `tasks` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `hbn_task` VARCHAR(255) NOT NULL , `user_task` VARCHAR(255) NOT NULL , `deadline` DATE NULL , `user_id` INT(255) NOT NULL , `user_name` VARCHAR(255) NOT NULL, `status` VARCHAR(25) NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `updates` ( `id` INT(255) NOT NULL AUTO_INCREMENT , `hbn_update` VARCHAR(255) NOT NULL , `user_update` VARCHAR(255) NOT NULL , `user_id` INT(255) NOT NULL , `user_name` VARCHAR(255) NOT NULL, `created_date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 

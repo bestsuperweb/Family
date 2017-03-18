@@ -166,6 +166,30 @@ $(document).ready(function()
         });
     });
 
+    $('.submit-schedule').on('click', function(){
+        html2canvas(document.getElementById('timeschedule-div'), {
+          onrendered: function(canvas) {
+            var imagedata = canvas.toDataURL('image/jpeg');
+            var imgdata = imagedata.replace(/^data:image\/(png|jpeg);base64,/, "");
+            var family_id = $('.submit-schedule').attr('data-id');
+            $.ajax({
+                type: "POST",
+                url: window.base_url + "families/generate_document/2",
+                data: { imgdata:imgdata, familyId: family_id },
+                success : function(response)
+                {
+                    if (response == 'success') {
+                        $('.alert-success span').html('Timeschedule was successfully saved!');
+                        $('.alert-success').fadeIn(1000).fadeOut(3000);
+                    }else{
+                        $('.alert-danger span').html('There are an error to save timeschedule!');
+                        $('.alert-danger').fadeIn(1000).fadeOut(3000);
+                    }
+                }
+            });
+          }
+        });
+    });
 
     $(".family-last").on('click', function(){
         alert('ghost');

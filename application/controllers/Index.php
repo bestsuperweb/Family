@@ -16,6 +16,7 @@ class Index extends CI_Controller {
         $this->load->model('document_model');
         $this->load->model('notity_model');
         $this->load->model('task_model');
+        $this->load->model('update_model');          
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -40,14 +41,20 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user()->id);
+                    $data['updates']   = $this->update_model->get_update($this->aauth->get_user()->id);
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user()->id);
+                    $data['updates']   = $this->update_model->get_update($this->aauth->get_user()->id);                    
                     break;
                 case 'HBN':
-                    $data['tasks']    = $this->task_model->get_tasks_by_hbn($this->aauth->get_user()->id);
+
+                    $data['updates']   = $this->update_model->get_updates_by_hbn();
+                    $data['tasks']     = $this->task_model->get_tasks_by_hbn();
                     break;
                 
                 default:
@@ -440,8 +447,13 @@ class Index extends CI_Controller {
         }
 
         foreach ($data['families'] as $key => $family) {
-            $family_aupair = $this->aupair_model->get_aupair($family['aupair_name']);
-            $data['families'][$key]['family_aupair'] = $family_aupair['full_name'];
+            if ($family['aupair_name']) {
+                $family_aupair = $this->aupair_model->get_aupair($family['aupair_name']);
+                $data['families'][$key]['family_aupair'] = $family_aupair['full_name'];    
+            }else{
+                $data['families'][$key]['family_aupair'] = '';    
+            }
+            
         }
 
         $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
@@ -469,8 +481,13 @@ class Index extends CI_Controller {
         //     $data['aupairs'][$key]['document_name'] = $documents[0]['name'];
         // }
         foreach ($data['aupairs'] as $key => $aupair) {
-            $aupair_family = $this->parent_model->get_parent($aupair['family_name']);
-            $data['aupairs'][$key]['aupair_family'] = $aupair_family[0]['lastname'];
+            if ($aupair['family_name']) {
+                $aupair_family = $this->parent_model->get_parent($aupair['family_name']);
+                $data['aupairs'][$key]['aupair_family'] = $aupair_family[0]['lastname'];
+            }else{
+                $data['aupairs'][$key]['aupair_family'] = '';
+            }
+            
         }
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

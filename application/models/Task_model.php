@@ -7,17 +7,17 @@ class Task_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function insert_task( $title, $deadline, $user_id, $user_name){
+        public function insert_task( $hbn_task, $user_task, $deadline, $user_id, $user_name){
 
         	$data = array(
-                            'title'         => $title,
+                            'hbn_task'      => $hbn_task,
+                            'user_task'     => $user_task,
                             'deadline'      => $deadline, 
                             'created_date'  => date("Y-m-d"),
                             'user_id'       => $user_id,
-                            'user_name'     => $user_name,
-                            'hbn_id'        => $this->aauth->get_user()->id    
+                            'user_name'     => $user_name    
                         );
-                $query = $this->db->get_where('tasks', array('title' => $title, 'user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
+                $query = $this->db->get_where('tasks', array('hbn_task' => $hbn_task, 'user_id' => $user_id));
 
                 if($query->num_rows() < 1){
                         $this->db->insert('tasks', $data);
@@ -53,12 +53,12 @@ class Task_model extends CI_Model {
         }
 
         public function get_task($user_id){
-            $query = $this->db->get_where('tasks', array('user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
+            $query = $this->db->get_where('tasks', array('user_id' => $user_id));
             return $query->result_array();
         }
 
-        public function get_tasks_by_hbn($hbn_id){
-            $query = $this->db->get_where('tasks', array('hbn_id' => $hbn_id));
+        public function get_tasks_by_hbn(){
+            $query = $this->db->get('tasks');
             return $query->result_array();
         }
 

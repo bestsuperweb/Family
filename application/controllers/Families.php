@@ -13,6 +13,8 @@ class Families extends CI_Controller {
         $this->load->model('kid_model');
         $this->load->model('aupair_model');
         $this->load->model('document_model');
+        $this->load->model('update_model');
+        $this->load->model('task_model');
         $this->load->library('session');
     }
 
@@ -170,22 +172,59 @@ class Families extends CI_Controller {
     			$name = md5('agree'.$this->input->post('fa_id').$this->input->post('ap_id'));
     			$this->family_model->update_family(7, $this->input->post('fa_id'));
     			$this->aupair_model->update_aupair(3, $this->input->post('ap_id'));
+    			$this->_gen_pdf($html, "$name.pdf");
+				$this->document_model->insert_document("$name.pdf", "Agreement", "System", $this->aauth->get_user()->id);
+				redirect(base_url('index/roadmap_profile/3'));
     			break;
-    		
+    		case 2:
+    			$imagedata = base64_decode($_POST['imgdata']);
+				$filename = md5(uniqid(rand(), true));
+				//path where you want to upload image
+				$file = 'files/schedules/'.$filename.'.jpg';
+				$imageurl  = base_url('files/schedules/'.$filename.'.jpg');
+				file_put_contents($file,$imagedata);
+
+				$family_id = $_POST['familyId'];
+				$parents = $this->parent_model->get_parent($family_id);
+				
+				$html = $this->get_timeschedule($family_id, $imageurl);
+
+				$name = md5('timeschedule'.$family_id);
+				$this->_gen_pdf($html, "$name.pdf");
+				
+				if( $this->document_model->insert_document("$name.pdf", "TimeSchedule", $parents[0]['lastname'], $this->aauth->get_user()->id)){
+					$this->task_model->insert_task(
+						"De familie ".$parents[0]['lastname']." heeft document TimeSchedule aangeleverd. Het bestand staat klaar voor goedkeuring.",
+						"1. Ga verder met de ‘dear au-pair letter’.",
+						'',
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
+					$this->update_model->insert_update(
+						"De familie ".$parents[0]['lastname']." heeft document TimeSchedule aangeleverd.",
+						"Jullie timeschedule is aangeleverd en staat klaar voor goedkeuring.",
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+					echo 'success';
+				}else{
+					echo 'failure';
+				}
+
+    			break;
     		default:
     			# code...
     			break;
     	}
     											
-		$this->_gen_pdf($html, "$name.pdf");
-		$this->document_model->insert_document("$name.pdf", "Agreement", "System", $this->aauth->get_user()->id);
-		redirect(base_url('index/roadmap_profile/3'));    
+		    
 	}
 
     private function _gen_pdf($html, $name, $paper='A4')
     {
-        $this->load->library('mpdf60/mpdf');        
-        $mpdf=new mPDF('utf-8',$paper);
+        $this->load->library('mpdf60/mpdf');
+        $mpdf = new mPDF('utf-8',$paper);
         $mpdf->SetHTMLHeader($html[0]);
         if ($html[2] ) {
             $mpdf->SetHTMLFooter($html[2]);
@@ -196,6 +235,18 @@ class Families extends CI_Controller {
         $mpdf->WriteHTML($html[1]);
         $filename= "files/$name";                   
         $mpdf->Output($filename, 'F');
+    }
+
+    private function get_timeschedule($family_id, $image_url){
+
+    	$parents 	= $this->parent_model->get_parent($family_id);
+
+    	$header = '<div style="text-align: center; " ><img src="'.base_url('assets/img/login_logo.jpg').'" width="150" /></div>';
+    	$footer = '<div style="text-align: center; font-size: 12px; padding: 10px 0;">Huisje Boompje Nanny Au pair services, Leidsevaartweg 1 2106 NA The Netherlands<br> phone:+31 23 3020311 e-mail: <a href="#">support@hbnaupairservices.com</a><br> ABN AMRO 403737311 Chamber of Commerce 52888991</div>';
+    	$html = "<div style='text-align:center;'><img src='$image_url' width='650' /></div><br>";
+    	$html .= "Signature of Family ".$parents[0]['lastname']." :";
+
+    	return array($header, $html, $footer);
     }
 
     private function get_agreement($family_id, $aupair_id){

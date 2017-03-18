@@ -1,5 +1,5 @@
 <?php
-class Tasks extends CI_Controller {
+class Updates extends CI_Controller {
 
 	public function __construct()
     {
@@ -8,7 +8,7 @@ class Tasks extends CI_Controller {
         $this->load->helper('custom_helper');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('task_model');
+        $this->load->model('update_model');
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -16,15 +16,15 @@ class Tasks extends CI_Controller {
     }
 
     public function insert(){
-        if ($this->task_model->insert_task($_POST['task_title'], 'HBN', $_POST['task_deadline'], $_POST['user_id'], $_POST['user_name'])) {
+        if ($this->update_model->insert_update($_POST['hbn_update'], $_POST['user_update'], $_POST['user_id'], $_POST['user_name'])) {
             echo "success";
         }else{
             echo "failure";
         }               
     }
 
-    public function update($step, $task_id){
-        if($this->task_model->update_task($step, $task_id)){
+    public function update($step, $update_id){
+        if($this->update_model->update_update($step, $update_id)){
             echo 'success';
         }else{
             echo 'failure';
@@ -32,17 +32,17 @@ class Tasks extends CI_Controller {
     }
 
     public function get($user_id){
-        if($tasks = $this->task_model->get_task($user_id)){
-            $data['tasks'] = $tasks;                        
+        if($updates = $this->update_model->get_update($user_id)){
+            $data['updates'] = $updates;                        
         }else{
-            $tasks = array();
-            $data['tasks'] = $tasks;
+            $updates = array();
+            $data['updates'] = $updates;
         }
-        return $data['tasks'];
+        return $data['updates'];
     }
 
     public function delete($id){
-        if($this->task_model->delete_task($id)){
+        if($this->update_model->delete_update($id)){
             echo 'success';
         }else{
             echo "failure";
