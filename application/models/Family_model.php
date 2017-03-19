@@ -103,6 +103,14 @@ class Family_model extends CI_Model {
                                         'aupair_name'    => $this->input->post('ap_id')
                                         );
                                 break;
+                        case 8:
+                                $data = array(
+                                        'status'        => $this->input->post('fa_status'),
+                                        'street'        => $this->input->post('fa_street'),
+                                        'place'         => $this->input->post('fa_place'),
+                                        'postal_code'   => $this->input->post('fa_postal_code')
+                                        );
+                                break;
                         
                         default:
                                 $data = array(

@@ -77,6 +77,9 @@
                 <tbody>
                 <?php 
                     foreach ($tasks as $key => $task) {
+                        if(!$this->aauth->is_member(6) && $task['user_task'] == 'HBN'){
+
+                        }else{
                         ?>
                         <tr>
                             <td>
@@ -137,6 +140,7 @@
                             
                         </tr>
                         <?php
+                        }
                     }
                 ?>
                 </tbody>

@@ -469,28 +469,19 @@
       <?php if($this->aauth->is_member(6)){ ?>
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
         <div class="row">
-          <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+          <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
             <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
             <b>KLANT STATUS</b><br>
-            <select >
-              <option>01 - Intake</option>
-              <option>02 - Profile + confirmation</option>
-              <option>03 - Matches</option>
-              <option>04 - Request docs IND</option>
-              <option>05 - At IND</option>
-              <option>06 - Approval / Embassy visit</option>
-              <option>07 - Prepare welcome</option>
-              <option>08 - Placed</option>
-              <option>09 -  Evaluation 1 done</option>
-              <option>10 - Evaluation 2 done</option>
-              <option>11 - Mail / Call replace done</option>
-              <option>12 - On hold</option>
-              <option>13 - Cancelled</option>
-              <option>14 - Closed</option>
-            </select>
+            <b class="text-primary"><?= $family['status'] ?></b>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="<?php echo base_url('index/edit_profile/5/').$param; ?>">
+                <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'>
+            </a>
           </div>
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <a href="#" class="btn next-button">PROFIEL AU_PAIR</a></div>
+          <a href="#" class="btn next-button">PROFIEL AU_PAIR</a>
+          </div>
         </div>
         <div class="row">
           
@@ -522,7 +513,7 @@
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Type</b></div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="custom-select">
-                  <select>
+                  <select disabled>
                     <option>1st placement</option>
                     <option>2nd placement</option>
                     <option>3rd placement</option>

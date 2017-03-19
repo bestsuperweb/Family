@@ -305,6 +305,22 @@ class Index extends CI_Controller {
                             echo 'failure';                            
                         } 
                         break;
+                    case 6:
+                        $this->form_validation->set_rules('fa_pa1_first_name', 'First name of parent1', 'trim|required');
+                        $this->form_validation->set_rules('fa_pa1_last_name', 'Last name of parent1', 'trim|required');
+                        $this->form_validation->set_rules('fa_pa2_first_name', 'First name of parent2', 'trim|required');
+                        $this->form_validation->set_rules('fa_pa2_last_name', 'Last name of parent2', 'trim|required');
+
+                        if ($this->form_validation->run() === TRUE)
+                        {
+                            $this->family_model->update_family(8, $data['user_id']);
+                            $this->parent_model->update_parent(3, $data['user_id']);
+                            redirect('index/profile/5/'.$data['param']);
+                        }else{
+                            redirect('index/edit_profile/5/'.$data['param']);
+                        } 
+
+                        break;
 
                     default:
                         
@@ -357,7 +373,23 @@ class Index extends CI_Controller {
                         }else{
                             echo 'failure';                            
                         } 
-                        break;    
+                        break;
+                    case 5:
+                        $this->form_validation->set_rules('ap_status', 'Aupair email', 'trim|required');
+                        $this->form_validation->set_rules('ap_email', 'Aupair email', 'trim|required');
+                        $this->form_validation->set_rules('ap_skype', 'Aupair skype', 'trim|required');
+                        $this->form_validation->set_rules('ap_phone', 'Aupair Mobile', 'trim|required');
+                        $this->form_validation->set_rules('ap_date_of_birth', 'Aupair Date of birth', 'trim|required');
+                        $this->form_validation->set_rules('ap_nationality', 'Natinality', 'trim|required');
+                        $this->form_validation->set_rules('ap_start_date', 'Aupair start date', 'trim|required');
+                        if ($this->form_validation->run() === TRUE)
+                        {
+                            $this->aupair_model->update_aupair(6, $data['user_id']);
+                            redirect('index/profile/5/'.$data['param']);
+                        }else{
+                            redirect('index/edit_profile/5/'.$data['param']);
+                        }
+                        break; 
                     
                     default:
                         

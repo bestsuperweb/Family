@@ -11,6 +11,8 @@ class Document extends CI_Controller {
         $this->load->model('document_model');
         $this->load->model('aupair_model');
         $this->load->model('parent_model');
+        $this->load->model('update_model');
+        $this->load->model('task_model');
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');

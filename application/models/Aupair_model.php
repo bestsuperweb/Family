@@ -130,6 +130,17 @@ class Aupair_model extends CI_Model {
                     $data = array(
                             'photo'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
+                case 6:
+                    $data = array(
+                            'status'        => $this->input->post('ap_status'),
+                            'email'         => $this->input->post('ap_email'),
+                            'skype'         => $this->input->post('ap_skype'),
+                            'phone'         => $this->input->post('ap_phone'),
+                            'date_of_birth' => $this->input->post('ap_date_of_birth'),
+                            'nationality'   => $this->input->post('ap_nationality'),
+                            'start_date'    => $this->input->post('ap_start_date')
+                            );
+                    break;
         		
         		default:
         			# code...

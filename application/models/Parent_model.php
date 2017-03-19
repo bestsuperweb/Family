@@ -79,6 +79,22 @@ class Parent_model extends CI_Model {
                                         'lastname'    => $this->input->post('fa_pa2_last_name')
                                 );
                                 break;
+
+                        case 3:
+                                $data1 = array(
+                                        'firstname'   => $this->input->post('fa_pa1_first_name'), 
+                                        'lastname'    => $this->input->post('fa_pa1_last_name'),
+                                        'email'       => $this->input->post('fa_pa1_email'),
+                                        'mobile_number' => $this->input->post('fa_pa1_mobile')
+                                );
+
+                                $data2 = array(
+                                        'firstname'   => $this->input->post('fa_pa2_first_name'), 
+                                        'lastname'    => $this->input->post('fa_pa2_last_name'),
+                                        'email'       => $this->input->post('fa_pa2_email'),
+                                        'mobile_number' => $this->input->post('fa_pa2_mobile')
+                                );
+                                break;
                         
                         default:
                                 $work_days1 = is_array( $this->input->post('fa_pa1_work_days')) ? implode(', ', $this->input->post('fa_pa1_work_days')) : '';

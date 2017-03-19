@@ -32,22 +32,22 @@
     <div class="container-fluid profile-edit">
       <ul class="nav nav-tabs nav-tabs-responsive profile-tab" role="tablist">
         <li role="presentation" class="<?php echo $li_class['first']; ?>">
-          <a href="<?= base_url('index/edit_profile/1/'.$param)?>" data-toggle="tab" aria-controls="basicinfo">
+          <a href="<?= base_url('index/edit_profile/1/'.$param)?>" >
             <span class="text">Basic info</span>
           </a>
         </li>
         <li role="presentation" class="next <?php echo $li_class['second']; ?>">
-          <a href="<?= base_url('index/edit_profile/2/'.$param)?>" role="tab" data-toggle="tab" aria-controls="host">
+          <a href="<?= base_url('index/edit_profile/2/'.$param)?>" >
             <span class="text">About the host</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
-          <a href="<?= base_url('index/edit_profile/3/'.$param)?>" role="tab" data-toggle="tab" aria-controls="preferences">
+          <a href="<?= base_url('index/edit_profile/3/'.$param)?>" >
             <span class="text">Preferences</span>
           </a>
         </li>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
-          <a href="<?= base_url('index/edit_profile/4/'.$param)?>" role="tab" data-toggle="tab" aria-controls="document">
+          <a href="<?= base_url('index/edit_profile/4/'.$param)?>" >
             <span class="text">Document</span>
           </a>
         </li>
@@ -719,34 +719,34 @@
 <!-- start report tab -->
       <?php if($this->aauth->is_member(6)){ ?>
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
+      <?= form_open('index/save_profile/6/'.$param); ?>
         <div class="row">
           <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
             <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
             <b>KLANT STATUS</b><br>
-            <select >
-              <option>01 - Intake</option>
-              <option>02 - Profile + confirmation</option>
-              <option>03 - Matches</option>
-              <option>04 - Request docs IND</option>
-              <option>05 - At IND</option>
-              <option>06 - Approval / Embassy visit</option>
-              <option>07 - Prepare welcome</option>
-              <option>08 - Placed</option>
-              <option>09 -  Evaluation 1 done</option>
-              <option>10 - Evaluation 2 done</option>
-              <option>11 - Mail / Call replace done</option>
-              <option>12 - On hold</option>
-              <option>13 - Cancelled</option>
-              <option>14 - Closed</option>
-            </select>
+            <div class="form-control custom-select" >
+              <select name="fa_status" value="<?= $family['status'] ?>" >
+                <option>01 - Intake</option>
+                <option>02 - Profile + confirmation</option>
+                <option>03 - Matches</option>
+                <option>04 - Request docs IND</option>
+                <option>05 - At IND</option>
+                <option>06 - Approval / Embassy visit</option>
+                <option>07 - Prepare welcome</option>
+                <option>08 - Placed</option>
+                <option>09 -  Evaluation 1 done</option>
+                <option>10 - Evaluation 2 done</option>
+                <option>11 - Mail / Call replace done</option>
+                <option>12 - On hold</option>
+                <option>13 - Cancelled</option>
+                <option>14 - Closed</option>
+              </select>
+            </div>
           </div>
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
           <a href="#" class="btn next-button">PROFIEL AU_PAIR</a></div>
         </div>
-        <div class="row">
-          
-        </div>
-
+        
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="row">
@@ -755,24 +755,33 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email HBN</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $this->aauth->get_user()->email ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="email" value="<?= $this->aauth->get_user()->email ?>" class="form-control" disabled>
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['mobile_number'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="number" name="fa_pa1_mobile" value="<?= $parents[0]['mobile_number'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['mobile_number'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="number" name="fa_pa2_mobile" value="<?= $parents[1]['mobile_number'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Eigenaar</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?> <?= $parents[0]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_pa1_first_name" value="<?= $parents[0]['firstname'] ?>" class="form-control" >
+                <input type="text" name="fa_pa1_last_name" value="<?= $parents[0]['lastname'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Type</b></div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <div class="custom-select">
+                <div class="custom-select form-control">
                   <select>
                     <option>1st placement</option>
                     <option>2nd placement</option>
@@ -785,19 +794,27 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Naam</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_pa1_last_name" value="<?= $parents[0]['lastname'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['firstname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_pa2_first_name" value="<?= $parents[1]['firstname'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Meisjesnaam moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <input type="text" name="fa_pa2_last_name" value="<?= $parents[1]['lastname'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_pa1_first_name" value="<?= $parents[0]['firstname'] ?>" class="form-control" >
+              </div>
             </div>
             <br>
             <div class="row">
@@ -821,23 +838,33 @@
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['email'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="email" name="fa_pa1_email" value="<?= $parents[0]['email'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['email'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="email" name="fa_pa2_email" value="<?= $parents[1]['email'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (straat)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['street'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">              
+                <input type="text" name="fa_street" value="<?= $family['street'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (postcode)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['postal_code'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_postal_code" value="<?= $family['postal_code'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (plaats)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['place'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input type="text" name="fa_place" value="<?= $family['place'] ?>" class="form-control" >
+              </div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>FACTUUR INFO/KORTING</b></div>
@@ -864,9 +891,14 @@
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Leges afgeschreven</b></div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
             </div>
+            <div class="row">
+              <div class="col-lg-12" style="text-align: right;">
+                <input type="submit" name="" class="btn next-button" value="Save">
+              </div>          
+            </div>
           </div>
-
-        </div>
+        </div>        
+        </form>
 
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

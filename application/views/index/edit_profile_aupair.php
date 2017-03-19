@@ -262,9 +262,7 @@
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Hi, I'm <?php echo $aupair['full_name']; ?></b></h1></div>                 
               </div>
               <div class="row">
-                <textarea class="form-control" rows="20" name="ap_overview">
-                  <?php echo $aupair['overview']; ?>
-                </textarea>
+                <textarea class="form-control" rows="20" name="ap_overview"><?php echo $aupair['overview']; ?></textarea>
               </div>
             </div>
           </div>
@@ -735,6 +733,7 @@
         <div class="row">
           <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
             <h1><i><b><?php echo $aupair['full_name']; ?></b></i></h1>
+            <?= form_open('index/save_profile/5/'.$param); ?>
             <b>AU-PAIR STATUS</b><br>
             <div class="form-control custom-select" >
               <select name="ap_status" value="<?= $aupair['status'] ?>">
@@ -757,7 +756,7 @@
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-Nummber</div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <input type="number" name="ap_number" value="<?= $aupair['id'] ?>" class="form-control">
+                <input type="number" name="ap_number" value="<?= $aupair['id'] ?>" class="form-control" disabled>
               </div>
             </div>
             <div class="row">
@@ -781,7 +780,7 @@
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Au-Pair Eigenaar</div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <input type="text" name="ap_eigenaar" value="SUPPORT TEAM HBN" class="form-control">
+                <input type="text" name="ap_eigenaar" value="SUPPORT TEAM HBN" class="form-control" disabled>
               </div>
             </div>
             <div class="row">
@@ -815,6 +814,12 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <input type="submit" class="btn next-button" value="Save">
+              </div>
+            </div>
+            </form>
           </div>
           <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
             <!-- <input type="submit" name="" class="btn" value="Save"> -->
