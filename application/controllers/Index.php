@@ -240,6 +240,9 @@ class Index extends CI_Controller {
 
         if ( $data['user_type'] == 'family' ){
 
+            $family = $this->family_model->get_family($data['user_id']);
+            $parents = $this->parent_model->get_parent($data['user_id']);
+
             switch ($tab) {
                     case 1:
                         $this->form_validation->set_rules('fa_pa1_first_name', 'First name of parent1', 'trim|required');
@@ -287,6 +290,19 @@ class Index extends CI_Controller {
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->family_model->update_family(5, $data['user_id']);
+                            $this->update_model->insert_update(
+                                    'De familie '.$parents[0]['lastname'].' heeft de ‘dear au-pair letter’ toegevoegd aan hun profiel.',
+                                    'Jullie dear au-pair letter is toegevoegd aan het profiel.',
+                                    $this->aauth->get_user()->id,
+                                    $parents[0]['lastname']
+                                    );
+                            $this->task_model->insert_task(
+                                    'De familie '.$parents[0]['lastname'].' heeft de ‘dear au-pair letter’ toegevoegd aan hun profiel. Controleer de brief op hun profiel en voorzie de familie waar nodig van tips.',
+                                    '1. Upload foto’s om jullie profiel compleet te maken.',
+                                    '',
+                                    $this->aauth->get_user()->id,
+                                    $parents[0]['lastname']
+                                    );
                             redirect('index/profile/1/'.$data['param']);
                         }else{
                             redirect('index/roadmap_profile/1/'.$data['param']);
@@ -296,6 +312,19 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->family_model->update_family(6, $data['user_id'])){
+                                $this->update_model->insert_update(
+                                    'De familie '.$parents[0]['lastname'].' heeft foto’s toegevoegd aan hun profiel.',
+                                    'De foto’s zijn toegevoegd aan jullie profiel.',
+                                    $this->aauth->get_user()->id,
+                                    $parents[0]['lastname']
+                                    );
+                                $this->task_model->insert_task(
+                                    'De familie '.$parents[0]['lastname'].' heeft foto’s toegevoegd aan hun profiel.',
+                                    '1. Ga verder met stap 2 van het stappenplan.',
+                                    '',
+                                    $this->aauth->get_user()->id,
+                                    $parents[0]['lastname']
+                                    );
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -329,6 +358,8 @@ class Index extends CI_Controller {
 
         }else if($data['user_type'] == 'aupair'){
 
+                $aupair = $this->aupair_model->get_aupair($data['user_id']);
+
                 switch ($tab) {
                     case 1:
                         $this->form_validation->set_rules('ap_full_name', 'Name', 'trim|required');
@@ -355,6 +386,19 @@ class Index extends CI_Controller {
                         $this->form_validation->set_rules('ap_overview', 'Overview', 'trim|required');
                         if ($this->form_validation->run() === TRUE)
                         {
+                            $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft de ‘dear host family letter’ toegevoegd aan hun profiel.',
+                                    'Jullie dear host family letter is toegevoegd aan het profiel.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                            $this->task_model->insert_task(
+                                    'De au-pair '.$parents[0]['lastname'].' heeft de ‘dear host family letter’ toegevoegd aan hun profiel. Controleer de brief op hun profiel en voorzie de au-pair waar nodig van tips.',
+                                    '1. Upload foto’s om jullie profiel compleet te maken.',
+                                    '',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
                             $this->aupair_model->update_aupair(4, $data['user_id']);
                             redirect('index/profile/1/'.$data['param']);
                         }else{
@@ -365,6 +409,19 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(5, $data['user_id'])){
+                                $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft foto’s toegevoegd aan hun profiel.',
+                                    'De foto’s zijn toegevoegd aan jullie profiel.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                                $this->task_model->insert_task(
+                                    'De au-pair '.$aupair['full_name'].' heeft foto’s toegevoegd aan hun profiel.',
+                                    '1. Ga verder met stap 2 van het stappenplan.',
+                                    '',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            

@@ -97,8 +97,10 @@ class Document extends CI_Controller {
                     $status = "error";
                 }
             }
-        }else{
+        }elseif($step == 2){
             if($this->document_model->update_document($id, $step)){
+                $document = $this->document_model->get_document_by_id($id);
+                $this->task_model->update_task(1, $document['task_id']);
                 echo 'success';
             }else{
                 echo "failure";

@@ -159,6 +159,22 @@ class Families extends CI_Controller {
 		$this->email->subject('Dear '.$aupair['full_name']);
 		$this->email->message($message);
 		if($this->email->send()){
+
+			$this->task_model->insert_task(
+						"De familie ".$parents[0]['lastname']." heeft een au-pair uitgenodigd voor een skype gesprek.",
+						"1. Maak een match aan in stap 3 van het stappenplan als jullie de perfecte kandidaat hebben gevonden.",
+						'',
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
+			$this->update_model->insert_update(
+						"De familie ".$parents[0]['lastname']." heeft een au-pair uitgenodigd voor een skype gesprek.",
+						"Jullie uitnodiging voor het skype gesprek is verstuurd!",
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
 			redirect(base_url('index/roadmap_profile/3'));
 		}
     }
@@ -173,7 +189,24 @@ class Families extends CI_Controller {
     			$this->family_model->update_family(7, $this->input->post('fa_id'));
     			$this->aupair_model->update_aupair(3, $this->input->post('ap_id'));
     			$this->_gen_pdf($html, "$name.pdf");
-				$this->document_model->insert_document("$name.pdf", "Agreement", "System", $this->aauth->get_user()->id);
+
+    			$parents = $this->parent_model->get_parent($this->input->post('fa_id'));
+    			$task_id = $this->task_model->insert_task(
+						"De familie ".$parents[0]['lastname']." heeft een match aangemaakt en de agreement ondertekend. Controleer de agreement in de documenten van de familie.",
+						"1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.",
+						'',
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
+				$update_id = $this->update_model->insert_update(
+						"De familie ".$parents[0]['lastname']." heeft een match aangemaakt en de agreement ondertekend.",
+						"Jullie match en agreement zijn aangemaakt. Jullie ontvangen een melding wanneer ook de au-pair de agreement heeft getekend.",
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
+				$this->document_model->insert_document("$name.pdf", "Agreement", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id);
 				redirect(base_url('index/roadmap_profile/3'));
     			break;
     		case 2:
@@ -192,8 +225,7 @@ class Families extends CI_Controller {
 				$name = md5('timeschedule'.$family_id);
 				$this->_gen_pdf($html, "$name.pdf");
 				
-				if( $this->document_model->insert_document("$name.pdf", "TimeSchedule", $parents[0]['lastname'], $this->aauth->get_user()->id)){
-					$this->task_model->insert_task(
+				$task_id = $this->task_model->insert_task(
 						"De familie ".$parents[0]['lastname']." heeft document TimeSchedule aangeleverd. Het bestand staat klaar voor goedkeuring.",
 						"1. Ga verder met de ‘dear au-pair letter’.",
 						'',
@@ -201,12 +233,14 @@ class Families extends CI_Controller {
 						$parents[0]['lastname']
 					);
 
-					$this->update_model->insert_update(
+				$update_id = $this->update_model->insert_update(
 						"De familie ".$parents[0]['lastname']." heeft document TimeSchedule aangeleverd.",
 						"Jullie timeschedule is aangeleverd en staat klaar voor goedkeuring.",
 						$this->aauth->get_user()->id,
 						$parents[0]['lastname']
 					);
+
+				if( $this->document_model->insert_document("$name.pdf", "TimeSchedule", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
 					echo 'success';
 				}else{
 					echo 'failure';

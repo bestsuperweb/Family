@@ -7,7 +7,7 @@ class Document_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function insert_document($file_name, $title, $uploader, $user_id, $status = 'review'){
+        public function insert_document($file_name, $title, $uploader, $user_id, $task_id = 1, $update_id = 1, $status = 'review'){
 
         	$data = array(
                             'name'  		=> $file_name,
@@ -16,7 +16,9 @@ class Document_model extends CI_Model {
                             'upload_date'   => date("Y-m-d"),
                             'approved_date' => '',
                             'user_id'       => $user_id,
-                            'status'        =>  $status      
+                            'status'        => $status,
+                            'task_id'       => $task_id,
+                            'update_id'     => $update_id
                         );
                 $query = $this->db->get_where('documents', array('name' => $file_name, 'user_id' => $user_id));
 

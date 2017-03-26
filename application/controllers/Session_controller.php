@@ -17,6 +17,8 @@ class Session_controller extends CI_Controller
         $this->load->model('kid_model');
         $this->load->model('aupair_model');
         $this->load->model('document_model');
+        $this->load->model('task_model');
+        $this->load->model('update_model');
 	}
 
 	function log_in(){
@@ -134,7 +136,21 @@ class Session_controller extends CI_Controller
 					$html = $this->get_family_content($name);
 					$name = md5($id);					
 					$this->_gen_pdf($html, "$name.pdf");
-					$this->document_model->insert_document("$name.pdf", "Initial Registeration", "System", $id);
+					$parents = $this->parent_model->get_parent($this->session->userdata('user_id'));
+					$task_id = $this->task_model->inser_task(
+									'De familie '.$parents[0]['lastname'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
+									'1. Begin met stap 1 van het stappenplan om verder te gaan.<br>2. Loop jullie profiel na om te controleren alles klopt.',
+									'',
+									$id,
+									$parents[0]['lastname']
+								);
+					$update_id = $this->update_model->insert_update(
+									'Nieuwe aanmelding! De familie '.$parents[0]['lastname'].' heeft zich geregistreerd.',
+									'Gefeliciteerd! Jullie hebben nu toegang tot het stappenplan en jullie eigen profielpagina. Volg de stappen hiernaast om verder te gaan.',
+									$id,
+									$parents[0]['lastname']
+								);
+					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $parents[0]['lastname'], $id, $task_id, $update_id);
 
 				}elseif($this->session->userdata('user_type') == 'aupair'){
 
@@ -142,7 +158,21 @@ class Session_controller extends CI_Controller
 					$html = $this->get_aupair_content($name);
 					$name = md5($id);										
 					$this->_gen_pdf($html, "$name.pdf");
-					$this->document_model->insert_document("$name.pdf", "Initial Registeration", "System", $id);
+					$aupair = $this->aupair_model->get_aupair($this->session->userdata('user_id'));
+					$task_id = $this->task_model->inser_task(
+									'De au-pair '.$aupair['full_name'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
+									'1. Start with step 1 from your journey to proceed.<br> 2. Check your profile to confirm all the info is correct.',
+									'',
+									$id,
+									$aupair['full_name']
+								);
+					$update_id = $this->update_model->insert_update(
+									'Nieuwe aanmelding! De au-pair '.$aupair['full_name'].' heeft zich geregistreerd.',
+									'Congratulations! You now have access to your journey and own profile page. Follow the steps listed on the right to proceed.',
+									$id,
+									$aupair['full_name']
+								);
+					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $aupair['full_name'], $id, $task_id, $update_id);
 				}
 
 				$this->session->unset_userdata('email');
