@@ -868,6 +868,27 @@
     margin-top: 10px;
 }
 /* end */
+
+/*--- match page */
+.match-card{
+    width: 80%;
+    background: #d0d0d0;
+    margin: auto;
+    border: 5px solid white;
+    box-shadow: 0 0 5px gray;
+    border-radius: 3px;
+}
+.match-card img{
+    width: 100%;
+    border-bottom: 5px solid white;
+}
+.match-details{
+    padding: 15px 30px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 30px;
+}
+/* match page end ---*/
 @media screen and (max-width: 768px) {
   .nav-tabs-responsive > li {
     display: none;
@@ -951,3 +972,4 @@
     right: 0;
   }
 }
+

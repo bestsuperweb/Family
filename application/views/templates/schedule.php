@@ -24,7 +24,7 @@
 					<div class="sd-menu">
 						<a href="#1" class="sd-edit" data-id='<?php echo $schedule['id']; ?>'><span class="glyphicon glyphicon-pencil"></span></a>
 						<a href="#1" class="sd-delete" data-id='<?php echo $schedule['id']; ?>'><span class="glyphicon glyphicon-remove"></span></a>
-						<a href="#1" class="sd-copy" data-id='<?php echo $schedule['id']; ?>'><span class="glyphicon glyphicon-wrench"></span></a>
+						<a href="#1" class="sd-copy" data-id='<?php echo $schedule['id']; ?>'><span class="glyphicon glyphicon-duplicate"></span></a>
 					</div>									
 				</li>			
 			<?php

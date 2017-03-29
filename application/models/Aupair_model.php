@@ -130,6 +130,10 @@ class Aupair_model extends CI_Model {
                     $data = array(
                             'photo'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
+                    $aupair = $this->get_aupair($aupair_id);
+                    unlink('files/photos/'.$aupair['photo']);
+                    break;
+
                 case 6:
                     $data = array(
                             'status'        => $this->input->post('ap_status'),
@@ -148,7 +152,7 @@ class Aupair_model extends CI_Model {
         	}
 
         	$result = $this->db->update('aupairs', $data, array('id' => $aupair_id));
-
+            echo $result;
             return $result;
 
         }

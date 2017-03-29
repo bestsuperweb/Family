@@ -97,6 +97,8 @@ class Family_model extends CI_Model {
                                 $data = array(
                                         'photo'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                         );
+                                $family = $this->get_family($family_id);
+                                unlink('files/photos/'.$family['photo']);
                                 break;
                         case 7:
                                 $data = array(

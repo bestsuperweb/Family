@@ -309,14 +309,16 @@
                   <a href="#" class="add-doc" data-toggle="modal" data-target="#addDocModal">&plus;</a>
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                  <div class="input-group doc-search">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                      </button>
+                  <form method="POST">
+                    <div class="input-group doc-search">
+                        <input type="text" class="form-control" name="search_key" placeholder="Search" >
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>              
             </div>            
@@ -324,10 +326,62 @@
           
           <div class="panel-group profile-document" id="accordion">
             <div class="profile-document-heading">
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">DOCUMENT</div>
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOADED BY</div>    
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOAD DATE</div>  
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">APPROVAL DATE</div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <form method="POST">
+                    <input type="hidden" name="search_key" value="<?= $search ?>">
+                    <input type="hidden" name="sort" value="title">
+                    <input type="hidden" name="sort_direction" value="<?php
+                      if ($sort == 'title') {
+                        echo $sort_direction;
+                      }else{
+                        echo 'asc';
+                      }
+                    ?>">
+                    <input type="submit" value="DOCUMENT" >
+                  </form>                  
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <form method="POST">
+                    <input type="hidden" name="search_key" value="<?= $search ?>">
+                    <input type="hidden" name="sort" value="uploader">
+                    <input type="hidden" name="sort_direction" value="<?php
+                      if ($sort == 'uploader') {
+                        echo $sort_direction;
+                      }else{
+                        echo 'asc';
+                      }
+                    ?>">
+                    <input type="submit" value="UPLOADED BY" >
+                  </form>                  
+                </div>    
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                  <form method="POST">
+                    <input type="hidden" name="search_key" value="<?= $search ?>">
+                    <input type="hidden" name="sort" value="upload_date">
+                    <input type="hidden" name="sort_direction" value="<?php
+                      if ($sort == 'upload_date') {
+                        echo $sort_direction;
+                      }else{
+                        echo 'asc';
+                      }
+                    ?>">
+                    <input type="submit" value="UPLOADED DATE" >
+                  </form>
+                </div>  
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">
+                  <form method="POST">
+                    <input type="hidden" name="search_key" value="<?= $search ?>">
+                    <input type="hidden" name="sort" value="approved_date">
+                    <input type="hidden" name="sort_direction" value="<?php
+                      if ($sort == 'approved_date') {
+                        echo $sort_direction;
+                      }else{
+                        echo 'asc';
+                      }
+                    ?>">
+                    <input type="submit" value="APPROVAL DATE" >
+                  </form>                  
+                </div>
             </div>
             <?php if($documents != null) {?>
             <?php foreach ($documents as $key => $document) { ?>

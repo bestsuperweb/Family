@@ -84,8 +84,9 @@ class Document_model extends CI_Model {
             return $result;
         }
 
-        public function get_document($user_id){
-            $query = $this->db->get_where('documents', array('user_id' => $user_id));
+        public function get_document($user_id, $search = '', $sort = 'title', $sort_direction = 'asc'){
+            $query = $this->db->like('title', $search)->order_by("$sort $sort_direction")->get_where('documents', array('user_id' => $user_id));
+            // $query = $this->db->get_where('documents', array('user_id' => $user_id));
             return $query->result_array();
         }
 

@@ -137,6 +137,11 @@ class Index extends CI_Controller {
     	$data['title']     = "Profile";
     	$data['tab']       = $tab;
 
+        $data['search'] = isset($_POST['search_key']) ? $_POST['search_key'] : '';
+        $data['sort'] = isset($_POST['sort']) ? $_POST['sort'] : 'id';
+        $data['sort_direction'] = isset($_POST['sort_direction']) ? $_POST['sort_direction'] : 'desc';
+        $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
+
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
         $data['user_id']   = $this->aauth->get_user()->name;
         $data['param']     = '';
@@ -153,14 +158,24 @@ class Index extends CI_Controller {
                     $data['family']    = $this->family_model->get_family($data['user_id']);
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['documents'] = $this->document_model->get_document(   
+                                                                                $this->aauth->get_user_id($data['family']['contact_email']), 
+                                                                                $data['search'],
+                                                                                $data['sort'],
+                                                                                $data['sort_direction']
+                                                                            );
                     $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['family']['contact_email']));
                     $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
+                    $data['documents'] = $this->document_model->get_document(   
+                                                                                $this->aauth->get_user_id($data['aupair']['email']), 
+                                                                                $data['search'],
+                                                                                $data['sort'],
+                                                                                $data['sort_direction']
+                                                                            );
                     $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email']));  
                     $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));            
                     break;
@@ -468,11 +483,18 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['aupairs']   = $this->aupair_model->get_all_aupairs();
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
+                    $data['families']  = $this->family_model->get_all_families();
+                    foreach ($data['families'] as $key => $family) {
+                        $parents = $this->parent_model->get_parent($family['id']);
+                        $family_name =$parents[0]['lastname'];
+                        $data['families'][$key]['name'] = $family_name;
+                    }                
                     break;
                 
                 default:
@@ -491,8 +513,7 @@ class Index extends CI_Controller {
         $data['search'] = isset($_POST['search_key']) ? $_POST['search_key'] : '';
         $data['sort'] = isset($_POST['sort']) ? $_POST['sort'] : 'id';
         $data['sort_direction'] = isset($_POST['sort_direction']) ? $_POST['sort_direction'] : 'asc';
-
-
+        $data['sort_direction'] = ($data['sort_direction'] == 'asc') ? 'desc' : 'asc';
 
         $data['title'] = "Families";
         $data['user_type'] = $this->aauth->get_user_groups()[1]->name;
