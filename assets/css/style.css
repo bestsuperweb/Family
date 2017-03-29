@@ -676,10 +676,28 @@
     width: 100%;
 }
 
-.task-table tr{
-
+#photoCarousel{
+    border: 5px solid white;
+    box-shadow: 0 1px 2px gray;
 }
-
+#photoCarousel img{
+    width: 100%;
+}
+.photo-edit img{
+    border-radius: 3px;
+}
+.photo-edit .dropzone{
+    padding: 5px;
+    box-shadow: 0 1px 2px gray;
+    min-height: initial;
+}
+.photo-edit .dz-default{
+    min-height: 200px;
+    background-blend-mode: luminosity;
+}
+.photo-edit>div{
+    padding: 15px; 
+}
 /*Document*/
 .add-doc{
     background-color: #542a44;

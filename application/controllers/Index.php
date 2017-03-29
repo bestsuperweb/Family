@@ -365,6 +365,58 @@ class Index extends CI_Controller {
                         } 
 
                         break;
+                    case 7:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->family_model->update_family(9, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 8:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->family_model->update_family(10, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 9:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->family_model->update_family(11, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 10:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->family_model->update_family(12, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
 
                     default:
                         
@@ -461,7 +513,59 @@ class Index extends CI_Controller {
                         }else{
                             redirect('index/edit_profile/5/'.$data['param']);
                         }
-                        break; 
+                        break;
+                    case 6:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->aupair_model->update_aupair(7, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 7:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->aupair_model->update_aupair(8, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 8:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->aupair_model->update_aupair(9, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
+                    case 9:
+                        if (upload($data['user_id']))
+                        {
+                            if($this->aupair_model->update_aupair(10, $data['user_id'])){
+                                echo 'sucess';
+                            }else{
+                                echo 'failure';                            
+                            }                 
+
+                        }else{
+                            echo 'failure';                            
+                        } 
+                        break;
                     
                     default:
                         

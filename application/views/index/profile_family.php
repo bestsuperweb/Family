@@ -62,7 +62,34 @@
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="basicinfo">
           <div class="row">
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-          		<img src="<?php if($family['photo']){ echo base_url('files/photos/'.$family['photo']); }else{ echo base_url('assets/img/family.png'); } ?>" class="img-responsive">
+
+              <div id="photoCarousel" class="carousel slide" data-ride="carousel">  
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="<?php if($family['photo1']){ echo base_url('files/photos/'.$family['photo1']); }else{ echo base_url('assets/img/family.png'); } ?>" class="img-responsive">
+                  </div>
+
+                  <div class="item">
+                    <img src="<?php if($family['photo2']){ echo base_url('files/photos/'.$family['photo2']); }else{ echo base_url('assets/img/family.png'); } ?>" class="img-responsive">
+                  </div>
+
+                  <div class="item">
+                    <img src="<?php if($family['photo3']){ echo base_url('files/photos/'.$family['photo3']); }else{ echo base_url('assets/img/family.png'); } ?>" class="img-responsive">
+                  </div>
+
+                  <div class="item">
+                    <img src="<?php if($family['photo4']){ echo base_url('files/photos/'.$family['photo4']); }else{ echo base_url('assets/img/family.png'); } ?>" class="img-responsive">
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#photoCarousel" role="button" data-slide="prev">
+                </a>
+                <a class="right carousel-control" href="#photoCarousel" role="button" data-slide="next">              
+                </a>
+              </div>
+          		
           	</div>
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">

@@ -94,11 +94,29 @@ class Family_model extends CI_Model {
                                         );
                                 break;
                         case 6:
-                                $data = array(
-                                        'photo'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
-                                        );
                                 $family = $this->get_family($family_id);
-                                unlink('files/photos/'.$family['photo']);
+                                if (!$family['photo1']) {
+                                        $data = array(
+                                                'photo1'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                        );
+                                }elseif (!$family['photo2']){
+                                        $data = array(
+                                                'photo2'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                        );
+                                }elseif (!$family['photo3']){
+                                        $data = array(
+                                                'photo3'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                        );
+                                }elseif (!$family['photo4']){
+                                        $data = array(
+                                                'photo4'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                        );
+                                }else{
+                                       $data = array(
+                                                'photo1'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                        );
+                                       unlink('files/photos/'.$family['photo1']);
+                                }                                
                                 break;
                         case 7:
                                 $data = array(
@@ -112,6 +130,34 @@ class Family_model extends CI_Model {
                                         'place'         => $this->input->post('fa_place'),
                                         'postal_code'   => $this->input->post('fa_postal_code')
                                         );
+                                break;
+                        case 9:
+                                $family = $this->get_family($family_id);
+                                $data = array(
+                                            'photo1'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                    );
+                                unlink('files/photos/'.$family['photo1']);
+                                break;
+                        case 10:
+                                $family = $this->get_family($family_id);
+                                $data = array(
+                                            'photo2'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                    );
+                                unlink('files/photos/'.$family['photo2']);
+                                break;
+                        case 11:
+                                $family = $this->get_family($family_id);
+                                $data = array(
+                                            'photo3'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                    );
+                                unlink('files/photos/'.$family['photo3']);
+                                break;
+                        case 12:
+                                $family = $this->get_family($family_id);
+                                $data = array(
+                                            'photo4'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
+                                    );
+                                unlink('files/photos/'.$family['photo4']);
                                 break;
                         
                         default:

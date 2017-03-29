@@ -62,11 +62,54 @@
       <div class="tab-content profile-tab-content">
       <?php echo validation_errors(); ?>
         <div role="tabpanel" class="tab-pane <?php echo $li_class['first']; ?>" id="basicinfo">
-        <?php echo form_open('index/save_profile/1/'.$param); ?>
           <div class="row">
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-          		<img src="<?php echo base_url('assets/img/family.png'); ?>" class="img-responsive">
+          		<div class="row photo-edit">
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <form action = "<?= base_url('index/save_profile/7/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($family['photo1']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$family['photo1']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <form action = "<?= base_url('index/save_profile/8/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($family['photo2']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$family['photo2']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <form action = "<?= base_url('index/save_profile/9/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($family['photo3']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$family['photo3']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <form action = "<?= base_url('index/save_profile/10/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($family['photo4']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$family['photo4']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+
+              </div>
           	</div>
+
+            <?php echo form_open('index/save_profile/1/'.$param); ?>        
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>		

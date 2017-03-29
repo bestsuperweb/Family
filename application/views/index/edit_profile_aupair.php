@@ -251,25 +251,67 @@
                       </select>
                     </div>
                   </div>
-              </div>             
+              </div>  
+              <div class="row">           
+                <input type="submit" name="" class="btn next-button" value="SAVE PROFILE">              
+              </div>
+              </form>           
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div class="row">
-                <img src="<?php echo base_url('assets/img/aupair.jpg'); ?>" class="img-responsive">
+              <div class="row photo-edit">
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                  <form action = "<?= base_url('index/save_profile/6/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($aupair['photo1']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$aupair['photo1']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                  <form action = "<?= base_url('index/save_profile/7/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($aupair['photo2']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$aupair['photo2']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                  <form action = "<?= base_url('index/save_profile/8/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($aupair['photo3']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$aupair['photo3']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                  <form action = "<?= base_url('index/save_profile/9/'.$param) ?>" class="dropzone dz-clickable" >
+                    <div class="dz-default dz-message" 
+                      <?php if ($aupair['photo4']) { ?>
+                      style="background-image: url('<?= base_url('files/photos/'.$aupair['photo4']) ?>');"
+                      <?php }?> 
+                    ></div>
+                  </form>
+                </div>
+
               </div>
               <div class="row">
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Hi, I'm <?php echo $aupair['full_name']; ?></b></h1></div>                 
               </div>
               <div class="row">
-                <textarea class="form-control" rows="20" name="ap_overview"><?php echo $aupair['overview']; ?></textarea>
+                <!-- <textarea class="form-control" rows="20" name="ap_overview"><?php echo $aupair['overview']; ?></textarea> -->
+                <?php echo $aupair['overview']; ?>
               </div>
             </div>
           </div>
-          <div class="row">           
-            <input type="submit" name="" class="btn next-button" value="SAVE PROFILE">              
-          </div>
-          </form>
+          
         </div>
 
         <div role="tabpanel" class="tab-pane <?php echo $li_class['second']; ?>" id="experience">

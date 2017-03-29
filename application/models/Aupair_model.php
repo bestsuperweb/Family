@@ -127,11 +127,29 @@ class Aupair_model extends CI_Model {
                             );
                     break;
                 case 5:
-                    $data = array(
-                            'photo'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
-                            );
                     $aupair = $this->get_aupair($aupair_id);
-                    unlink('files/photos/'.$aupair['photo']);
+                    if (!$aupair['photo1']) {
+                            $data = array(
+                                    'photo1'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    }elseif (!$aupair['photo2']){
+                            $data = array(
+                                    'photo2'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    }elseif (!$aupair['photo3']){
+                            $data = array(
+                                    'photo3'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    }elseif (!$aupair['photo4']){
+                            $data = array(
+                                    'photo4'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    }else{
+                           $data = array(
+                                    'photo1'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                           unlink('files/photos/'.$aupair['photo1']);
+                    }
                     break;
 
                 case 6:
@@ -144,6 +162,34 @@ class Aupair_model extends CI_Model {
                             'nationality'   => $this->input->post('ap_nationality'),
                             'start_date'    => $this->input->post('ap_start_date')
                             );
+                    break;
+                case 7:
+                    $aupair = $this->get_aupair($aupair_id);
+                    $data = array(
+                                    'photo1'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    unlink('files/photos/'.$aupair['photo1']);
+                    break;
+                case 8:
+                    $aupair = $this->get_aupair($aupair_id);
+                    $data = array(
+                                    'photo2'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    unlink('files/photos/'.$aupair['photo2']);
+                    break;
+                case 9:
+                    $aupair = $this->get_aupair($aupair_id);
+                    $data = array(
+                                    'photo3'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    unlink('files/photos/'.$aupair['photo3']);
+                    break;
+                case 10:
+                    $aupair = $this->get_aupair($aupair_id);
+                    $data = array(
+                                    'photo4'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
+                            );
+                    unlink('files/photos/'.$aupair['photo4']);
                     break;
         		
         		default:

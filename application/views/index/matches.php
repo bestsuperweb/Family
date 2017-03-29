@@ -8,8 +8,8 @@
 	   		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 	   			<div class="match-card">
 	   				<img src="<?php 
-	                  if($aupair['photo']){
-	                    echo base_url('files/photos/'.$aupair['photo']); 
+	                  if($aupair['photo1']){
+	                    echo base_url('files/photos/'.$aupair['photo1']); 
 	                  }else{
 	                    echo base_url('assets/img/aupair.jpg'); 
 	                  }
@@ -76,8 +76,8 @@
 	   		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 	   			<div class="match-card">
 	   				<img src="<?php 
-	                  if($family['photo']){
-	                    echo base_url('files/photos/'.$family['photo']); 
+	                  if($family['photo1']){
+	                    echo base_url('files/photos/'.$family['photo1']); 
 	                  }else{
 	                    echo base_url('assets/img/family.jpg'); 
 	                  }
