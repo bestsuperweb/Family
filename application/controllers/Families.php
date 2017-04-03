@@ -16,6 +16,7 @@ class Families extends CI_Controller {
         $this->load->model('update_model');
         $this->load->model('task_model');
         $this->load->library('session');
+        $this->load->library('mpdf60/mpdf');
     }
 
     public function create( $page )
@@ -247,6 +248,37 @@ class Families extends CI_Controller {
 				}
 
     			break;
+
+    		case 3:
+    			$family_id = $this->aauth->get_user()->name;
+    			$parents = $this->parent_model->get_parent($family_id);
+    			$name = md5('income'.$family_id);
+				if($this->generate_income("$name.pdf")){
+					$task_id = $this->task_model->insert_task(
+						"De familie ".$parents[0]['lastname']." heeft document Inkomenstoetsing aangeleverd. Het bestand staat klaar voor goedkeuring.",
+						"1. Ga verder met stap 3 van het stappenplan.",
+						'',
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+
+					$update_id = $this->update_model->insert_update(
+						"De familie ".$parents[0]['lastname']." heeft document Inkomenstoetsing aangeleverd.",
+						"Jullie inkomenstoetsing is aangeleverd en staat klaar voor goedkeuring.",
+						$this->aauth->get_user()->id,
+						$parents[0]['lastname']
+					);
+					if( $this->document_model->insert_document("$name.pdf", "Inkomenstoetsing", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
+						echo 'success';
+					}else{
+						echo 'failure';
+						unlink("files/$name.pdf");
+					}
+				}else{
+					echo 'failure';
+				}
+    			break;
+
     		default:
     			# code...
     			break;
@@ -257,7 +289,7 @@ class Families extends CI_Controller {
 
     private function _gen_pdf($html, $name, $paper='A4')
     {
-        $this->load->library('mpdf60/mpdf');
+        
         $mpdf = new mPDF('utf-8',$paper);
         $mpdf->SetHTMLHeader($html[0]);
         if ($html[2] ) {
@@ -269,6 +301,47 @@ class Families extends CI_Controller {
         $mpdf->WriteHTML($html[1]);
         $filename= "files/$name";                   
         $mpdf->Output($filename, 'F');
+    }
+
+    private function generate_income($name, $paper = 'A4'){
+    	
+    	$pdf = new mPDF('utf-8',$paper);
+	    $pdf->SetImportUse();
+
+    	$docuemtns = $this->document_model->get_document($this->aauth->get_user()->id);
+    	
+    	foreach ($docuemtns as $key => $document) {
+    		if (
+    			($document['title'] == 'Loondienst-1') || 
+    			($document['title'] == 'Loondienst-2') || 
+    			($document['title'] == 'Loondienst-3') || 
+    			($document['title'] == 'Zelfstandig ondernemer-1') || 
+    			($document['title'] == 'Zelfstandig ondernemer-2') || 
+    			($document['title'] == 'Zelfstandig ondernemer-3') ||
+    			($document['title'] == 'Eigen vermogen-1') || 
+    			($document['title'] == 'Eigen vermogen-2') || 
+    			($document['title'] == 'Eigen vermogen-3') ||
+    			($document['title'] == 'DGA-1') || 
+    			($document['title'] == 'DGA-2') || 
+    			($document['title'] == 'DGA-3') ||
+    			($document['title'] == 'DGA-4') || 
+    			($document['title'] == 'DGA-5')
+    			) 
+    		{
+    			$file = 'files/'.$document['name'];
+    			$pagecount = $pdf->SetSourceFile($file);
+		        for ($i=1; $i<=$pagecount; $i++) {
+		            $import_page = $pdf->ImportPage($i);
+		            $pdf->UseTemplate($import_page);
+		            $pdf->AddPage();
+		        }
+		        $this->document_model->delete_document($document['id']);
+    		}
+    	}
+	    $filename= "files/$name";    
+	    if(!$pdf->Output($filename, 'F')){
+	        return 1;
+	    }
     }
 
     private function get_timeschedule($family_id, $image_url){

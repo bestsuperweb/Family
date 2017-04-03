@@ -115,7 +115,7 @@ class Family_model extends CI_Model {
                                        $data = array(
                                                 'photo1'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                         );
-                                       unlink('files/photos/'.$family['photo1']);
+                                       // unlink('files/photos/'.$family['photo1']);
                                 }                                
                                 break;
                         case 7:
@@ -136,28 +136,28 @@ class Family_model extends CI_Model {
                                 $data = array(
                                             'photo1'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                     );
-                                unlink('files/photos/'.$family['photo1']);
+                                // unlink('files/photos/'.$family['photo1']);
                                 break;
                         case 10:
                                 $family = $this->get_family($family_id);
                                 $data = array(
                                             'photo2'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                     );
-                                unlink('files/photos/'.$family['photo2']);
+                                // unlink('files/photos/'.$family['photo2']);
                                 break;
                         case 11:
                                 $family = $this->get_family($family_id);
                                 $data = array(
                                             'photo3'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                     );
-                                unlink('files/photos/'.$family['photo3']);
+                                // unlink('files/photos/'.$family['photo3']);
                                 break;
                         case 12:
                                 $family = $this->get_family($family_id);
                                 $data = array(
                                             'photo4'    => md5($_FILES["file"]['name'].$family_id).$_FILES["file"]['name']
                                     );
-                                unlink('files/photos/'.$family['photo4']);
+                                // unlink('files/photos/'.$family['photo4']);
                                 break;
                         
                         default:

@@ -97,8 +97,12 @@ class Document_model extends CI_Model {
 
         public function delete_document($document_id){
             $document = $this->db->get_where('documents', array('id' => $document_id))->row_array();
-            unlink('files/'.$document['name']);            
-            $result = $this->db->delete('documents', array('id' => $document_id));
-            return $result;
+            unlink('files/'.$document['name']);
+            $user_id    = $document['user_id'];
+            $task_id    = $document['task_id'];
+            $update_id  = $document['update_id'];            
+            if($this->db->delete('documents', array('id' => $document_id))){
+                return array('user_id' => $user_id, 'task_id' => $task_id, 'update_id' => $update_id );
+            }            
         }
     }

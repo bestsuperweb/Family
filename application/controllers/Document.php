@@ -120,7 +120,9 @@ class Document extends CI_Controller {
     }
 
     public function delete($id){
-        if($this->document_model->delete_document($id)){
+        if($result = $this->document_model->delete_document($id)){
+            $this->update_model->delete_update($result['update_id']);
+            $this->task_model->delete_task($result['task_id']);
             echo 'success';
         }else{
             echo "failure";
@@ -145,124 +147,228 @@ class Document extends CI_Controller {
     function upload_document($kind){
         switch ($kind) {
             case 1:
-                $file_title = 'Loondienst-1';
+                $file_title     = 'Loondienst-1';
                 break;
             case 2:
-                $file_title = 'Loondienst-2';
+                $file_title     = 'Loondienst-2';
                 break;
             case 3:
-                $file_title = 'Loondienst-3';
+                $file_title     = 'Loondienst-3';
                 break;
             case 4:
-                $file_title = 'Zelfstandig ondernemer-1';
+                $file_title     = 'Zelfstandig ondernemer-1';
                 break;
             case 5:
-                $file_title = 'Zelfstandig ondernemer-2';
+                $file_title     = 'Zelfstandig ondernemer-2';
                 break;
             case 6:
-                $file_title = 'Zelfstandig ondernemer-3';
+                $file_title     = 'Zelfstandig ondernemer-3';
                 break;
             case 7:
-                $file_title = 'DGA-1';
+                $file_title     = 'DGA-1';
                 break;
             case 8:
-                $file_title = 'DGA-2';
+                $file_title     = 'DGA-2';
                 break;
             case 9:
-                $file_title = 'DGA-3';
+                $file_title     = 'DGA-3';
                 break;
             case 10:
-                $file_title = 'DGA-4';
+                $file_title     = 'DGA-4';
                 break;
             case 11:
-                $file_title = 'DGA-5';
+                $file_title     = 'DGA-5';
                 break;
             case 12:
-                $file_title = 'Eigen vermogen-1';
+                $file_title     = 'Eigen vermogen-1';
                 break;
             case 13:
-                $file_title = 'Eigen vermogen-2';
+                $file_title     = 'Eigen vermogen-2';
                 break;
             case 14:
-                $file_title = 'Eigen vermogen-3';
+                $file_title     = 'Eigen vermogen-3';
                 break;
             case 15:
-                $file_title = 'Agreement';
+                $file_title     = 'Agreement';
+                $hbn_update     = 'De familie $family_name heeft een match aangemaakt en de agreement ondertekend.';
+                $user_update    = 'Jullie match en agreement zijn aangemaakt. Jullie ontvangen een melding wanneer ook de au-pair de agreement heeft getekend.';
+                $hbn_task       = '1. “De familie $family_name heeft een match aangemaakt en de agreement ondertekend. Controleer de agreement in de documenten van de familie.”';
+                $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
                 break;
             case 16:
-                $file_title = 'Awareness declaration';
+                $file_title     = 'Awareness declaration';
+                $hbn_update     = 'De familie $family_name heeft de awareness declaration en timeschedule ingediend.';
+                $user_update    = 'Jullie hebben de awareness declaration en timeschedule ingediend!';
+                $hbn_task       = '1. “De familie $family_name heeft de awareness declaration en timeschedule ingediend. Controleer de awareness declaration en timeschedule in de documenten van de familie.”';
+                $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
                 break;
             case 17:
-                $file_title = 'Family insurance';
+                $file_title     = 'Family insurance';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 18:
-                $file_title = 'Family routine setup';
+                $file_title     = 'Family routine setup';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 19:
-                $file_title = 'Important info';
+                $file_title     = 'Important info';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 20:
-                $file_title = 'BRP';
+                $file_title     = 'BRP';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 21:
-                $file_title = 'Faily flight ticket';
+                $file_title     = 'Faily flight ticket';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 22:
-                $file_title = 'Evidence of return';
+                $file_title     = 'Evidence of return';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 23:
-                $file_title = 'Signed agreement';
+                $file_title     = 'Signed agreement';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 24:
-                $file_title = 'Personality Test';
+                $file_title     = 'Personality Test';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 25:
-                $file_title = 'Passport';
+                $file_title     = 'Passport';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 26:
-                $file_title = 'Important Details';
+                $file_title     = 'Important Details';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 27:
-                $file_title = 'Criminal Clearance';
+                $file_title     = 'Criminal Clearance';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 28:
-                $file_title = 'NMNP Declaration';
+                $file_title     = 'NMNP Declaration';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 29:
-                $file_title = 'Health Form';
+                $file_title     = 'Health Form';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 30:
-                $file_title = 'TBC test';
+                $file_title     = 'TBC test';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 31:
-                $file_title = 'Unabridged birth certificate';
+                $file_title     = 'Unabridged birth certificate';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 32:
-                $file_title = 'Legalisation';
+                $file_title     = 'Legalisation';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 33:
-                $file_title = 'Apostille';
+                $file_title     = 'Apostille';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 34:
-                $file_title = 'Translation Birth documentation';
+                $file_title     = 'Translation Birth documentation';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 35:
-                $file_title = 'Agreement with Family';
+                $file_title     = 'Agreement with Family';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 36:
-                $file_title = 'Weekly time schedule';
+                $file_title     = 'Weekly time schedule';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 37:
-                $file_title = 'Visa';
+                $file_title     = 'Visa';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 38:
-                $file_title = 'Registration city hall';
+                $file_title     = 'Registration city hall';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 39:
-                $file_title = 'BRP extract';
+                $file_title     = 'BRP extract';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
             case 40:
-                $file_title = 'Residence Permit';
+                $file_title     = 'Residence Permit';
+                $hbn_update     = '';
+                $user_update    = '';
+                $hbn_task       = '';
+                $user_task      = '';
                 break;
                        
             default:

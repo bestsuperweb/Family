@@ -191,6 +191,22 @@ $(document).ready(function()
         });
     });
 
+    $('.get-income').on('click', function(){
+        $.ajax({
+            url: window.base_url+"families/generate_document/3",
+            type: 'post',
+            success: function(result){
+                if(result == 'success'){
+                    alert('Success!');
+                }else{
+                    alert('Server error...');
+                }                
+                // location.reload();
+            }
+        });
+    });
+
+
     $(".family-last").on('click', function(){
         alert('ghost');
     });

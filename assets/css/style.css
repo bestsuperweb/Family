@@ -903,8 +903,11 @@
 .match-details{
     padding: 15px 30px;
     font-size: 15px;
-    font-weight: bold;
     line-height: 30px;
+    color: black;
+}
+.match-details div.col-lg-5{
+    font-weight: bold;
 }
 /* match page end ---*/
 @media screen and (max-width: 768px) {

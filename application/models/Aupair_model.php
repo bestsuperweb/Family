@@ -148,7 +148,7 @@ class Aupair_model extends CI_Model {
                            $data = array(
                                     'photo1'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
-                           unlink('files/photos/'.$aupair['photo1']);
+                           // unlink('files/photos/'.$aupair['photo1']);
                     }
                     break;
 
@@ -168,28 +168,28 @@ class Aupair_model extends CI_Model {
                     $data = array(
                                     'photo1'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
-                    unlink('files/photos/'.$aupair['photo1']);
+                    // unlink('files/photos/'.$aupair['photo1']);
                     break;
                 case 8:
                     $aupair = $this->get_aupair($aupair_id);
                     $data = array(
                                     'photo2'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
-                    unlink('files/photos/'.$aupair['photo2']);
+                    // unlink('files/photos/'.$aupair['photo2']);
                     break;
                 case 9:
                     $aupair = $this->get_aupair($aupair_id);
                     $data = array(
                                     'photo3'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
-                    unlink('files/photos/'.$aupair['photo3']);
+                    // unlink('files/photos/'.$aupair['photo3']);
                     break;
                 case 10:
                     $aupair = $this->get_aupair($aupair_id);
                     $data = array(
                                     'photo4'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
-                    unlink('files/photos/'.$aupair['photo4']);
+                    // unlink('files/photos/'.$aupair['photo4']);
                     break;
         		
         		default:

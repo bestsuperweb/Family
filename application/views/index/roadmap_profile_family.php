@@ -662,7 +662,7 @@
         </div>
 
         <div class="row">
-        	<a href="<?= base_url('index/roadmap_profile/3') ?>" class="btn next-button" >NAAR STAP 3</a>
+        	<a href="#" class="btn next-button get-income" >NAAR STAP 3</a>
         </div>
     </div>
 <!-- end tab2 -->
