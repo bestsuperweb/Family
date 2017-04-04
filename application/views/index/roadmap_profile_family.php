@@ -95,10 +95,19 @@
 		      </h4>
 		    </div>
 		    <div id="collapse1" class="panel-collapse collapse">
-		      <div class="panel-body">Het tijdschema is een belangrijk en wettelijk onderdeel van het au pair programma. In Nederland zijn er strenge regels voor hoelang per dag en per week je een au pair überhaupt mag inzetten. Daarom hebben we een voorbeeld weekschema opgesteld waarin de familie specifieke uren op kan geven en waarin aangegeven wordt wie er bij de kinderen verblijft als de au pair er niet is. Ook moet er in dit weekschema staan wie er als back up fungeert aangezien je wettelijk niet afhankelijk mag zijn van je au pair.<br><br>
-			  Daarbij is het voor de nieuwe au pair belangrijk alvast te weten wat het weekschema en haar taken zullen zijn. Op deze manier weet ze wat ze kan verwachten en is ze daar goed op voorbereid. Natuurlijk kan dit ook nog wel veranderen. Het is vooral belangrijk dat jullie toekomstige au pair hier zo specifiek mogelijk over wordt geïnformeerd en dat er het hele jaar een goede consensus over bestaat. Daarbij is het belangrijk dat jullie HBN het gehele jaar informeren over structurele verandering in dit schema. Indien gedurende het jaar structurele veranderingen worden aangebracht in het weekschema dient deze opnieuw gedateerd en gesigneerd te worden door host- familie en au pair.<br><br>
-			  <b>TO DO:</b> Graag Weekly timeschedule template invullen/aanpassen. Dit weekschema moet voor de VISA aanvraag gedateerd en ondertekend worden door jullie als Host Familie en door jullie au pair.<br><br>
-			  Hierin kan de familie een duidelijk overzicht van de dag/weekindeling voor de au pair geven. Het is belangrijk om te laten zien wie er met de kinderen is op elk uur van de dag wanneer de au pair niet wordt ingezet en wie er als back up fungeert als de au pair wel wordt ingezet. Er mag geen afhankelijkheid zijn van de au pair. Het is ook belangrijk te laten zien wat haar taken zijn. Het totaal aantal uren mag maximaal uitkomen op 30 (wordt automatisch berekend). Het maximum aantal uur per dag mag uitkomen op 8. De au pair mag maximaal 5 dagen per week ingezet worden. De huishoudelijke werkzaamheden worden apart aangegeven maar zijn onderdeel van het totaal aantal uren (niet meer dan 30%). De uren moeten specifiek worden opgeschreven (bijv. 08:00-09:00 = 1 uur en 14:30-19:45 = 5,25 uur). Babysit uren in de avond zijn onderdeel van de 30 maximum uren per week en 8 uur per dag.<br><br>
+		      <div class="panel-body">
+		      <div class="row">
+		      	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		      		Het tijdschema is een belangrijk en wettelijk onderdeel van het au pair programma. In Nederland zijn er strenge regels voor hoelang per dag en per week je een au pair überhaupt mag inzetten. Daarom hebben we een voorbeeld weekschema opgesteld waarin de familie specifieke uren op kan geven en waarin aangegeven wordt wie er bij de kinderen verblijft als de au pair er niet is. Ook moet er in dit weekschema staan wie er als back up fungeert aangezien je wettelijk niet afhankelijk mag zijn van je au pair.<br><br>
+			  		Daarbij is het voor de nieuwe au pair belangrijk alvast te weten wat het weekschema en haar taken zullen zijn. Op deze manier weet ze wat ze kan verwachten en is ze daar goed op voorbereid. Natuurlijk kan dit ook nog wel veranderen. Het is vooral belangrijk dat jullie toekomstige au pair hier zo specifiek mogelijk over wordt geïnformeerd en dat er het hele jaar een goede consensus over bestaat. Daarbij is het belangrijk dat jullie HBN het gehele jaar informeren over structurele verandering in dit schema. Indien gedurende het jaar structurele veranderingen worden aangebracht in het weekschema dient deze opnieuw gedateerd en gesigneerd te wordtden door host- familie en au pair.
+		      	</div>
+		      	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		      		<b>TO DO:</b> Graag Weekly timeschedule template invullen/aanpassen. Dit weekschema moet voor de VISA aanvraag gedateerd en ondertekend worden door jullie als Host Familie en door jullie au pair.<br><br>
+			  		Hierin kan de familie een duidelijk overzicht van de dag/weekindeling voor de au pair geven. Het is belangrijk om te laten zien wie er met de kinderen is op elk uur van de dag wanneer de au pair niet wordt ingezet en wie er als back up fungeert als de au pair wel wordt ingezet. Er mag geen afhankelijkheid zijn van de au pair. Het is ook belangrijk te laten zien wat haar taken zijn. Het totaal aantal uren mag maximaal uitkomen op 30 (wordt automatisch berekend). Het maximum aantal uur per dag mag uitkomen op 8. De au pair mag maximaal 5 dagen per week ingezet worden. De huishoudelijke werkzaamheden worden apart aangegeven maar zijn onderdeel van het totaal aantal uren (niet meer dan 30%). De uren moeten specifiek worden opgeschreven (bijv. 08:00-09:00 = 1 uur en 14:30-19:45 = 5,25 uur). Babysit uren in de avond zijn onderdeel van de 30 maximum uren per week en 8 uur per dag.
+		      	</div>
+		      </div>
+		      <br><br>
+			  
 			  <!-- <div class="profile-edit row" >
 			  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
 			  		<div class="input-group date">
@@ -1470,14 +1479,18 @@
 <!-- start 6 -->
 <h1><i><b>6. Aankomst au-pair</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>Jullie halen haar/hem zelf op van het vliegveld en zullen haar/hem na de pair ervaring ook weer naar het vliegveld brengen.<br><br>
 				<b>Als tip voor de aankomst:</b><br>
 				Het is goed om te beseffen dat het best heftig is voor de au pair om ineens in een vreemd huis, bij een vreemd gezin, in een vreemd land te komen en dan kunnen de kleine dingen net hét verschil maken. De kamer een beetje opleuken met een aantal fotolijstjes (of zoiets dergelijks), een vaas met tulpen, een leuk kaarsje (waxinelichtjes) een schone handdoek en een gezellig douchegelletje kan er al voor zorgen dat ze/hij zich meteen al thuis en welkom voelt.<br><br>
 				<b>Au-pair Manual:</b><br>
 				Voordat jullie au pair naar Nederland afreist sturen wij haar/hem de HBN au pair manual. Deze manual bevat naast alle belangrijke wettelijke verplichtingen en taken bij aankomst, tijdens haar/zijn verblijf en voor vertrek ook allerlei belangrijke adviezen en tips die zij/hij kan gebruiken tijdens het au pair jaar.<br><br>
 				<b>Welkomst training au-pair:</b><br>
-				Gedurende de eerste weken na de aankomst van de au pair zal HBN een welkomst training organiseren voor de au pairs die in die maand zijn aangekomen. De au pairs zijn verplicht deze training bij te wonen. Deze training zal op een avond in de week plaats vinden op het HBN kantoor . Wij vinden het belangrijk de au pair meer inzicht te geven in alle aspecten die bij het au pairschap komen kijken en de cultuur verschillen en gewoontes te bespreken, daarbij focussen we ons in de training ook op de technieken voor communicatie en feedback, aangezien dit zo'n belangrijk onderdeel is voor het slagen van het au pair jaar. De training biedt je au pair ook direct de mogelijkheid andere starters te ontmoeten en dit te kunnen delen met elkaar.<br><br>
+				Gedurende de eerste weken na de aankomst van de au pair zal HBN een welkomst training organiseren voor de au pairs die in die maand zijn aangekomen. De au pairs zijn verplicht deze training bij te wonen. Deze training zal op een avond in de week plaats vinden op het HBN kantoor . Wij vinden het belangrijk de au pair meer inzicht te geven in alle aspecten die bij het au pairschap komen kijken en de cultuur verschillen en gewoontes te bespreken, daarbij focussen we ons in de training ook op de technieken voor communicatie en feedback, aangezien dit zo'n belangrijk onderdeel is voor het slagen van het au pair jaar. De training biedt je au pair ook direct de mogelijkheid andere starters te ontmoeten en dit te kunnen delen met elkaar.
+				</p>
+	    	</div>	
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    		<p>
 				Welkomst pakket HBN: om jullie au pair vanuit HBN welkom te heten, hebben wij een leuk en handig welkomstpakket samengesteld dat hij/zij per post ontvangt direct na aankomst<br><br>
 				- Een HBN kalender; hierop kunnen jullie samen overleggen en bijhouden welke dagen er opgepast moet worden bijvoorbeeld. - Een homemade HBN sleutelhanger
 				- HBN news
@@ -1488,7 +1501,7 @@
 				Basis Zorgverzekering aanvraag:
 				Deze verzekering kunnen jullie, o.a. via de link in de JOHO uitleg, met haar/zijn burger service nummer aanvragen. De zorgtoeslag kan bij de belastingdienst worden aangevraagd wanneer zij/hij haar/zijn eigen persoonlijke bankrekening heeft.
 				</p>
-	    	</div>	    			    	
+	    	</div>    			    	
 	    </div><br><br>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
@@ -1675,15 +1688,20 @@
 <!-- start 8 -->
 <h1><i><b>8. Vertrek</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    	<p>
 		    	Jullie zijn als Host-Familie verantwoordelijk voor jullie au pair tijdens haar verblijf, maar ook voor een tijdig vertrek. Daarbij zijn jullie verplicht HBN direct te informeren zodra duidelijk is wat de exacte vertrekdatum van de au pair is. HBN zal jullie en de au pair tussen de 1-3 maanden voor vertrek hierop attenderen.<br><br>
 				Jullie au pair hoeft niet haar verblijfsvergunning in te leveren bij de IND. Zodra zij zich uitschrijft bij de gemeente en HBN de melding heeft gedaan dat de au pair is vertrokken wordt de verblijfsvergunning ingetrokken. Naast het feit dat de verblijfsvergunning gewoon verloopt na de 365 dagen.<br><br>
-				Maximaal 5 dagen voor vertrek of 5 dagen na vertrek (bij voorkeur voordat de au pair vertrekt) moet zij zich uitschrijven bij de gemeente. Dit kan door middel van een uitschrijfformulier dat wordt verstrekt door elke gemeente. Invullen en tekenen door de au pair met een kopie van haar paspoort. De au pair kan dit zelf doen, maar wij verzoeken jullie hierop toe te zien.<br><br>
+				Maximaal 5 dagen voor vertrek of 5 dagen na vertrek (bij voorkeur voordat de au pair vertrekt) moet zij zich uitschrijven bij de gemeente. Dit kan door middel van een uitschrijfformulier dat wordt verstrekt door elke gemeente. 
+			</p>
+	    	</div>	  
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    	<p>
+	    		Invullen en tekenen door de au pair met een kopie van haar paspoort. De au pair kan dit zelf doen, maar wij verzoeken jullie hierop toe te zien.<br><br>
 				<b>Let op: Zorg ervoor dat de au pair zich niet EERDER uitschrijft, een uitschrijving betekent dat de au pair vergunning wordt ingetrokken.<br><br>
 				Het te laat of niet ondernemen van de bovenstaande acties heeft ernstige gevolgen. Het kan namelijk lijden tot het intrekken van de verblijfsvergunning. Daarbij kan HBN beboet worden voor het niet houden aan de zorgplicht of informatieplicht richting de IND. Als au pair/gastgezin de instructies betreft de zorg en informatieplicht niet navolgt zal HBN genoodzaakt zijn de boete op het gastgezin te verhalen. Deze boetes zijn minimaal 1500,- en kunnen exponentieel hoger oplopen. Verwezen wordt naar HBN Algemene Voorwaarden.</b>
 			</p>
-	    	</div>	    			    	
+	    	</div>  			    	
 	    </div><br><br>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">

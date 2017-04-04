@@ -867,248 +867,32 @@
             <!-- <input type="submit" name="" class="btn" value="Save"> -->
           </div>
           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <a href="#" class="btn next-button">PROFIEL FAMILIE</a>
+            <!-- <a href="#" class="btn next-button">PROFIEL FAMILIE</a> -->
           </div>
         </div>
 
-        <h3><i>INFORMATION BACKOFFICE</i></h3>
+        <h2>Auto filled Sections</h2>
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Summary</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Dear family letter</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Photo's received?</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Reference forms</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Pre-match</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Contribution Visa/Ticket</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Interviewform</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>HBN Agreement</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Copy passport</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Important details</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Health Check form (incl. TBC/HIV/HEP test)</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Police Clearance</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Birt certificate</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Booream test</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Antecedents</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-        </div>
+          <?php foreach ($reports as $key => $report) { 
+            if (($key != 'id') && ($key != 'aupair_id')) {            
+            ?>
 
-        <h3><i>AFTER MATCH</i></h3>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bij familie</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b><?= str_replace('_', ' ', $key) ?></b></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <?php if(($report == '0') || ($report == '1')){ ?>
+                    <img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30" class="null<?= $report ?>">
+                  <?php }elseif(($report == '0000-00-00')||($report == '0000-00-00 00:00:00')) { ?>
+                    DNF
+                  <?php }else{ echo $report; } ?>
+                </div>
+              </div>
             </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Timschedule/Agreement getekend door FAM - AP</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verzekering aangevraagd</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Ticket arrangements via</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Copy ticket received</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Startdatum (Residence Permit)</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Eind datum Residence Permit</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verblijfsvergunning</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Aanvraag IND verstuurd</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>V-nummer</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Ingangsdatum bevestigd</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Leges afgeschreven</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Pre-arrival mail - manual e.d.</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Welkomstpakket</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3><i>IN NL</i></h3>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Welkomst mail</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Verblijfspas opgehaald +kopie</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs ingeschreven gemeente</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>TBC test gedaan</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Mobile phone NL</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Brief pas IND ontvangen</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3><i>NL - Administratieplicht 4.28.2</i></h3>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 1 (na 1 mnd) verstuurd + evt. reminder</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 2 (na 4 mnd) verstuurd + evt. reminder</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 1 terugkoppeling + actie HBN</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Evaluatie 2 terugkoppeling + actie HBN</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3><i>Prepare leave-informatieplicht</i></h3>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Prepare leave mail (3 mnd < leave)</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Goodbye mail + end evauluation (1 mn < leave)</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Retourticket ontvangen</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Terugticket datum</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Certificate gestuurd</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Terugkoppeling prepare leave + terugkoppeling HBN</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Afwijkende plannen vertrek</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3><i>Prepare leave-informatieplicht</i></h3>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Afmelding IND verzonden</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"><b>Bewijs stempel ontvangen</b></div>
-              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="<?=base_url('assets/img/visa-check-review.png')?>" width="30"></div>
-            </div>
-          </div>
+          <?php 
+              }
+            }
+          ?>          
         </div>
 
         <div class="row">

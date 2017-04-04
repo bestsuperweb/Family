@@ -7,7 +7,7 @@
  body {
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
-    color: #542a44;
+    /*color: #542a44;*/
  }
 .alert{
     display: none;
@@ -633,11 +633,16 @@
 }
 .tab-pane{
     font-size: 17px;
-    color: #542a44;
+    /*color: #542a44;*/
     line-height: 30px;
 }
 #report .row{
     margin-bottom: 10px;
+}
+.null0{
+    filter: gray;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
 }
 .notity-form{
     background: #eee;

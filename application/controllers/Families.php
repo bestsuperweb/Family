@@ -15,6 +15,7 @@ class Families extends CI_Controller {
         $this->load->model('document_model');
         $this->load->model('update_model');
         $this->load->model('task_model');
+        $this->load->model('familyreport_model');
         $this->load->library('session');
         $this->load->library('mpdf60/mpdf');
     }
@@ -175,7 +176,7 @@ class Families extends CI_Controller {
 						$this->aauth->get_user()->id,
 						$parents[0]['lastname']
 					);
-
+			$this->familyreport_model->insert_familyreport(array('Skype_call_planned' => 1), $this->input->post('sk_fa_id'));
 			redirect(base_url('index/roadmap_profile/3'));
 		}
     }
@@ -240,7 +241,7 @@ class Families extends CI_Controller {
 						$this->aauth->get_user()->id,
 						$parents[0]['lastname']
 					);
-
+				$this->familyreport_model->insert_familyreport(array('Timeschedule_submitted' => 1), $family_id);
 				if( $this->document_model->insert_document("$name.pdf", "TimeSchedule", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
 					echo 'success';
 				}else{
@@ -269,6 +270,7 @@ class Families extends CI_Controller {
 						$parents[0]['lastname']
 					);
 					if( $this->document_model->insert_document("$name.pdf", "Inkomenstoetsing", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
+						$this->familyreport_model->insert_familyreport(array('All_documents_submitted' => 1), $family_id);
 						echo 'success';
 					}else{
 						echo 'failure';

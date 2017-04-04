@@ -145,6 +145,11 @@ class Document extends CI_Controller {
     }
 
     function upload_document($kind){
+        if ($this->aauth->is_member(4)) {
+            $parents = $this->parent_model->get_parent($this->aauth->get_user()->name);
+        }elseif ($this->aauth->is_member(5)) {
+            $aupair = $this->aupair_model->get_aupair($this->aauth->get_use()->name);
+        }
         switch ($kind) {
             case 1:
                 $file_title     = 'Loondienst-1';
@@ -190,31 +195,38 @@ class Document extends CI_Controller {
                 break;
             case 15:
                 $file_title     = 'Agreement';
-                $hbn_update     = 'De familie $family_name heeft een match aangemaakt en de agreement ondertekend.';
+                $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft een match aangemaakt en de agreement ondertekend.';
                 $user_update    = 'Jullie match en agreement zijn aangemaakt. Jullie ontvangen een melding wanneer ook de au-pair de agreement heeft getekend.';
-                $hbn_task       = '1. “De familie $family_name heeft een match aangemaakt en de agreement ondertekend. Controleer de agreement in de documenten van de familie.”';
+                $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft een match aangemaakt en de agreement ondertekend. Controleer de agreement in de documenten van de familie.”';
                 $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
                 break;
             case 16:
                 $file_title     = 'Awareness declaration';
-                $hbn_update     = 'De familie $family_name heeft de awareness declaration en timeschedule ingediend.';
-                $user_update    = 'Jullie hebben de awareness declaration en timeschedule ingediend!';
-                $hbn_task       = '1. “De familie $family_name heeft de awareness declaration en timeschedule ingediend. Controleer de awareness declaration en timeschedule in de documenten van de familie.”';
-                $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
+                if ($this->aauth->is_member(4)) {
+                    $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft de awareness declaration en timeschedule ingediend.';
+                    $user_update    = 'Jullie hebben de awareness declaration en timeschedule ingediend!';
+                    $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft de awareness declaration en timeschedule ingediend. Controleer de awareness declaration en timeschedule in de documenten van de familie.”';
+                    $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
+                }elseif ($this->aauth->is_member(5)) {
+                    $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Awareness declaration aangeleverd.';
+                    $user_update    = 'You’ve uploaded the awareness declaration. HBN will review and approve the document.';
+                    $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Awareness declaration aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                    $user_task      = '1. Proceed with step 5 of your journey.';
+                }                
                 break;
             case 17:
-                $file_title     = 'Family insurance';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $file_title     = 'Au-Pair verzekering';
+                $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft de aanvraag voor de au-pair verzekering ingediend.';
+                $user_update    = 'Jullie aanvraagformulier is ingediend. Na goedkeuring ontvangen jullie terugkoppeling van de verzekeraar.';
+                $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft de aanvraag voor de au-pair verzekering ingediend. Sluit de verzekering af bij de verzekeraar.”';
+                $user_task      = '1. Download de familie briefing.';
                 break;
             case 18:
                 $file_title     = 'Family routine setup';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = ' “De familie '.$parents[0]['lastname'].' heeft het family routine setup document ingediend.”';
+                $user_update    = 'Jullie family routine setup is ingediend. HBN controleert het document en stuurt het naar de au-pair.';
+                $hbn_task       = '1. De familie '.$parents[0]['lastname'].' heeft het family routine setup document ingediend. Het document staat klaar voor goedkeuring.';
+                $user_task      = '1. Upload het aangepaste important info doc uit stap 5 van het stappenplan.';
                 break;
             case 19:
                 $file_title     = 'Important info';
@@ -225,150 +237,149 @@ class Document extends CI_Controller {
                 break;
             case 20:
                 $file_title     = 'BRP';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft het bsn nummer en uittreksel van de gemeente ingediend.';
+                $user_update    = 'Jullie hebben het bsn-nummer en uittreksel ingediend. HBN controleert het bsn nummer en document.';
+                $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft het bsn nummer en uittreksel van de gemeente ingediend. Het document staat klaar voor goedkeuring.”';
+                $user_task      = '1. Ga verder met het bevestigen van de tuberculose test.';
                 break;
             case 21:
-                $file_title     = 'Faily flight ticket';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $file_title     = 'Terugvlucht au-pair';
+                $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft de datum van terugkeer bevestigd en het ticket geüpload.';
+                $user_update    = 'Jullie hebben de datum van terugkeer bevestigd en het ticket geüpload';
+                $hbn_task       = 'De familie '.$parents[0]['lastname'].' heeft de datum van terugkeer bevestigd en het ticket geüpload. Het ticket staat klaar voor goedkeuring.';
+                $user_task      = '1. Ga verder met het bewijs van terugkeer uit stap 8 van het stappenplan.';
                 break;
             case 22:
-                $file_title     = 'Evidence of return';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $file_title     = 'Bewijs van terugkeer';
+                $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft het bewijs van terugkeer geüpload.';
+                $user_update    = 'Jullie hebben het bewijs van terugkeer geüpload. Het document is voor goedkeuring naar HBN verstuurd.';
+                $hbn_task       = 'De familie '.$parents[0]['lastname'].' heeft het bewijs van terugkeer geüpload. Het document staat klaar voor goedkeuring.';
                 break;
             case 23:
                 $file_title     = 'Signed agreement';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft de getekende agreement geüpload.';
+                $user_update    = 'Your agreement is submitted and sent to HBN for review.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft de getekende agreement geüpload. Het bestand staat klaar voor goedkeuring';
+                $user_task      = '1. Proceed with the interview form from step 1 of your journey.';
                 break;
             case 24:
                 $file_title     = 'Personality Test';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Personality Test aangeleverd.';
+                $user_update    = 'You’ve uploaded the results of the 16 personalities test. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Personality Test aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with scheduling an interview with an agent.';
                 break;
             case 25:
                 $file_title     = 'Passport';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Passport aangeleverd.';
+                $user_update    = 'You’ve uploaded the scan of your passport. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Passport aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the important details document.';
                 break;
             case 26:
                 $file_title     = 'Important Details';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Important Details aangeleverd.';
+                $user_update    = 'You’ve uploaded the important details doc. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Important Details aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the scan of your passport.';
                 break;
             case 27:
                 $file_title     = 'Criminal Clearance';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = ' De au-pair '.$aupair['full_name'].' heeft document Criminal Clearance aangeleverd.';
+                $user_update    = 'You’ve uploaded all the criminal clearance forms. HBN will review and approve the documents.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Criminal Clearance aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the important details doc.';
                 break;
             case 28:
                 $file_title     = 'NMNP Declaration';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document NMNP Declaration aangeleverd.';
+                $user_update    = 'You’ve uploaded the non marital/non pregnancy declaration. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document NMNP Declaration aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the test and health form.';
                 break;
             case 29:
                 $file_title     = 'Health Form';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = ' De au-pair '.$aupair['full_name'].' heeft document "Health Form" aangeleverd.';
+                $user_update    = 'You’ve uploaded the test and health form. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document "Health Form" aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the next step of your journey.';
                 break;
             case 30:
                 $file_title     = 'TBC test';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document TBC test aangeleverd.';
+                $user_update    = 'You’ve uploaded the tbc test form. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document TBC test aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the unabridged birth certificate step of your journey.';
                 break;
             case 31:
                 $file_title     = 'Unabridged birth certificate';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Unabridged birth certificate aangeleverd.';
+                $user_update    = 'You’ve uploaded the birth certificate. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Unabridged birth certificate aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the legalisation step of your journey.';
                 break;
             case 32:
                 $file_title     = 'Legalisation';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Legalisation aangeleverd.';
+                $user_update    = 'You’ve uploaded the legalisation. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Legalisation aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the apostille step of your journey.';
                 break;
             case 33:
                 $file_title     = 'Apostille';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = ' De au-pair '.$aupair['full_name'].' heeft document Apostille aangeleverd.';
+                $user_update    = 'You’ve uploaded the apostille. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Apostille aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the translation step of your journey.';
                 break;
             case 34:
                 $file_title     = 'Translation Birth documentation';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Translation Birth documentation aangeleverd.';
+                $user_update    = 'You’ve uploaded the translation. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Translation Birth documentation aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with step 4 of your journey.';
                 break;
             case 35:
                 $file_title     = 'Agreement with Family';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Agreement with Family aangeleverd.';
+                $user_update    = 'You’ve uploaded the agreement. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Agreement with Family aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the time schedule from step 4 of your journey.';
                 break;
             case 36:
                 $file_title     = 'Weekly time schedule';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Weekly time schedule aangeleverd.';
+                $user_update    = 'You’ve uploaded the time schedule. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Weekly time schedule aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the awareness declaration from step 4 of your journey.';
                 break;
             case 37:
                 $file_title     = 'Visa';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft een foto van haar visum geüpload.';
+                $user_update    = 'You’ve uploaded the picture of your visa. HBN will check and approve the document.';
+                $hbn_task       = '1. De au-pair '.$aupair['full_name'].' heeft een foto van haar visum geüpload. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with step 6 of your journey.';
                 break;
             case 38:
                 $file_title     = 'Registration city hall';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Registration city hall aangeleverd.';
+                $user_update    = 'You’ve uploaded your registration document from city hall. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Registration city hall aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the BRP extract from step 7 of your journey.';
                 break;
             case 39:
                 $file_title     = 'BRP extract';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document BRP extract aangeleverd.';
+                $user_update    = 'You’ve uploaded the BRP extract from city hall. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document BRP extract aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with step 8 of your journey.';
                 break;
             case 40:
                 $file_title     = 'Residence Permit';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Residence Permit aangeleverd.';
+                $user_update    = 'You’ve uploaded your residence permit. HBN will review and approve the document.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Residence Permit aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the registration at the city hall.';
                 break;
                        
             default:
@@ -387,6 +398,9 @@ class Document extends CI_Controller {
         }        
         $file_name = md5($_FILES["file"]['name'].$this->aauth->get_user()->id.$kind).$_FILES["file"]['name'];
         $uploader = $this->get_uploader();
+
+        $task_id = $this->task_model->insert_task( $hbn_task, $user_task, '', $this->aauth->get_user()->id, $uploader );
+        $update_id = $this->update_model->insert_update( $hbn_update, $user_update, $this->aauth->get_user()->id, $uploader );
         
         if (upload($this->aauth->get_user()->id, $kind))
         {      
@@ -397,7 +411,7 @@ class Document extends CI_Controller {
                     echo 'failure';                            
                 }
             }else{
-                if($this->document_model->insert_document($file_name, $file_title, $uploader, $this->aauth->get_user()->id)){
+                if($this->document_model->insert_document($file_name, $file_title, $uploader, $this->aauth->get_user()->id, $task_id, $update_id)){
                     echo 'sucess';
                 }else{
                     echo 'failure';                            

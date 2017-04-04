@@ -84,16 +84,20 @@
 <!-- start tab1 -->
     <h1><i><b>1. Application</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
 	    			Welcome to HBN! At this stage, you have decided to become an au pair in the Netherlands and have filled out the registration form on our website. It is also possible that you already found a matching family, so congratulations. However, we still need you to go through the whole process. We are looking forward to guide you in this wonderful experience. We created this personal website to guide you through the different steps in the process. So you, your future Host Family and us will have a clear overview about your profile, documents, the whole process and legal obligations. HBN is here for you to assure you get all the information you need to make this an unforgettable experience.<br><br>
 					As your agent, we guide you in gathering of all your documents, guide you in your visa application and especially, we are there for you during your whole exchange period. During your exchange period, we, as agents help you with any conflict, question, doubt you might have with your host family, the culture and or your schedule. We are the ones you can come to every time you feel you need to talk or solve any issue.<br><br>
-					The process entails 8 steps; Application, Interview, Documents, Matching, Departure to The NL, Arrival in NL, During your Stay, Prepare leave.<br><br>
+					The process entails 8 steps; Application, Interview, Documents, Matching, Departure to The NL, Arrival in NL, During your Stay, Prepare leave.
+	    		</p>
+	    	</div>
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    		<p>
 					We, HBN NL and your local agents, will be in close contact with you during this whole process. During the period you are still in country of origin your agent can answer all your questions. And when you are here in the Netherlands HBN NL will assist you. However this custom made HBN system will lead you through every step in the process and will inform you about every detail.<br><br>
 					So we first would like to get to know you better. Though it is handy to already look at the next step: documents, cause it is good to already start gathering these as soon as possible. If you do not have certain documents like your passport, it is wise to apply for it asap cause it will take some time. Also the application for your birth certificate will take time so you can already apply for them at the necessary official institutions. More information see Documents. If you have a question about this you can ask your agent.
 	    		</p>
 	    	</div>	    	
-	    </div><br><br>	    
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
@@ -392,13 +396,18 @@
 <!-- start tab3 -->
 	<h1><i><b>3. Documents</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
-				In order to apply for your Au Pair Residence Permit and VISA in the Netherlands, you need to gather the following documents for us to check and keep in file. Even if you have European citizenship and thus do not need a Au Pair Residence permit, you do need to go with an official agency (sponsor) and therefore you also need to gather these documents so we can check these and keep these in file. Some documents take a long time to arrange so please start this process a.s.a.p. Cause we need all these documents before we can apply for your visa or residence card.<br><br>
+				In order to apply for your Au Pair Residence Permit and VISA in the Netherlands, you need to gather the following documents for us to check and keep in file. Even if you have European citizenship and thus do not need a Au Pair Residence permit, you do need to go with an official agency (sponsor) and therefore you also need to gather these documents so we can check these and keep these in file. Some documents take a long time to arrange so please start this process a.s.a.p. 
+				</p>
+	    	</div>	  
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    		<p>
+				Cause we need all these documents before we can apply for your visa or residence card.<br><br>
 				We will check every document you upload and we will approve the document so it will appear green. If we have the most important documents approved, we will make your profile ready for matching.
 				</p>
-	    	</div>	    			    	
-	    </div><br><br>	    
+	    	</div>  			    	
+	    </div>  
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
@@ -793,13 +802,18 @@
 <!-- start tab4 -->
 	<h1><i><b>4. Matching</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
 				Congratulations your profile is now ready for matching! In this stage we will propose you to Host Families whom we think could fit well with your profile. We will of course try and propose you to as many Host Families as possible. We will also propose you Host families if we would like to have your opinion upfront.<br><br>
-				Please be aware that it can take a bit longer to find the right family. Sometimes it can go really fast and you will have a match after one skypecall! We feel that the click with a family is very important so we do our best to propose you to the right families. However it is also up to you to express your thoughts and feelings well and share with us. Be honest , open to different families and also keep your patience. It is good to set yuorself open to different families. A skypecall will help you to see if there is a click. So do not say no to a family profile too quickly. Cause meeting them will be best. It will be one entire year you spend with the family so it is important that it really feels good. You will defintely have up's and downs but it is important you are toally behind your match/decision.
+				Please be aware that it can take a bit longer to find the right family. Sometimes it can go really fast and you will have a match after one skypecall! We feel that the click with a family is very important so we do our best to propose you to the right families. 
 				</p>
-	    	</div>	    			    	
-	    </div><br><br>	    
+	    	</div>	   
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    		<p>
+				However it is also up to you to express your thoughts and feelings well and share with us. Be honest , open to different families and also keep your patience. It is good to set yuorself open to different families. A skypecall will help you to see if there is a click. So do not say no to a family profile too quickly. Cause meeting them will be best. It will be one entire year you spend with the family so it is important that it really feels good. You will defintely have up's and downs but it is important you are toally behind your match/decision.
+				</p>
+	    	</div> 			    	
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
@@ -1557,7 +1571,7 @@
 <!-- start tab8 -->
 	<h1><i><b>8. Stay</b></i></h1>
 	    <div class="row">
-	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
 				During your stay in the Netherlands HBN (your agent and NL) will always be there to assist you with doubts, problems or issues. Please come to us in time, do not wait until it is too late. Many issues, we as your agents have come across due to our long and broad experience. So we can always help you or give you advice. We keep information confidential.<br><br>
 				We have the care and information duty towards the Dutch government so we need you to inform us of any structural changes, stated below or any other issues that concern your wellbeing and stay as an au pair with your host family.<br><br>
@@ -1568,7 +1582,11 @@
 				• You are not allowed to stay longer than 1 year as an Au Pair in the Netherlands.<br>
 				• After this year you are illegal in the country and you may not perform any  activities as Au Pair.<br>
 				• You are obliged to always carry your identification card (residence permit) in and  outside the Netherlands.<br>
-				• Always inform HBN of your well-being during your stay. If there are serious  problems/issues, if you feel abused or not respected you are legally obliged to  inform us immediately. This is for your own good!<br>
+				• Always inform HBN of your well-being during your stay. If there are serious  problems/issues, if you feel abused or not respected you are legally obliged to  inform us immediately. This is for your own good!
+				</p>
+	    	</div>
+	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	    		<p>
 				• Always inform HBN immediately if plans during your Au Pair year change<br>
 				• Always inform HBN as soon as you know the exact date of your departure from  the Netherlands!<br>
 				• Always inform HBN if structural changes in the weekly schedule have been made!<br>

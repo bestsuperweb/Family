@@ -19,6 +19,8 @@ class Session_controller extends CI_Controller
         $this->load->model('document_model');
         $this->load->model('task_model');
         $this->load->model('update_model');
+        $this->load->model('familyreport_model');
+        $this->load->model('aupairreport_model');
 	}
 
 	function log_in(){
@@ -151,6 +153,10 @@ class Session_controller extends CI_Controller
 									$parents[0]['lastname']
 								);
 					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $parents[0]['lastname'], $id, $task_id, $update_id);
+					$this->familyreport_model->insert_familyreport(
+																	array('family_id' => $this->session->userdata('user_id')), 
+																	$this->session->userdata('user_id')
+																);
 
 				}elseif($this->session->userdata('user_type') == 'aupair'){
 
@@ -173,6 +179,10 @@ class Session_controller extends CI_Controller
 									$aupair['full_name']
 								);
 					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $aupair['full_name'], $id, $task_id, $update_id);
+					$this->aupairreport_model->insert_aupairreport(
+																	array('aupair_id' => $this->session->userdata('user_id')), 
+																	$this->session->userdata('user_id')
+																);
 				}
 
 				$this->session->unset_userdata('email');

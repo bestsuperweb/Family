@@ -16,7 +16,9 @@ class Index extends CI_Controller {
         $this->load->model('document_model');
         $this->load->model('notity_model');
         $this->load->model('task_model');
-        $this->load->model('update_model');          
+        $this->load->model('update_model');
+        $this->load->model('familyreport_model');
+        $this->load->model('aupairreport_model');          
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -166,6 +168,7 @@ class Index extends CI_Controller {
                                                                             );
                     $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['family']['contact_email']));
                     $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['reports']   = $this->familyreport_model->get_familyreport($data['user_id']);
                     break;
 
                 case 'aupair':
@@ -177,7 +180,8 @@ class Index extends CI_Controller {
                                                                                 $data['sort_direction']
                                                                             );
                     $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email']));  
-                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));            
+                    $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));
+                    $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);            
                     break;
                 
                 default:
@@ -217,14 +221,16 @@ class Index extends CI_Controller {
                 $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                 $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
                 $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['family']['contact_email'])); 
-                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));                 
+                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['family']['contact_email']));
+                $data['reports']   = $this->familyreport_model->get_familyreport($data['user_id']);                 
                 break;
 
             case 'aupair':
                 $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
                 $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
                 $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email'])); 
-                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));                              
+                $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));     
+                $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);                         
                 break;
             
             default:
@@ -318,6 +324,7 @@ class Index extends CI_Controller {
                                     $this->aauth->get_user()->id,
                                     $parents[0]['lastname']
                                     );
+                            $this->familyreport_model->insert_familyreport(array('Dear_au-pair_letter_submitted' => 1), $data['user_id']);
                             redirect('index/profile/1/'.$data['param']);
                         }else{
                             redirect('index/roadmap_profile/1/'.$data['param']);
@@ -340,6 +347,7 @@ class Index extends CI_Controller {
                                     $this->aauth->get_user()->id,
                                     $parents[0]['lastname']
                                     );
+                                $this->familyreport_model->insert_familyreport(array('Photos_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -454,14 +462,14 @@ class Index extends CI_Controller {
                         if ($this->form_validation->run() === TRUE)
                         {
                             $this->update_model->insert_update(
-                                    'De au-pair '.$aupair['full_name'].' heeft de ‘dear host family letter’ toegevoegd aan hun profiel.',
-                                    'Jullie dear host family letter is toegevoegd aan het profiel.',
+                                    'De au-pair '.$aupair['full_name'].' heeft de ‘dear host family letter’ toegevoegd aan haar profiel.',
+                                    'Your ‘dear host family letter’ is added to your profile.',
                                     $this->aauth->get_user()->id,
                                     $aupair['full_name']
                                     );
                             $this->task_model->insert_task(
-                                    'De au-pair '.$parents[0]['lastname'].' heeft de ‘dear host family letter’ toegevoegd aan hun profiel. Controleer de brief op hun profiel en voorzie de au-pair waar nodig van tips.',
-                                    '1. Upload foto’s om jullie profiel compleet te maken.',
+                                    'De au-pair '.$parents[0]['lastname'].' heeft de ‘dear host family letter’ toegevoegd aan haar profiel. Controleer de brief op haar profiel en voorzie de au-pair waar nodig van tips.',
+                                    '1. Upload some pictures to enhance your profile.',
                                     '',
                                     $this->aauth->get_user()->id,
                                     $aupair['full_name']
@@ -477,14 +485,14 @@ class Index extends CI_Controller {
                         {
                             if($this->aupair_model->update_aupair(5, $data['user_id'])){
                                 $this->update_model->insert_update(
-                                    'De au-pair '.$aupair['full_name'].' heeft foto’s toegevoegd aan hun profiel.',
-                                    'De foto’s zijn toegevoegd aan jullie profiel.',
+                                    'De au-pair '.$aupair['full_name'].' heeft foto’s toegevoegd aan haar profiel.',
+                                    'The pictures have been added to your profile.',
                                     $this->aauth->get_user()->id,
                                     $aupair['full_name']
                                     );
                                 $this->task_model->insert_task(
-                                    'De au-pair '.$aupair['full_name'].' heeft foto’s toegevoegd aan hun profiel.',
-                                    '1. Ga verder met stap 2 van het stappenplan.',
+                                    'De au-pair '.$aupair['full_name'].' toegevoegd aan haar profiel. Controleer de foto’s en voorzie haar van tips waar nodig.',
+                                    '1. Proceed with the next step of your journey.',
                                     '',
                                     $this->aauth->get_user()->id,
                                     $aupair['full_name']
