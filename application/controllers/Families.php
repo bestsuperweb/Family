@@ -207,7 +207,7 @@ class Families extends CI_Controller {
 						$this->aauth->get_user()->id,
 						$parents[0]['lastname']
 					);
-
+				$this->familyreport_model->insert_familyreport(array('Signed_match_agreement' => 1), $family_id);
 				$this->document_model->insert_document("$name.pdf", "Agreement", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id);
 				redirect(base_url('index/roadmap_profile/3'));
     			break;
@@ -242,7 +242,7 @@ class Families extends CI_Controller {
 						$parents[0]['lastname']
 					);
 				$this->familyreport_model->insert_familyreport(array('Timeschedule_submitted' => 1), $family_id);
-				if( $this->document_model->insert_document("$name.pdf", "TimeSchedule", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
+				if( $this->document_model->insert_document("$name.pdf", "Timeschedule", $parents[0]['lastname'], $this->aauth->get_user()->id, $task_id, $update_id)){
 					echo 'success';
 				}else{
 					echo 'failure';

@@ -87,12 +87,12 @@
 	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
 	    			Welcome to HBN! At this stage, you have decided to become an au pair in the Netherlands and have filled out the registration form on our website. It is also possible that you already found a matching family, so congratulations. However, we still need you to go through the whole process. We are looking forward to guide you in this wonderful experience. We created this personal website to guide you through the different steps in the process. So you, your future Host Family and us will have a clear overview about your profile, documents, the whole process and legal obligations. HBN is here for you to assure you get all the information you need to make this an unforgettable experience.<br><br>
-					As your agent, we guide you in gathering of all your documents, guide you in your visa application and especially, we are there for you during your whole exchange period. During your exchange period, we, as agents help you with any conflict, question, doubt you might have with your host family, the culture and or your schedule. We are the ones you can come to every time you feel you need to talk or solve any issue.<br><br>
-					The process entails 8 steps; Application, Interview, Documents, Matching, Departure to The NL, Arrival in NL, During your Stay, Prepare leave.
+					As your agent, we guide you in gathering of all your documents, guide you in your visa application and especially, we are there for you during your whole exchange period. During your exchange period, we, as agents help you with any conflict, question, doubt you might have with your host family, the culture and or your schedule. We are the ones you can come to every time you feel you need to talk or solve any issue.					
 	    		</p>
 	    	</div>
 	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
+	    			The process entails 8 steps; Application, Interview, Documents, Matching, Departure to The NL, Arrival in NL, During your Stay, Prepare leave.
 					We, HBN NL and your local agents, will be in close contact with you during this whole process. During the period you are still in country of origin your agent can answer all your questions. And when you are here in the Netherlands HBN NL will assist you. However this custom made HBN system will lead you through every step in the process and will inform you about every detail.<br><br>
 					So we first would like to get to know you better. Though it is handy to already look at the next step: documents, cause it is good to already start gathering these as soon as possible. If you do not have certain documents like your passport, it is wise to apply for it asap cause it will take some time. Also the application for your birth certificate will take time so you can already apply for them at the necessary official institutions. More information see Documents. If you have a question about this you can ask your agent.
 	    		</p>
@@ -102,14 +102,20 @@
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img"> 1. Registration fee</a>
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" >
+		        <img src="<?php 
+		        		if ($reports['Registration_fee_paid'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 1. Registration fee</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		      <div class="panel-body">
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -137,7 +143,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 2. Agreement HBN</a>
+		        <img src="<?php 
+		        		if ($reports['Agreement_HBN_signed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 2. Agreement HBN</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -180,7 +192,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 3. Interview form</a>
+		        <img src="<?php 
+		        		if ($reports['Interview_form_filled_in'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 3. Interview form</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -199,7 +217,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 4. Dear host family letter </a>
+		        <img src="<?php 
+		        		if ($reports['Dear_host_family_letter_written'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 4. Dear host family letter </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -232,7 +256,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 5. Pictures </a>
+		        <img src="<?php 
+		        		if ($reports['Pictures_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 5. Pictures </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -266,7 +296,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 6. Video </a>
+		        <img src="<?php 
+		        		if ($reports['Video_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 6. Video </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -310,19 +346,25 @@
 				To really get to know you, we like to do a personal interview with you. To really see who you are, so we can also see what kind of family would suit you best. You will have a interview with your agent and after this you will have a short interview/meeting with HBN NL.
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Personality test </a>
+		        <img src="<?php 
+		        		if ($reports['Personality_test_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Personality test </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -353,7 +395,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 2. Interview with agent </a>
+		        <img src="<?php 
+		        		if ($reports['Interview_with_agent_scheduled'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 2. Interview with agent </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -413,13 +461,19 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Passport pages </a>
+		        <img src="<?php 
+		        		if ($reports['Passport_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Passport pages </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -448,7 +502,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Important details document </a>
+		        <img src="<?php 
+		        		if ($reports['Important_details_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Important details document </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -492,7 +552,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Criminal clearance </a>
+		        <img src="<?php 
+		        		if ($reports['Criminal_clearance_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Criminal clearance </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -527,7 +593,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Antecedents certificate IND (NON-EU ONLY) </a>
+		        <img src="<?php 
+		        		if ($reports['Antecedents_certificate_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Antecedents certificate IND (NON-EU ONLY) </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -571,7 +643,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Health forms </a>
+		        <img src="<?php 
+		        		if ($reports['Health_forms_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. Health forms </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -617,7 +695,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  6. TBC test </a>
+		        <img src="<?php 
+		        		if ($reports['TBC_test_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  6. TBC test </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -654,7 +738,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  6. Unabridged birth certificate</a>
+		        <img src="<?php 
+		        		if ($reports['Birth_certificate_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  6. Unabridged birth certificate</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -689,7 +779,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  7. Legalisation </a>
+		        <img src="<?php 
+		        		if ($reports['Legalisation_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  7. Legalisation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -724,7 +820,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  8. Apostille </a>
+		        <img src="<?php 
+		        		if ($reports['Apostille_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  8. Apostille </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -760,7 +862,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  9. Translation </a>
+		        <img src="<?php 
+		        		if ($reports['Translation_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  9. Translation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -819,13 +927,19 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Skypecall </a>
+		        <img src="<?php 
+		        		if ($reports['Skypecall_scheduled'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Skypecall </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -869,7 +983,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Agreement with family </a>
+		        <img src="<?php 
+		        		if ($reports['Agreement_signed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Agreement with family </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -915,7 +1035,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Weekly timeschedule </a>
+		        <img src="<?php 
+		        		if ($reports['Timeschedule_signed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Weekly timeschedule </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -967,7 +1093,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Awareness declaration </a>
+		        <img src="<?php 
+		        		if ($reports['Awareness_declaration_signed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Awareness declaration </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1011,7 +1143,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Contribution flight ticket & visa </a>
+		        <img src="<?php 
+		        		if ($reports['Payment_confirmed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. Contribution flight ticket & visa </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1063,19 +1201,25 @@
 				After we received the signed and dated documents of both you and your Host Family. We can start the VISA Procedure. Au pairs with the European, USA, Canada and Australian nationality (passport). Do not need a Visa to enter the Netherlands. This Visa is only valid for 6 months after issuing and it is meant to enter the Netherlands only. As soon as you arrive in the Netherlands you can pick up your Au PairResidence Card which is valid for the exact period of 1 year.
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Visa application </a>
+		        <img src="<?php 
+		        		if ($reports['Application_visa_sent'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Visa application </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1104,7 +1248,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. First embassy appointment </a>
+		        <img src="<?php 
+		        		if ($reports['Date_first_embassy_appointmen'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. First embassy appointment </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1142,7 +1292,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Second embassy appointment  </a>
+		        <img src="<?php 
+		        		if ($reports['Date_first_embassy_appointmen'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Second embassy appointment  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1180,7 +1336,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Visa pickup </a>
+		        <img src="<?php 
+		        		if ($reports['Date_of_visa_pickup'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Visa pickup </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1225,19 +1387,25 @@
 				It is not going to be long anymore before you will travel to the Netherlands. It is time to prepare yourself for your departure and arrival in the Netherlands. Most of the below will be organised by your Host family and HBN. But it is good to be tuned in and be informed about these subjects.
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Au-pair insurance </a>
+		        <img src="<?php 
+		        		if ($reports['Insurance_documents_downloaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Au-pair insurance </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1264,7 +1432,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Basic healthcare insurance </a>
+		        <img src="<?php 
+		        		if ($reports['Healthcare_insurance_downloaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Basic healthcare insurance </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1296,7 +1470,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Ticket information </a>
+		        <img src="<?php 
+		        		if ($reports['Flight_ticket_downloaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Ticket information </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1331,7 +1511,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4 Au-pair manual </a>
+		        <img src="<?php 
+		        		if ($reports['Au-pair_manual_downloaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4 Au-pair manual </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1363,7 +1549,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Packing tips </a>
+		        <img src="<?php 
+		        		if ($reports['Au-pair_manual_downloaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. Packing tips </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1400,22 +1592,28 @@
 	    <div class="row">
 	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	    		<p>
-				Welcome in the Netherlands! We hope you had a good flight and had a nice welcome by your Host Family.<br><br> There are some important legal obligations to fulfill immediately when you arrive.
+				Welcome in the Netherlands! We hope you had a good flight and had a nice welcome by your Host Family.<br> There are some important legal obligations to fulfill immediately when you arrive.
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>   
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Welcome package  </a>
+		        <img src="<?php 
+		        		if ($reports['Registered_at_city_hall'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Welcome package  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -1433,7 +1631,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Registration city hall </a>
+		        <img src="<?php 
+		        		if ($reports['Registered_at_city_hall'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Registration city hall </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1468,7 +1672,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. BRP Extract  </a>
+		        <img src="<?php 
+		        		if ($reports['BRP_extract_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. BRP Extract  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1503,7 +1713,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Welcome training </a>
+		        <img src="<?php 
+		        		if ($reports['Welcome_training_confirmed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Welcome training </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1539,7 +1755,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. First Aid training </a>
+		        <img src="<?php 
+		        		if ($reports['Welcome_training_confirmed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. First Aid training </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1601,19 +1823,25 @@
 				We will send you several evaluations during this year to see how you are doing and to remind you of the duty to inform us of changes. You are obliged to answer these and if you do not answer you will receive another reminder, and another and so on. You will receive an evaluation after 1 month, 4 months, 7 months, 9 months (prepare departure) and 11 months (goodbye).
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Evaluation </a>
+		        <img src="<?php 
+		        		if ($reports['Evaluation_1_finished'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Evaluation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -1633,7 +1861,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Evaluation</a>
+		        <img src="<?php 
+		        		if ($reports['Evaluation_2_finished'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Evaluation</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1659,7 +1893,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Evaluation </a>
+		        <img src="<?php 
+		        		if ($reports['Evaluation_3_finished'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Evaluation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1685,7 +1925,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Evaluation </a>
+		        <img src="<?php 
+		        		if ($reports['Evaluation_4_finished'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Evaluation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1711,7 +1957,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Evaluation </a>
+		        <img src="<?php 
+		        		if ($reports['Evaluation_5_finished'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. Evaluation </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1745,23 +1997,29 @@
 	    <div class="row">
 	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	    		<p>
-				As the au pair program is going towards the end, we need to inform you on the following instructions.<br><br>
+				As the au pair program is going towards the end, we need to inform you on the following instructions.<br>
 				These instructions must be strictly followed up both by au pair and host family before ending the au pair program and after au pair's return to the country of origin:
 				</p>
 	    	</div>	    			    	
-	    </div><br><br>	    
+	    </div>    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  1. Return ticket </a>
+		        <img src="<?php 
+		        		if ($reports['Return_ticket_uploaded'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  1. Return ticket </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1800,7 +2058,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  2. Deregister at city hall </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  2. Deregister at city hall </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1817,7 +2081,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Proof of deregistration</h1>
-		     				<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
+		     				<form action = "<?= base_url('document/upload_document/41') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>	     				
 		     			</div>
@@ -1835,7 +2099,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  3. Close basic health insurance </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  3. Close basic health insurance </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1860,7 +2130,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  4. Close bank account </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  4. Close bank account </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1884,7 +2160,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  5. Return residence card </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  5. Return residence card </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1915,7 +2197,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  6. Deregister at city hall </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  6. Deregister at city hall </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1948,7 +2236,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  7. Leave your room tidy </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_deregistration_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  7. Leave your room tidy </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1972,7 +2266,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  8. Safe arrival </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_return_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  8. Safe arrival </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > AUPAIR DE <?= strtoupper($aupair['full_name']) ?>
 		        </span>
@@ -1989,7 +2289,7 @@
 		     			</div>
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Proof of return</h1>
-		     				<form action = "<?= base_url('document/upload_document/23') ?>" class="dropzone dz-clickable" >
+		     				<form action = "<?= base_url('document/upload_document/42') ?>" class="dropzone dz-clickable" >
 			      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
 			      			</form>	     				
 		     			</div>

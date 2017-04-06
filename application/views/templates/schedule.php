@@ -19,6 +19,7 @@
 					 data-id="<?= $schedule['id'] ?>">
 					<a href="#0" class="single-event-modal">
 						<em class="event-name"><?php echo $schedule['title']; ?></em>
+						<p style="color: #000; font-size: 10px;"><b><?= $schedule['schedule_type'] ?></b><br><?= $schedule['content'] ?></p>
 						<div class="event-content"><?php echo $schedule['content']; ?></div>						
 					</a>
 					<div class="sd-menu">

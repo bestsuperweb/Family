@@ -54,7 +54,7 @@
             <a href="<?= base_url('index/families/'); ?>">Families</a>                                    
         </li>
         <li>
-            <a href="<?= base_url('index/aupairs/'); ?>">Aupairs</a>                                    
+            <a href="<?= base_url('index/aupairs/'); ?>">Au-pairs</a>                                    
         </li>
         
 <?php } ?>

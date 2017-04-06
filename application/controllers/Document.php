@@ -13,6 +13,8 @@ class Document extends CI_Controller {
         $this->load->model('parent_model');
         $this->load->model('update_model');
         $this->load->model('task_model');
+        $this->load->model('familyreport_model');
+        $this->load->model('aupairreport_model');  
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -207,6 +209,11 @@ class Document extends CI_Controller {
                     $user_update    = 'Jullie hebben de awareness declaration en timeschedule ingediend!';
                     $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft de awareness declaration en timeschedule ingediend. Controleer de awareness declaration en timeschedule in de documenten van de familie.”';
                     $user_task      = '1. Upload de ondertekende awareness-declaration en keur de timeschedule definitief goed.';
+                    
+                    $this->familyreport_model->insert_familyreport(
+                                                                    array('Signed_awareness_declaration_and_timeschedule' => 1), 
+                                                                    $this->aauth->get_user()->name
+                                                                    );
                 }elseif ($this->aauth->is_member(5)) {
                     $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Awareness declaration aangeleverd.';
                     $user_update    = 'You’ve uploaded the awareness declaration. HBN will review and approve the document.';
@@ -220,6 +227,10 @@ class Document extends CI_Controller {
                 $user_update    = 'Jullie aanvraagformulier is ingediend. Na goedkeuring ontvangen jullie terugkoppeling van de verzekeraar.';
                 $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft de aanvraag voor de au-pair verzekering ingediend. Sluit de verzekering af bij de verzekeraar.”';
                 $user_task      = '1. Download de familie briefing.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('Au-pair_insurance_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 18:
                 $file_title     = 'Family routine setup';
@@ -227,13 +238,21 @@ class Document extends CI_Controller {
                 $user_update    = 'Jullie family routine setup is ingediend. HBN controleert het document en stuurt het naar de au-pair.';
                 $hbn_task       = '1. De familie '.$parents[0]['lastname'].' heeft het family routine setup document ingediend. Het document staat klaar voor goedkeuring.';
                 $user_task      = '1. Upload het aangepaste important info doc uit stap 5 van het stappenplan.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('Family_routine_doc_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 19:
                 $file_title     = 'Important info';
-                $hbn_update     = '';
-                $user_update    = '';
-                $hbn_task       = '';
-                $user_task      = '';
+                $hbn_update     = ' “De familie '.$parents[0]['lastname'].' heeft het Important info document ingediend.”';
+                $user_update    = 'Jullie Imoprtant info is ingediend. HBN controleert het document en stuurt het naar de au-pair.';
+                $hbn_task       = '1. De familie '.$parents[0]['lastname'].' heeft het Important info document ingediend. Het document staat klaar voor goedkeuring.';
+                $user_task      = '1. Upload het aangepaste advies cursessen doc uit stap 5 van het stappenplan.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('Important_info_doc_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 20:
                 $file_title     = 'BRP';
@@ -241,6 +260,10 @@ class Document extends CI_Controller {
                 $user_update    = 'Jullie hebben het bsn-nummer en uittreksel ingediend. HBN controleert het bsn nummer en document.';
                 $hbn_task       = '1. “De familie '.$parents[0]['lastname'].' heeft het bsn nummer en uittreksel van de gemeente ingediend. Het document staat klaar voor goedkeuring.”';
                 $user_task      = '1. Ga verder met het bevestigen van de tuberculose test.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('BSN_extract_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 21:
                 $file_title     = 'Terugvlucht au-pair';
@@ -248,12 +271,20 @@ class Document extends CI_Controller {
                 $user_update    = 'Jullie hebben de datum van terugkeer bevestigd en het ticket geüpload';
                 $hbn_task       = 'De familie '.$parents[0]['lastname'].' heeft de datum van terugkeer bevestigd en het ticket geüpload. Het ticket staat klaar voor goedkeuring.';
                 $user_task      = '1. Ga verder met het bewijs van terugkeer uit stap 8 van het stappenplan.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('Return_ticket_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 22:
                 $file_title     = 'Bewijs van terugkeer';
                 $hbn_update     = 'De familie '.$parents[0]['lastname'].' heeft het bewijs van terugkeer geüpload.';
                 $user_update    = 'Jullie hebben het bewijs van terugkeer geüpload. Het document is voor goedkeuring naar HBN verstuurd.';
                 $hbn_task       = 'De familie '.$parents[0]['lastname'].' heeft het bewijs van terugkeer geüpload. Het document staat klaar voor goedkeuring.';
+                $this->familyreport_model->insert_familyreport(
+                                                                array('Proof_of_return_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 23:
                 $file_title     = 'Signed agreement';
@@ -261,6 +292,10 @@ class Document extends CI_Controller {
                 $user_update    = 'Your agreement is submitted and sent to HBN for review.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft de getekende agreement geüpload. Het bestand staat klaar voor goedkeuring';
                 $user_task      = '1. Proceed with the interview form from step 1 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Agreement_HBN_signed' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 24:
                 $file_title     = 'Personality Test';
@@ -268,6 +303,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the results of the 16 personalities test. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Personality Test aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with scheduling an interview with an agent.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Personality_test_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 25:
                 $file_title     = 'Passport';
@@ -275,6 +314,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the scan of your passport. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Passport aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the important details document.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Passport_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 26:
                 $file_title     = 'Important Details';
@@ -282,6 +325,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the important details doc. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Important Details aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the scan of your passport.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Important_details_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 27:
                 $file_title     = 'Criminal Clearance';
@@ -289,6 +336,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded all the criminal clearance forms. HBN will review and approve the documents.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Criminal Clearance aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the important details doc.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Criminal_clearance_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 28:
                 $file_title     = 'NMNP Declaration';
@@ -296,6 +347,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the non marital/non pregnancy declaration. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document NMNP Declaration aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the test and health form.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Antecedents_certificate_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 29:
                 $file_title     = 'Health Form';
@@ -303,6 +358,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the test and health form. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document "Health Form" aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the next step of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Health_forms_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 30:
                 $file_title     = 'TBC test';
@@ -310,6 +369,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the tbc test form. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document TBC test aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the unabridged birth certificate step of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('TBC_test_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 31:
                 $file_title     = 'Unabridged birth certificate';
@@ -317,6 +380,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the birth certificate. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Unabridged birth certificate aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the legalisation step of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Birth_certificate_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 32:
                 $file_title     = 'Legalisation';
@@ -324,6 +391,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the legalisation. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Legalisation aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the apostille step of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Legalisation_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 33:
                 $file_title     = 'Apostille';
@@ -331,6 +402,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the apostille. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Apostille aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the translation step of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Apostille_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 34:
                 $file_title     = 'Translation Birth documentation';
@@ -338,6 +413,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the translation. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Translation Birth documentation aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with step 4 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Translation_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 35:
                 $file_title     = 'Agreement with Family';
@@ -345,6 +424,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the agreement. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Agreement with Family aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the time schedule from step 4 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Agreement_signed' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 36:
                 $file_title     = 'Weekly time schedule';
@@ -352,6 +435,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the time schedule. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Weekly time schedule aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the awareness declaration from step 4 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Timeschedule_signed' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 37:
                 $file_title     = 'Visa';
@@ -359,6 +446,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the picture of your visa. HBN will check and approve the document.';
                 $hbn_task       = '1. De au-pair '.$aupair['full_name'].' heeft een foto van haar visum geüpload. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with step 6 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Visa_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 38:
                 $file_title     = 'Registration city hall';
@@ -366,6 +457,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded your registration document from city hall. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Registration city hall aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the BRP extract from step 7 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Registered_at_city_hall' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 39:
                 $file_title     = 'BRP extract';
@@ -373,6 +468,10 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded the BRP extract from city hall. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document BRP extract aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with step 8 of your journey.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('BRP_extract_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
             case 40:
                 $file_title     = 'Residence Permit';
@@ -380,6 +479,32 @@ class Document extends CI_Controller {
                 $user_update    = 'You’ve uploaded your residence permit. HBN will review and approve the document.';
                 $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Residence Permit aangeleverd. Het bestand staat klaar voor goedkeuring.';
                 $user_task      = '1. Proceed with the registration at the city hall.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Residence_card_picked_up' => date("Y-m-d")), 
+                                                                $this->aauth->get_user()->name
+                                                                );
+                break;
+            case 41:
+                $file_title     = 'Proof of deregistration';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Proof of deregistration aangeleverd.';
+                $user_update    = 'You’ve uploaded your proof of de-registration.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Proof of deregistration aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = '1. Proceed with the departure process.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Proof_of_deregistration_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
+                break;
+            case 42:
+                $file_title     = 'Proof of return';
+                $hbn_update     = 'De au-pair '.$aupair['full_name'].' heeft document Proof of return aangeleverd.';
+                $user_update    = 'You’ve uploaded your proof of return.';
+                $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Proof of return aangeleverd. Het bestand staat klaar voor goedkeuring.';
+                $user_task      = 'Review all steps again.';
+                $this->aupairreport_model->insert_aupairreport(
+                                                                array('Proof_of_return_uploaded' => 1), 
+                                                                $this->aauth->get_user()->name
+                                                                );
                 break;
                        
             default:

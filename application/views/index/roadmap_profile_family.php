@@ -82,19 +82,25 @@
 	    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">HBN maakt allereerst een profiel op naar aanleiding van het intake form en het interview dat wij met jullie als toekomstige Host familie bij jullie thuis hebben. Bij een tweede plaatsing, ontvangen wij graag een schriftelijke update van jullie gezin en recentere foto's van de kinderen. Op basis van het profiel kunnen wij een passende au pair proberen te vinden. Het profiel inclusief de foto’s van jullie en het weekschema met de uren dat jullie haar graag zouden willen inzetten, zal een goed beeld aan de toekomstige au pair van jullie als gastgezin en van de wekelijkse routine geven.<br>
 			<b>Kinderen met een handicap:</b> een au pair mag geen specialistische zorg uitoefenen. Dit betreft bijvoorbeeld het toedienen van medicijnen.<br><br></div>
 	    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><b>Rijbewijs:</b> Indien het een vereiste is dat jullie au pair een rijbewijs heeft dan is het goed het volgende in overweging te nemen (dit is ook in het intakegesprek ter sprake gekomen). Een au pair van buiten Europa mag officieel maar 185 dagen, na inschrijving bij de gemeente, in Nederland rijden met haar buitenlandse rijbewijs. Een internationaal rijbewijs heeft geen toegevoegde waarde. Wij vragen aan onze kandidaten of ze een geldig rijbewijs hebben of niet, maar als Host Familie is het belangrijk om in de matching fase hierover te spreken en een zeker gevoel te hebben over zijn/haar ervaring en kunde. Het valt niet onder de directe verantwoordelijkheid van HBN. De au pair verzekering die wordt afgesloten bevat geen autoverzekering. Als jullie je au pair willen laten autorijden is het van belang dat jullie haar/hem hier apart voor verzekeren.<br><br></div>	    	
-	    </div><br><br>	    
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img"> 1. Weekly timeschedule IND</a>
+		        <img src="<?php 
+		        		if ($reports['Timeschedule_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 1. Weekly timeschedule IND</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		      <div class="panel-body">
 		      <div class="row">
 		      	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -106,7 +112,6 @@
 			  		Hierin kan de familie een duidelijk overzicht van de dag/weekindeling voor de au pair geven. Het is belangrijk om te laten zien wie er met de kinderen is op elk uur van de dag wanneer de au pair niet wordt ingezet en wie er als back up fungeert als de au pair wel wordt ingezet. Er mag geen afhankelijkheid zijn van de au pair. Het is ook belangrijk te laten zien wat haar taken zijn. Het totaal aantal uren mag maximaal uitkomen op 30 (wordt automatisch berekend). Het maximum aantal uur per dag mag uitkomen op 8. De au pair mag maximaal 5 dagen per week ingezet worden. De huishoudelijke werkzaamheden worden apart aangegeven maar zijn onderdeel van het totaal aantal uren (niet meer dan 30%). De uren moeten specifiek worden opgeschreven (bijv. 08:00-09:00 = 1 uur en 14:30-19:45 = 5,25 uur). Babysit uren in de avond zijn onderdeel van de 30 maximum uren per week en 8 uur per dag.
 		      	</div>
 		      </div>
-		      <br><br>
 			  
 			  <!-- <div class="profile-edit row" >
 			  	<div class="col-xs-12 col-sm-6  col-sm-offset-3 col-md-4  col-md-offset-4 col-lg-2 col-lg-offset-5">
@@ -345,7 +350,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 2. Dear au-pair letter</a>
+		        <img src="<?php 
+		        		if ($reports['Dear_au-pair_letter_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 2. Dear au-pair letter</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -379,7 +390,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img"> 3. Fotos familie</a>
+		        <img src="<?php 
+		        		if ($reports['Photos_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img"> 3. Fotos familie</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -424,7 +441,7 @@
 			<b>Norm inkomen</b>
 			De minimumnorm wordt elk halfjaar aangepast en is nu;<br>
 			Norm echtparen / samenwonend+ norm au pair inclusief vakantietoeslag BRUTO SV LOON: €2490,27<br>
-			Norm echtparen / samenwonend+ 2 x norm au pair (bij overlap) inclusief vakantietoeslag BRUTO SV LOON: €3320,36<br><br>
+			Norm echtparen / samenwonend+ 2 x norm au pair (bij overlap) inclusief vakantietoeslag BRUTO SV LOON: €3320,36<br>
 			Norm alleenstaanden + norm au pair inclusief vakantietoeslag BRUTO SV LOON: €1992,22<br><br>
 			In de <b>IND brochure</b> staan de regels voor het au pair programma.
 				<div class="custom-standalone-panel">
@@ -438,19 +455,25 @@
 					</div>
 				</div>
 			</div>	    	
-	    </div><br><br>	    
+	    </div><br>    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Loondienst</a>
+		        <img src="<?php 
+		        		if ($reports['All_documents_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Loondienst</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<p>Wanneer er minimaal sprake is van een jaarcontract<br><br>
 					Werkgeversverklaring: Dit formulier dient door de werkgever volledig ingevuld te worden en ondertekend + evt. bedrijfsstempel; Werkgeversverklaring mag niet ouder dan 3 maanden zijn op het moment van de aanvraag;<br>
@@ -497,7 +520,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Zelfstandig ondernemer</a>
+		        <img src="<?php 
+		        		if ($reports['All_documents_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Zelfstandig ondernemer</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -553,7 +582,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  DGA</a>
+		        <img src="<?php 
+		        		if ($reports['All_documents_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  DGA</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -626,7 +661,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a >
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Eigen vermogen </a>
+		        <img src="<?php 
+		        		if ($reports['All_documents_submitted'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Eigen vermogen </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -671,7 +712,7 @@
         </div>
 
         <div class="row">
-        	<a href="#" class="btn next-button get-income" >NAAR STAP 3</a>
+        	<a href="<?= base_url('index/roadmap_profile/3') ?>" class="btn next-button get-income" >NAAR STAP 3</a>
         </div>
     </div>
 <!-- end tab2 -->
@@ -689,13 +730,19 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Skype gesprekken </a>
+		        <img src="<?php 
+		        		if ($reports['Skype_call_planned'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Skype gesprekken </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<p>Mocht er enthousiasme zijn over een of beide kandidaten dan sturen wij jullie profiel en timeschedule ook naar de potentiele kandidaten. Vervolgens plannen we een Skype call tussen jullie en de potentiele au pair(s) zodat jullie elkaar kunnen ontmoeten.<br><br>
 					In het profiel van de au pair staat zijn/haar Skype naam. Zij/hij heeft jullie skype gegevens niet dus graag haar/hem uitnodigen zodat jullie request geaccepteerd kan worden.<br><br>
@@ -782,7 +829,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Match aanmaken </a>
+		        <img src="<?php 
+		        		if ($reports['Signed_match_agreement'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Match aanmaken </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -836,7 +889,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Awareness declaration & weekschema </a>
+		        <img src="<?php 
+		        		if ($reports['Signed_awareness_declaration_and_timeschedule'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Awareness declaration & weekschema </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1116,7 +1175,13 @@
 				    <div class="panel-heading">
 				      <h4 class="panel-title">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-				        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Status visa-aanvraag  </a>
+				        <img src="<?php 
+		        		if ($reports['Visa_application_sent'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Status visa-aanvraag  </a>
 				        <span class="collapse-right"><img src="<?php echo base_url('assets/img/users-white.png');?>" > HBN</span>
 				      </h4>
 				    </div>
@@ -1157,19 +1222,25 @@
 	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	    	<p>Wanneer de Visa/verblijfsvergunning procedure loopt (indien van toepassing) of in ieder geval voordat de au pair naar Nederland komt, zijn er enkele belangrijke zaken waarover HBN jullie als Host Familie wil informeren. Zaken die voorbereid en geregeld moeten worden voor haar komst.</p>	    
 	    	</div>	
-	    </div><br><br>	    
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Ticket & info  </a>
+		        <img src="<?php 
+		        		if ($reports['Date_for_ticket_submitted'] != '0000-00-00') {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Ticket & info  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1223,7 +1294,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Verzekeringsaanvraag  </a>
+		        <img src="<?php 
+		        		if ($reports['Au-pair_insurance_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Verzekeringsaanvraag  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1279,7 +1356,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Host familie briefing  </a>
+		        <img src="<?php 
+		        		if ($reports['Family_routine_doc_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Host familie briefing  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1319,7 +1402,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Family routine setup  </a>
+		        <img src="<?php 
+		        		if ($reports['Family_routine_doc_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Family routine setup  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1370,7 +1459,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Important info document  </a>
+		        <img src="<?php 
+		        		if ($reports['Important_info_doc_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Important info document  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1417,7 +1512,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Advies cursussen  </a>
+		        <img src="<?php 
+		        		if ($reports['Important_info_doc_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Advies cursussen  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1446,7 +1547,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-		        <img src="<?php echo base_url('assets/img/close-icon.png'); ?>" class="collapse-img">  Secundaire voorwaarden: Laptop, Telefoon, Fiets, OV kaart, Museum Kaart </a>
+		        <img src="<?php 
+		        		if ($reports['Important_info_doc_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Secundaire voorwaarden: Laptop, Telefoon, Fiets, OV kaart, Museum Kaart </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1486,12 +1593,12 @@
 				<b>Au-pair Manual:</b><br>
 				Voordat jullie au pair naar Nederland afreist sturen wij haar/hem de HBN au pair manual. Deze manual bevat naast alle belangrijke wettelijke verplichtingen en taken bij aankomst, tijdens haar/zijn verblijf en voor vertrek ook allerlei belangrijke adviezen en tips die zij/hij kan gebruiken tijdens het au pair jaar.<br><br>
 				<b>Welkomst training au-pair:</b><br>
-				Gedurende de eerste weken na de aankomst van de au pair zal HBN een welkomst training organiseren voor de au pairs die in die maand zijn aangekomen. De au pairs zijn verplicht deze training bij te wonen. Deze training zal op een avond in de week plaats vinden op het HBN kantoor . Wij vinden het belangrijk de au pair meer inzicht te geven in alle aspecten die bij het au pairschap komen kijken en de cultuur verschillen en gewoontes te bespreken, daarbij focussen we ons in de training ook op de technieken voor communicatie en feedback, aangezien dit zo'n belangrijk onderdeel is voor het slagen van het au pair jaar. De training biedt je au pair ook direct de mogelijkheid andere starters te ontmoeten en dit te kunnen delen met elkaar.
+				Gedurende de eerste weken na de aankomst van de au pair zal HBN een welkomst training organiseren voor de au pairs die in die maand zijn aangekomen. De au pairs zijn verplicht deze training bij te wonen. Deze training zal op een avond in de week plaats vinden op het HBN kantoor . Wij vinden het belangrijk de au pair meer inzicht te geven in alle aspecten die bij het au pairschap komen kijken en de cultuur verschillen en gewoontes te bespreken, daarbij focussen we ons in de training ook op de technieken voor 
 				</p>
 	    	</div>	
 	    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	    		<p>
-				Welkomst pakket HBN: om jullie au pair vanuit HBN welkom te heten, hebben wij een leuk en handig welkomstpakket samengesteld dat hij/zij per post ontvangt direct na aankomst<br><br>
+				communicatie en feedback, aangezien dit zo'n belangrijk onderdeel is voor het slagen van het au pair jaar. De training biedt je au pair ook direct de mogelijkheid andere starters te ontmoeten en dit te kunnen delen met elkaar. Welkomst pakket HBN: om jullie au pair vanuit HBN welkom te heten, hebben wij een leuk en handig welkomstpakket samengesteld dat hij/zij per post ontvangt direct na aankomst<br><br>
 				- Een HBN kalender; hierop kunnen jullie samen overleggen en bijhouden welke dagen er opgepast moet worden bijvoorbeeld. - Een homemade HBN sleutelhanger
 				- HBN news
 				- Wat lekkers en typisch Nederlands
@@ -1502,19 +1609,25 @@
 				Deze verzekering kunnen jullie, o.a. via de link in de JOHO uitleg, met haar/zijn burger service nummer aanvragen. De zorgtoeslag kan bij de belastingdienst worden aangevraagd wanneer zij/hij haar/zijn eigen persoonlijke bankrekening heeft.
 				</p>
 	    	</div>    			    	
-	    </div><br><br>	    
+	    </div>    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Verblijfspas </a>
+		        <img src="<?php 
+		        		if ($reports['Confirmed_pickup_residence_permit'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Verblijfspas </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1548,7 +1661,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Inschrijving gemeente</a>
+		        <img src="<?php 
+		        		if ($reports['BSN_extract_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Inschrijving gemeente</a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1593,7 +1712,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Tubercolose test  </a>
+		        <img src="<?php 
+		        		if ($reports['TB_test_confirmed'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Tubercolose test  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
@@ -1656,7 +1781,13 @@
 				    <div class="panel-heading">
 				      <h4 class="panel-title">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-				        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Evaluatiemomenten   </a>
+				        <img src="<?php 
+		        		if (($reports['Evaluation_1_finished'] == 1)&&($reports['Evaluation_2_finished'] == 1)&&($reports['Evaluation_3_finished'] == 1)&&($reports['Evaluation_4_finished'] == 1)&&($reports['Evaluation_5_finished'] == 1)) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Evaluatiemomenten   </a>
 				        <span class="collapse-right"><img src="<?php echo base_url('assets/img/users-white.png');?>" > HBN</span>
 				      </h4>
 				    </div>
@@ -1702,19 +1833,25 @@
 				Het te laat of niet ondernemen van de bovenstaande acties heeft ernstige gevolgen. Het kan namelijk lijden tot het intrekken van de verblijfsvergunning. Daarbij kan HBN beboet worden voor het niet houden aan de zorgplicht of informatieplicht richting de IND. Als au pair/gastgezin de instructies betreft de zorg en informatieplicht niet navolgt zal HBN genoodzaakt zijn de boete op het gastgezin te verhalen. Deze boetes zijn minimaal 1500,- en kunnen exponentieel hoger oplopen. Verwezen wordt naar HBN Algemene Voorwaarden.</b>
 			</p>
 	    	</div>  			    	
-	    </div><br><br>	    
+	    </div>	    
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Terugvlucht au-pair  </a>
+		        <img src="<?php 
+		        		if ($reports['Return_ticket_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/reload-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Terugvlucht au-pair  </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse">
+		    <div id="collapse1" class="panel-collapse collapse in">
 		     	<div class="panel-body">
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1752,7 +1889,13 @@
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        <img src="<?php echo base_url('assets/img/reload-icon.png'); ?>" class="collapse-img">  Terugvlucht au-pair </a>
+		        <img src="<?php 
+		        		if ($reports['Proof_of_return_uploaded'] == 1) {
+		        			echo base_url('assets/img/check-green.png');
+				        }else{
+				        	echo base_url('assets/img/close-icon.png'); 
+				        }		        	
+		        	?>" class="collapse-img">  Terugvlucht au-pair </a>
 		        <span class="collapse-right">
 		        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
 		        </span>

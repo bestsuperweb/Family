@@ -419,7 +419,7 @@
               </div>
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
+                  <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= ucfirst($document['status']) ?></a>
                   <a href="<?= base_url('files/'.$document['name']) ?>" target="_blank" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
@@ -445,7 +445,7 @@
         <h1 class="profile-caption"><b><?php echo $aupair['full_name']; ?></b></h1>
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <h2><b><i>Interview Reports</i></b></h2><br>
+            <h2><b>Interview Reports</b></h2><br>
             <img src="<?= base_url('assets/img/users.png') ?>" ><span class="sub-caption"> Luis Fabiano</span><br><br>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt mattis pretium. Suspendisse vitae nibh ullamcorper, convallis ipsum et, tincidunt ligula. Suspendisse ut pulvinar elit. Nam at vulputate purus, scelerisque pharetra lectus. Curabitur tincidunt, risus nec condimentum tincidunt, turpis orci vulputate elit, ultricies pharetra metus nisl et est. Vestibulum ac velit eu mi sollicitudin fermentum. Ut sed sem dolor. Praesent sed velit ut dolor molestie gravida. Aliquam erat volutpat. Duis et nibh risus.<br><br>
@@ -453,7 +453,7 @@
             </p>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <h2><b><i>Video</i></b></h2>
+          <h2><b>Video</b></h2>
               <div class="embed-responsive embed-responsive-4by3">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
               </div>
@@ -461,7 +461,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 test-result" >
-            <h2><b><i>Test results</i></b></h2>
+            <h2><b>Test results</b></h2>
             <div class="row">
               <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
@@ -562,12 +562,12 @@
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">         
         <div class="row">
           <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
-            <h1><i><b><?php echo $aupair['full_name']; ?></b></i> </h1>
+            <h1><b><?php echo $aupair['full_name']; ?></b></h1>
             <b>AU-PAIR STATUS</b><br>
             <b class="text-primary"><?= $aupair['status'] ?></b>
             <br>
             <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-Nummber</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-number</div>
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['id'] ?></div>
             </div>
             <div class="row">

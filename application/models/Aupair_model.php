@@ -198,7 +198,6 @@ class Aupair_model extends CI_Model {
         	}
 
         	$result = $this->db->update('aupairs', $data, array('id' => $aupair_id));
-            echo $result;
             return $result;
 
         }

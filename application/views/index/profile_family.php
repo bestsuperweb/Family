@@ -146,7 +146,7 @@
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <h2><b><i>Hi, we are family of <?php echo $parents[0]['lastname']; ?></i></b></h2></div>
+                <h2><b>Hi, we are family of <?php echo $parents[0]['lastname']; ?></b></h2></div>
           			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                 <a href="<?php echo base_url('index/edit_profile/1/').$param; ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
@@ -341,7 +341,7 @@
 <!-- start preference tab -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['third']; ?>" id="preferences">
           <div class="row">
-  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b><i>Family of <?php echo $parents[0]['lastname']; ?></i></b></h1></div>
+  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
   			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
         <a href="<?php echo base_url('index/edit_profile/3/').$param; ?>">
         <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
@@ -490,7 +490,7 @@
               </div>
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= $document['status'] ?></a>
+                  <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= ucfirst($document['status']) ?></a>
                   <a href="<?= base_url('files/'.$document['name']) ?>"  target="_blank" class="btn next-button">DOWNLOAD</a>
                   <a href="#" class="btn next-button" data-toggle="modal" data-target="#newVersionDocModal<?= $document['id']?>">NEW VERSION</a>
                   <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
@@ -519,7 +519,7 @@
                         <strong>Opp!</strong> There are some errors to upload the document.
                       </div>
                       <div class="form-group">
-                        <label>Docuemnt File:</label>
+                        <label>Docuemnt file:</label>
                         <input type="file" name="doc_file" autocomplete='off'>
                       </div>
                       <div class="progress upload-progress">
@@ -551,7 +551,7 @@
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
         <div class="row">
           <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
-            <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
+            <h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1>
             <b>KLANT STATUS</b><br>
             <b class="text-primary"><?= $family['status'] ?></b>
           </div>
@@ -831,11 +831,11 @@
             <strong>Opp!</strong> There are some errors to upload the document.
           </div>
           <div class="form-group">
-            <label>Docuemnt Title:</label>
+            <label>Docuemnt title:</label>
             <input type="text" name="doc_title" class="form-control" autocomplete='off'>                              
           </div>
           <div class="form-group">
-          <label>Docuemnt File:</label>
+          <label>Docuemnt file:</label>
             <input type="file" name="doc_file" autocomplete='off'>
           </div>
           <div class="progress upload-progress">

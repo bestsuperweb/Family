@@ -139,7 +139,7 @@ class Session_controller extends CI_Controller
 					$name = md5($id);					
 					$this->_gen_pdf($html, "$name.pdf");
 					$parents = $this->parent_model->get_parent($this->session->userdata('user_id'));
-					$task_id = $this->task_model->inser_task(
+					$task_id = $this->task_model->insert_task(
 									'De familie '.$parents[0]['lastname'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
 									'1. Begin met stap 1 van het stappenplan om verder te gaan.<br>2. Loop jullie profiel na om te controleren alles klopt.',
 									'',
@@ -152,7 +152,7 @@ class Session_controller extends CI_Controller
 									$id,
 									$parents[0]['lastname']
 								);
-					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $parents[0]['lastname'], $id, $task_id, $update_id);
+					$this->document_model->insert_document("$name.pdf", "Initial Registration", $parents[0]['lastname'], $id, $task_id, $update_id);
 					$this->familyreport_model->insert_familyreport(
 																	array('family_id' => $this->session->userdata('user_id')), 
 																	$this->session->userdata('user_id')
@@ -165,7 +165,7 @@ class Session_controller extends CI_Controller
 					$name = md5($id);										
 					$this->_gen_pdf($html, "$name.pdf");
 					$aupair = $this->aupair_model->get_aupair($this->session->userdata('user_id'));
-					$task_id = $this->task_model->inser_task(
+					$task_id = $this->task_model->insert_task(
 									'De au-pair '.$aupair['full_name'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
 									'1. Start with step 1 from your journey to proceed.<br> 2. Check your profile to confirm all the info is correct.',
 									'',
@@ -178,7 +178,7 @@ class Session_controller extends CI_Controller
 									$id,
 									$aupair['full_name']
 								);
-					$this->document_model->insert_document("$name.pdf", "Initial Registeration", $aupair['full_name'], $id, $task_id, $update_id);
+					$this->document_model->insert_document("$name.pdf", "Initial Registration", $aupair['full_name'], $id, $task_id, $update_id);
 					$this->aupairreport_model->insert_aupairreport(
 																	array('aupair_id' => $this->session->userdata('user_id')), 
 																	$this->session->userdata('user_id')

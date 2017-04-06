@@ -82,11 +82,13 @@ class Index extends CI_Controller {
                     $data['parents']   = $this->parent_model->get_parent($data['user_id']);
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
+                    $data['reports']   = $this->familyreport_model->get_familyreport($data['user_id']);
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
-                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);                    
+                    $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id); 
+                    $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);                               
                     break;
                 
                 default:
@@ -114,13 +116,15 @@ class Index extends CI_Controller {
                     $data['kids']      = $this->kid_model->get_kid($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
                     $data['aupairs']   = $this->aupair_model->get_all_aupairs();
+                    $data['reports']   = $this->familyreport_model->get_familyreport($data['user_id']);
                     break;
 
                 case 'aupair':
                     $data['aupair']    = $this->aupair_model->get_aupair($data['user_id']);
                     $data['documents'] = $this->document_model->get_document($this->aauth->get_user()->id);
                     $data['family']    = $this->family_model->get_family($data['aupair']['family_name']);
-                    $data['family_documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));               
+                    $data['family_documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['family']['contact_email']));
+                    $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);                          
                     break;
                 
                 default:
@@ -468,7 +472,7 @@ class Index extends CI_Controller {
                                     $aupair['full_name']
                                     );
                             $this->task_model->insert_task(
-                                    'De au-pair '.$parents[0]['lastname'].' heeft de ‘dear host family letter’ toegevoegd aan haar profiel. Controleer de brief op haar profiel en voorzie de au-pair waar nodig van tips.',
+                                    'De au-pair '.$aupair['full_name'].' heeft de ‘dear host family letter’ toegevoegd aan haar profiel. Controleer de brief op haar profiel en voorzie de au-pair waar nodig van tips.',
                                     '1. Upload some pictures to enhance your profile.',
                                     '',
                                     $this->aauth->get_user()->id,

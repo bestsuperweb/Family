@@ -9,6 +9,9 @@
     font-family: 'Open Sans', sans-serif;
     /*color: #542a44;*/
  }
+.clear-fix{
+    clear: both;
+}
 .alert{
     display: none;
     margin-top: 5px;
