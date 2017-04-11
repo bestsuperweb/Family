@@ -198,11 +198,11 @@
 
 		    <div class="row">
 		    	<div class="col-xs-9 col-sm-10 col-md-11 col-lg-11">
-		    		<a href="#" class="btn next-button submit-schedule" data-id="<?= $family['id'] ?>" >INDIENEN</a>
+		    		<a href="#collapse2" class="btn next-button submit-schedule" data-id="<?= $family['id'] ?>" >SUBMIT</a>
 	    		</div>
 		    	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#" class="add-btn" data-toggle="modal" data-target="#addModal">
 		    	<img src="<?php echo base_url('assets/img/add-btn.png'); ?>"></a></div>
-		    </div>
+		    </div>	    
 
 		      <!-- addModal start -->
 			  <div class="modal fade" id="addModal" role="dialog">
@@ -447,10 +447,10 @@
 				<div class="custom-standalone-panel">
 					Keuze main income:
 					<div class="form-control custom-select">
-						<select name="">
-						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse1" >Loondienst</option>
-						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse2" >Zelfstandig ondernemer</option>
-						    <option data-toggle="collapse" data-parent="#accordion" href="#collapse3" >DGA</option>				    
+						<select name="" class="trigger-select">
+						    <option href="#collapse1" class="trigger-option">Loondienst</option>
+						    <option href="#collapse2" class="trigger-option">Zelfstandig ondernemer</option>
+						    <option href="#collapse3" class="trigger-option">DGA</option>				    
 					  	</select>
 					</div>
 				</div>
@@ -511,7 +511,7 @@
 			      			</form>
 						</div>
 					</div>
-					<a href="#" class="btn next-button">INDIENEN</a>
+					<a href="#collapse2" class="btn next-button next-step">INDIENEN</a>
 		    	</div>
 		  	</div>
 		  </div>
@@ -573,7 +573,7 @@
 			      			</form>
 						</div>
 					</div>
-					<a href="#" class="btn next-button">INDIENEN</a>
+					<a href="#collapse3" class="btn next-button next-step">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -652,7 +652,7 @@
 			      			</form>
 						</div>					
 					</div>
-					<a href="#" class="btn next-button">INDIENEN</a>
+					<a href="#collapse4" class="btn next-button next-step">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -704,7 +704,7 @@
 			      			</form>
 						</div>
 					</div>
-					<a href="#" class="btn next-button">INDIENEN</a>
+					<a href="<?= base_url('index/roadmap_profile/3') ?>" class="btn next-button">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -880,7 +880,7 @@
 		      			</form>
 					</div>
 				</div><br>
-				<a href="" class="btn next-button">VOLGENDE</a>
+				<a href="#collapse3" class="btn next-button next-step">VOLGENDE</a>
 		      </div>
 		    </div>
 		  </div>
@@ -1147,7 +1147,7 @@
 						  <!-- editModal end -->
 		      		</div>
 		      	</div>
-		      	<a href="#" class="btn next-button">INDIENEN</a>
+		      	<a href="<?= base_url('index/roadmap_profile/4') ?>" class="btn next-button">INDIENEN</a>
 		      </div>
 		    </div>
 		  </div>
@@ -1283,7 +1283,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VOLGENDE</a>
+		     				<a href="#collapse2" class="btn next-button next-step">VOLGENDE</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1345,7 +1345,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="#collapse3" class="btn next-button next-step">VERSTUREN</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1391,7 +1391,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">INDIENEN</a>
+		     				<a href="#collapse4" class="btn next-button next-step">INDIENEN</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1448,7 +1448,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="#collapse5" class="btn next-button next-step">VERSTUREN</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1501,7 +1501,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="#collapse6" class="btn next-button next-step">VERSTUREN</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1536,7 +1536,7 @@
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">VOLGENDE</a>
+		      			<a href="#collapse7" class="btn next-button next-step">VOLGENDE</a>
 		      		</div>
 		      	</div>
 		      </div>
@@ -1650,7 +1650,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VOLGENDE</a>
+		     				<a href="#collapse2" class="btn next-button next-step">VOLGENDE</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1701,7 +1701,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a> <!-- submit BSN number -->
+		     				<a href="#collapse3" class="btn next-button next-step">VERSTUREN</a> <!-- submit BSN number -->
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1744,7 +1744,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">VOLGENDE</a>
+	     				<a href="<?= base_url('index/roadmap_profile/7') ?>" class="btn next-button">VOLGENDE</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1878,7 +1878,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="#collapse2" class="btn next-button next-step">VERSTUREN</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1924,7 +1924,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">VERSTUREN</a>
+		     				<a href="<?= base_url('index/profile/') ?>" class="btn next-button">VERSTUREN</a>
 		     			</div>		     			
 		     		</div>
 		      </div>

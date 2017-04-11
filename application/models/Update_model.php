@@ -18,11 +18,12 @@ class Update_model extends CI_Model {
                         );
                 $query = $this->db->get_where('updates', array('hbn_update' => $hbn_update, 'user_id' => $user_id));
 
-                if($query->num_rows() < 1){
-                        $this->db->insert('updates', $data);
-                        $insert_id = $this->db->insert_id();
-                        return  $insert_id;
+                if($query->num_rows() > 0){
+                        $this->db->delete('updates', array('hbn_update' => $hbn_update, 'user_id' => $user_id));
                 }
+                $this->db->insert('updates', $data);
+                $insert_id = $this->db->insert_id();
+                return  $insert_id;
 
         }
 

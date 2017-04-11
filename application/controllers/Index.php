@@ -479,6 +479,7 @@ class Index extends CI_Controller {
                                     $aupair['full_name']
                                     );
                             $this->aupair_model->update_aupair(4, $data['user_id']);
+                            $this->aupairreport_model->insert_aupairreport(array('Dear_host_family_letter_written' => 1), $data['user_id']);
                             redirect('index/profile/1/'.$data['param']);
                         }else{
                             redirect('index/roadmap_profile/1/'.$data['param']);
@@ -501,6 +502,7 @@ class Index extends CI_Controller {
                                     $this->aauth->get_user()->id,
                                     $aupair['full_name']
                                     );
+                                $this->aupairreport_model->insert_aupairreport(array('Pictures_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -530,6 +532,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(7, $data['user_id'])){
+                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -543,6 +546,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(8, $data['user_id'])){
+                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -556,6 +560,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(9, $data['user_id'])){
+                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -569,6 +574,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(10, $data['user_id'])){
+                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -579,6 +585,330 @@ class Index extends CI_Controller {
                         } 
                         break;
                     
+                    case 10:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij de registration fee heeft voldaan.',
+                                    'You confirmed that you paid the registration fee. You will receive an update when HBN marks the registration fee as paid.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij de registration fee heeft voldaan. Controleer de betaling en markeer als betaald in de reports section van het au-pair profiel.',
+                                '1. Proceed with the agreement between you and HBN of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Registration_fee_paid' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 11:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft document interview form aangeleverd.',
+                                    'Your interview form is submitted and sent to HBN for review.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft document interview form aangeleverd. Het bestand staat klaar voor goedkeuring.',
+                                '1. Proceed with the dear host family letter from step 1 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Interview_form_filled_in' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 12:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft interview with agent aangeleverd.',
+                                    'You’ve confirmed that you scheduled an interview with the agent.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft document interview with agent aangeleverd. Het bestand staat klaar voor goedkeuring.',
+                                '1. Proceed with step 3 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Interview_with_agent_scheduled' => date("Y-m-d H:i:s")), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 13:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft een skype afspraak met een agent gemaakt.',
+                                    'You’ve chosen one of the suggested times for an interview with the agent. The agent will get back to you to definitively confirm the skype call.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft een skype afspraak met een agent gemaakt.',
+                                '1. Proceed with the agreement from step 4 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Skypecall_scheduled' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 14:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft een payment confrimed met een agent gemaakt.',
+                                    'You’ve confirmed payment.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft een payment confrimed met een agent gemaakt.',
+                                '1. Proceed with the agreement from step 5 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Payment_confirmed' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 15:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij het voorschot voor het visa en visum heeft voldaan.',
+                                    'You confirmed that you paid the advance towards your visa and ticket. You will receive an update when HBN marks the advance as paid.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij het voorschot voor het visa en visum heeft voldaan. Controleer de betaling en markeer als betaald in de reports section van het au-pair profiel.',
+                                '1. Proceed with the visa procedure from step 5 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Application_visa_sent' => date('Y-m-d')), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 16:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij het voorschot voor het visa en visum heeft voldaan.',
+                                    'HBN sent you Visa application. Please proceed with making an appointment at the embassy in your country.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft bevestigd dat zij het voorschot voor het visa en visum heeft voldaan. Controleer de betaling en markeer als betaald in de reports section van het au-pair profiel.',
+                                '1. Proceed with making an appointment at the embassy in your country.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Date_first_embassy_appointment' => date('Y-m-d')), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 17:                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Insurance_documents_downloaded' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 18:                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Healthcare_insurance_downloaded' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 19:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft haar ticket gedownload.',
+                                    'You’ve downloaded your ticket to the Netherlands.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft haar ticket gedownload.',
+                                '1. Proceed with the au-pair manual.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Flight_ticket_downloaded' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 20:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' heeft document au-pair manual aangeleverd.',
+                                    'You’ve uploaded the au-pair manual. HBN will review and approve the document.',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'De au-pair '.$aupair['full_name'].' heeft document au-pair manual aangeleverd. Het bestand staat klaar voor goedkeuring.',
+                                '1. Proceed with the packing tips from step 6 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Au-pair_manual_downloaded' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 21:
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Welcome_training_confirmed' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
+                    case 22:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' - evaluation 1.',
+                                    '1. “You’ve completed evaluation 1 with HBN”',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'After 1 month',
+                                '1. Proceed with the evaluation 2.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Evaluation_1_finished' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 23:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' - evaluation 2.',
+                                    '1. “You’ve completed evaluation 2 with HBN”',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'After 4 months',
+                                '1. Proceed with the evaluation 3.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Evaluation_2_finished' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 24:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' - evaluation 3.',
+                                    '1. “You’ve completed evaluation 3 with HBN”',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'After 7 months',
+                                '1. Proceed with the evaluation 4.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Evaluation_3_finished' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 25:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' - evaluation 4.',
+                                    '1. “You’ve completed evaluation 4 with HBN”',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'After 9 months',
+                                '1. Proceed with the evaluation 5.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Evaluation_4_finished' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 26:
+                        $this->update_model->insert_update(
+                                    'De au-pair '.$aupair['full_name'].' - evaluation 5.',
+                                    '1. “You’ve completed evaluation 5 with HBN”',
+                                    $this->aauth->get_user()->id,
+                                    $aupair['full_name']
+                                    );
+                        $this->task_model->insert_task(
+                                'After 11 month',
+                                '1. Proceed with the packing tips from step 9 of your journey.',
+                                '',
+                                $this->aauth->get_user()->id,
+                                $aupair['full_name']
+                                );                        
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Evaluation_5_finished' => 1), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 27:
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Return_ticket_uploaded' => date('Y-m-d')), $data['user_id']))
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+                    case 28:
+                        if ( $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']) )
+                            echo 'success';
+                        else
+                            echo 'failure';
+
+                        break;
+
                     default:
                         
                         break;

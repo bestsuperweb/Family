@@ -132,7 +132,7 @@
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">PROCEED</a>
+		      			<a href="#collapse2" class="btn next-button update-report" data-step = "10">PROCEED</a>
 		      		</div>
 		      	</div>
 		      </div>
@@ -181,7 +181,7 @@
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">SUBMIT</a>
+		      			<a href="#collapse3" class="btn next-button next-step" data-queue = "0" >SUBMIT</a>
 		      		</div>
 		      	</div>
 		      </div>
@@ -208,7 +208,7 @@
 		      <div class="panel-body">
 		      	<b>[ FORM ]</b>
 		      	<br><br>
-		      	<a href="#" class="btn next-button">SUBMIT</a>
+		      	<a href="#collapse4" class="btn next-button update-report" data-step = "11" >SUBMIT</a>
 		      </div>
 		    </div>
 		  </div>
@@ -285,7 +285,7 @@
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">UPLOAD</a>
+		      			<a href="#collapse6" class="btn next-button next-step" data-queue = "1">UPLOAD</a>
 		      		</div>
 		      	</div>
 		      </div>
@@ -325,7 +325,7 @@
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#" class="btn next-button">UPLOAD</a>
+		      			<a href="#collapse7" class="btn next-button update-report" data-step = "28">UPLOAD</a>
 		      		</div>
 		      	</div>
 		      </div>
@@ -384,7 +384,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse2" class="btn next-button next-step" data-queue = "0">PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -396,7 +396,7 @@
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 		        <img src="<?php 
-		        		if ($reports['Interview_with_agent_scheduled'] == 1) {
+		        		if ($reports['Interview_with_agent_scheduled'] != '0000-00-00 00:00:00') {
 		        			echo base_url('assets/img/check-green.png');
 				        }else{
 				        	echo base_url('assets/img/close-icon.png'); 
@@ -420,14 +420,12 @@
 		     			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 main-color-div">
 		     				<h1>Schedule interviewl</h1>
 		     				<p>Please select one of the suggested times:</p>
-		     				<a href="#" class="btn next-button">22/02/2017 - 13:00</a><br>
-		     				<a href="#" class="btn next-button">22/02/2017 - 13:00</a><br>
-		     				<a href="#" class="btn next-button">22/02/2017 - 13:00</a><br>	     				
+		     				<a href="#" class="btn next-button"><?= date('Y-m-d H:i:s') ?></a><br>     				
 		     			</div>
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button update-report" data-step = "12">SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -491,7 +489,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse2" class="btn next-button next-step" data-queue = "0" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -541,7 +539,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button next-step" data-queue = "1" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -582,7 +580,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse4" class="btn next-button next-step" data-queue = "2" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -632,7 +630,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse5" class="btn next-button next-step" data-queue = "3" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -684,7 +682,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse6" class="btn next-button next-step" data-queue = "4" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -727,7 +725,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse7" class="btn next-button next-step" data-queue = "5" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -768,7 +766,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse8" class="btn next-button next-step" data-queue = "6" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -809,7 +807,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse9" class="btn next-button next-step" data-queue = "7" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -851,7 +849,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse10" class="btn next-button next-step" data-queue = "8" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -892,7 +890,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse11" class="btn next-button next-step" data-queue = "9" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -964,15 +962,13 @@
 		     				<p>
 		     					Please select one of the suggested times:
 		     				</p>
-		     				<a href="#" class="btn next-button ">22/02/2017 - 13:00</a><br>
-		     				<a href="#" class="btn next-button ">27/02/2017 - 13:00</a><br>
-		     				<a href="#" class="btn next-button ">28/02/2017 - 13:00</a><br>
+		     				<a href="#" class="btn next-button "><?= date('Y-m-d H:i:s') ?></a>
 		     				
 		     			</div>
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse2" class="btn next-button update-report" data-step = "13" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1024,7 +1020,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button next-step" data-queue = "0" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1082,7 +1078,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse4" class="btn next-button next-step" data-queue = "1">SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1132,7 +1128,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse5" class="btn next-button next-step" data-queue = "2" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1177,7 +1173,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse6" class="btn next-button update-report" data-step = "14" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1231,13 +1227,13 @@
 		     				<div class="visa-panel">
 				     			<h3><i>Application sent</i></h3>
 				     			<img src="<?= base_url('assets/img/visa-check-approved.png') ?>" class='visa-status' />
-				     			<p>Datum: 27-01-2017</p>
+				     			<p>Datum: <?= date('Y-m-d') ?></p>
 				     		</div>	     				
 		     			</div>
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse2" class="btn next-button update-report" data-step = "15" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1249,7 +1245,7 @@
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 		        <img src="<?php 
-		        		if ($reports['Date_first_embassy_appointmen'] != '0000-00-00') {
+		        		if ($reports['Date_first_embassy_appointment'] != '0000-00-00') {
 		        			echo base_url('assets/img/check-green.png');
 				        }else{
 				        	echo base_url('assets/img/close-icon.png'); 
@@ -1276,12 +1272,12 @@
 			        	  	<input type="text" name="sk_start_date" class="form-control" autocomplete='off'>
 			        	  	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			        	  	</div><br>
-		     				<a href="#" class="btn next-button">SUBMIT</a>		     				
+		     				<!-- <a href="#" class="btn next-button">SUBMIT</a>		     				 -->
 		     			</div>
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse3" class="btn next-button update-report" data-step = "16" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1293,7 +1289,7 @@
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
 		        <img src="<?php 
-		        		if ($reports['Date_first_embassy_appointmen'] != '0000-00-00') {
+		        		if ($reports['Date_first_embassy_appointment'] != '0000-00-00') {
 		        			echo base_url('assets/img/check-green.png');
 				        }else{
 				        	echo base_url('assets/img/close-icon.png'); 
@@ -1325,7 +1321,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse4" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1337,7 +1333,7 @@
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
 		        <img src="<?php 
-		        		if ($reports['Date_of_visa_pickup'] != '0000-00-00') {
+		        		if ($reports['Visa_uploaded'] == 1) {
 		        			echo base_url('assets/img/check-green.png');
 				        }else{
 				        	echo base_url('assets/img/close-icon.png'); 
@@ -1365,7 +1361,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse5" class="btn next-button next-step" data-queue = "0">SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1421,7 +1417,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse2" class="btn next-button update-report" data-step = "17" >PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1459,7 +1455,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse3" class="btn next-button update-report" data-step = "18">PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1500,7 +1496,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse4" class="btn next-button update-report" data-step = "19">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1538,7 +1534,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse5" class="btn next-button update-report" data-step = "20">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1573,7 +1569,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse6" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1620,7 +1616,7 @@
 		     				<p>
 		     					We have send you a welcome's package; Some welcome presents like; a keyring for your new house, bike seatcover and some Dutch sweetness. For your host kids we have a cute HBN childrens apron for you to use when baking /cooking! I hope you like it :-)!.
 		     				</p><br><br>
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse2" class="btn next-button next-step">PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1661,7 +1657,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button next-step" data-queue = "0">SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1702,7 +1698,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse4" class="btn next-button next-step" data-queue = "1">SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1744,7 +1740,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse5" class="btn next-button update-report" data-step = "21" >SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1776,7 +1772,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse6" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1850,7 +1846,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse2" class="btn next-button update-report" data-step = "22" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -1882,7 +1878,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button update-report" data-step = "23">SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -1914,7 +1910,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse4" class="btn next-button update-report" data-step = "24">SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1946,7 +1942,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse5" class="btn next-button update-report" data-step = "25">SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -1978,7 +1974,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">SUBMIT</a>
+	     				<a href="#collapse6" class="btn next-button update-report" data-step = "26">SUBMIT</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -2047,7 +2043,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse2" class="btn next-button update-report" data-step = "27" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		    	</div>
@@ -2088,7 +2084,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse3" class="btn next-button next-step" data-queue = "1" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -2119,7 +2115,7 @@
 	     					If you have taken out one, we cannot do this for you, but ask help of your hosts.<br><br>
 	     					Your au pair insurance ends by it self; we have taken care of this.
 	     				</p><br><br>
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse4" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -2149,7 +2145,7 @@
 	     				<p>
 	     					Close your bank account
 	     				</p><br><br>
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse5" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -2186,7 +2182,7 @@
 	     		</div>
 	     		<div class="row">
 	     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	     				<a href="#" class="btn next-button">PROCEED</a>
+	     				<a href="#collapse6" class="btn next-button next-step">PROCEED</a>
 	     			</div>		     			
 	     		</div>
 		      </div>
@@ -2225,7 +2221,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">PROCEED</a>
+		     				<a href="#collapse7" class="btn next-button next-step">PROCEED</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -2255,7 +2251,7 @@
 		     				<p>
 		     					When you arrived your room was nice, tidy and clean. Please make sure you leave your room tidy and clean before you leave, just the way you entered it. If there are things broken or stained, please notify your host, discuss how to fix it. Also please check the baggage allowance for your flight back and make sure you do not leave things with the family (there are always other Au Pairs to whom you can give clothes to, there's even a Facebook page for this.
 		     				</p><br><br>
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse8" class="btn next-button next-step">SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>
@@ -2296,7 +2292,7 @@
 		     		</div>
 		     		<div class="row">
 		     			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		     				<a href="#" class="btn next-button">SUBMIT</a>
+		     				<a href="#collapse9" class="btn next-button next-step" data-queue = "2" >SUBMIT</a>
 		     			</div>		     			
 		     		</div>
 		      </div>

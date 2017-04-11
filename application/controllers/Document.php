@@ -125,6 +125,7 @@ class Document extends CI_Controller {
         if($result = $this->document_model->delete_document($id)){
             $this->update_model->delete_update($result['update_id']);
             $this->task_model->delete_task($result['task_id']);
+
             echo 'success';
         }else{
             echo "failure";
@@ -150,7 +151,7 @@ class Document extends CI_Controller {
         if ($this->aauth->is_member(4)) {
             $parents = $this->parent_model->get_parent($this->aauth->get_user()->name);
         }elseif ($this->aauth->is_member(5)) {
-            $aupair = $this->aupair_model->get_aupair($this->aauth->get_use()->name);
+            $aupair = $this->aupair_model->get_aupair($this->aauth->get_user()->name);
         }
         switch ($kind) {
             case 1:
@@ -219,6 +220,10 @@ class Document extends CI_Controller {
                     $user_update    = 'You’ve uploaded the awareness declaration. HBN will review and approve the document.';
                     $hbn_task       = 'De au-pair '.$aupair['full_name'].' heeft document Awareness declaration aangeleverd. Het bestand staat klaar voor goedkeuring.';
                     $user_task      = '1. Proceed with step 5 of your journey.';
+                    $this->aupairreport_model->insert_aupairreport(
+                                                                    array('Awareness_declaration_signed' => 1), 
+                                                                    $this->aauth->get_user()->name
+                                                                    );
                 }                
                 break;
             case 17:

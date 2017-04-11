@@ -181,6 +181,19 @@ $(document).ready(function()
                     if (response == 'success') {
                         $('.alert-success span').html('Timeschedule was successfully saved!');
                         $('.alert-success').fadeIn(1000).fadeOut(3000);
+                        var green_check = window.base_url+'assets/img/check-green.png';
+                        var id = $(this).attr('href');
+                        var current = '#collapse' + (parseInt(id.slice(-1)) - 1);  
+
+                        $('.panel-title a').each(function(){
+                            if ($(this).attr('href') == current) {
+                                $(this).children('.collapse-img').attr('src', green_check);
+                            }
+                            if($(this).attr('href') == id){
+                                $(this).click();
+                            }
+                        });
+
                     }else{
                         $('.alert-danger span').html('There are an error to save timeschedule!');
                         $('.alert-danger').fadeIn(1000).fadeOut(3000);
@@ -223,9 +236,100 @@ $(document).ready(function()
 
             obj.attr('src', close_icon);
 
+        }else{
+            $('.panel-title').each(function(){
+                if ($(this).children('a').children('.collapse-img').attr('src') != green_check) {
+                    $(this).children('a').children('.collapse-img').attr('src', close_icon);
+                }
+            });
         }
     });
 
+    $('.trigger-select').change(function(){
+        var id = $(this).find("option:selected").attr("href");
+        var obj = $(id).parent().children('.panel-heading').children('.panel-title');
+        // obj.trigger('click');
+        obj.children('a').click();
+      
+    });
+
+    $('.next-step').on('click', function(){
+
+        var green_check = window.base_url+'assets/img/check-green.png';
+        var id = $(this).attr('href');
+        if ( queue = $(this).attr('data-queue')){
+            var dropzone = Dropzone.instances[queue];
+            dropzone.processQueue();
+            dropzone.on("complete", function(file) {
+                if ((id.slice(-1) == '0')||(id.slice(-2) == '11')) {
+                    var current = '#collapse' + (parseInt(id.slice(-2)) - 1);  
+                }else{
+                    var current = '#collapse' + (parseInt(id.slice(-1)) - 1);  
+                }
+                
+                $('.panel-title a').each(function(){
+                    if ($(this).attr('href') == current) {
+                        $(this).children('.collapse-img').attr('src', green_check);
+                    }
+                    if($(this).attr('href') == id){
+                        $(this).click();
+                    }
+                });
+            });
+
+        }else{
+
+            if (id.slice(-1) == '0') {
+                var current = '#collapse' + (parseInt(id.slice(-2)) - 1);  
+            }else{
+                var current = '#collapse' + (parseInt(id.slice(-1)) - 1);  
+            }
+            
+            $('.panel-title a').each(function(){
+                if ($(this).attr('href') == current) {
+                    $(this).children('.collapse-img').attr('src', green_check);
+                }
+                if($(this).attr('href') == id){
+                    $(this).click();
+                }
+            });
+
+        }        
+        
+    });
+
+    $('.update-report').on('click', function(){
+        
+        var green_check = window.base_url+'assets/img/check-green.png';
+        var id = $(this).attr('href');
+
+        $.ajax({
+            url: window.base_url+"index/save_profile/" + $(this).attr('data-step'),
+            type: 'post',
+            success: function(result){                
+
+                if(result == 'success'){
+                    if (id.slice(-1) == '0') {
+                        var current = '#collapse' + (parseInt(id.slice(-2)) - 1);  
+                    }else{
+                        var current = '#collapse' + (parseInt(id.slice(-1)) - 1);  
+                    }
+                    
+                    $('.panel-title a').each(function(){
+                        if ($(this).attr('href') == current) {
+                            $(this).children('.collapse-img').attr('src', green_check);
+                        }
+                        if($(this).attr('href') == id){
+                            $(this).click();
+                        }
+                    });
+                }else{
+                    alert('Server error...');
+                }                
+                // location.reload();
+            }
+        });
+    });
 
     $(".family-last").on('click', function(){
         alert('ghost');

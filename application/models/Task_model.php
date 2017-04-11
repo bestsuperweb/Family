@@ -19,11 +19,12 @@ class Task_model extends CI_Model {
                         );
                 $query = $this->db->get_where('tasks', array('hbn_task' => $hbn_task, 'user_id' => $user_id));
 
-                if($query->num_rows() < 1){
-                        $this->db->insert('tasks', $data);
-                        $insert_id = $this->db->insert_id();
-                        return  $insert_id;
+                if($query->num_rows() > 0){
+                    $this->db->delete('tasks', array('hbn_task' => $hbn_task, 'user_id' => $user_id));
                 }
+                $this->db->insert('tasks', $data);
+                $insert_id = $this->db->insert_id();
+                return  $insert_id;
 
         }
 
