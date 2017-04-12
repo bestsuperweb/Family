@@ -12,7 +12,7 @@
 			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 			        <img src="<?php echo base_url('assets/img/check-green.png'); ?>" class="collapse-img"> 1. Profiel</a>
 			        <span class="collapse-right">
-			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > FAMILIE DE <?= strtoupper($parents[0]['lastname']) ?>
+			        	<img src="<?php echo base_url('assets/img/users-white.png');?>" > The <?= strtoupper($parents[0]['lastname']) ?> Family
 			        </span>
 			      </h4>
 			    </div>

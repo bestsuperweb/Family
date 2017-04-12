@@ -54,9 +54,12 @@ class Index extends CI_Controller {
                     $data['updates']   = $this->update_model->get_update($this->aauth->get_user()->id);                    
                     break;
                 case 'HBN':
-
                     $data['updates']   = $this->update_model->get_updates_by_hbn();
                     $data['tasks']     = $this->task_model->get_tasks_by_hbn();
+                    foreach ($data['tasks'] as $key => $value) {
+                        if ( $value['status'] == 'complete' )
+                            unset($data['tasks'][$key]);
+                    }
                     break;
                 
                 default:

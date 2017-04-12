@@ -112,7 +112,7 @@
             <?php echo form_open('index/save_profile/1/'.$param); ?>        
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">
-          			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>		
+          			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>		
           		</div>          		
           		<div class="row profile-row">
           			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -171,14 +171,14 @@
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <h2><b><i>Hi, we are family of <?php echo $parents[0]['lastname']; ?></i></b></h2></div>          			
+                <h2><b>Hi, we are the <?php echo $parents[0]['lastname']; ?> family</b></h2></div>          			
           		</div>          		
-          		<textarea name="fa_overview" class="form-control" rows="8" ><?=$family['overview'] ?></textarea>
+          		<textarea name="fa_overview" class="form-control" rows="15" ><?=$family['overview'] ?></textarea>
           	</div>         	
           </div>
           <div class="row">
-          	<div class="col-lg-4 col-lg-offset-4">
-          		<input type="submit" name="" class="btn next-button" value="SAVE PROFILE">
+          	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          		<input type="submit" name="" class="btn next-button" value="Save basic info">
           	</div>          		
           </div>
           </form>
@@ -187,7 +187,7 @@
         <div role="tabpanel" class="tab-pane <?php echo $li_class['second']; ?>" id="host">
         <?php echo form_open('index/save_profile/2/'.$param); ?>
         <div class="row">
-  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>  			
+  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>  			
   		  </div>
   		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Job description father</div>
@@ -548,8 +548,10 @@
           <input type="text" name="fa_reason" value="<?php echo $family['reason']; ?>" class="form-control">
           </div>
   		  </div>
-  		  <div class="row">          	
-          		<input type="submit" name="" class="btn next-button" value="SAVE PROFILE" >          		
+  		  <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">         	
+          		<input type="submit" name="" class="btn next-button" value="Save about the host" >          		
+          </div>
         </div>
         </form>
         </div>
@@ -557,7 +559,7 @@
         <div role="tabpanel" class="tab-pane <?php echo $li_class['third']; ?>" id="preferences">
         <?php echo form_open('index/save_profile/3/'.$param); ?>
         <div class="row">
-  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b><i>Family of <?php echo $parents[0]['lastname']; ?></i></b></h1></div>  			
+  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>  			
   		  </div>
   		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Au-pair needs to be available from</div>
@@ -688,7 +690,9 @@
           </div>
   		  </div>
         <div class="row">
-          <input type="submit" name="" class="btn next-button" value="SAVE PROFILE">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <input type="submit" name="" class="btn next-button" value="Save preferences">
+          </div>
         </div>
         </form>
         </div>
@@ -696,7 +700,7 @@
         <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="document">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-7 col-lg-9">
-            <h1 class="profile-caption"><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+            <h1 class="profile-caption"><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>
             <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">
               <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -719,10 +723,10 @@
           
           <div class="panel-group profile-document" id="accordion">
             <div class="profile-document-heading">
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">DOCUMENT</div>
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOADED BY</div>    
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">UPLOAD DATE</div>  
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">APPROVAL DATE</div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">Document</div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">Uploaded by</div>    
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">Uploaded date</div>  
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">Approval date</div>
             </div>
             <?php if($documents != null) {?>
             <?php foreach ($documents as $key => $document) { ?>
@@ -765,7 +769,7 @@
       <?= form_open('index/save_profile/6/'.$param); ?>
         <div class="row">
           <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-            <h1><i><b>Family of <?php echo $parents[0]['lastname']; ?></b></i></h1>
+            <h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1>
             <b>KLANT STATUS</b><br>
             <div class="form-control custom-select" >
               <select name="fa_status" value="<?= $family['status'] ?>" >

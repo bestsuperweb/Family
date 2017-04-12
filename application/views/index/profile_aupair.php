@@ -360,7 +360,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="DOCUMENT" >
+                    <input type="submit" value="Document" >
                   </form>                  
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -374,7 +374,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="UPLOADED BY" >
+                    <input type="submit" value="Uploaded by" >
                   </form>                  
                 </div>    
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -388,7 +388,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="UPLOADED DATE" >
+                    <input type="submit" value="Uploaded date" >
                   </form>
                 </div>  
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">
@@ -402,7 +402,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="APPROVAL DATE" >
+                    <input type="submit" value="Approval date" >
                   </form>                  
                 </div>
             </div>
@@ -420,13 +420,48 @@
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= ucfirst($document['status']) ?></a>
-                  <a href="<?= base_url('files/'.$document['name']) ?>" target="_blank" class="btn next-button">DOWNLOAD</a>
-                  <a href="#" class="btn next-button">NEW VERSION</a>
-                  <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>" target="_blank" class="btn next-button">Download</a>
+                  <a href="#" class="btn next-button" data-toggle="modal" data-target="#newVersionDocModal<?= $document['id']?>">New version</a>
+                  <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">Delete</a>
                   <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
-                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">APPROVE</a>
+                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">Approve</a>
                   <?php } ?>
                 </div>
+              </div>
+            </div>
+
+            <div id="newVersionDocModal<?= $document['id']?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Version Document</h4>
+                  </div>
+                  <form class="uploadForm" action="<?= base_url('document/update/'.$document['id'].'/3') ?>" method="post" enctype="multipart/form-data">  
+                    <div class="modal-body">
+                      <div class="alert alert-success upload-success">
+                        <strong>Success!</strong> The document was successfully uploaded.
+                      </div>
+                      <div class="alert alert-danger upload-error">
+                        <strong>Opp!</strong> There are some errors to upload the document.
+                      </div>
+                      <div class="form-group">
+                        <label>Document file:</label>
+                        <input type="file" name="doc_file" autocomplete='off'>
+                      </div>
+                      <div class="progress upload-progress">
+                        <div class="progress-bar progress-bar-striped active progress-status" role="progressbar" aria-valuemin="0" aria-valuemax="100" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn">Add document</button>
+                    </div>
+                  </form>
+                </div>
+
               </div>
             </div>
 
@@ -476,83 +511,83 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENTHUSIASTIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Enthusiastic</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>OUTGOING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Outgoing</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PROACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Proactive</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENERGETIC</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Energetic</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CARING</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Caring</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>FLEXIBLE/ADAPTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Flexible/adaptivel</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ACTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Active</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SPORTIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Sportive</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ORGANISED</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Organized</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>RESPONSIBLE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Responsible</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SMART</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Smart</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>INDEPENDENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Independent</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>EMOTIONAL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Emotional</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>MODEST</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Modset</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>HONEST/OPEN</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Honest/open</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>QUIET</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Quiet</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SELF RELIANT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Self reliant</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PARTYGIRL</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Partygirl</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CREATIVE</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Creative</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
             </div>
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PATIENT</b></div>
+              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>Patient</b></div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
             </div>
           </div>          
@@ -562,41 +597,41 @@
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">         
         <div class="row">
           <div class="col-xs-9 col-sm-9 col-md-7 col-lg-7">
-            <h1><b><?php echo $aupair['full_name']; ?></b></h1>
-            <b>AU-PAIR STATUS</b><br>
+            <h1><b><?php echo $aupair['full_name']; ?></b></h1><br>
+            <b>Au-pair status</b><br>
             <b class="text-primary"><?= $aupair['status'] ?></b>
             <br>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">V-number</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['id'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['id'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Email HBN</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['email'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['email'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Skypename</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['skype'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['skype'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Mobiel nr. moeder</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['phone'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['phone'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Au-Pair Eigenaar</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">SUPPORT TEAM HBN</div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer">SUPPORT TEAM HBN</div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Date of birth</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['date_of_birth'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['date_of_birth'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Country of origin</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['nationality'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['nationality'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Month startdate</div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $aupair['start_date'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $aupair['start_date'] ?></div>
             </div>
           </div>
           <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -611,6 +646,9 @@
 
         <h2>Auto filled Sections</h2>
         <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3>Step1: </h3>
+          </div>
           <?php foreach ($reports as $key => $report) { 
             if (($key != 'id') && ($key != 'aupair_id')) {            
             ?>
@@ -618,7 +656,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b><?= str_replace('_', ' ', $key) ?></b></div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer">
                   <?php if(($report == '0') || ($report == '1')){ ?>
                     <img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30" class="null<?= $report ?>">
                   <?php }elseif(($report == '0000-00-00')||($report == '0000-00-00 00:00:00')) { ?>
@@ -627,6 +665,46 @@
                 </div>
               </div>
             </div>
+            <?php if ($key == 'Video_uploaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 2: </h3>
+              </div>
+            <?php }
+             if ($key == 'Interview_with_agent_scheduled') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 3: </h3>
+              </div>
+            <?php } 
+             if ($key == 'Translation_uploaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 4: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Payment_confirmed') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 5: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Visa_uploaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 6: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Au-pair_manual_downloaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 7: </h3>
+              </div>
+            <?php } 
+            if ($key == 'TB_test_confirmed') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 8: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Evaluation_5_finished') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 9: </h3>
+              </div>
+            <?php } ?>
           <?php 
               }
             }
@@ -791,11 +869,11 @@
             <strong>Opp!</strong> There are some errors to upload the document.
           </div>
           <div class="form-group">
-            <label>Docuemnt Title:</label>
+            <label>Document Title:</label>
             <input type="text" name="doc_title" class="form-control" autocomplete='off'>                              
           </div>
           <div class="form-group">
-          <label>Docuemnt File:</label>
+          <label>Document File:</label>
             <input type="file" name="doc_file" autocomplete='off'>
           </div>
           <div class="progress upload-progress">

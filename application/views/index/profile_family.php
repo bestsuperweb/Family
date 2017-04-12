@@ -92,8 +92,8 @@
           		
           	</div>
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-          		<div class="row">
-          			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+          		<div class="row" >
+          			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>
           			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                 <a href="<?php echo base_url('index/edit_profile/1/').$param; ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
@@ -146,28 +146,33 @@
           	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           		<div class="row">
           			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <h2><b>Hi, we are family of <?php echo $parents[0]['lastname']; ?></b></h2></div>
+                <h2><b>Hi, we are the <?php echo $parents[0]['lastname']; ?> family</b></h2></div>
           			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                 <a href="<?php echo base_url('index/edit_profile/1/').$param; ?>">
                 <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
-          		</div>          		
-          		<p class="profile-description"><?php echo $family['overview']; ?></p>
+          		</div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <p class="profile-description"><?php echo $family['overview']; ?></p>
+                </div>
+              </div>               		
           	</div>         	
           </div>
           <div class="row">
-          	<div class="col-lg-4 col-lg-offset-4">
-          		<a href="<?= base_url('index/profile/2/'.$param)?>" class="btn next-button" >ABOUT THE HOST</a>
+          	<div class="col-xs-12">
+          		<a href="<?= base_url('index/profile/2/'.$param)?>" class="btn next-button" >About the host</a>
           	</div>          		
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane <?php echo $li_class['second']; ?>" id="host">
           <div class="row">
-      			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+      			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>
       			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <a href="<?php echo base_url('index/edit_profile/2/').$param; ?>">
             <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
   		    </div>
+          <br>
   		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Job description father</div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><?php echo $parents[0]['job_description']; ?></div>
@@ -335,17 +340,20 @@
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><?php echo $family['reason']; ?></div>
   		  </div>
     		  <div class="row">
-            <a href="<?= base_url('index/profile/3/'.$param)?>" class="btn next-button">PREFERENCES</a> 
+            <div class="col-xs-12">
+              <a href="<?= base_url('index/profile/3/'.$param)?>" class="btn next-button">Precences</a>   
+            </div>            
           </div>
         </div>
 <!-- start preference tab -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['third']; ?>" id="preferences">
           <div class="row">
-  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+  			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8"><h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>
   			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
         <a href="<?php echo base_url('index/edit_profile/3/').$param; ?>">
         <img src="<?php echo base_url('assets/img/pen.png'); ?>" class='img-pen'></a></div>
   		  </div>
+        <br>
   		  <div class="row">
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Au-pair needs to be available from</div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><?php echo $family['aupair_from']; ?></div>
@@ -390,12 +398,17 @@
   		  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">Possible tasks regarding the household:</div>
   		  	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><?php echo $family['aupair_household']; ?></div>
   		  </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <a href="<?= base_url('index/profile/4/'.$param)?>" class="btn next-button" >Documents</a>
+          </div>              
+        </div>
         </div>
 <!-- start document tab -->
         <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="document">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-7 col-lg-9">
-            <h1 class="profile-caption"><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1></div>
+            <h1 class="profile-caption"><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1></div>
             <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">
               <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -431,7 +444,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="DOCUMENT" >
+                    <input type="submit" value="Document" >
                   </form>                  
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -445,7 +458,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="UPLOADED BY" >
+                    <input type="submit" value="Uploaded by" >
                   </form>                  
                 </div>    
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -459,7 +472,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="UPLOADED DATE" >
+                    <input type="submit" value="Uploaded date" >
                   </form>
                 </div>  
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 last">
@@ -473,7 +486,7 @@
                         echo 'asc';
                       }
                     ?>">
-                    <input type="submit" value="APPROVAL DATE" >
+                    <input type="submit" value="Approval date" >
                   </form>                  
                 </div>
             </div>
@@ -491,11 +504,11 @@
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <a href="#" class="btn next-button <?= $document['status'] ?>-button"><?= ucfirst($document['status']) ?></a>
-                  <a href="<?= base_url('files/'.$document['name']) ?>"  target="_blank" class="btn next-button">DOWNLOAD</a>
-                  <a href="#" class="btn next-button" data-toggle="modal" data-target="#newVersionDocModal<?= $document['id']?>">NEW VERSION</a>
-                  <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">DELETE</a>
+                  <a href="<?= base_url('files/'.$document['name']) ?>"  target="_blank" class="btn next-button">Download</a>
+                  <a href="#" class="btn next-button" data-toggle="modal" data-target="#newVersionDocModal<?= $document['id']?>">New version</a>
+                  <a href="#" data-id="<?= $document['id']?>" class="btn next-button delete-button">Delete</a>
                   <?php if($this->aauth->is_member(6)&&($document['status'] != 'approved')) { ?>
-                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">APPROVE</a>
+                    <a href="#" data-id="<?= $document['id']?>" class="btn next-button approve-button">Approve</a>
                   <?php } ?>
                 </div>
               </div>
@@ -519,7 +532,7 @@
                         <strong>Opp!</strong> There are some errors to upload the document.
                       </div>
                       <div class="form-group">
-                        <label>Docuemnt file:</label>
+                        <label>Document file:</label>
                         <input type="file" name="doc_file" autocomplete='off'>
                       </div>
                       <div class="progress upload-progress">
@@ -551,8 +564,8 @@
       <div role="tabpanel" class="tab-pane <?php echo $li_class['fifth']; ?>" id="report">
         <div class="row">
           <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
-            <h1><b>Family of <?php echo $parents[0]['lastname']; ?></b></h1>
-            <b>KLANT STATUS</b><br>
+            <h1><b>The <?php echo $parents[0]['lastname']; ?> family</b></h1><br>
+            <b>Klant status</b><br>
             <b class="text-primary"><?= $family['status'] ?></b>
           </div>
           <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -576,23 +589,23 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email HBN</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $this->aauth->get_user()->email ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $this->aauth->get_user()->email ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['mobile_number'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[0]['mobile_number'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Mobiel nr. moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['mobile_number'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[1]['mobile_number'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Eigenaar</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?> <?= $parents[0]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[0]['firstname'] ?> <?= $parents[0]['lastname'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Type</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer">
                 <div class="custom-select">
                   <select disabled>
                     <option>1st placement</option>
@@ -606,7 +619,7 @@
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (plaats)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['place'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $family['place'] ?></div>
             </div>
               
           </div>
@@ -614,41 +627,44 @@
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Gastgezin Naam</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[0]['lastname'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['firstname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[1]['firstname'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Meisjesnaam moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['lastname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[1]['lastname'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Voornaam vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['firstname'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[0]['firstname'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) vader</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[0]['email'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[0]['email'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Email (werk) moeder</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $parents[1]['email'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $parents[1]['email'] ?></div>
             </div>            
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (straat)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['street'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $family['street'] ?></div>
             </div>
             <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b>Factuuradres (postcode)</b></div>
-              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><?= $family['postal_code'] ?></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer"><?= $family['postal_code'] ?></div>
             </div>
           </div>
         </div>
         
-        <h2>Auto filled Sections</h2>
+        <h2>Auto filled Sections</h2><br>
         <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3>Step1: </h3>
+          </div>
           <?php foreach ($reports as $key => $report) { 
             if (($key != 'id') && ($key != 'family_id')) {            
             ?>
@@ -656,7 +672,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
               <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><b><?= str_replace('_', ' ', $key) ?></b></div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 answer">
                   <?php if(($report == '0') || ($report == '1')){ ?>
                     <img src="<?=base_url('assets/img/visa-check-approved.png')?>" width="30" class="null<?= $report ?>">
                   <?php }elseif($report == '0000-00-00') { ?>
@@ -665,6 +681,43 @@
                 </div>
               </div>
             </div>
+
+            <?php if ($key == 'Photos_uploaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 2: </h3>
+              </div>
+            <?php }
+             if ($key == 'All_documents_submitted') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 3: </h3>
+              </div>
+            <?php } 
+             if ($key == 'Signed_awareness_declaration_and_timeschedule') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 4: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Visa_picked_up') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 5: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Important_info_doc_uploaded') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 6: </h3>
+              </div>
+            <?php } 
+            if ($key == 'TB_test_confirmed') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 7: </h3>
+              </div>
+            <?php } 
+            if ($key == 'Evaluation_5_finished') { ?>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Step 8: </h3>
+              </div>
+            <?php } ?>
+
           <?php 
               }
             }
@@ -831,11 +884,11 @@
             <strong>Opp!</strong> There are some errors to upload the document.
           </div>
           <div class="form-group">
-            <label>Docuemnt title:</label>
+            <label>Document title:</label>
             <input type="text" name="doc_title" class="form-control" autocomplete='off'>                              
           </div>
           <div class="form-group">
-          <label>Docuemnt file:</label>
+          <label>Document file:</label>
             <input type="file" name="doc_file" autocomplete='off'>
           </div>
           <div class="progress upload-progress">

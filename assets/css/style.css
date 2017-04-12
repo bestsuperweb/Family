@@ -207,6 +207,10 @@
     font-weight: bold;
     font-style: italic;
 }
+.navbar-user span{
+    vertical-align: middle;
+    font-size: 35px;
+}
 
 .panel-default > .panel-heading{
     background: #542a44;
@@ -576,7 +580,7 @@
     #page-content-wrapper {
         padding: 20px;
         position: relative;
-        top: 50px;
+        top: 0px;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -608,7 +612,7 @@
     color: #fff;
 }
 .profile-tab-content{
-    margin-top: 80px;
+    margin-top: 20px;
 }
 .profile-tab-content .row .col-xs-12.col-sm-12.col-md-6.col-lg-5, 
 .profile-tab-content .row .col-xs-12.col-sm-5.col-md-5.col-lg-5,
@@ -629,8 +633,11 @@
     margin-bottom: 10px;
     margin-top: 20px;
 }
+.profile-row h4{
+    line-height: 0px;
+}
 .profile-description{
-    padding: 10px;
+    padding: 10px 0;
     font-size: 15px;
     /*color: #542a44;*/
 }
@@ -641,6 +648,9 @@
 }
 #report .row{
     margin-bottom: 10px;
+}
+.answer{
+    font-weight: normal !important;
 }
 .null0{
     filter: gray;
@@ -707,13 +717,16 @@
     padding: 15px; 
 }
 /*Document*/
+div#document{
+    padding-top: 20px;
+}
 .add-doc{
     background-color: #542a44;
     color: #fff;
-    padding: 13px 20px;
+    padding: 10px 17px;
     border-radius: 30px;
     font-size: 25px;
-    line-height: 50px;
+    line-height: 40px;  
 }
 .add-doc:hover{
     text-decoration: none;
@@ -728,18 +741,17 @@
     display: none;
 }
 .doc-search .btn-default{
-    height: 50px;
+    height: 40px;
     font-size: 20px;
     border-radius: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
+    box-shadow: 0 0 1px rgba(84, 42, 68,.6);
 }
 .doc-search input{
-    height: 50px;
+    height: 40px;
     border-radius: 3px;
 }
 .profile-caption{
-    margin-top: -5px;
+    margin-top: 0px;
 }
 .profile-document{
     margin-top: 20px;
@@ -918,6 +930,14 @@
     font-weight: bold;
 }
 /* match page end ---*/
+
+/* home page */
+#update-table .form-control, #task-table .form-control{
+    height: 34px;
+    font-weight: normal;
+    font-size: 15px;
+}
+/* home page end */
 @media screen and (max-width: 768px) {
   .nav-tabs-responsive > li {
     display: none;

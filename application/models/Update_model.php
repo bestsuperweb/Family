@@ -53,12 +53,12 @@ class Update_model extends CI_Model {
         }
 
         public function get_update($user_id){
-            $query = $this->db->get_where('updates', array('user_id' => $user_id));
+            $query = $this->db->order_by("created_date DESC")->get_where('updates', array('user_id' => $user_id));
             return $query->result_array();
         }
 
         public function get_updates_by_hbn(){
-            $query = $this->db->get('updates');
+            $query = $this->db->order_by("created_date DESC")->get('updates');
             return $query->result_array();
         }
 

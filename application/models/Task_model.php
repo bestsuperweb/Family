@@ -54,12 +54,12 @@ class Task_model extends CI_Model {
         }
 
         public function get_task($user_id){
-            $query = $this->db->get_where('tasks', array('user_id' => $user_id));
+            $query = $this->db->order_by("created_date DESC")->get_where('tasks', array('user_id' => $user_id));
             return $query->result_array();
         }
 
         public function get_tasks_by_hbn(){
-            $query = $this->db->get('tasks');
+            $query = $this->db->order_by("created_date DESC")->get('tasks');
             return $query->result_array();
         }
 

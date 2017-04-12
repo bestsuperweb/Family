@@ -1,24 +1,57 @@
 <!-- views/index/home.php  -->
 <div id="page-content-wrapper">
     <div class="container-fluid">
-    <h1><i><b>Welcome <?= ucfirst($user_type) ?></b></i></h1>
+    <h1 style="margin-top: 0"><i><b>Welcome <?= ucfirst($user_type) ?></b></i></h1>
     <div class="row">
     	<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
     		<h3>Updates</h3>
-            <table class="table table-striped task-table">
+            <table id = "update-table">
                 <thead>
                   <tr>
                     <th>Update Title</th>
                     <?php 
                         if($this->aauth->is_member(6)){  
                             ?>
-                            <th>User Name</th>
+                            <th>User</th>
                             <?php
                             } 
                         ?>
                     <th>Date</th>
                   </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Update Title</th>
+                        <?php 
+                            if($this->aauth->is_member(6)){  
+                                ?>
+                                <th>User</th>
+                                <?php
+                                } 
+                            ?>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                      <th colspan="7" class="ts-pager form-inline">
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button type="button" class="btn first"><span class="glyphicon glyphicon-step-backward"></span></button>
+                          <button type="button" class="btn prev"><span class="glyphicon glyphicon-backward"></span></button>
+                        </div>
+                        <span class="pagedisplay"></span>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button type="button" class="btn next"><span class="glyphicon glyphicon-forward"></span></button>
+                          <button type="button" class="btn last"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div>
+                        <select class="form-control input-sm pagesize" title="Select page size">
+                          <option selected="selected" value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="30">30</option>
+                          <option value="all">All Rows</option>
+                        </select>
+                        <select class="form-control input-sm pagenum" title="Select page number"></select>
+                      </th>
+                    </tr>
+                  </tfoot>
                 <tbody>
                 <?php 
                     foreach ($updates as $key => $update) {
@@ -58,8 +91,8 @@
             </table>
     	</div>
     	<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-    		<h3>Takenlijst</h3>
-            <table class="table table-striped task-table">
+    		<h3>To do</h3>
+            <table id = "task-table">
                 <thead>
                   <tr>
                     <th>Task Title</th>
@@ -67,13 +100,47 @@
                         if($this->aauth->is_member(6)){  
                             ?>
                             <th>Deadline</th>                    
-                            <th>User Name</th>
+                            <th>User</th>
                             <?php
                             } 
                         ?>
                     <th>Status</th> 
                   </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Task Title</th>
+                        <?php 
+                            if($this->aauth->is_member(6)){  
+                                ?>
+                                <th>Deadline</th>                    
+                                <th>User</th>
+                                <?php
+                                } 
+                            ?>
+                        <th>Status</th> 
+                    </tr>
+                    <tr>
+                      <th colspan="7" class="ts-pager form-inline">
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button type="button" class="btn first"><span class="glyphicon glyphicon-step-backward"></span></button>
+                          <button type="button" class="btn prev"><span class="glyphicon glyphicon-backward"></span></button>
+                        </div>
+                        <span class="pagedisplay"></span>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button type="button" class="btn next"><span class="glyphicon glyphicon-forward"></span></button>
+                          <button type="button" class="btn last"><span class="glyphicon glyphicon-step-forward"></span></button>
+                        </div>
+                        <select class="form-control input-sm pagesize" title="Select page size">
+                          <option selected="selected" value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="30">30</option>
+                          <option value="all">All Rows</option>
+                        </select>
+                        <select class="form-control input-sm pagenum" title="Select page number"></select>
+                      </th>
+                    </tr>
+                  </tfoot>
                 <tbody>
                 <?php 
                     foreach ($tasks as $key => $task) {

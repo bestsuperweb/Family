@@ -11,7 +11,10 @@
   <script type="text/javascript" src="<?= base_url('assets/js/schedule/modernizr.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('assets/js/html2canvas.js');?>"></script> 
   <script type="text/javascript" src="<?= base_url('assets/js/dropzone/dropzone.js');?>"></script>  
-  <script type="text/javascript" src="<?= base_url('assets/js/schedule/main.js'); ?>"></script>  
+  <script type="text/javascript" src="<?= base_url('assets/js/schedule/main.js'); ?>"></script>
+  <script type="text/javascript" src="<?= base_url('assets/js/tablesorter/jquery.tablesorter.js'); ?>"></script>
+  <script type="text/javascript" src="<?= base_url('assets/js/tablesorter/jquery.tablesorter.widgets.js'); ?>"></script>
+  <script type="text/javascript" src="<?= base_url('assets/js/tablesorter/jquery.tablesorter.pager.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('assets/js/js.js');?>"></script> 
 </body>
 </html>

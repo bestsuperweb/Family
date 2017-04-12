@@ -53,7 +53,7 @@ class Notity_model extends CI_Model {
         }
 
         public function get_notity($user_id){
-            $query = $this->db->get_where('notities', array('user_id' => $user_id, 'hbn_id' => $this->aauth->get_user()->id));
+            $query = $this->db->order_by("created_date DESC")->get_where('notities', array('user_id' => $user_id ));
             return $query->result_array();
         }
 

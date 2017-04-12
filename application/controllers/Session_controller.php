@@ -235,7 +235,7 @@ class Session_controller extends CI_Controller
 		$parents = $this->parent_model->get_parent($id);
 		$kids = $this->kid_model->get_kid($id);
 		$header =  '<img src="'.base_url('assets/img/login_logo.jpg').'" width="150" />';
-		$header .= "<h1 style='color: #542a44;'>Initial registeration family ".$parents[0]['lastname']."</h1>";
+		$header .= "<h1 style='color: #542a44;'>Initial registration family ".$parents[0]['lastname']."</h1>";
 
 		$html = '<h2 style="color: #542a44;">1. Basic Info</h2>';
 		$html .= '<table style="width: 100%; color: #542a44;">';
@@ -344,7 +344,7 @@ class Session_controller extends CI_Controller
 	private function get_aupair_content($id){
 		$aupair = $this->aupair_model->get_aupair($id);
 		$header =  '<img src="'.base_url('assets/img/login_logo.jpg').'" width="150" />';
-		$header .= "<h1 style='color: #542a44;'>Initial registeration aupair $aupair[full_name]</h1>";
+		$header .= "<h1 style='color: #542a44;'>Initial registration aupair $aupair[full_name]</h1>";
 
 		// $hmtl = '<h2>1. General Info</h2>';
 		$html = '<table style="width: 100%; color: #542a44;">';

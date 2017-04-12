@@ -252,8 +252,10 @@
                     </div>
                   </div>
               </div>  
-              <div class="row">           
-                <input type="submit" name="" class="btn next-button" value="SAVE PROFILE">              
+              <div class="row">   
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">        
+                <input type="submit" name="" class="btn next-button" value="Save general">     
+                </div>         
               </div>
               </form>           
             </div>
@@ -582,8 +584,10 @@
               </textarea>
             </div>
           </div>
-          <div class="row">           
-            <input type="submit" name="" class="btn next-button" value="SAVE PROFILE">              
+          <div class="row">   
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">        
+            <input type="submit" name="" class="btn next-button" value="Save experience">    
+            </div>          
           </div>
           </form>
         </div>
