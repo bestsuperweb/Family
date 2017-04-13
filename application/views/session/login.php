@@ -4,6 +4,7 @@
   <title>Login | HBN </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/favicon.png') ?>">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Custom CSS -->
   <link href="<?= base_url('assets/css/session/style.css');?>" rel="stylesheet">
