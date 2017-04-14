@@ -129,7 +129,7 @@ CREATE TABLE `aauth_users` (
 -- Records of aauth_users
 -- ----------------------------
 INSERT INTO `aauth_users` VALUES ('1', 'admin@example.com', 'dd5073c93fb477a167fd69072e95455834acd93df8fed41a2c468c45b394bfe3', 'Admin', '0', null, null, null, null, null, null, null, null, '0');
-INSERT INTO `aauth_users` VALUES ('2', 'hbn@nannyapp.nl', 'e24ea304a4b6f059f5c34dc46bb82c806088baed14ec739f267950065ef0d93a', 'Admin', '0', null, null, null, null, null, null, null, null, '0');
+INSERT INTO `aauth_users` VALUES ('2', 'hbn@nannyapp.nl', 'e24ea304a4b6f059f5c34dc46bb82c806088baed14ec739f267950065ef0d93a', 'HBN Support Team', '0', null, null, null, null, null, null, null, null, '0');
 
 -- ----------------------------
 -- Table structure for `aauth_user_to_group`

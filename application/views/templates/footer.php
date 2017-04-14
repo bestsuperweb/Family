@@ -10,7 +10,11 @@
   <!-- Custom JS -->
   <script type="text/javascript" src="<?= base_url('assets/js/schedule/modernizr.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('assets/js/html2canvas.js');?>"></script> 
-  <script type="text/javascript" src="<?= base_url('assets/js/dropzone/dropzone.js');?>"></script>  
+  <?php if ($title == 'Edit Profile') { ?>
+    <script type="text/javascript" src="<?= base_url('assets/js/dropzone.js');?>"></script>  
+  <?php }else{ ?>
+    <script type="text/javascript" src="<?= base_url('assets/js/dropzone/dropzone.js');?>"></script>  
+  <?php } ?>  
   <script type="text/javascript" src="<?= base_url('assets/js/schedule/main.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('assets/js/tablesorter/jquery.tablesorter.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('assets/js/tablesorter/jquery.tablesorter.widgets.js'); ?>"></script>
