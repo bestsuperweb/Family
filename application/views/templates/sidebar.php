@@ -40,7 +40,7 @@
                 <ul>
                     <li><a href="<?= base_url('index/profile/1'); ?>">General</a></li>
                     <li><a href="<?= base_url('index/profile/2'); ?>">Experience</a></li>
-                    <li><a href="<?= base_url('index/profile/3'); ?>">Documenten</a></li>                     
+                    <li><a href="<?= base_url('index/profile/3'); ?>">Documents</a></li>                     
                 </ul>
             </div>                     
         </li>

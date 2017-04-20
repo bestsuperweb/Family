@@ -79,7 +79,7 @@
 	                  if($family['photo1']){
 	                    echo base_url('files/photos/'.$family['photo1']); 
 	                  }else{
-	                    echo base_url('assets/img/family.jpg'); 
+	                    echo base_url('assets/img/family.png'); 
 	                  }
 	                ?>">
 	                <div class="match-details">

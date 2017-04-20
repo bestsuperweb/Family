@@ -331,6 +331,40 @@ $(document).ready(function()
         });
     });
 
+    $('#video-upload').on('click', function(){
+        var green_check = window.base_url+'assets/img/check-green.png';
+        var id = $(this).attr('href');
+        var video_url = $('#video').val();
+
+        $.ajax({
+            url: window.base_url+"index/save_profile/" + $(this).attr('data-step'),
+            type: 'post',
+            data: { 'video': video_url },
+            success: function(result){                
+
+                if(result == 'success'){
+                    if (id.slice(-1) == '0') {
+                        var current = '#collapse' + (parseInt(id.slice(-2)) - 1);  
+                    }else{
+                        var current = '#collapse' + (parseInt(id.slice(-1)) - 1);  
+                    }
+                    
+                    $('.panel-title a').each(function(){
+                        if ($(this).attr('href') == current) {
+                            $(this).children('.collapse-img').attr('src', green_check);
+                        }
+                        if($(this).attr('href') == id){
+                            $(this).click();
+                        }
+                    });
+                }else{
+                    alert('Server error...');
+                }                
+                // location.reload();
+            }
+        });
+    });
+
     $(".family-last").on('click', function(){
         alert('ghost');
     });

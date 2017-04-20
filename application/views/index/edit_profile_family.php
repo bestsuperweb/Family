@@ -48,7 +48,7 @@
         </li>
         <li role="presentation" class="<?php echo $li_class['forth']; ?>">
           <a href="<?= base_url('index/edit_profile/4/'.$param)?>" >
-            <span class="text">Document</span>
+            <span class="text">Documents</span>
           </a>
         </li>
         <?php if($this->aauth->is_member(6)){ ?>

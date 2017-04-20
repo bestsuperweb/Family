@@ -318,14 +318,16 @@
 		      			</p>
 		      		</div>
 		      		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-		      			<form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
+		      			<!-- <form action = "<?= base_url('document/upload_document/1') ?>" class="dropzone dz-clickable" >
 		      				<div class="dz-default dz-message"><span>Drag and drop folders and files from desktop or use the <a>file browser</a></span></div>
-		      			</form>
+		      			</form> -->
+		      			<h4>Video url:</h4>
+		      			<input type="url" id = "video" class="form-control" value="<?= $aupair['video'] ?>">
 		      		</div>		      		
 		      	</div>
 		      	<div class="row">
 		      		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      			<a href="#collapse7" class="btn next-button update-report" data-step = "28">UPLOAD</a>
+		      			<a href="#collapse7" class="btn next-button" data-step = "28" id="video-upload">UPLOAD</a>
 		      		</div>
 		      	</div>
 		      </div>

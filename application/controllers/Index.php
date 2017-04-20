@@ -18,7 +18,8 @@ class Index extends CI_Controller {
         $this->load->model('task_model');
         $this->load->model('update_model');
         $this->load->model('familyreport_model');
-        $this->load->model('aupairreport_model');          
+        $this->load->model('aupairreport_model');
+        $this->load->model('test_model');         
 
         if(!$this->aauth->is_loggedin()){
             redirect('session_controller/log_in');
@@ -188,7 +189,8 @@ class Index extends CI_Controller {
                                                                             );
                     $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email']));  
                     $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));
-                    $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);            
+                    $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);
+                    $data['tests']     = $this->test_model->get_test($data['user_id']);           
                     break;
                 
                 default:
@@ -237,7 +239,8 @@ class Index extends CI_Controller {
                 $data['documents'] = $this->document_model->get_document($this->aauth->get_user_id($data['aupair']['email']));
                 $data['notities']  = $this->notity_model->get_notity($this->aauth->get_user_id($data['aupair']['email'])); 
                 $data['tasks']     = $this->task_model->get_task($this->aauth->get_user_id($data['aupair']['email']));     
-                $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);                         
+                $data['reports']   = $this->aupairreport_model->get_aupairreport($data['user_id']);
+                $data['tests']     = $this->test_model->get_test($data['user_id']);                           
                 break;
             
             default:
@@ -295,7 +298,7 @@ class Index extends CI_Controller {
                         {
                             $this->family_model->update_family(1, $data['user_id']);
                             $this->parent_model->update_parent(1, $data['user_id']);
-                            $this->kid_model->update_kid(1);
+                            $this->kid_model->update_kid(1, $data['user_id']);
                             redirect('index/profile/2/'.$data['param']);
                         }else{
                             redirect('index/edit_profile/2/'.$data['param']);
@@ -535,7 +538,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(7, $data['user_id'])){
-                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
+                                $this->aupairreport_model->insert_aupairreport(array('Pictures_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -549,7 +552,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(8, $data['user_id'])){
-                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
+                                $this->aupairreport_model->insert_aupairreport(array('Pictures_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -563,7 +566,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(9, $data['user_id'])){
-                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
+                                $this->aupairreport_model->insert_aupairreport(array('Pictures_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -577,7 +580,7 @@ class Index extends CI_Controller {
                         if (upload($data['user_id']))
                         {
                             if($this->aupair_model->update_aupair(10, $data['user_id'])){
-                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
+                                $this->aupairreport_model->insert_aupairreport(array('Pictures_uploaded' => 1), $data['user_id']);
                                 echo 'sucess';
                             }else{
                                 echo 'failure';                            
@@ -905,11 +908,26 @@ class Index extends CI_Controller {
 
                         break;
                     case 28:
-                        if ( $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']) )
-                            echo 'success';
+                        if ( $this->aupair_model->update_aupair(11, $data['user_id']) )
+                            if ( $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']) )
+                                echo 'success';
+                            else
+                                echo 'failure';
                         else
-                            echo 'failure';
+                            echo "failure";                        
 
+                        break;
+                    case 29:
+                        $this->form_validation->set_rules('tester', 'Tester', 'trim|required');
+                        if ($this->form_validation->run() === TRUE)
+                        {
+                            if ( $this->aupair_model->update_aupair(11, $data['user_id']) )
+                                $this->aupairreport_model->insert_aupairreport(array('Video_uploaded' => 1), $data['user_id']);
+                            $this->test_model->update_test($data['user_id']);
+                            redirect('index/profile/4/'.$data['param']);
+                        }else{
+                            redirect('index/edit_profile/4/'.$data['param']);
+                        }
                         break;
 
                     default:

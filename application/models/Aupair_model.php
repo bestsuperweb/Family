@@ -79,8 +79,7 @@ class Aupair_model extends CI_Model {
                             'smoker'   					=> $this->input->post('ap_smoker'),
                             'medicine'					=> $this->input->post('ap_medicine'),
                             'tattoos'					=> $this->input->post('ap_tattoos'),
-                            'piercings'					=> $this->input->post('ap_piercings'),
-                            'overview'                  => $this->input->post('ap_overview')
+                            'piercings'					=> $this->input->post('ap_piercings')
                         );
         			break;
         		case 2:
@@ -190,6 +189,12 @@ class Aupair_model extends CI_Model {
                                     'photo4'    => md5($_FILES["file"]['name'].$aupair_id).$_FILES["file"]['name']
                             );
                     // unlink('files/photos/'.$aupair['photo4']);
+                    break;
+                case 11:
+                    $aupair = $this->get_aupair($aupair_id);
+                    $data = array(
+                                    'video'    => $this->input->post('video')
+                            );
                     break;
         		
         		default:

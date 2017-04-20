@@ -73,7 +73,7 @@
                     echo 'asc';
                   }
                 ?>">
-                <input type="submit" value="Residence" >
+                <input type="submit" value="Nationality" >
               </form>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     	<img src="<?= base_url('assets/img/users-white.png') ?>" width=25> &nbsp;&nbsp;<?= ucfirst($aupair['aupair_family']) ?></div>    
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= ucfirst($aupair['status']) ?></div>  
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= ucfirst($aupair['address']) ?></div>                    
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= ucfirst($aupair['nationality']) ?></div>                    
                   </a>          
               </div>
               <div id="collapse<?=$key ?>" class="panel-collapse collapse">
@@ -98,7 +98,7 @@
                 		$param = urlencode(serialize(array('aupair', $aupair['id'])));
                 	 ?>	
                   <a href='<?= base_url("index/profile/1/$param") ?>' class="btn next-button">Profile</a>
-                  <a href='<?= base_url("index/profile/3/$param") ?>' class="btn next-button">Documenten</a>
+                  <a href='<?= base_url("index/profile/3/$param") ?>' class="btn next-button">Documents</a>
                   <a href='<?= base_url("index/profile/5/$param") ?>' class="btn next-button ">Report</a>
                 </div>
               </div>

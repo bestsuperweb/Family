@@ -21,6 +21,7 @@ class Session_controller extends CI_Controller
         $this->load->model('update_model');
         $this->load->model('familyreport_model');
         $this->load->model('aupairreport_model');
+        $this->load->model('test_model');
 	}
 
 	function log_in(){
@@ -140,7 +141,7 @@ class Session_controller extends CI_Controller
 					$this->_gen_pdf($html, "$name.pdf");
 					$parents = $this->parent_model->get_parent($this->session->userdata('user_id'));
 					$task_id = $this->task_model->insert_task(
-									'De familie '.$parents[0]['lastname'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
+									'De familie '.$parents[0]['lastname'].' heeft document ‘Initial Registration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
 									'1. Begin met stap 1 van het stappenplan om verder te gaan.<br>2. Loop jullie profiel na om te controleren alles klopt.',
 									'',
 									$id,
@@ -166,7 +167,7 @@ class Session_controller extends CI_Controller
 					$this->_gen_pdf($html, "$name.pdf");
 					$aupair = $this->aupair_model->get_aupair($this->session->userdata('user_id'));
 					$task_id = $this->task_model->insert_task(
-									'De au-pair '.$aupair['full_name'].' heeft document ‘Initial Registeration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
+									'De au-pair '.$aupair['full_name'].' heeft document ‘Initial Registration’ aangeleverd. Het bestand staat klaar voor goedkeuring.',
 									'1. Start with step 1 from your journey to proceed.<br> 2. Check your profile to confirm all the info is correct.',
 									'',
 									$id,

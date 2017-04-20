@@ -49,7 +49,7 @@
         <?php } ?>
         <li role="presentation" class="<?php echo $li_class['third']; ?>">
           <a href="<?= base_url('index/edit_profile/3/'.$param)?>">
-            <span class="text">Document</span>
+            <span class="text">Documents</span>
           </a>
         </li>
         <?php if($this->aauth->is_member(6)){ ?>
@@ -308,8 +308,8 @@
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h1><b>Hi, I'm <?php echo $aupair['full_name']; ?></b></h1></div>                 
               </div>
               <div class="row">
-                <!-- <textarea class="form-control" rows="20" name="ap_overview"><?php echo $aupair['overview']; ?></textarea> -->
-                <?php echo $aupair['overview']; ?>
+                <textarea class="form-control" rows="20" name="ap_overview"><?php echo $aupair['overview']; ?></textarea>
+                <!-- <?php echo $aupair['overview']; ?> -->
               </div>
             </div>
           </div>
@@ -660,19 +660,25 @@
       <div role="tabpanel" class="tab-pane <?php echo $li_class['forth']; ?>" id="interview">         
         <h1 class="profile-caption"><b><?php echo $aupair['full_name']; ?></b></h1>
         <div class="row">
+          <?= form_open('index/save_profile/29/'.$param) ?>
           <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <h2><b><i>Interview Reports</i></b></h2><br>
-            <img src="<?= base_url('assets/img/users.png') ?>" ><span class="sub-caption"> Luis Fabiano</span><br><br>
+            <table>
+              <tr>
+                <td><img src="<?= base_url('assets/img/users.png') ?>" ></td>
+                <td>&nbsp;</td>
+                <td><input type="text" name="tester" value="<?= $tests['tester'] ?>" class="form-control" ></td>
+              </tr>
+            </table>
+            <br>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt mattis pretium. Suspendisse vitae nibh ullamcorper, convallis ipsum et, tincidunt ligula. Suspendisse ut pulvinar elit. Nam at vulputate purus, scelerisque pharetra lectus. Curabitur tincidunt, risus nec condimentum tincidunt, turpis orci vulputate elit, ultricies pharetra metus nisl et est. Vestibulum ac velit eu mi sollicitudin fermentum. Ut sed sem dolor. Praesent sed velit ut dolor molestie gravida. Aliquam erat volutpat. Duis et nibh risus.<br><br>
-              Donec efficitur molestie odio vel volutpat. In hac habitasse platea dictumst. Cras egestas vestibulum tinci- dunt. Fusce eget arcu nec nisi dictum ornare ac a odio. Proin bibendum lectus arcu, in maximus quam feu- giat ut. Sed pretium enim sit amet tristique scelerisque. Nulla massa felis, maximus sed libero sed, mollis blandit massa. Praesent volutpat, dui in vulputate lacinia, massa felis sodales justo, nec facilisis orci dolor auctor elit.
-            </p>
+              <textarea class="form-control" rows="10" name="description"><?= $tests['description'] ?></textarea>
+            </p>            
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          
           <h2><b><i>Video</i></b></h2>
-              <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
-              </div>
+              <input type="url" name="video" value="<?= $aupair['video'] ?>" class="form-control" style="font-weight: normal;" >          
           </div>
         </div>
         <div class="row">
@@ -691,86 +697,20 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENTHUSIASTIC</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>OUTGOING</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PROACTIVE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ENERGETIC</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CARING</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>FLEXIBLE/ADAPTIVE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ACTIVE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SPORTIVE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>ORGANISED</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>RESPONSIBLE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SMART</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>INDEPENDENT</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>EMOTIONAL</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>MODEST</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="2" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>HONEST/OPEN</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>QUIET</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>SELF RELIANT</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="4" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PARTYGIRL</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>CREATIVE</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="3" min="0" max="5" ></div>              
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b>PATIENT</b></div>
-              <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7"><input type="range" value="5" min="0" max="5" ></div>              
-            </div>
+            <?php foreach ($tests as $key => $test) { 
+              if (($key != 'id')&&($key != 'aupair_id')&&($key != 'description')&&($key != 'tester')) { ?>
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3"><b><?= $key ?></b></div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+                  <input type="range" value="<?= $test ?>" min="0" max="5" name = "<?= $key ?>">
+                </div>              
+              </div>         
+            <?php
+              }
+             }
+            ?>
+            <input type="submit" name="" class="btn next-button" value="Save results">
+            </form>
           </div>          
         </div>
       </div>
